@@ -1,0 +1,7 @@
+/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/install/strip.dir
+/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/edit_cache.dir
+/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir
+/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/rebuild_cache.dir
+/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/list_install_components.dir
+/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/install/local.dir
+/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/install.dir

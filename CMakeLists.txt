@@ -6,11 +6,11 @@ set(CMAKE_CXX_STANDARD 14)
 file(GLOB_RECURSE SOURCES Source/*.cpp)
 add_executable(coucou ${SOURCES} )
 
-find_package(GLUT REQUIRED)
+find_package(SDL2 REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(OpenGL REQUIRED)
-include_directories(${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS} ${GLEW_INCUDE_DIRS})
+include_directories(${OPENGL_INCLUDE_DIRS}  ${SDL2_INCLUDE_DIRS} ${GLEW_INCUDE_DIRS})
 
-target_link_libraries(coucou ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} ${GLEW_LIBRARY})
+target_link_libraries(coucou ${OPENGL_LIBRARIES} ${SDL2_LIBRARIES} ${GLEW_LIBRARY})
 
 install(TARGETS coucou RUNTIME DESTINATION bin)
