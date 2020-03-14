@@ -4,9 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/main.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Source/main.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/myevent.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Source/myevent.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/shader.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Source/shader.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/camera.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/camera.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/main.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/myevent.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/myevent.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/shader.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/shader.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

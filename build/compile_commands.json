@@ -1,17 +1,22 @@
 [
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
-  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Source/main.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Source/main.cpp",
-  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/main.cpp"
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/source/camera.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/camera.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/camera.cpp"
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
-  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Source/myevent.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Source/myevent.cpp",
-  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/myevent.cpp"
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/source/main.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp"
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
-  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Source/shader.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Source/shader.cpp",
-  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/shader.cpp"
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/source/myevent.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/myevent.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/myevent.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/source/shader.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/shader.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/shader.cpp"
 }
 ]

@@ -6,19 +6,27 @@
 
 #IncludeRegexTransform: 
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/headers/math_3d.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/camera.h
+glm/glm.hpp
+-
+glm/gtc/matrix_transform.hpp
+-
+glm/gtc/type_ptr.hpp
+-
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/math_3d.h
 stdio.h
 -
 math.h
 -
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/headers/myevent.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/myevent.h
 SDL2/SDL.h
 -
 GL/gl.h
 -
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/headers/shader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/shader.h
 iostream
 -
 GL/glew.h
@@ -28,7 +36,11 @@ string.h
 fstream
 -
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/main.cpp
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/camera.cpp
+../headers/camera.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/camera.h
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp
 iostream
 -
 GL/glew.h
@@ -45,18 +57,20 @@ glm/gtc/matrix_transform.hpp
 -
 glm/gtc/type_ptr.hpp
 -
-headers/math_3d.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/headers/math_3d.h
-headers/shader.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/headers/shader.h
-headers/myevent.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/headers/myevent.h
+../headers/math_3d.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/math_3d.h
+../headers/shader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/shader.h
+../headers/myevent.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/myevent.h
+../headers/camera.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/camera.h
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/myevent.cpp
-headers/myevent.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/headers/myevent.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/myevent.cpp
+../headers/myevent.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/myevent.h
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/shader.cpp
-headers/shader.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Source/headers/shader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/shader.cpp
+../headers/shader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/shader.h
 

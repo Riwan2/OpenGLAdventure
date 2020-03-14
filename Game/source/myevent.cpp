@@ -1,4 +1,4 @@
-#include "headers/myevent.h"
+#include "../headers/myevent.h"
 
 MyEvent::MyEvent()
 {

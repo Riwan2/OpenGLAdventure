@@ -169,86 +169,113 @@ coucou/fast:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/build
 .PHONY : coucou/fast
 
-Source/main.o: Source/main.cpp.o
+Game/source/camera.o: Game/source/camera.cpp.o
 
-.PHONY : Source/main.o
-
-# target to build an object file
-Source/main.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Source/main.cpp.o
-.PHONY : Source/main.cpp.o
-
-Source/main.i: Source/main.cpp.i
-
-.PHONY : Source/main.i
-
-# target to preprocess a source file
-Source/main.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Source/main.cpp.i
-.PHONY : Source/main.cpp.i
-
-Source/main.s: Source/main.cpp.s
-
-.PHONY : Source/main.s
-
-# target to generate assembly for a file
-Source/main.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Source/main.cpp.s
-.PHONY : Source/main.cpp.s
-
-Source/myevent.o: Source/myevent.cpp.o
-
-.PHONY : Source/myevent.o
+.PHONY : Game/source/camera.o
 
 # target to build an object file
-Source/myevent.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Source/myevent.cpp.o
-.PHONY : Source/myevent.cpp.o
+Game/source/camera.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/camera.cpp.o
+.PHONY : Game/source/camera.cpp.o
 
-Source/myevent.i: Source/myevent.cpp.i
+Game/source/camera.i: Game/source/camera.cpp.i
 
-.PHONY : Source/myevent.i
+.PHONY : Game/source/camera.i
 
 # target to preprocess a source file
-Source/myevent.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Source/myevent.cpp.i
-.PHONY : Source/myevent.cpp.i
+Game/source/camera.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/camera.cpp.i
+.PHONY : Game/source/camera.cpp.i
 
-Source/myevent.s: Source/myevent.cpp.s
+Game/source/camera.s: Game/source/camera.cpp.s
 
-.PHONY : Source/myevent.s
+.PHONY : Game/source/camera.s
 
 # target to generate assembly for a file
-Source/myevent.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Source/myevent.cpp.s
-.PHONY : Source/myevent.cpp.s
+Game/source/camera.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/camera.cpp.s
+.PHONY : Game/source/camera.cpp.s
 
-Source/shader.o: Source/shader.cpp.o
+Game/source/main.o: Game/source/main.cpp.o
 
-.PHONY : Source/shader.o
+.PHONY : Game/source/main.o
 
 # target to build an object file
-Source/shader.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Source/shader.cpp.o
-.PHONY : Source/shader.cpp.o
+Game/source/main.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/main.cpp.o
+.PHONY : Game/source/main.cpp.o
 
-Source/shader.i: Source/shader.cpp.i
+Game/source/main.i: Game/source/main.cpp.i
 
-.PHONY : Source/shader.i
+.PHONY : Game/source/main.i
 
 # target to preprocess a source file
-Source/shader.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Source/shader.cpp.i
-.PHONY : Source/shader.cpp.i
+Game/source/main.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/main.cpp.i
+.PHONY : Game/source/main.cpp.i
 
-Source/shader.s: Source/shader.cpp.s
+Game/source/main.s: Game/source/main.cpp.s
 
-.PHONY : Source/shader.s
+.PHONY : Game/source/main.s
 
 # target to generate assembly for a file
-Source/shader.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Source/shader.cpp.s
-.PHONY : Source/shader.cpp.s
+Game/source/main.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/main.cpp.s
+.PHONY : Game/source/main.cpp.s
+
+Game/source/myevent.o: Game/source/myevent.cpp.o
+
+.PHONY : Game/source/myevent.o
+
+# target to build an object file
+Game/source/myevent.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/myevent.cpp.o
+.PHONY : Game/source/myevent.cpp.o
+
+Game/source/myevent.i: Game/source/myevent.cpp.i
+
+.PHONY : Game/source/myevent.i
+
+# target to preprocess a source file
+Game/source/myevent.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/myevent.cpp.i
+.PHONY : Game/source/myevent.cpp.i
+
+Game/source/myevent.s: Game/source/myevent.cpp.s
+
+.PHONY : Game/source/myevent.s
+
+# target to generate assembly for a file
+Game/source/myevent.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/myevent.cpp.s
+.PHONY : Game/source/myevent.cpp.s
+
+Game/source/shader.o: Game/source/shader.cpp.o
+
+.PHONY : Game/source/shader.o
+
+# target to build an object file
+Game/source/shader.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/shader.cpp.o
+.PHONY : Game/source/shader.cpp.o
+
+Game/source/shader.i: Game/source/shader.cpp.i
+
+.PHONY : Game/source/shader.i
+
+# target to preprocess a source file
+Game/source/shader.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/shader.cpp.i
+.PHONY : Game/source/shader.cpp.i
+
+Game/source/shader.s: Game/source/shader.cpp.s
+
+.PHONY : Game/source/shader.s
+
+# target to generate assembly for a file
+Game/source/shader.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/shader.cpp.s
+.PHONY : Game/source/shader.cpp.s
 
 # Help Target
 help:
@@ -263,15 +290,18 @@ help:
 	@echo "... list_install_components"
 	@echo "... install/local"
 	@echo "... install"
-	@echo "... Source/main.o"
-	@echo "... Source/main.i"
-	@echo "... Source/main.s"
-	@echo "... Source/myevent.o"
-	@echo "... Source/myevent.i"
-	@echo "... Source/myevent.s"
-	@echo "... Source/shader.o"
-	@echo "... Source/shader.i"
-	@echo "... Source/shader.s"
+	@echo "... Game/source/camera.o"
+	@echo "... Game/source/camera.i"
+	@echo "... Game/source/camera.s"
+	@echo "... Game/source/main.o"
+	@echo "... Game/source/main.i"
+	@echo "... Game/source/main.s"
+	@echo "... Game/source/myevent.o"
+	@echo "... Game/source/myevent.i"
+	@echo "... Game/source/myevent.s"
+	@echo "... Game/source/shader.o"
+	@echo "... Game/source/shader.i"
+	@echo "... Game/source/shader.s"
 .PHONY : help
 
 

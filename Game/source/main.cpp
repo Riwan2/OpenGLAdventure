@@ -8,9 +8,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "headers/math_3d.h"
-#include "headers/shader.h"
-#include "headers/myevent.h"
+#include "../headers/math_3d.h"
+#include "../headers/shader.h"
+#include "../headers/myevent.h"
+#include "../headers/camera.h"
 
 const char* _TITLE = "coucou";
 const int _WIDTH = 850;
@@ -81,13 +82,28 @@ int main(int argc, char **argv)
     bool isRunning = true;
     float myTime = 0;
     
-    glm::mat4 model = glm::mat4(1.0f);
+    glm::vec3 planePosition[] = {
+        glm::vec3(0.0f, 0.0f, 0.0f),
+        glm::vec3(1.0f, 1.0f, 0.0f),
+        glm::vec3(3.0f, 0.5f, 1.0f),
+        glm::vec3(-0.5f, 0.0f, -2.0f),
+    };
+        
+    glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+    glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 cameraDirection = glm::normalize(cameraPos - cameraTarget);
     
-    glm::mat4 view = glm::mat4(1.0f);
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-
+    glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+    glm::vec3 cameraRight = glm::normalize(glm::cross(up, cameraDirection));
+    glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
+    
+    glm::mat4 view;
+    view = glm::lookAt(cameraPos, cameraTarget, up);
+    
     glm::mat4 projection;
     projection = glm::perspective(glm::radians(45.0f), (float)_WIDTH/(float)_HEIGHT, 0.1f, 100.0f);
+    
+    Camera camera;
     
     while(!myEvent.HasQuit()) {
         glClear(GL_COLOR_BUFFER_BIT);
@@ -95,19 +111,27 @@ int main(int argc, char **argv)
         basicShader.Use();
         
         myTime += 0.01f;
+        //model = glm::rotate(model, 0.05f, glm::vec3(0.0f, 0.0f, 1.0f));
+
         //float green = sin(myTime) / 4.0f + 0.75f;
-        model = glm::rotate(model, glm::radians(cos(myTime) * 5), glm::vec3(0.0f, 1.0f, 0.0f));
-        view = glm::translate(view, glm::vec3(cos(myTime)/100, (sin(myTime)/2)/200, -0.01f));
-
-
+        //model = glm::rotate(model, glm::radians(cos(myTime) * 5), glm::vec3(0.0f, 1.0f, 0.0f));
+        float radius = 10.0f;
+        cameraPos = glm::vec3(cos(myTime) * radius, 0.0f, sin(myTime) * radius);
+        view = glm::lookAt(cameraPos, cameraTarget, up);
         
-        glUniformMatrix4fv(glGetUniformLocation(*basicShader.getShaderProgram(), "model"), 1, GL_FALSE, glm::value_ptr(model));
         glUniformMatrix4fv(glGetUniformLocation(*basicShader.getShaderProgram(), "view"), 1, GL_FALSE, glm::value_ptr(view));
         glUniformMatrix4fv(glGetUniformLocation(*basicShader.getShaderProgram(), "projection"), 1, GL_FALSE,glm::value_ptr(projection));
-
         
         glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        
+        for (unsigned int i = 0; i < 4; i++) {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, planePosition[i]);
+            if (i < 2) model = glm::rotate(model, cos(myTime * 2), glm::vec3(1.0f, 0.0f, 0.0f));
+
+            glUniformMatrix4fv(glGetUniformLocation(*basicShader.getShaderProgram(), "model"), 1, GL_FALSE, glm::value_ptr(model));
+            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        }
         glBindVertexArray(0);
         
         SDL_GL_SwapWindow(m_window);        
