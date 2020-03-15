@@ -88,25 +88,19 @@ int main(int argc, char **argv)
         glm::vec3(3.0f, 0.5f, 1.0f),
         glm::vec3(-0.5f, 0.0f, -2.0f),
     };
-        
-    glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-    glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec3 cameraDirection = glm::normalize(cameraPos - cameraTarget);
-    
-    glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
-    glm::vec3 cameraRight = glm::normalize(glm::cross(up, cameraDirection));
-    glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
-    
-    glm::mat4 view;
-    view = glm::lookAt(cameraPos, cameraTarget, up);
     
     glm::mat4 projection;
     projection = glm::perspective(glm::radians(45.0f), (float)_WIDTH/(float)_HEIGHT, 0.1f, 100.0f);
     
     Camera camera;
+    unsigned int deltaTime = 0;
+    unsigned int lastFrame = 0;
     
     while(!myEvent.HasQuit()) {
         glClear(GL_COLOR_BUFFER_BIT);
+        
+        deltaTime = SDL_GetTicks() - lastFrame;
+        lastFrame = SDL_GetTicks();
         
         basicShader.Use();
         
@@ -115,11 +109,10 @@ int main(int argc, char **argv)
 
         //float green = sin(myTime) / 4.0f + 0.75f;
         //model = glm::rotate(model, glm::radians(cos(myTime) * 5), glm::vec3(0.0f, 1.0f, 0.0f));
-        float radius = 10.0f;
-        cameraPos = glm::vec3(cos(myTime) * radius, 0.0f, sin(myTime) * radius);
-        view = glm::lookAt(cameraPos, cameraTarget, up);
+        //float radius = 10.0f;
+        //camera.setPosition(glm::vec3(cos(myTime) * radius, 0.0f, sin(myTime) * radius));
         
-        glUniformMatrix4fv(glGetUniformLocation(*basicShader.getShaderProgram(), "view"), 1, GL_FALSE, glm::value_ptr(view));
+        glUniformMatrix4fv(glGetUniformLocation(*basicShader.getShaderProgram(), "view"), 1, GL_FALSE, glm::value_ptr(*camera.getView()));
         glUniformMatrix4fv(glGetUniformLocation(*basicShader.getShaderProgram(), "projection"), 1, GL_FALSE,glm::value_ptr(projection));
         
         glBindVertexArray(VAO);
@@ -135,7 +128,7 @@ int main(int argc, char **argv)
         glBindVertexArray(0);
         
         SDL_GL_SwapWindow(m_window);        
-        myEvent.Update();
+        myEvent.Update(&deltaTime, &camera);
     }
     
     return 0;

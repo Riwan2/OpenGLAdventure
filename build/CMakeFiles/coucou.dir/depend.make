@@ -10,6 +10,7 @@ CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/myevent.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/shader.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/source/main.cpp
 
+CMakeFiles/coucou.dir/Game/source/myevent.cpp.o: ../Game/headers/camera.h
 CMakeFiles/coucou.dir/Game/source/myevent.cpp.o: ../Game/headers/myevent.h
 CMakeFiles/coucou.dir/Game/source/myevent.cpp.o: ../Game/source/myevent.cpp
 
