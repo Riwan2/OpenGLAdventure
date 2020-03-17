@@ -41,6 +41,10 @@ fstream
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/camera.cpp
 ../headers/camera.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/camera.h
+GL/gl.h
+-
+iostream
+-
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp
 iostream

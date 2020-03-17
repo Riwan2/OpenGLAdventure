@@ -3,15 +3,17 @@
 
 MyEvent::MyEvent()
 {
-    _hasQuit = false;
+    m_hasQuit = false;
     for (int i = 0; i < 322; i++) {
-        _keys[i] = false;
+        m_keys[i] = false;
     }
     
-    _cameraRight = false;
-    _cameraLeft = false;
-    _cameraDown = false;
-    _cameraUp = false;
+    m_lastMousePosX = 0;
+    m_lastMousePosY = 0;
+    m_mouseOffsetX = 0;
+    m_mouseOffsetY = 0;
+    m_leftClick = false;
+    m_polygonMode = false;
 }
 
 MyEvent::~MyEvent()
@@ -26,76 +28,97 @@ void MyEvent::Update(unsigned int* deltaTime, Camera* pCamera)
     while(SDL_PollEvent(&event)) {
         switch(event.type) {
             case SDL_QUIT:
-                _hasQuit = true;
+                m_hasQuit = true;
             case SDL_KEYDOWN:
                 if (event.key.keysym.sym < 322 && event.key.keysym.sym > 0)
-                    _keys[event.key.keysym.sym] = true;
+                    m_keys[event.key.keysym.sym] = true;
                 KeyDown(&event);
                 break;
             case SDL_KEYUP:
                 if (event.key.keysym.sym < 322 && event.key.keysym.sym > 0)
-                    _keys[event.key.keysym.sym] = false;
+                    m_keys[event.key.keysym.sym] = false;
                 KeyUp(&event);
+                break;
+            case SDL_MOUSEBUTTONDOWN:
+                if (event.button.button == SDL_BUTTON_LEFT)
+                    m_leftClick = true;
+                break;
+            case SDL_MOUSEBUTTONUP:
+                if (event.button.button == SDL_BUTTON_LEFT)
+                    m_leftClick = false;
+                break;
+            case SDL_MOUSEWHEEL:
+                if (event.button.button == SDL_BUTTON_LEFT)
+                    std::cout << "release" << std::endl;
+                    m_leftClick = false;
+                if (event.wheel.y > 0)
+                    pCamera->GetAway(-0.5f);
+                else if (event.wheel.y < 0)
+                    pCamera->GetAway(0.5f);
                 break;
         }
     }
     
-    float cameraSpeed = 2.5f * *deltaTime;
-    if (_keys[SDLK_z]) 
-        pCamera->Move(glm::vec3(0.0f, 0.0f, -0.05f));
-    else if (_keys[SDLK_s])
-        pCamera->Move(glm::vec3(0.0f, 0.0f, 0.05f));
-    if (_keys[SDLK_d]) 
-        pCamera->Move(glm::vec3(0.05f, 0.0f, 0.0f));
-    else if (_keys[SDLK_q])
-        pCamera->Move(glm::vec3(-0.05f, 0.0f, 0.0f));
-    if (_cameraUp)
-        pCamera->MoveTarget(glm::vec3(0.0f, 0.05f, 0.0f));
-    else if (_cameraDown)
-        pCamera->MoveTarget(glm::vec3(0.0f, -0.05f, 0.0f));
-    if (_cameraRight)
-        pCamera->MoveTarget(glm::vec3(0.05f, 0.0f, 0.0f));
-    else if (_cameraLeft)
-        pCamera->MoveTarget(glm::vec3(-0.05f, 0.0f, 0.0f));
-}
+    SDL_GetMouseState(&m_mousePosX, &m_mousePosY);
+    //std::cout << m_mouseOffsetY << " ; " << m_mouseOffsetX << std::endl;
+    
+    if (m_leftClick) {
+        m_mouseOffsetX = m_mousePosX - m_lastMousePosX;
+        m_mouseOffsetY = m_mousePosY - m_lastMousePosY;
+    
+        //m_mouseOffsetY = 0;
+        //m_mouseOffsetY = 270 - m_mousePosY;
+    
+        //m_mouseOffsetX = 0;
+        //m_mouseOffsetX = 425 - m_mousePosX;
+    }
+    
+    m_lastMousePosX = m_mousePosX;
+    m_lastMousePosY = m_mousePosY;
+    
+    //std::cout << _leftClick << std::endl;
+    
+    if (m_leftClick) {
+        if (abs(m_mouseOffsetY) < 300)
+            pCamera->Rotate(0.0f, m_mouseOffsetY / 300);
+     
+        if (abs(m_mouseOffsetX) < 300) 
+            pCamera->Rotate(m_mouseOffsetX / 300, 0.0f);
+    }
+
+    
+//     float cameraSpeed = 0.005f * *deltaTime;
+//     if (_keys[SDLK_z]) 
+//         pCamera->Move(cameraSpeed, false);
+//     else if (_keys[SDLK_s])
+//         pCamera->Move(-cameraSpeed, false);
+//     if (_keys[SDLK_d]) 
+//         pCamera->Move(cameraSpeed, true);
+//     else if (_keys[SDLK_q])
+//         pCamera->Move(-cameraSpeed, true);
+    }
 
 void MyEvent::KeyDown(SDL_Event* myEvent)
 {           
     switch (myEvent->key.keysym.sym) {
         case SDLK_ESCAPE:
-            _hasQuit = true;
+            m_hasQuit = true;
         case SDLK_p:
-            _polygonMode = !_polygonMode;
-            if (_polygonMode) glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+            m_polygonMode = !m_polygonMode;
+            if (m_polygonMode) glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
             else glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        case SDLK_UP:
-            _cameraUp = true;
-        case SDLK_DOWN:
-            _cameraDown = true;
-        case SDLK_RIGHT:
-            _cameraRight = true;
-        case SDLK_LEFT:
-            _cameraLeft = true;
     }
 }
 
 void MyEvent::KeyUp(SDL_Event* myEvent)
 {
     switch (myEvent->key.keysym.sym) {
-        case SDLK_UP:
-            _cameraUp = false;
-        case SDLK_DOWN:
-            _cameraDown = false;
-        case SDLK_RIGHT:
-            _cameraRight = false;
-        case SDLK_LEFT:
-            _cameraLeft = false;
     }
 }
 
 bool MyEvent::HasQuit()
 {
-    return _hasQuit;
+    return m_hasQuit;
 }
 
 
