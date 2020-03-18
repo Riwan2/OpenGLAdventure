@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 //         else std::cout << " ; ";
 //     }
     
-    Map map(1000, 1000, 0.1f);
+    Map map(10, 10, 0.5f);
     
     Shader basicShader = Shader("../Shader/basicShader");
 
@@ -106,10 +106,6 @@ int main(int argc, char **argv)
     MyEvent myEvent;
     bool isRunning = true;
     float myTime = 0;
-    
-    glm::vec3 planePosition[] = {
-        glm::vec3(0.0f, 0.0f, -1.0f),
-    };
     
     glm::mat4 projection;
     projection = glm::perspective(glm::radians(45.0f), (float)_WIDTH/(float)_HEIGHT, 0.1f, 100.0f);
