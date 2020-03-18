@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 //         else std::cout << " ; ";
 //     }
     
-    Map map(10, 10, 0.5f);
+    Map map(1000, 1000, 0.1f);
     
     Shader basicShader = Shader("../Shader/basicShader");
 
