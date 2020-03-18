@@ -223,6 +223,33 @@ Game/source/main.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/main.cpp.s
 .PHONY : Game/source/main.cpp.s
 
+Game/source/map.o: Game/source/map.cpp.o
+
+.PHONY : Game/source/map.o
+
+# target to build an object file
+Game/source/map.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/map.cpp.o
+.PHONY : Game/source/map.cpp.o
+
+Game/source/map.i: Game/source/map.cpp.i
+
+.PHONY : Game/source/map.i
+
+# target to preprocess a source file
+Game/source/map.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/map.cpp.i
+.PHONY : Game/source/map.cpp.i
+
+Game/source/map.s: Game/source/map.cpp.s
+
+.PHONY : Game/source/map.s
+
+# target to generate assembly for a file
+Game/source/map.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/map.cpp.s
+.PHONY : Game/source/map.cpp.s
+
 Game/source/myevent.o: Game/source/myevent.cpp.o
 
 .PHONY : Game/source/myevent.o
@@ -296,6 +323,9 @@ help:
 	@echo "... Game/source/main.o"
 	@echo "... Game/source/main.i"
 	@echo "... Game/source/main.s"
+	@echo "... Game/source/map.o"
+	@echo "... Game/source/map.i"
+	@echo "... Game/source/map.s"
 	@echo "... Game/source/myevent.o"
 	@echo "... Game/source/myevent.i"
 	@echo "... Game/source/myevent.s"

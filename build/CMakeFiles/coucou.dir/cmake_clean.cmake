@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/coucou.dir/Game/source/camera.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/main.cpp.o"
+  "CMakeFiles/coucou.dir/Game/source/map.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/myevent.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/shader.cpp.o"
   "coucou.pdb"

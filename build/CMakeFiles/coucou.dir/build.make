@@ -105,9 +105,33 @@ CMakeFiles/coucou.dir/Game/source/main.cpp.o.provides: CMakeFiles/coucou.dir/Gam
 CMakeFiles/coucou.dir/Game/source/main.cpp.o.provides.build: CMakeFiles/coucou.dir/Game/source/main.cpp.o
 
 
+CMakeFiles/coucou.dir/Game/source/map.cpp.o: CMakeFiles/coucou.dir/flags.make
+CMakeFiles/coucou.dir/Game/source/map.cpp.o: ../Game/source/map.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/coucou.dir/Game/source/map.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/coucou.dir/Game/source/map.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/map.cpp
+
+CMakeFiles/coucou.dir/Game/source/map.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/coucou.dir/Game/source/map.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/map.cpp > CMakeFiles/coucou.dir/Game/source/map.cpp.i
+
+CMakeFiles/coucou.dir/Game/source/map.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/coucou.dir/Game/source/map.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/map.cpp -o CMakeFiles/coucou.dir/Game/source/map.cpp.s
+
+CMakeFiles/coucou.dir/Game/source/map.cpp.o.requires:
+
+.PHONY : CMakeFiles/coucou.dir/Game/source/map.cpp.o.requires
+
+CMakeFiles/coucou.dir/Game/source/map.cpp.o.provides: CMakeFiles/coucou.dir/Game/source/map.cpp.o.requires
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/map.cpp.o.provides.build
+.PHONY : CMakeFiles/coucou.dir/Game/source/map.cpp.o.provides
+
+CMakeFiles/coucou.dir/Game/source/map.cpp.o.provides.build: CMakeFiles/coucou.dir/Game/source/map.cpp.o
+
+
 CMakeFiles/coucou.dir/Game/source/myevent.cpp.o: CMakeFiles/coucou.dir/flags.make
 CMakeFiles/coucou.dir/Game/source/myevent.cpp.o: ../Game/source/myevent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/coucou.dir/Game/source/myevent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/coucou.dir/Game/source/myevent.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/coucou.dir/Game/source/myevent.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/myevent.cpp
 
 CMakeFiles/coucou.dir/Game/source/myevent.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/coucou.dir/Game/source/myevent.cpp.o.provides.build: CMakeFiles/couco
 
 CMakeFiles/coucou.dir/Game/source/shader.cpp.o: CMakeFiles/coucou.dir/flags.make
 CMakeFiles/coucou.dir/Game/source/shader.cpp.o: ../Game/source/shader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/coucou.dir/Game/source/shader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/coucou.dir/Game/source/shader.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/coucou.dir/Game/source/shader.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/shader.cpp
 
 CMakeFiles/coucou.dir/Game/source/shader.cpp.i: cmake_force
@@ -157,6 +181,7 @@ CMakeFiles/coucou.dir/Game/source/shader.cpp.o.provides.build: CMakeFiles/coucou
 coucou_OBJECTS = \
 "CMakeFiles/coucou.dir/Game/source/camera.cpp.o" \
 "CMakeFiles/coucou.dir/Game/source/main.cpp.o" \
+"CMakeFiles/coucou.dir/Game/source/map.cpp.o" \
 "CMakeFiles/coucou.dir/Game/source/myevent.cpp.o" \
 "CMakeFiles/coucou.dir/Game/source/shader.cpp.o"
 
@@ -165,6 +190,7 @@ coucou_EXTERNAL_OBJECTS =
 
 coucou: CMakeFiles/coucou.dir/Game/source/camera.cpp.o
 coucou: CMakeFiles/coucou.dir/Game/source/main.cpp.o
+coucou: CMakeFiles/coucou.dir/Game/source/map.cpp.o
 coucou: CMakeFiles/coucou.dir/Game/source/myevent.cpp.o
 coucou: CMakeFiles/coucou.dir/Game/source/shader.cpp.o
 coucou: CMakeFiles/coucou.dir/build.make
@@ -172,7 +198,7 @@ coucou: /usr/lib/x86_64-linux-gnu/libGL.so
 coucou: /usr/lib/x86_64-linux-gnu/libGLU.so
 coucou: /usr/lib/x86_64-linux-gnu/libGLEW.so
 coucou: CMakeFiles/coucou.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable coucou"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable coucou"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/coucou.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -182,6 +208,7 @@ CMakeFiles/coucou.dir/build: coucou
 
 CMakeFiles/coucou.dir/requires: CMakeFiles/coucou.dir/Game/source/camera.cpp.o.requires
 CMakeFiles/coucou.dir/requires: CMakeFiles/coucou.dir/Game/source/main.cpp.o.requires
+CMakeFiles/coucou.dir/requires: CMakeFiles/coucou.dir/Game/source/map.cpp.o.requires
 CMakeFiles/coucou.dir/requires: CMakeFiles/coucou.dir/Game/source/myevent.cpp.o.requires
 CMakeFiles/coucou.dir/requires: CMakeFiles/coucou.dir/Game/source/shader.cpp.o.requires
 

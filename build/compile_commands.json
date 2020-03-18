@@ -11,6 +11,11 @@
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/source/map.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/map.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/map.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
   "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/source/myevent.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/myevent.cpp",
   "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/myevent.cpp"
 },

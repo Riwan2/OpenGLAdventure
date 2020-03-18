@@ -13,6 +13,7 @@
 #include "../headers/myevent.h"
 
 #include "../headers/camera.h"
+#include "../headers/map.h"
 
 const char* _TITLE = "coucou";
 const int _WIDTH = 850;
@@ -65,54 +66,6 @@ int main(int argc, char **argv)
 //         0, 1, 3,
 //         3, 2, 0
 //     };
-    
-    float size = 0.5f;
-    int width = 10;
-    int height = 10;
-    int numVertices = width * height;
-    int numVerticesFloat = numVertices * 3;
-    float _vertices[numVerticesFloat];
-    
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            for (int i = 0; i < 3; i++) {
-                int index = y * (width*3) + x * 3 + i;
-
-                if (index % 3 == 0)
-                    _vertices[index] = x * size;
-                else if (index % 3 == 1)
-                    _vertices[index] = 0.0f;
-                else
-                    _vertices[index] = y * size;
-            }
-        }
-    }
-    
-    int numIndices = (width-1) * (height-1) * 6;
-    unsigned int _indices[numIndices];
-    
-    for (int y = 0; y < height-1; y++) {
-        for (int  x = 0; x < width-1; x++) {
-            int index = y * (width) + x;
-            for (int i = 0; i < 6; i++) {
-                int indice_index = y * (width-1) * 6 + x * 6 + i;
-                if (i % 6 == 0) {
-                    _indices[indice_index] = index;
-                } else if (i % 6 == 1) {
-                    _indices[indice_index] = index + width;
-                } else if (i % 6 == 2) {
-                    _indices[indice_index] = index + width + 1;
-                } else if (i % 6 == 3) {
-                    _indices[indice_index] = index + width + 1;
-                } else if (i % 6 == 4) {
-                    _indices[indice_index] = index + 1;
-                } else {
-                    _indices[indice_index] = index;
-                }
-            }
-        }
-    }
-    
 //     std::cout << "-Indices :" << std::endl;
 //     for (int i = 0; i < numIndices; i++) {
 //         std::cout << _indices[i];
@@ -127,6 +80,7 @@ int main(int argc, char **argv)
 //         else std::cout << " ; ";
 //     }
     
+    Map map(10, 10, 0.5f);
     
     Shader basicShader = Shader("../Shader/basicShader");
 
@@ -141,10 +95,10 @@ int main(int argc, char **argv)
     glBindVertexArray(VAO);
     
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(_vertices), _vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, map.GetVerticesSize(), map.GetVertices(), GL_STATIC_DRAW);
     
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(_indices), _indices, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, map.GetIndicesSize(), map.GetIndices(), GL_STATIC_DRAW);
     
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
@@ -163,7 +117,9 @@ int main(int argc, char **argv)
     Camera camera;
     unsigned int deltaTime = 0;
     unsigned int lastFrame = 0;
-    camera.SetTarget(glm::vec3((float)width * size / 2 - size/2, 0, (float)height * size / 2 - size/2));
+    
+    camera.SetTarget(glm::vec3((float)map.getWidth() * map.getVertexSize() / 2 - 
+    map.getVertexSize() / 2, 0, (float)map.getHeight() * map.getVertexSize() / 2 - map.getVertexSize()/2));
     
     while(!myEvent.HasQuit()) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
@@ -194,7 +150,7 @@ int main(int argc, char **argv)
             //model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 
             //glUniformMatrix4fv(glGetUniformLocation(*basicShader.getShaderProgram(), "model"), 1, GL_FALSE, glm::value_ptr(model));
-            glDrawElements(GL_TRIANGLES, numVertices + numIndices, GL_UNSIGNED_INT, 0);
+            glDrawElements(GL_TRIANGLES, map.getCount(), GL_UNSIGNED_INT, 0);
         //}
         glBindVertexArray(0);
         
