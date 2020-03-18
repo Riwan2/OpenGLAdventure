@@ -81,9 +81,9 @@ int main(int argc, char **argv)
                 if (index % 3 == 0)
                     _vertices[index] = x * size;
                 else if (index % 3 == 1)
-                    _vertices[index] = y * size;
+                    _vertices[index] = 0.0f;
                 else
-                    _vertices[index] = 0;
+                    _vertices[index] = y * size;
             }
         }
     }
@@ -96,7 +96,6 @@ int main(int argc, char **argv)
             int index = y * (width) + x;
             for (int i = 0; i < 6; i++) {
                 int indice_index = y * (width-1) * 6 + x * 6 + i;
-                std::cout << indice_index << " : ";
                 if (i % 6 == 0) {
                     _indices[indice_index] = index;
                 } else if (i % 6 == 1) {
@@ -114,19 +113,19 @@ int main(int argc, char **argv)
         }
     }
     
-    std::cout << "-Indices :" << std::endl;
-    for (int i = 0; i < numIndices; i++) {
-        std::cout << _indices[i];
-        if (i % 3 == 2) std::cout << std::endl;
-        else std::cout << " ; ";
-    }
-    
-    std::cout << "-Vertices :" << std::endl;
-    for (int i = 0; i < numVerticesFloat; i++) {
-        std::cout << _vertices[i];
-        if (i % 3 == 2) std::cout << std::endl;
-        else std::cout << " ; ";
-    }
+//     std::cout << "-Indices :" << std::endl;
+//     for (int i = 0; i < numIndices; i++) {
+//         std::cout << _indices[i];
+//         if (i % 3 == 2) std::cout << std::endl;
+//         else std::cout << " ; ";
+//     }
+//     
+//     std::cout << "-Vertices :" << std::endl;
+//     for (int i = 0; i < numVerticesFloat; i++) {
+//         std::cout << _vertices[i];
+//         if (i % 3 == 2) std::cout << std::endl;
+//         else std::cout << " ; ";
+//     }
     
     
     Shader basicShader = Shader("../Shader/basicShader");
@@ -164,6 +163,7 @@ int main(int argc, char **argv)
     Camera camera;
     unsigned int deltaTime = 0;
     unsigned int lastFrame = 0;
+    camera.SetTarget(glm::vec3((float)width * size / 2 - size/2, 0, (float)height * size / 2 - size/2));
     
     while(!myEvent.HasQuit()) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);

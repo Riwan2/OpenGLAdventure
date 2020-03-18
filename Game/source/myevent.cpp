@@ -49,12 +49,11 @@ void MyEvent::Update(unsigned int* deltaTime, Camera* pCamera)
                 break;
             case SDL_MOUSEWHEEL:
                 if (event.button.button == SDL_BUTTON_LEFT)
-                    std::cout << "release" << std::endl;
                     m_leftClick = false;
                 if (event.wheel.y > 0)
-                    pCamera->GetAway(-0.5f);
+                    pCamera->Zoom(-0.5f);
                 else if (event.wheel.y < 0)
-                    pCamera->GetAway(0.5f);
+                    pCamera->Zoom(0.5f);
                 break;
         }
     }
@@ -80,10 +79,10 @@ void MyEvent::Update(unsigned int* deltaTime, Camera* pCamera)
     
     if (m_leftClick) {
         if (abs(m_mouseOffsetY) < 300)
-            pCamera->Rotate(0.0f, m_mouseOffsetY / 300);
+            pCamera->Rotate(0.0f, -m_mouseOffsetY / 20);
      
         if (abs(m_mouseOffsetX) < 300) 
-            pCamera->Rotate(m_mouseOffsetX / 300, 0.0f);
+            pCamera->Rotate(m_mouseOffsetX / 8, 0.0f);
     }
 
     
