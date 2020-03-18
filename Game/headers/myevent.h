@@ -14,7 +14,6 @@ public:
     
     void Update(unsigned int* deltaTime, Camera* pCamera);
     bool HasQuit();
-
 private:
     void KeyDown(SDL_Event* myEvent);
     void KeyUp(SDL_Event* myEvent);

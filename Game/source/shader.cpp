@@ -2,39 +2,39 @@
 
 Shader::Shader(const std::string& fileName)
 {
-    shaderProgram = glCreateProgram();
-    vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+    m_shaderProgram = glCreateProgram();
+    m_vertexShader = glCreateShader(GL_VERTEX_SHADER);
+    m_fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     
-    vertexShader = CreateShader(LoadShader(fileName + ".vr"), GL_VERTEX_SHADER);
-	fragmentShader = CreateShader(LoadShader(fileName + ".fa"), GL_FRAGMENT_SHADER);
+    m_vertexShader = CreateShader(LoadShader(fileName + ".vr"), GL_VERTEX_SHADER);
+	m_fragmentShader = CreateShader(LoadShader(fileName + ".fa"), GL_FRAGMENT_SHADER);
 
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
+    glAttachShader(m_shaderProgram, m_vertexShader);
+    glAttachShader(m_shaderProgram, m_fragmentShader);
 
 	//glBindAttribLocation(shaderProgram, 0, "position");
 
-	glLinkProgram(shaderProgram);
-	CheckShaderError(shaderProgram, GL_LINK_STATUS, true, "Error linking shader program");
+	glLinkProgram(m_shaderProgram);
+	CheckShaderError(m_shaderProgram, GL_LINK_STATUS, true, "Error linking shader program");
 
-	glValidateProgram(shaderProgram);
-	CheckShaderError(shaderProgram, GL_LINK_STATUS, true, "Invalid shader program");
+	glValidateProgram(m_shaderProgram);
+	CheckShaderError(m_shaderProgram, GL_LINK_STATUS, true, "Invalid shader program");
 }
 
 void Shader::Use()
 {
-    glUseProgram(shaderProgram);
+    glUseProgram(m_shaderProgram);
 }
 
 Shader::~Shader()
 {
-    glDetachShader(shaderProgram, vertexShader);
-    glDetachShader(shaderProgram, fragmentShader);
+    glDetachShader(m_shaderProgram, m_vertexShader);
+    glDetachShader(m_shaderProgram, m_fragmentShader);
     
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
+    glDeleteShader(m_vertexShader);
+    glDeleteShader(m_fragmentShader);
     
-    glDeleteProgram(shaderProgram);
+    glDeleteProgram(m_shaderProgram);
 }
 
 std::string Shader::LoadShader(const std::string& fileName)

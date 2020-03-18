@@ -12,7 +12,7 @@ public:
     Shader(const std::string& fileName);
     ~Shader();
     
-    GLuint* getShaderProgram() { return &shaderProgram; };
+    GLuint* getShaderProgram() { return &m_shaderProgram; };
     
     void LoadFromFile(const std::string& fileName);
     std::string LoadShader(const std::string& fileName);
@@ -20,9 +20,9 @@ public:
     GLuint CreateShader(const std::string& text, unsigned int type);
     void Use();
 private:
-    GLuint shaderProgram;
-    GLuint vertexShader;
-    GLuint fragmentShader;
+    GLuint m_shaderProgram;
+    GLuint m_vertexShader;
+    GLuint m_fragmentShader;
 };
 
 #endif // SHADER_H
