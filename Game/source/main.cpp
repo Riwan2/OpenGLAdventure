@@ -53,7 +53,7 @@ int main(int argc, char **argv)
     //SDL_SetWindowGrab(m_window, SDL_TRUE);
     //SDL_ShowCursor(0);
     
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClearColor(0.2f, 0.2f, 0.2f, 0.0f);
     
     GLenum res = glewInit();
 //     float vertices[] = {
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 //         else std::cout << " ; ";
 //     }
     
-    Map map(10, 10, 0.5f);
+    Map map(3, 3, 0.5f);
     
     Shader basicShader = Shader("../Shader/basicShader");
 
@@ -100,7 +100,7 @@ int main(int argc, char **argv)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, map.GetIndicesSize(), map.GetIndices(), GL_STATIC_DRAW);
     
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     
     MyEvent myEvent;
@@ -117,37 +117,101 @@ int main(int argc, char **argv)
     camera.SetTarget(glm::vec3((float)map.getWidth() * map.getVertexSize() / 2 - 
     map.getVertexSize() / 2, 0, (float)map.getHeight() * map.getVertexSize() / 2 - map.getVertexSize()/2));
     
+    //Light 
+    
+    GLuint LightVAO;
+    GLuint LightVBO;
+    unsigned int LightEBO;
+    glGenBuffers(1, &LightEBO);
+    glGenVertexArrays(1, &LightVAO);
+    glGenBuffers(1, &LightVBO);
+    glBindVertexArray(LightVAO);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, LightVBO);
+    float vertices[] = {
+        -0.5f,  0.5f,  0.0f, 0.0f, 0.0f, 0.0f,
+        -0.5f, -0.5f,  0.0f, 0.0f, 0.0f, 0.0f,
+         0.5f, -0.5f,  0.0f, 0.0f, 0.0f, 0.0f,
+         0.5f,  0.5f,  0.0f, 0.0f, 0.0f, 0.0f,
+        -0.5f,  0.5f, -1.0f, 0.0f, 0.0f, 0.0f,
+        -0.5f, -0.5f, -1.0f, 0.0f, 0.0f, 0.0f,
+         0.5f, -0.5f, -1.0f, 0.0f, 0.0f, 0.0f,
+         0.5f,  0.5f, -1.0f, 0.0f, 0.0f, 0.0f,
+    };
+    unsigned int indices[] = {
+        0, 1, 2,
+        2, 3, 0,
+        0, 4, 5,
+        5, 1, 0,
+        4, 5, 6,
+        6, 7, 4,
+        3, 2, 6,
+        6, 7, 3,
+        1, 2, 6,
+        6, 5, 1,
+        0, 3, 7,
+        7, 4, 0,
+    };
+    
+    glBindBuffer(GL_ARRAY_BUFFER, LightVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, LightEBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    
+    Shader lightShader = Shader("../Shader/lightShader");
+    glm::mat4 model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(-2.0f, 2.0f, -2.0f));
+    model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    model = glm::rotate(model, glm::radians(10.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    float size = 0.75f;
+    model = glm::scale(model, glm::vec3(size, size, size));
+    
+    glm::vec3 mapColor = glm::vec3(0.1f, 0.1f, 0.2f); //0.1f, 0.5f, 0.4f
+    glm::vec3 lightColor = glm::vec3(0.9f, 0.9f, 0.9f);
+
+    
     while(!myEvent.HasQuit()) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
 
         glClear(GL_COLOR_BUFFER_BIT);
         
         deltaTime = SDL_GetTicks() - lastFrame;
+        
         lastFrame = SDL_GetTicks();
+        
+        lightShader.Use();
+        
+        lightShader.SetMat4("projection", projection);
+        lightShader.SetMat4("view", *camera.getView());
+        lightShader.SetMat4("model", model);
+        lightShader.SetVec3("lightColor", lightColor);
+        
+        glBindVertexArray(LightVAO);
+        glDrawElements(GL_TRIANGLES, 44, GL_UNSIGNED_INT, 0);
+        glBindVertexArray(0);
         
         basicShader.Use();
         
         myTime += 0.01f;
         //model = glm::rotate(model, 0.05f, glm::vec3(0.0f, 0.0f, 1.0f));
+        
 
         //float green = sin(myTime) / 4.0f +    0.75f;
         //model = glm::rotate(model, glm::radians(cos(myTime) * 5), glm::vec3(0.0f, 1.0f, 0.0f));
         //float radius = 10.0f;
         //camera.setPosition(glm::vec3(cos(myTime) * radius, 0.0f, sin(myTime) * radius));
         
-        glUniformMatrix4fv(glGetUniformLocation(*basicShader.getShaderProgram(), "view"), 1, GL_FALSE, glm::value_ptr(*camera.getView()));
-        glUniformMatrix4fv(glGetUniformLocation(*basicShader.getShaderProgram(), "projection"), 1, GL_FALSE,glm::value_ptr(projection));
+        basicShader.SetMat4("projection", projection);
+        basicShader.SetMat4("view", *camera.getView());
+        basicShader.SetVec3("myColor", mapColor);
+        basicShader.SetVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
         
         glBindVertexArray(VAO);
-        
-        //for (unsigned int i = 0; i < numVertices; i++) {
-            //glm::mat4 model = glm::mat4(1.0f);
-            //if (i < 2) model = glm::rotate(model, cos(myTime * 2), glm::vec3(1.0f, 0.0f, 0.0f));
-            //model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-
-            //glUniformMatrix4fv(glGetUniformLocation(*basicShader.getShaderProgram(), "model"), 1, GL_FALSE, glm::value_ptr(model));
-            glDrawElements(GL_TRIANGLES, map.getCount(), GL_UNSIGNED_INT, 0);
-        //}
+        glDrawElements(GL_TRIANGLES, map.getCount(), GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
         
         SDL_GL_SwapWindow(m_window);        

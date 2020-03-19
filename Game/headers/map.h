@@ -8,7 +8,7 @@ public:
     ~Map();
     
     float* GetVertices() { return m_vertices; }
-    int GetVerticesSize() { return m_numVertices * 3 * sizeof(float); }
+    int GetVerticesSize() { return m_numVertices * 6 * sizeof(float); }
 
     unsigned int* GetIndices() { return m_indices; }
     int GetIndicesSize() { return m_numIndices * sizeof(unsigned int); }
