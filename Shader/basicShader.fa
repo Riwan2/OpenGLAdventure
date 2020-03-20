@@ -3,12 +3,15 @@
 out vec4 color;
 uniform vec3 myColor;
 uniform vec3 lightColor;
+uniform vec3 lightPos;
+uniform float lightPower;
+uniform float time;
 
-void main() 
+in vec3 Normal;
+in vec3 FragPos;
+in vec3 outColor;
+
+void main()
 {
-    float ambientStrenght = 0.1f;
-    vec3 ambient = ambientStrenght * lightColor;
-
-    vec3 result = ambient * myColor;
-    color = vec4(result, 1.0f);
+    color = vec4(outColor, 1.0f);
 }

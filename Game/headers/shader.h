@@ -34,6 +34,9 @@ public:
     void SetVec3(const std::string& name, const glm::vec3& value) { 
         glUniform3f(UniformLoc(name), value.x, value.y, value.z); 
     }
+    void SetFloat(const std::string& name, const float& value) {
+        glUniform1f(UniformLoc(name), value);
+    }
 };
     
 

@@ -1,6 +1,8 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include <glm/glm.hpp>
+
 class Map
 {
 public:
@@ -24,12 +26,16 @@ private:
     int m_height;
     int m_numVertices;
     int m_numIndices;
+    glm::vec3 m_normal;
     
     float* m_vertices;
     unsigned int* m_indices;
+    float* m_heightMap;
     
     void CreateVertices();
     void CreateIndices();
+    void CreateNormals();
+    void CalculateNormal(const int& index);
 };
 
 #endif // MAP_H

@@ -45,7 +45,7 @@ int main(int argc, char **argv)
     
     SDL_Window* m_window = SDL_CreateWindow(_TITLE, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _WIDTH, _HEIGHT, SDL_WINDOW_OPENGL);
 	SDL_GLContext m_glContext = SDL_GL_CreateContext(m_window);
-    //glEnable(GL_DEPTH_TEST);
+    glEnable(GL_DEPTH_TEST);
     //glEnable(GL_CULL_FACE);
     //glCullFace(GL_BACK);
     
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 //         else std::cout << " ; ";
 //     }
     
-    Map map(3, 3, 0.5f);
+    Map map(1000, 1000, 0.0125f);
     
     Shader basicShader = Shader("../Shader/basicShader");
 
@@ -102,6 +102,9 @@ int main(int argc, char **argv)
     
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
     
     MyEvent myEvent;
     bool isRunning = true;
@@ -164,20 +167,24 @@ int main(int argc, char **argv)
     
     Shader lightShader = Shader("../Shader/lightShader");
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(-2.0f, 2.0f, -2.0f));
-    model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-    model = glm::rotate(model, glm::radians(10.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    glm::vec3 lightPos = glm::vec3((float)map.getWidth() * map.getVertexSize() / 2 - 
+    map.getVertexSize() / 2, 3.0f, (float)map.getHeight() * map.getVertexSize() / 2 - map.getVertexSize()/2);
+    model = glm::translate(model, lightPos);
+    //model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    //model = glm::rotate(model, glm::radians(10.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     float size = 0.75f;
     model = glm::scale(model, glm::vec3(size, size, size));
     
-    glm::vec3 mapColor = glm::vec3(0.1f, 0.1f, 0.2f); //0.1f, 0.5f, 0.4f
-    glm::vec3 lightColor = glm::vec3(0.9f, 0.9f, 0.9f);
+    glm::mat4 mapModel = glm::mat4(1.0f);
+    
+    glm::vec3 mapColor = glm::vec3(0.4f, 0.35f, 0.8f); //0.1f, 0.5f, 0.4f //green : 0.3f, 0.5f, 0.2f
+    glm::vec3 lightColor = glm::vec3(0.9f, 0.9f, 0.8f);
 
     
     while(!myEvent.HasQuit()) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
 
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         deltaTime = SDL_GetTicks() - lastFrame;
         
@@ -189,10 +196,12 @@ int main(int argc, char **argv)
         lightShader.SetMat4("view", *camera.getView());
         lightShader.SetMat4("model", model);
         lightShader.SetVec3("lightColor", lightColor);
-        
+
         glBindVertexArray(LightVAO);
         glDrawElements(GL_TRIANGLES, 44, GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
+        
+        //mapModel = glm::rotate(mapModel, 0.01f, glm::vec3(0.1f, 1.0f, 0.0f));
         
         basicShader.Use();
         
@@ -208,7 +217,12 @@ int main(int argc, char **argv)
         basicShader.SetMat4("projection", projection);
         basicShader.SetMat4("view", *camera.getView());
         basicShader.SetVec3("myColor", mapColor);
-        basicShader.SetVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+        basicShader.SetVec3("lightColor", lightColor);
+        basicShader.SetMat4("model", mapModel);
+        basicShader.SetVec3("lightPos", lightPos);
+        basicShader.SetFloat("lightPower", 1.5f);
+        basicShader.SetFloat("time", myTime);
+
         
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, map.getCount(), GL_UNSIGNED_INT, 0);
