@@ -125,7 +125,7 @@ int main(int argc, char **argv)
     //Light 
     Shader lightShader = Shader("../Shader/lightShader");
     Light light(glm::vec3(0.9f, 0.9f, 0.4f));
-    light.Move(glm::vec3(50.0f, 20.0f, 50.0f));
+    light.Move(glm::vec3(center.x, 20.0f, center.z));
     
     //Map
     glm::vec3 mapColor = glm::vec3(0.2f, 0.3f, 1.0f); //0.1f, 0.5f, 0.4f //green : 0.3f, 0.5f, 0.2f
