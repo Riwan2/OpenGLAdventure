@@ -196,6 +196,33 @@ Game/source/camera.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/camera.cpp.s
 .PHONY : Game/source/camera.cpp.s
 
+Game/source/light.o: Game/source/light.cpp.o
+
+.PHONY : Game/source/light.o
+
+# target to build an object file
+Game/source/light.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/light.cpp.o
+.PHONY : Game/source/light.cpp.o
+
+Game/source/light.i: Game/source/light.cpp.i
+
+.PHONY : Game/source/light.i
+
+# target to preprocess a source file
+Game/source/light.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/light.cpp.i
+.PHONY : Game/source/light.cpp.i
+
+Game/source/light.s: Game/source/light.cpp.s
+
+.PHONY : Game/source/light.s
+
+# target to generate assembly for a file
+Game/source/light.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/light.cpp.s
+.PHONY : Game/source/light.cpp.s
+
 Game/source/main.o: Game/source/main.cpp.o
 
 .PHONY : Game/source/main.o
@@ -320,6 +347,9 @@ help:
 	@echo "... Game/source/camera.o"
 	@echo "... Game/source/camera.i"
 	@echo "... Game/source/camera.s"
+	@echo "... Game/source/light.o"
+	@echo "... Game/source/light.i"
+	@echo "... Game/source/light.s"
 	@echo "... Game/source/main.o"
 	@echo "... Game/source/main.i"
 	@echo "... Game/source/main.s"

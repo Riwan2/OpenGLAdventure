@@ -4,7 +4,13 @@
 CMakeFiles/coucou.dir/Game/source/camera.cpp.o: ../Game/headers/camera.h
 CMakeFiles/coucou.dir/Game/source/camera.cpp.o: ../Game/source/camera.cpp
 
+CMakeFiles/coucou.dir/Game/source/light.cpp.o: ../Game/headers/camera.h
+CMakeFiles/coucou.dir/Game/source/light.cpp.o: ../Game/headers/light.h
+CMakeFiles/coucou.dir/Game/source/light.cpp.o: ../Game/headers/shader.h
+CMakeFiles/coucou.dir/Game/source/light.cpp.o: ../Game/source/light.cpp
+
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/camera.h
+CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/light.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/map.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/math_3d.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/myevent.h

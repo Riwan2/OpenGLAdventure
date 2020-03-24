@@ -74,7 +74,7 @@ void Camera::Zoom(const float& amount)
     m_distance += amount;
     
     if (m_distance <= 1.0f) m_distance = 1.0f;
-    else if (m_distance >= 30.0f) m_distance = 30.0f;
+    else if (m_distance >= 50.0f) m_distance = 50.0f;
     m_position.z = m_distance;
 }
 

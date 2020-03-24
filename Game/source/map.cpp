@@ -34,7 +34,7 @@ void Map::CreateVertices()
     
     for (int y = 0; y < m_height; y++) {
         for (int x = 0; x < m_width; x++) {
-            m_heightMap[y * m_width + x] = float(rand() % 10) / 350;
+            m_heightMap[y * m_width + x] = 0.0f; //float(rand() % 10) / 350
             
             for (int i = 0; i < 3; i++) {
                 int index = y * (m_width*6) + x * 6 + i;

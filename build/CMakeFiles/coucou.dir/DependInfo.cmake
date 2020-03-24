@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/camera.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/camera.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/light.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/light.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/main.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/map.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/map.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/myevent.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/myevent.cpp.o"
