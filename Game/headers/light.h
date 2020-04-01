@@ -10,6 +10,7 @@
 
 #include "../headers/shader.h"
 #include "../headers/camera.h"
+#include "../headers/vaoobject.h"
 
 class Light
 {
@@ -18,7 +19,7 @@ public:
     ~Light();
     
     void Move(const glm::vec3& position);
-    void Render();
+    void Render(const glm::mat4& projection, const glm::mat4& cameraView);
     glm::mat4* getModel() { return &m_model; }
     glm::vec3* getPosition() { return &m_position; }
     glm::vec3* getColor() { return &m_color; }
@@ -27,6 +28,8 @@ public:
 private:
     GLuint m_VBO;
     GLuint m_EBO;
+    Shader m_shader = Shader("../Shader/lightShader");
+    VaoObject m_vaoObject;
     
     glm::mat4 m_model;
     glm::vec3 m_position;

@@ -331,6 +331,33 @@ Game/source/shader.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/shader.cpp.s
 .PHONY : Game/source/shader.cpp.s
 
+Game/source/vaoobject.o: Game/source/vaoobject.cpp.o
+
+.PHONY : Game/source/vaoobject.o
+
+# target to build an object file
+Game/source/vaoobject.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.o
+.PHONY : Game/source/vaoobject.cpp.o
+
+Game/source/vaoobject.i: Game/source/vaoobject.cpp.i
+
+.PHONY : Game/source/vaoobject.i
+
+# target to preprocess a source file
+Game/source/vaoobject.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.i
+.PHONY : Game/source/vaoobject.cpp.i
+
+Game/source/vaoobject.s: Game/source/vaoobject.cpp.s
+
+.PHONY : Game/source/vaoobject.s
+
+# target to generate assembly for a file
+Game/source/vaoobject.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.s
+.PHONY : Game/source/vaoobject.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -362,6 +389,9 @@ help:
 	@echo "... Game/source/shader.o"
 	@echo "... Game/source/shader.i"
 	@echo "... Game/source/shader.s"
+	@echo "... Game/source/vaoobject.o"
+	@echo "... Game/source/vaoobject.i"
+	@echo "... Game/source/vaoobject.s"
 .PHONY : help
 
 

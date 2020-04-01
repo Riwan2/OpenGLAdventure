@@ -81,9 +81,8 @@ int main(int argc, char **argv)
 //         else std::cout << " ; ";
 //     }
     
-    Map map(200, 200, 0.5f); //200, 200, 0.5F
-    
-    Shader basicShader = Shader("../Shader/basicShader");
+    Map map(50, 50, 1.0f); //200, 200, 0.5F
+    Shader waterShader = Shader("../Shader/waterShader");
 
     GLuint VBO;
     GLuint VAO;
@@ -123,9 +122,8 @@ int main(int argc, char **argv)
     camera.SetTarget(center);
     
     //Light 
-    Shader lightShader = Shader("../Shader/lightShader");
     Light light(glm::vec3(0.9f, 0.9f, 0.4f));
-    light.Move(glm::vec3(center.x, 20.0f, center.z));
+    light.Move(glm::vec3(center.x, 50.0f, center.z));
     
     //Map
     glm::vec3 mapColor = glm::vec3(0.2f, 0.3f, 1.0f); //0.1f, 0.5f, 0.4f //green : 0.3f, 0.5f, 0.2f
@@ -133,40 +131,32 @@ int main(int argc, char **argv)
 
     while(!myEvent.HasQuit()) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
-
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        
         deltaTime = SDL_GetTicks() - lastFrame;
-        
         lastFrame = SDL_GetTicks();
         
-        lightShader.Use();
-        
-        lightShader.SetMat4("projection", projection);
-        lightShader.SetMat4("view", *camera.getView());
-        lightShader.SetMat4("model", *light.getModel());
-        lightShader.SetVec3("lightColor", *light.getColor());
-        
-        light.Render();
+        //Light
+        light.Render(projection, *camera.getView());
         
         myTime += 0.01f;
-        basicShader.Use();        
-
+        
         //float radius = 10.0f;
         //camera.setPosition(glm::vec3(cos(myTime) * radius, 0.0f, sin(myTime) * radius));
         
-        basicShader.SetMat4("projection", projection);
-        basicShader.SetMat4("view", *camera.getView());
-        basicShader.SetVec3("myColor", mapColor);
-        basicShader.SetVec3("lightColor", *light.getColor());
-        basicShader.SetMat4("model", mapModel);
-        basicShader.SetVec3("lightPos", *light.getPosition());
-        basicShader.SetFloat("lightPower", 1.0f);
-        basicShader.SetFloat("time", myTime);
+        waterShader.Use();
+
+        waterShader.SetMat4("projection", projection);
+        waterShader.SetMat4("view", *camera.getView());
+        waterShader.SetVec3("myColor", mapColor);
+        waterShader.SetVec3("lightColor", *light.getColor());
+        waterShader.SetMat4("model", mapModel);
+        waterShader.SetVec3("lightPos", *light.getPosition());
+        waterShader.SetFloat("time", myTime);
         
-        glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, map.getCount(), GL_UNSIGNED_INT, 0);
-        glBindVertexArray(0);
+        map.Render();
+        //glBindVertexArray(VAO);
+        //glDrawElements(GL_TRIANGLES, map.getCount(), GL_UNSIGNED_INT, 0);
+        //glBindVertexArray(0);
         
         SDL_GL_SwapWindow(m_window);        
         myEvent.Update(&deltaTime, &camera);

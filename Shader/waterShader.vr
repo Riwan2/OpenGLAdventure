@@ -1,0 +1,70 @@
+#version 330 core
+
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec3 aNormal;
+
+out vec3 outColor; //flat for low poly aspect
+
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
+uniform vec3 myColor;
+uniform vec3 lightColor;
+uniform vec3 lightPos;
+uniform float time;
+
+//Wave and basic
+float speed = 1.5;
+float height = 0.02;
+vec3 Normal;
+vec3 FragPos;
+vec3 basePosition;
+float ambientStrenght = 0.1f;
+
+//Light
+vec3 diffuse;
+float brightness;
+
+//FUNCTION
+void CreateWave()
+{
+    basePosition = aPos;
+    basePosition.y += cos(aPos.x + time * speed * 1.2) * 0.05;
+    basePosition.y += cos(aPos.z + time * speed * 2) * 0.05;
+    basePosition.y += cos((-aPos.x + aPos.z / 2) + time * speed * 3) * 0.15;
+    basePosition.y += cos((-aPos.x / 2 + aPos.z) + time * speed * 2) * 0.15;
+}
+
+void extraLighting()
+{
+    if (basePosition.y > 0.1 && brightness > 0.4) outColor *= 1.01 + (basePosition.y / 20) + (brightness / 200);
+    if (basePosition.y < -0.3) outColor *= 0.99 - (basePosition.y / 20) - (brightness / 50);
+    if (brightness > 0.5) outColor.y *= (brightness/20) * 40;
+}
+
+void baseLighting()
+{
+    vec3 norm = normalize(Normal);
+    vec3 lightDir = normalize(lightPos - FragPos);
+    float nDot1 = dot(norm, lightDir);
+    brightness = max(nDot1, 0.0);
+    diffuse = brightness * lightColor;
+
+    vec3 ambient = ambientStrenght * lightColor;
+    outColor = (diffuse + ambient * basePosition.y * 2.3) * myColor;
+    
+    extraLighting();
+}
+
+//MAIN
+void main()
+{
+    CreateWave();
+   
+    gl_Position = projection * view * model * vec4(basePosition, 1.0);
+    FragPos = vec3(model * vec4(aPos, 1.0));
+    Normal = mat3(transpose(inverse(model))) * aNormal;
+
+    baseLighting();
+}

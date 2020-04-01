@@ -20,12 +20,21 @@ Map::Map(const int& width, const int& height, const float& vertexSize)
     CreateVertices();
     CreateIndices();
     CreateNormals();
+    
+    //std::cout << m_numVertices << std::endl;
+    
+    m_vaoObject.Initialize(m_vertices, m_numVertices, m_indices, m_numIndices);
 }
 
 Map::~Map()
 {
     delete m_vertices;
     delete m_indices;
+}
+
+void Map::Render() 
+{
+    m_vaoObject.Render();
 }
 
 void Map::CreateVertices()

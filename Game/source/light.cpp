@@ -31,22 +31,7 @@ Light::Light(const glm::vec3& color, const float& size)
          0.5f * size,  0.5f * size, -1.0f * size, 0.0f, 0.0f, 0.0f,
     };
     
-    glGenVertexArrays(1, &m_VAO);
-    glGenBuffers(1, &m_VBO);
-    glGenBuffers(1, &m_EBO);
-    
-    glBindVertexArray(m_VAO);
-    
-    glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-    glBufferData(GL_ARRAY_BUFFER, 192, vertices, GL_STATIC_DRAW);
-    
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 144, indices, GL_STATIC_DRAW);
-    
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-    
-    glEnableVertexAttribArray(0);
-    glBindVertexArray(0);
+    m_vaoObject.Initialize(vertices, 8, indices, 36);
 
     m_model = glm::mat4(1.0f);
     m_position = glm::vec3(0.0, 0.0f, 0.0);
@@ -61,11 +46,15 @@ Light::~Light()
     glDeleteVertexArrays(1, &m_VAO);
 }
 
-void Light::Render()
+void Light::Render(const glm::mat4& projection, const glm::mat4& cameraView)
 {
-    glBindVertexArray(m_VAO);
-    glDrawElements(GL_TRIANGLES, 44, GL_UNSIGNED_INT, 0);
-    glBindVertexArray(0);
+    m_shader.Use();
+    m_shader.SetMat4("projection", projection);
+    m_shader.SetMat4("view", cameraView);
+    m_shader.SetMat4("model", m_model);
+    m_shader.SetVec3("lightColor", m_color);
+    
+    m_vaoObject.Render();
 }
 
 

@@ -29,10 +29,16 @@ GL/gl.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/shader.h
 ../headers/camera.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/camera.h
+../headers/vaoobject.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/vaoobject.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/map.h
 glm/glm.hpp
 -
+../headers/shader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/shader.h
+../headers/vaoobject.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/vaoobject.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/math_3d.h
 stdio.h
@@ -62,6 +68,18 @@ glm/glm.hpp
 glm/gtc/matrix_transform.hpp
 -
 glm/gtc/type_ptr.hpp
+-
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/vaoobject.h
+glm/glm.hpp
+-
+glm/gtc/matrix_transform.hpp
+-
+glm/gtc/type_ptr.hpp
+-
+GL/glew.h
+-
+GL/gl.h
 -
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/camera.cpp
@@ -129,4 +147,10 @@ iostream
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/shader.cpp
 ../headers/shader.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/shader.h
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/vaoobject.cpp
+../headers/vaoobject.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/vaoobject.h
+iostream
+-
 

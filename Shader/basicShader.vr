@@ -1,50 +1,7 @@
-#version 330 core
-
 layout (location = 0) in vec3 aPos;
-layout (location = 1) in vec3 aNormal;
 
-out vec3 outColor; //flat for low poly aspect
-
-uniform mat4 model;
-uniform mat4 view;
-uniform mat4 projection;
-uniform vec3 myColor;
-uniform vec3 lightColor;
-uniform vec3 lightPos;
-uniform float lightPower;
-uniform float time;
-
-float speed = 2;
-float waveLenght = 6;
-vec3 Normal;
-vec3 FragPos;
-
+//MAIN
 void main()
 {
-    vec3 basePosition = aPos;
-    float radianX = (basePosition.x / waveLenght + time / speed) * 6;
-    float radianZ = (basePosition.z / waveLenght + time / speed) * 6;
-    float final = 0.25 * (sin(radianZ) + cos(radianX));
-
-    basePosition.x = basePosition.x + final;
-    basePosition.y = basePosition.y + final * 2;
-    
-    vec4 position = projection * view * model * vec4(basePosition, 1.0);    
-    gl_Position = position;
-    FragPos = vec3(model * vec4(aPos, 1.0));
-    Normal = mat3(transpose(inverse(model))) * aNormal;
-
-    float ambientStrenght = 0.1f;
-    vec3 ambient = ambientStrenght * lightColor;
-
-    vec3 norm = normalize(Normal);
-    vec3 lightDir = normalize(lightPos - FragPos) * lightPower;
-    float nDot1 = dot(norm, lightDir);
-    float brightness = max(nDot1, 0.0);
-    vec3 diffuse = brightness * lightColor;
-
-    outColor = (diffuse + ambient * basePosition.y * 2.3) * myColor;
-    if (basePosition.y > 0.1 && brightness > 0.4) outColor *= 1.01 + (basePosition.y / 20) + (brightness / 200);
-    if (basePosition.y < -0.3) outColor *= 0.99 - (basePosition.y / 20) - (brightness / 50);
-    if (brightness > 0.5) outColor.y *= (brightness/20) * 40;
+    gl_Position = vec4(aPos, 1.0);
 }

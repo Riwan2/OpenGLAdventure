@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/map.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/map.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/myevent.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/myevent.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/shader.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/shader.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/vaoobject.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
