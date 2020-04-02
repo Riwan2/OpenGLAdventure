@@ -17,6 +17,7 @@
 #include "../headers/map.h"
 #include "../headers/light.h"
 #include "../headers/terrain.h"
+#include "../headers/water.h"
 
 const char* _TITLE = "coucou";
 const int _WIDTH = 850;
@@ -60,55 +61,9 @@ int main(int argc, char **argv)
     glClearColor(0.2f, 0.2f, 0.2f, 0.0f);
     
     GLenum res = glewInit();
-//     float vertices[] = {
-//          0.5f, 0.5f, 0.0f,
-//          0.5f, -0.5f, 0.0f,
-//          -0.5f, 0.5f, 0.0f,
-//          -0.5f, -0.5f, 0.0f
-//     };
-//     unsigned int indices[] = {
-//         0, 1, 3,
-//         3, 2, 0
-//     };
-//     std::cout << "-Indices :" << std::endl;
-//     for (int i = 0; i < numIndices; i++) {
-//         std::cout << _indices[i];
-//         if (i % 3 == 2) std::cout << std::endl;
-//         else std::cout << " ; ";
-//     }
-//     
-//     std::cout << "-Vertices :" << std::endl;
-//     for (int i = 0; i < numVerticesFloat; i++) {
-//         std::cout << _vertices[i];
-//         if (i % 3 == 2) std::cout << std::endl;
-//         else std::cout << " ; ";
-//     }
-    
-    Map map(50, 50, 1.0f); //200, 200, 0.5F
-    Shader waterShader = Shader("../Shader/waterShader");
-    Terrain coucou(50, 50, 1.0f);
 
-    GLuint VBO;
-    GLuint VAO;
-    GLuint EBO;
-    
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
-
-    glBindVertexArray(VAO);
-    
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, map.GetVerticesSize(), map.GetVertices(), GL_STATIC_DRAW);
-    
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, map.GetIndicesSize(), map.GetIndices(), GL_STATIC_DRAW);
-    
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
+    Water water(50, 50, 1.0f); //200, 200, 0.5F
+    //Terrain terrain(50, 50, 1.0f);
     
     MyEvent myEvent;
     bool isRunning = true;
@@ -121,17 +76,13 @@ int main(int argc, char **argv)
     unsigned int deltaTime = 0;
     unsigned int lastFrame = 0;
     
-    glm::vec3 center = glm::vec3((float)map.getWidth() * map.getVertexSize() / 2 - 
-    map.getVertexSize() / 2, 20.0f, (float)map.getHeight() * map.getVertexSize() / 2 - map.getVertexSize()/2);
+    glm::vec3 center = glm::vec3((float)water.getWidth() * water.getVertexSize() / 2 - 
+    water.getVertexSize() / 2, 20.0f, (float)water.getHeight() * water.getVertexSize() / 2 - water.getVertexSize()/2);
     camera.SetTarget(center);
     
     //Light 
     Light light(glm::vec3(0.9f, 0.9f, 0.4f));
     light.Move(glm::vec3(center.x, 50.0f, center.z));
-    
-    //Map
-    glm::vec3 mapColor = glm::vec3(0.2f, 0.3f, 1.0f); //0.1f, 0.5f, 0.4f //green : 0.3f, 0.5f, 0.2f
-    glm::mat4 mapModel = glm::mat4(1.0f);
 
     while(!myEvent.HasQuit()) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
@@ -141,27 +92,10 @@ int main(int argc, char **argv)
         
         //Light
         light.Render(projection, *camera.getView());
-        
-        myTime += 0.01f;
-        
-        //float radius = 10.0f;
-        //camera.setPosition(glm::vec3(cos(myTime) * radius, 0.0f, sin(myTime) * radius));
-        
-        waterShader.Use();
-
-        waterShader.SetMat4("projection", projection);
-        waterShader.SetMat4("view", *camera.getView());
-        waterShader.SetVec3("myColor", mapColor);
-        waterShader.SetVec3("lightColor", *light.getColor());
-        waterShader.SetMat4("model", mapModel);
-        waterShader.SetVec3("lightPos", *light.getPosition());
-        waterShader.SetFloat("time", myTime);
-        
-        coucou.Render();
-        //map.Render();
-        //glBindVertexArray(VAO);
-        //glDrawElements(GL_TRIANGLES, map.getCount(), GL_UNSIGNED_INT, 0);
-        //glBindVertexArray(0);
+        //Water
+        water.Render(projection, *camera.getView(), *light.getColor(), *light.getPosition());
+        //Terrain
+        //terrain.Render(projection, *camera.getView(), *light.getColor(), *light.getPosition());
         
         SDL_GL_SwapWindow(m_window);        
         myEvent.Update(&deltaTime, &camera);

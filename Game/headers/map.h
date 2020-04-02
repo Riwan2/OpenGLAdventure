@@ -12,7 +12,7 @@ public:
     ~Map();
     
     void Initialize(float* heightMap);
-    void Render();
+    void BasicRendering();
     
     float* GetVertices() { return m_vertices; }
     int GetNumVertices() { return m_numVertices; }

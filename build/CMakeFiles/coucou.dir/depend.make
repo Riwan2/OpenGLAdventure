@@ -19,6 +19,7 @@ CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/shader.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/terrain.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/util.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/vaoobject.h
+CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/water.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/source/main.cpp
 
 CMakeFiles/coucou.dir/Game/source/map.cpp.o: ../Game/headers/map.h
@@ -45,4 +46,10 @@ CMakeFiles/coucou.dir/Game/source/util.cpp.o: ../Game/source/util.cpp
 
 CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.o: ../Game/headers/vaoobject.h
 CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.o: ../Game/source/vaoobject.cpp
+
+CMakeFiles/coucou.dir/Game/source/water.cpp.o: ../Game/headers/map.h
+CMakeFiles/coucou.dir/Game/source/water.cpp.o: ../Game/headers/shader.h
+CMakeFiles/coucou.dir/Game/source/water.cpp.o: ../Game/headers/vaoobject.h
+CMakeFiles/coucou.dir/Game/source/water.cpp.o: ../Game/headers/water.h
+CMakeFiles/coucou.dir/Game/source/water.cpp.o: ../Game/source/water.cpp
 

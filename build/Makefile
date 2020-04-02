@@ -412,6 +412,33 @@ Game/source/vaoobject.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.s
 .PHONY : Game/source/vaoobject.cpp.s
 
+Game/source/water.o: Game/source/water.cpp.o
+
+.PHONY : Game/source/water.o
+
+# target to build an object file
+Game/source/water.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/water.cpp.o
+.PHONY : Game/source/water.cpp.o
+
+Game/source/water.i: Game/source/water.cpp.i
+
+.PHONY : Game/source/water.i
+
+# target to preprocess a source file
+Game/source/water.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/water.cpp.i
+.PHONY : Game/source/water.cpp.i
+
+Game/source/water.s: Game/source/water.cpp.s
+
+.PHONY : Game/source/water.s
+
+# target to generate assembly for a file
+Game/source/water.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/water.cpp.s
+.PHONY : Game/source/water.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -452,6 +479,9 @@ help:
 	@echo "... Game/source/vaoobject.o"
 	@echo "... Game/source/vaoobject.i"
 	@echo "... Game/source/vaoobject.s"
+	@echo "... Game/source/water.o"
+	@echo "... Game/source/water.i"
+	@echo "... Game/source/water.s"
 .PHONY : help
 
 

@@ -29,7 +29,7 @@ void Map::Initialize(float* heightMap)
     m_vaoObject.Initialize(m_vertices, m_numVertices, m_indices, m_numIndices);
 }
 
-void Map::Render() 
+void Map::BasicRendering() 
 {
     m_vaoObject.Render();
 }
@@ -43,7 +43,7 @@ void Map::CreateVertices(float* heightMap)
     
                 if (index % 3 == 0)
                     m_vertices[index] = x * m_vertexSize;
-                else if (index % 3 == 1)
+                else if (index % 3 == 1) 
                     m_vertices[index] = heightMap[y * m_width + x];
                 else if (index % 3 == 2) 
                     m_vertices[index] = y * m_vertexSize;

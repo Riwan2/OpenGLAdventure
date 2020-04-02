@@ -12,7 +12,7 @@ Camera::Camera()
     
     m_yaw = 0.0f;
     m_pitch = -20.0f;
-    m_distance = 10.0f;
+    m_distance = 20.0f; //10.0f
     m_angleAround = 90.0f;
 }
 

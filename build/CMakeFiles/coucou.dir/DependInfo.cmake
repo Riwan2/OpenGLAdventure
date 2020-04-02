@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/terrain.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/terrain.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/util.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/util.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/vaoobject.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/water.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/water.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
