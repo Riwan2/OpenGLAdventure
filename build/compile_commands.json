@@ -31,6 +31,16 @@
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/source/terrain.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/terrain.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/terrain.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/source/util.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/util.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/util.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
   "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/vaoobject.cpp",
   "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/vaoobject.cpp"
 }

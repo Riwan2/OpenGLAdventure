@@ -11,9 +11,11 @@ public:
     Map(const int& width, const int& height, const float& vertexSize);
     ~Map();
     
+    void Initialize(float* heightMap);
     void Render();
     
     float* GetVertices() { return m_vertices; }
+    int GetNumVertices() { return m_numVertices; }
     int GetVerticesSize() { return m_numVertices * 6 * sizeof(float); }
 
     unsigned int* GetIndices() { return m_indices; }
@@ -33,13 +35,14 @@ private:
     
     float* m_vertices;
     unsigned int* m_indices;
-    float* m_heightMap;
     VaoObject m_vaoObject;
     
-    void CreateVertices();
+    void CreateVertices(float* heightMap);
     void CreateIndices();
-    void CreateNormals();
-    void CalculateNormal(const int& index);
+    void CreateNormals(float* heightMap);
+    void CalculateNormal(const int& index, float* heightMap);
+    void PrintVertices();
+    void PrintIndices();
 };
 
 #endif // MAP_H

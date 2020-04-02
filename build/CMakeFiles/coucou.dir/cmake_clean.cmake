@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/coucou.dir/Game/source/map.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/myevent.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/shader.cpp.o"
+  "CMakeFiles/coucou.dir/Game/source/terrain.cpp.o"
+  "CMakeFiles/coucou.dir/Game/source/util.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.o"
   "coucou.pdb"
   "coucou"

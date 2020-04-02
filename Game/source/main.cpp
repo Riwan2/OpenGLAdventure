@@ -11,10 +11,12 @@
 #include "../headers/math_3d.h"
 #include "../headers/shader.h"
 #include "../headers/myevent.h"
+#include "../headers/util.h"
 
 #include "../headers/camera.h"
 #include "../headers/map.h"
 #include "../headers/light.h"
+#include "../headers/terrain.h"
 
 const char* _TITLE = "coucou";
 const int _WIDTH = 850;
@@ -44,6 +46,7 @@ int main(int argc, char **argv)
     //SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
     //glEnable(GL_MULTISAMPLE);
     
+    Util::InitRandom();
     SDL_Window* m_window = SDL_CreateWindow(_TITLE, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _WIDTH, _HEIGHT, SDL_WINDOW_OPENGL);
 	SDL_GLContext m_glContext = SDL_GL_CreateContext(m_window);
     glEnable(GL_DEPTH_TEST);
@@ -83,6 +86,7 @@ int main(int argc, char **argv)
     
     Map map(50, 50, 1.0f); //200, 200, 0.5F
     Shader waterShader = Shader("../Shader/waterShader");
+    Terrain coucou(50, 50, 1.0f);
 
     GLuint VBO;
     GLuint VAO;
@@ -153,7 +157,8 @@ int main(int argc, char **argv)
         waterShader.SetVec3("lightPos", *light.getPosition());
         waterShader.SetFloat("time", myTime);
         
-        map.Render();
+        coucou.Render();
+        //map.Render();
         //glBindVertexArray(VAO);
         //glDrawElements(GL_TRIANGLES, map.getCount(), GL_UNSIGNED_INT, 0);
         //glBindVertexArray(0);

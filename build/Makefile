@@ -331,6 +331,60 @@ Game/source/shader.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/shader.cpp.s
 .PHONY : Game/source/shader.cpp.s
 
+Game/source/terrain.o: Game/source/terrain.cpp.o
+
+.PHONY : Game/source/terrain.o
+
+# target to build an object file
+Game/source/terrain.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/terrain.cpp.o
+.PHONY : Game/source/terrain.cpp.o
+
+Game/source/terrain.i: Game/source/terrain.cpp.i
+
+.PHONY : Game/source/terrain.i
+
+# target to preprocess a source file
+Game/source/terrain.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/terrain.cpp.i
+.PHONY : Game/source/terrain.cpp.i
+
+Game/source/terrain.s: Game/source/terrain.cpp.s
+
+.PHONY : Game/source/terrain.s
+
+# target to generate assembly for a file
+Game/source/terrain.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/terrain.cpp.s
+.PHONY : Game/source/terrain.cpp.s
+
+Game/source/util.o: Game/source/util.cpp.o
+
+.PHONY : Game/source/util.o
+
+# target to build an object file
+Game/source/util.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/util.cpp.o
+.PHONY : Game/source/util.cpp.o
+
+Game/source/util.i: Game/source/util.cpp.i
+
+.PHONY : Game/source/util.i
+
+# target to preprocess a source file
+Game/source/util.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/util.cpp.i
+.PHONY : Game/source/util.cpp.i
+
+Game/source/util.s: Game/source/util.cpp.s
+
+.PHONY : Game/source/util.s
+
+# target to generate assembly for a file
+Game/source/util.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/util.cpp.s
+.PHONY : Game/source/util.cpp.s
+
 Game/source/vaoobject.o: Game/source/vaoobject.cpp.o
 
 .PHONY : Game/source/vaoobject.o
@@ -389,6 +443,12 @@ help:
 	@echo "... Game/source/shader.o"
 	@echo "... Game/source/shader.i"
 	@echo "... Game/source/shader.s"
+	@echo "... Game/source/terrain.o"
+	@echo "... Game/source/terrain.i"
+	@echo "... Game/source/terrain.s"
+	@echo "... Game/source/util.o"
+	@echo "... Game/source/util.i"
+	@echo "... Game/source/util.s"
 	@echo "... Game/source/vaoobject.o"
 	@echo "... Game/source/vaoobject.i"
 	@echo "... Game/source/vaoobject.s"
