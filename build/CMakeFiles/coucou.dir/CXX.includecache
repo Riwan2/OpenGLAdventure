@@ -6,7 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/headers/objloader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.cpp
+objloader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
+fstream
+-
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
 string.h
 -
 iostream
@@ -16,9 +22,9 @@ glm/glm.hpp
 vector
 -
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/headers/stb_image.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
 stb_image.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/headers/stb_image.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
 stdio.h
 -
 stdlib.h
@@ -46,12 +52,6 @@ emmintrin.h
 intrin.h
 -
 arm_neon.h
--
-
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/source/objloader.cpp
-../headers/objloader.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/headers/objloader.h
-fstream
 -
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/camera.h
@@ -87,6 +87,24 @@ glm/glm.hpp
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/shader.h
 ../headers/vaoobject.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/vaoobject.h
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/model.h
+string
+-
+glm/glm.hpp
+-
+glm/gtc/matrix_transform.hpp
+-
+glm/gtc/type_ptr.hpp
+-
+GL/glew.h
+-
+GL/gl.h
+-
+../Loader/objloader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
+../Loader/stb_image.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/myevent.h
 SDL2/SDL.h
@@ -199,16 +217,20 @@ glm/gtc/type_ptr.hpp
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/terrain.h
 ../headers/water.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/water.h
-../Loader/headers/stb_image.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/headers/stb_image.h
-../Loader/headers/objloader.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/headers/objloader.h
+../Loader/objloader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
+../headers/model.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/model.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/map.cpp
 ../headers/map.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/map.h
 iostream
 -
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/model.cpp
+../headers/model.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/model.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/myevent.cpp
 ../headers/myevent.h

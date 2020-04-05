@@ -169,32 +169,32 @@ coucou/fast:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/build
 .PHONY : coucou/fast
 
-Game/Loader/source/objloader.o: Game/Loader/source/objloader.cpp.o
+Game/Loader/objloader.o: Game/Loader/objloader.cpp.o
 
-.PHONY : Game/Loader/source/objloader.o
+.PHONY : Game/Loader/objloader.o
 
 # target to build an object file
-Game/Loader/source/objloader.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/source/objloader.cpp.o
-.PHONY : Game/Loader/source/objloader.cpp.o
+Game/Loader/objloader.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/objloader.cpp.o
+.PHONY : Game/Loader/objloader.cpp.o
 
-Game/Loader/source/objloader.i: Game/Loader/source/objloader.cpp.i
+Game/Loader/objloader.i: Game/Loader/objloader.cpp.i
 
-.PHONY : Game/Loader/source/objloader.i
+.PHONY : Game/Loader/objloader.i
 
 # target to preprocess a source file
-Game/Loader/source/objloader.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/source/objloader.cpp.i
-.PHONY : Game/Loader/source/objloader.cpp.i
+Game/Loader/objloader.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/objloader.cpp.i
+.PHONY : Game/Loader/objloader.cpp.i
 
-Game/Loader/source/objloader.s: Game/Loader/source/objloader.cpp.s
+Game/Loader/objloader.s: Game/Loader/objloader.cpp.s
 
-.PHONY : Game/Loader/source/objloader.s
+.PHONY : Game/Loader/objloader.s
 
 # target to generate assembly for a file
-Game/Loader/source/objloader.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/source/objloader.cpp.s
-.PHONY : Game/Loader/source/objloader.cpp.s
+Game/Loader/objloader.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/objloader.cpp.s
+.PHONY : Game/Loader/objloader.cpp.s
 
 Game/source/camera.o: Game/source/camera.cpp.o
 
@@ -303,6 +303,33 @@ Game/source/map.s: Game/source/map.cpp.s
 Game/source/map.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/map.cpp.s
 .PHONY : Game/source/map.cpp.s
+
+Game/source/model.o: Game/source/model.cpp.o
+
+.PHONY : Game/source/model.o
+
+# target to build an object file
+Game/source/model.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/model.cpp.o
+.PHONY : Game/source/model.cpp.o
+
+Game/source/model.i: Game/source/model.cpp.i
+
+.PHONY : Game/source/model.i
+
+# target to preprocess a source file
+Game/source/model.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/model.cpp.i
+.PHONY : Game/source/model.cpp.i
+
+Game/source/model.s: Game/source/model.cpp.s
+
+.PHONY : Game/source/model.s
+
+# target to generate assembly for a file
+Game/source/model.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/model.cpp.s
+.PHONY : Game/source/model.cpp.s
 
 Game/source/myevent.o: Game/source/myevent.cpp.o
 
@@ -479,9 +506,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... install/local"
 	@echo "... install"
-	@echo "... Game/Loader/source/objloader.o"
-	@echo "... Game/Loader/source/objloader.i"
-	@echo "... Game/Loader/source/objloader.s"
+	@echo "... Game/Loader/objloader.o"
+	@echo "... Game/Loader/objloader.i"
+	@echo "... Game/Loader/objloader.s"
 	@echo "... Game/source/camera.o"
 	@echo "... Game/source/camera.i"
 	@echo "... Game/source/camera.s"
@@ -494,6 +521,9 @@ help:
 	@echo "... Game/source/map.o"
 	@echo "... Game/source/map.i"
 	@echo "... Game/source/map.s"
+	@echo "... Game/source/model.o"
+	@echo "... Game/source/model.i"
+	@echo "... Game/source/model.s"
 	@echo "... Game/source/myevent.o"
 	@echo "... Game/source/myevent.i"
 	@echo "... Game/source/myevent.s"

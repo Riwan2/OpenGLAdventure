@@ -1,7 +1,9 @@
-#include "../headers/objloader.h"
+#include "objloader.h"
 #include <fstream>
 
-OBJLoader::OBJLoader(const std::string& fileName) {
+namespace OBJLoader {
+void LoadFromFile(const std::string& fileName, float*& vertices, unsigned int*& indices, int& verticesSize, int& indicesSize, int& drawCall)
+{
     std::ifstream file;
     std::string myFileName = "../Asset/Model/" + fileName + ".obj";
     file.open(myFileName.c_str());
@@ -21,17 +23,19 @@ OBJLoader::OBJLoader(const std::string& fileName) {
         while (true) {
             getline(file, line);
             
-            if (line[0] == 'v' && line[1] == ' ') {
-                FileVertices.push_back(ParseFloat3(line, 2));
-            } else if (line[0] == 'v' && line[1] == 't') {
-                FileTexCoords.push_back(ParseFloat2(line));
-            } else if (line[0] == 'v' && line[1] == 'n') {
-                FileNormals.push_back(ParseFloat3(line, 3));
-            } else if (line[0] == 'f') {
-                normalsArray = new float[FileVertices.size() * 3];
-                textureArray = new float[FileVertices.size() * 2];
-                ProcessLine(line, FileVertices, FileNormals, FileTexCoords, &textureArray[0], &normalsArray[0], FileIndices);
-                break;
+            if (line.size() > 0) {
+                if (line[0] == 'v' && line[1] == ' ') {
+                    FileVertices.push_back(ParseFloat3(line, 2));
+                } else if (line[0] == 'v' && line[1] == 't') {
+                    FileTexCoords.push_back(ParseFloat2(line));
+                } else if (line[0] == 'v' && line[1] == 'n') {
+                    FileNormals.push_back(ParseFloat3(line, 3));
+                } else if (line[0] == 'f') {
+                    normalsArray = new float[FileVertices.size() * 3];
+                    textureArray = new float[FileVertices.size() * 2];
+                    ProcessLine(line, FileVertices, FileNormals, FileTexCoords, &textureArray[0], &normalsArray[0], FileIndices);
+                    break;
+                }
             }
         }
         
@@ -43,9 +47,9 @@ OBJLoader::OBJLoader(const std::string& fileName) {
     }
     file.close();
     
-    m_verticesSize = FileVertices.size() * 8 * sizeof(float);
-    m_indicesSize = FileIndices.size() * sizeof(unsigned int);
-    m_drawCall = FileIndices.size();
+    verticesSize = FileVertices.size() * 8 * sizeof(float);
+    indicesSize = FileIndices.size() * sizeof(unsigned int);
+    drawCall = FileIndices.size();
     vertices = new float[FileVertices.size() * 8];
     indices = new unsigned int[FileIndices.size()];
     
@@ -65,15 +69,11 @@ OBJLoader::OBJLoader(const std::string& fileName) {
         indices[i] = FileIndices[i];
     }
     
-    //PrintData(FileVertices, FileNormals, FileTexCoords);
+//    PrintData(FileVertices, FileNormals, FileTexCoords);
 }
 
-OBJLoader::~OBJLoader()
-{
-    
-}
 
-void OBJLoader::ProcessLine(const std::string& line, const std::vector<glm::vec3>& FileVertices, const std::vector<glm::vec3>& FileNormals, const std::vector<glm::vec2>& FileTexCoords, float* textureArray,float* normalsArray, std::vector<unsigned int>& FileIndices) 
+void ProcessLine(const std::string& line, const std::vector<glm::vec3>& FileVertices, const std::vector<glm::vec3>& FileNormals, const std::vector<glm::vec2>& FileTexCoords, float* textureArray,float* normalsArray, std::vector<unsigned int>& FileIndices) 
 {
     unsigned int data[9];
     ParseIndexData(line, &data[0]);
@@ -87,7 +87,7 @@ void OBJLoader::ProcessLine(const std::string& line, const std::vector<glm::vec3
     ProcessVertex(vertex3, FileVertices, FileNormals, FileTexCoords, &textureArray[0], &normalsArray[0], FileIndices);
 }
 
-void OBJLoader::ProcessVertex(const glm::vec3& vertexData, const std::vector<glm::vec3>& FileVertices, const std::vector<glm::vec3>& FileNormals, const std::vector<glm::vec2>& FileTexCoords, float* textureArray,float* normalsArray, std::vector<unsigned int>& FileIndices) 
+void ProcessVertex(const glm::vec3& vertexData, const std::vector<glm::vec3>& FileVertices, const std::vector<glm::vec3>& FileNormals, const std::vector<glm::vec2>& FileTexCoords, float* textureArray,float* normalsArray, std::vector<unsigned int>& FileIndices) 
 {
     int VertexPointer = vertexData.x - 1;
     FileIndices.push_back(VertexPointer);
@@ -102,7 +102,7 @@ void OBJLoader::ProcessVertex(const glm::vec3& vertexData, const std::vector<glm
     normalsArray[VertexPointer*3+2] = normal.z;
 }
 
-void OBJLoader::ParseIndexData(const std::string& line, unsigned int* container)
+void ParseIndexData(const std::string& line, unsigned int* container)
 {
     int index = 0;
     int end = 0;
@@ -119,20 +119,20 @@ void OBJLoader::ParseIndexData(const std::string& line, unsigned int* container)
     }
 }
 
-glm::vec3 OBJLoader::ParseFloat3(const std::string& line, const int& firstIndex)
+glm::vec3 ParseFloat3(const std::string& line, const int& firstIndex)
 {
     float data[3];
     ParseFloatData(line, firstIndex, 3, &data[0]);
     return glm::vec3(data[0], data[1], data[2]);
 }
 
-glm::vec2 OBJLoader::ParseFloat2(const std::string& line) {
+glm::vec2 ParseFloat2(const std::string& line) {
     float data[2];
     ParseFloatData(line, 3, 2, &data[0]);
     return glm::vec2(data[0], data[1]);
 }
 
-void OBJLoader::ParseFloatData(const std::string& line, const int& firstIndex, int dataSize, float* container)
+void ParseFloatData(const std::string& line, const int& firstIndex, int dataSize, float* container)
 {
     int index = 0;
     int end = 0;
@@ -150,8 +150,7 @@ void OBJLoader::ParseFloatData(const std::string& line, const int& firstIndex, i
     }
 }
 
-void OBJLoader::PrintData(const std::vector<glm::vec3>& FileVertices, const std::vector<glm::vec3>& FileNormals,
-    const std::vector<glm::vec2>& FileTexCoords)
+void PrintData(const std::vector<glm::vec3>& FileVertices, const std::vector<glm::vec3>& FileNormals, const std::vector<glm::vec2>& FileTexCoords)
 {
     std::cout << "Vertices : " << std::endl;
     for (int i = 0; i < FileVertices.size(); i++) {
@@ -166,4 +165,4 @@ void OBJLoader::PrintData(const std::vector<glm::vec3>& FileVertices, const std:
         std::cout << FileTexCoords[i].x << " ; " << FileTexCoords[i].y << std::endl;
     }
 }
-
+}

@@ -1,9 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/coucou.dir/Game/Loader/source/objloader.cpp.o"
+  "CMakeFiles/coucou.dir/Game/Loader/objloader.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/camera.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/light.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/main.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/map.cpp.o"
+  "CMakeFiles/coucou.dir/Game/source/model.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/myevent.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/shader.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/terrain.cpp.o"

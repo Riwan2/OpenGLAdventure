@@ -19,9 +19,11 @@
 #include "../headers/water.h"
 
 //Load
+#include "../Loader/objloader.h"
 #define STB_IMAGE_IMPLEMENTATION
-#include "../Loader/headers/stb_image.h"
-#include "../Loader/headers/objloader.h"
+
+//Model
+#include "../headers/model.h"
 
 const char* _TITLE = "coucou";
 const int _WIDTH = 850;
@@ -90,69 +92,12 @@ int main(int argc, char **argv)
     //light.Move(glm::vec3(center.x, 2.0f, center.z));
     light.Move(glm::vec3(5.0, 7.0f, 0));
     
-    //Triangle
-    float vertices[] = { 
-        -0.5,  0.5, 0.0, 0.0, 0.0,
-        -0.5, -0.5, 0.0, 0.0, 1.0,
-         0.5, -0.5, 0.0, 1.0, 1.0,
-         0.5,  0.5, 0.0, 1.0, 0.0   
-    };
-    unsigned int indices[] = {
-        0, 1, 2,
-        2, 3, 0,
-    };
-    
-    OBJLoader myCube("cube");
-    unsigned int* Lindices = myCube.getIndices();
-    float* Lvertices = myCube.getVertices();
-
-    
-    //Texture loading
-    int width, height, nrChannels;
-    unsigned char* data = stbi_load("../Asset/Texture/stall.jpg", &width, &height, &nrChannels, 0);
-    
-    unsigned int texture;
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
-    
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);	
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-    glGenerateMipmap(GL_TEXTURE_2D);
-    
-    stbi_image_free(data);
-    
     Shader basicShader("../Shader/basicShader");
     glm::mat4 basicModel = glm::mat4(1.0f);
     camera.SetTarget(glm::vec3(0, 0, 0));
     
-    unsigned int VAO, VBO, EBO;
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    glGenBuffers(1, &EBO);
-    
-    glBindVertexArray(VAO);
-    
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, myCube.getVerticesSize(), myCube.getVertices(), GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, myCube.getIndicesSize(), myCube.getIndices(), GL_STATIC_DRAW);
-    
-    glEnableVertexAttribArray(0);    
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-    
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-    
-    glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-    
-    
-    glBindVertexArray(0);    
+    Model stall;
+    stall.Load("cube", "stall");
     
     while(!myEvent.HasQuit()) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
@@ -176,10 +121,7 @@ int main(int argc, char **argv)
         basicShader.SetVec3("lightPos", *light.getPosition());
         //basicShader.SetVec3("myColor", glm::vec3(0.2, 0.7, 0.3));
         
-        glBindTexture(GL_TEXTURE_2D, texture);
-        glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, myCube.getDrawCall() + 10, GL_UNSIGNED_INT, 0);
-        glBindVertexArray(0);
+        stall.Render();
         
         SDL_GL_SwapWindow(m_window);        
         myEvent.Update(&deltaTime, &camera);
