@@ -6,6 +6,54 @@
 
 #IncludeRegexTransform: 
 
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/headers/objloader.h
+string.h
+-
+iostream
+-
+glm/glm.hpp
+-
+vector
+-
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/headers/stb_image.h
+stb_image.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/headers/stb_image.h
+stdio.h
+-
+stdlib.h
+-
+stdarg.h
+-
+stddef.h
+-
+stdlib.h
+-
+string.h
+-
+limits.h
+-
+math.h
+-
+stdio.h
+-
+assert.h
+-
+stdint.h
+-
+emmintrin.h
+-
+intrin.h
+-
+arm_neon.h
+-
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/source/objloader.cpp
+../headers/objloader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/headers/objloader.h
+fstream
+-
+
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/camera.h
 glm/glm.hpp
 -
@@ -39,12 +87,6 @@ glm/glm.hpp
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/shader.h
 ../headers/vaoobject.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/vaoobject.h
-
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/math_3d.h
-stdio.h
--
-math.h
--
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/myevent.h
 SDL2/SDL.h
@@ -141,8 +183,6 @@ glm/gtc/matrix_transform.hpp
 -
 glm/gtc/type_ptr.hpp
 -
-../headers/math_3d.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/math_3d.h
 ../headers/shader.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/shader.h
 ../headers/myevent.h
@@ -159,6 +199,10 @@ glm/gtc/type_ptr.hpp
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/terrain.h
 ../headers/water.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/water.h
+../Loader/headers/stb_image.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/headers/stb_image.h
+../Loader/headers/objloader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/headers/objloader.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/map.cpp
 ../headers/map.h

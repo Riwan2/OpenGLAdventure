@@ -1,6 +1,11 @@
 [
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Loader/source/objloader.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/source/objloader.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/source/objloader.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
   "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/source/camera.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/camera.cpp",
   "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/camera.cpp"
 },

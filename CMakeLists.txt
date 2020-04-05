@@ -3,7 +3,7 @@ project(coucou)
 
 set(CMAKE_CXX_STANDARD 14)
 
-file(GLOB_RECURSE SOURCES Game/source/*.cpp)
+file(GLOB_RECURSE SOURCES Game/*.cpp)
 add_executable(coucou ${SOURCES} )
 
 find_package(SDL2 REQUIRED)

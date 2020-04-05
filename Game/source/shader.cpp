@@ -12,8 +12,6 @@ Shader::Shader(const std::string& fileName)
     glAttachShader(m_shaderProgram, m_vertexShader);
     glAttachShader(m_shaderProgram, m_fragmentShader);
 
-	//glBindAttribLocation(shaderProgram, 0, "position");
-
 	glLinkProgram(m_shaderProgram);
 	CheckShaderError(m_shaderProgram, GL_LINK_STATUS, true, "Error linking shader program");
 

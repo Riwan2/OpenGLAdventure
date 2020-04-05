@@ -169,6 +169,33 @@ coucou/fast:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/build
 .PHONY : coucou/fast
 
+Game/Loader/source/objloader.o: Game/Loader/source/objloader.cpp.o
+
+.PHONY : Game/Loader/source/objloader.o
+
+# target to build an object file
+Game/Loader/source/objloader.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/source/objloader.cpp.o
+.PHONY : Game/Loader/source/objloader.cpp.o
+
+Game/Loader/source/objloader.i: Game/Loader/source/objloader.cpp.i
+
+.PHONY : Game/Loader/source/objloader.i
+
+# target to preprocess a source file
+Game/Loader/source/objloader.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/source/objloader.cpp.i
+.PHONY : Game/Loader/source/objloader.cpp.i
+
+Game/Loader/source/objloader.s: Game/Loader/source/objloader.cpp.s
+
+.PHONY : Game/Loader/source/objloader.s
+
+# target to generate assembly for a file
+Game/Loader/source/objloader.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/source/objloader.cpp.s
+.PHONY : Game/Loader/source/objloader.cpp.s
+
 Game/source/camera.o: Game/source/camera.cpp.o
 
 .PHONY : Game/source/camera.o
@@ -452,6 +479,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... install/local"
 	@echo "... install"
+	@echo "... Game/Loader/source/objloader.o"
+	@echo "... Game/Loader/source/objloader.i"
+	@echo "... Game/Loader/source/objloader.s"
 	@echo "... Game/source/camera.o"
 	@echo "... Game/source/camera.i"
 	@echo "... Game/source/camera.s"

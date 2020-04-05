@@ -2,14 +2,12 @@
 
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
-
-out vec3 outColor; //flat for low poly aspect
+layout (location = 2) in vec2 aTexCoord;
 
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
-uniform vec3 myColor;
 uniform vec3 lightColor;
 uniform vec3 lightPos;
 
@@ -22,6 +20,9 @@ float ambientStrenght = 0.1f;
 vec3 diffuse;
 float brightness;
 
+out vec2 TexCoord;
+out vec3 outColor;
+
 void baseLighting()
 {
     vec3 norm = normalize(Normal);
@@ -31,8 +32,9 @@ void baseLighting()
     diffuse = brightness * lightColor;
 
     vec3 ambient = ambientStrenght * lightColor;
-    outColor = (diffuse + ambient * 2.3) * myColor;
+    outColor = (diffuse + ambient * 2.3);
 }
+
 
 void main()
 {
@@ -41,4 +43,5 @@ void main()
     Normal = mat3(transpose(inverse(model))) * aNormal;
 
     baseLighting();
+    TexCoord = aTexCoord;
 }

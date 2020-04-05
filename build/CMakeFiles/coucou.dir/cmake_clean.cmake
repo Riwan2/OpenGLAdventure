@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/coucou.dir/Game/Loader/source/objloader.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/camera.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/light.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/main.cpp.o"

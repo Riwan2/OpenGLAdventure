@@ -8,16 +8,20 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "../headers/math_3d.h"
 #include "../headers/shader.h"
 #include "../headers/myevent.h"
 #include "../headers/util.h"
-
 #include "../headers/camera.h"
 #include "../headers/map.h"
 #include "../headers/light.h"
+
 #include "../headers/terrain.h"
 #include "../headers/water.h"
+
+//Load
+#define STB_IMAGE_IMPLEMENTATION
+#include "../Loader/headers/stb_image.h"
+#include "../Loader/headers/objloader.h"
 
 const char* _TITLE = "coucou";
 const int _WIDTH = 850;
@@ -70,6 +74,7 @@ int main(int argc, char **argv)
     float myTime = 0;
     
     glm::mat4 projection;
+    
     projection = glm::perspective(glm::radians(45.0f), (float)_WIDTH/(float)_HEIGHT, 0.1f, 100.0f);
     
     Camera camera;
@@ -82,8 +87,73 @@ int main(int argc, char **argv)
     
     //Light 
     Light light(glm::vec3(0.9f, 0.9f, 0.4f));
-    light.Move(glm::vec3(center.x, 50.0f, center.z));
+    //light.Move(glm::vec3(center.x, 2.0f, center.z));
+    light.Move(glm::vec3(5.0, 7.0f, 0));
+    
+    //Triangle
+    float vertices[] = { 
+        -0.5,  0.5, 0.0, 0.0, 0.0,
+        -0.5, -0.5, 0.0, 0.0, 1.0,
+         0.5, -0.5, 0.0, 1.0, 1.0,
+         0.5,  0.5, 0.0, 1.0, 0.0   
+    };
+    unsigned int indices[] = {
+        0, 1, 2,
+        2, 3, 0,
+    };
+    
+    OBJLoader myCube("cube");
+    unsigned int* Lindices = myCube.getIndices();
+    float* Lvertices = myCube.getVertices();
 
+    
+    //Texture loading
+    int width, height, nrChannels;
+    unsigned char* data = stbi_load("../Asset/Texture/stall.jpg", &width, &height, &nrChannels, 0);
+    
+    unsigned int texture;
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);	
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    
+    stbi_image_free(data);
+    
+    Shader basicShader("../Shader/basicShader");
+    glm::mat4 basicModel = glm::mat4(1.0f);
+    camera.SetTarget(glm::vec3(0, 0, 0));
+    
+    unsigned int VAO, VBO, EBO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+    
+    glBindVertexArray(VAO);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, myCube.getVerticesSize(), myCube.getVertices(), GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, myCube.getIndicesSize(), myCube.getIndices(), GL_STATIC_DRAW);
+    
+    glEnableVertexAttribArray(0);    
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    
+    
+    glBindVertexArray(0);    
+    
     while(!myEvent.HasQuit()) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -93,9 +163,23 @@ int main(int argc, char **argv)
         //Light
         light.Render(projection, *camera.getView());
         //Water
-        water.Render(projection, *camera.getView(), *light.getColor(), *light.getPosition());
+        //water.Render(projection, *camera.getView(), *light.getColor(), *light.getPosition());
         //Terrain
         //terrain.Render(projection, *camera.getView(), *light.getColor(), *light.getPosition());
+        light.Move(glm::vec3(-0.01f, -0.01f, -0.01f));
+        
+        basicShader.Use();
+        basicShader.SetMat4("projection", projection);
+        basicShader.SetMat4("view", *camera.getView());
+        basicShader.SetMat4("model", basicModel);
+        basicShader.SetVec3("lightColor", *light.getColor());
+        basicShader.SetVec3("lightPos", *light.getPosition());
+        //basicShader.SetVec3("myColor", glm::vec3(0.2, 0.7, 0.3));
+        
+        glBindTexture(GL_TEXTURE_2D, texture);
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, myCube.getDrawCall() + 10, GL_UNSIGNED_INT, 0);
+        glBindVertexArray(0);
         
         SDL_GL_SwapWindow(m_window);        
         myEvent.Update(&deltaTime, &camera);
