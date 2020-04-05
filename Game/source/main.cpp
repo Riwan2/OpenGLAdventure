@@ -19,7 +19,6 @@
 #include "../headers/water.h"
 
 //Load
-#include "../Loader/objloader.h"
 #define STB_IMAGE_IMPLEMENTATION
 
 //Model

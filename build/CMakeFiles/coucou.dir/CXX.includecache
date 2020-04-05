@@ -217,8 +217,6 @@ glm/gtc/type_ptr.hpp
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/terrain.h
 ../headers/water.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/water.h
-../Loader/objloader.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
 ../headers/model.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/model.h
 
