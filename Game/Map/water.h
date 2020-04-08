@@ -2,7 +2,6 @@
 #define WATER_H
 
 #include <glm/glm.hpp>
-#include "../Loader/shader.h"
 #include "../headers/vaoobject.h"
 #include "map.h"
 
@@ -19,7 +18,6 @@ private:
     float m_time;
     
     float* m_heightMap;
-    Shader* m_shader;
     
     void FlatHeightMap();
 };

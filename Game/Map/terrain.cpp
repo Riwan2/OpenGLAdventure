@@ -1,12 +1,10 @@
 #include "terrain.h"
 
 Terrain::Terrain(const int& width, const int& height, const float& vertexSize, ShaderLoader& shaderLoader) 
-: Map { width, height, vertexSize }
+: Map { width, height, vertexSize, shaderLoader }
 {
     GenerateHeigtMap();
     Initialize(m_heightMap);
-    
-    m_shader = new Shader(shaderLoader);
     
     m_model = glm::mat4(1.0f);
     m_color = glm::vec3(0.1f, 0.5f, 0.4f);
@@ -15,7 +13,6 @@ Terrain::Terrain(const int& width, const int& height, const float& vertexSize, S
 Terrain::~Terrain()
 {
     delete m_heightMap;
-    delete m_shader;
 }
 
 void Terrain::GenerateHeigtMap()

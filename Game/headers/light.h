@@ -8,8 +8,7 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 
-#include "../Loader/shaderLoader.h"
-#include "../Loader/shader.h"
+#include "../Model/shader.h"
 #include "../Basic/camera.h"
 #include "../headers/vaoobject.h"
 

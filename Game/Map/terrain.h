@@ -2,7 +2,6 @@
 #define TERRAIN_H
 
 #include <glm/glm.hpp>
-#include "../Loader/shader.h"
 #include "../headers/vaoobject.h"
 #include "../Basic/util.h"
 
@@ -20,7 +19,6 @@ private:
     glm::vec3 m_color;
     
     float* m_heightMap;
-    Shader* m_shader;
     
     void GenerateHeigtMap();
 };

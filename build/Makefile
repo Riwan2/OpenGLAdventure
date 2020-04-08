@@ -250,32 +250,59 @@ Game/Basic/util.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/util.cpp.s
 .PHONY : Game/Basic/util.cpp.s
 
-Game/Loader/shader.o: Game/Loader/shader.cpp.o
+Game/Entity/entity.o: Game/Entity/entity.cpp.o
 
-.PHONY : Game/Loader/shader.o
+.PHONY : Game/Entity/entity.o
 
 # target to build an object file
-Game/Loader/shader.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/shader.cpp.o
-.PHONY : Game/Loader/shader.cpp.o
+Game/Entity/entity.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o
+.PHONY : Game/Entity/entity.cpp.o
 
-Game/Loader/shader.i: Game/Loader/shader.cpp.i
+Game/Entity/entity.i: Game/Entity/entity.cpp.i
 
-.PHONY : Game/Loader/shader.i
+.PHONY : Game/Entity/entity.i
 
 # target to preprocess a source file
-Game/Loader/shader.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/shader.cpp.i
-.PHONY : Game/Loader/shader.cpp.i
+Game/Entity/entity.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Entity/entity.cpp.i
+.PHONY : Game/Entity/entity.cpp.i
 
-Game/Loader/shader.s: Game/Loader/shader.cpp.s
+Game/Entity/entity.s: Game/Entity/entity.cpp.s
 
-.PHONY : Game/Loader/shader.s
+.PHONY : Game/Entity/entity.s
 
 # target to generate assembly for a file
-Game/Loader/shader.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/shader.cpp.s
-.PHONY : Game/Loader/shader.cpp.s
+Game/Entity/entity.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Entity/entity.cpp.s
+.PHONY : Game/Entity/entity.cpp.s
+
+Game/Loader/modelloader.o: Game/Loader/modelloader.cpp.o
+
+.PHONY : Game/Loader/modelloader.o
+
+# target to build an object file
+Game/Loader/modelloader.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/modelloader.cpp.o
+.PHONY : Game/Loader/modelloader.cpp.o
+
+Game/Loader/modelloader.i: Game/Loader/modelloader.cpp.i
+
+.PHONY : Game/Loader/modelloader.i
+
+# target to preprocess a source file
+Game/Loader/modelloader.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/modelloader.cpp.i
+.PHONY : Game/Loader/modelloader.cpp.i
+
+Game/Loader/modelloader.s: Game/Loader/modelloader.cpp.s
+
+.PHONY : Game/Loader/modelloader.s
+
+# target to generate assembly for a file
+Game/Loader/modelloader.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/modelloader.cpp.s
+.PHONY : Game/Loader/modelloader.cpp.s
 
 Game/Loader/shaderLoader.o: Game/Loader/shaderLoader.cpp.o
 
@@ -439,6 +466,33 @@ Game/Model/model.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Model/model.cpp.s
 .PHONY : Game/Model/model.cpp.s
 
+Game/Model/shader.o: Game/Model/shader.cpp.o
+
+.PHONY : Game/Model/shader.o
+
+# target to build an object file
+Game/Model/shader.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Model/shader.cpp.o
+.PHONY : Game/Model/shader.cpp.o
+
+Game/Model/shader.i: Game/Model/shader.cpp.i
+
+.PHONY : Game/Model/shader.i
+
+# target to preprocess a source file
+Game/Model/shader.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Model/shader.cpp.i
+.PHONY : Game/Model/shader.cpp.i
+
+Game/Model/shader.s: Game/Model/shader.cpp.s
+
+.PHONY : Game/Model/shader.s
+
+# target to generate assembly for a file
+Game/Model/shader.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Model/shader.cpp.s
+.PHONY : Game/Model/shader.cpp.s
+
 Game/source/light.o: Game/source/light.cpp.o
 
 .PHONY : Game/source/light.o
@@ -542,9 +596,12 @@ help:
 	@echo "... Game/Basic/util.o"
 	@echo "... Game/Basic/util.i"
 	@echo "... Game/Basic/util.s"
-	@echo "... Game/Loader/shader.o"
-	@echo "... Game/Loader/shader.i"
-	@echo "... Game/Loader/shader.s"
+	@echo "... Game/Entity/entity.o"
+	@echo "... Game/Entity/entity.i"
+	@echo "... Game/Entity/entity.s"
+	@echo "... Game/Loader/modelloader.o"
+	@echo "... Game/Loader/modelloader.i"
+	@echo "... Game/Loader/modelloader.s"
 	@echo "... Game/Loader/shaderLoader.o"
 	@echo "... Game/Loader/shaderLoader.i"
 	@echo "... Game/Loader/shaderLoader.s"
@@ -563,6 +620,9 @@ help:
 	@echo "... Game/Model/model.o"
 	@echo "... Game/Model/model.i"
 	@echo "... Game/Model/model.s"
+	@echo "... Game/Model/shader.o"
+	@echo "... Game/Model/shader.i"
+	@echo "... Game/Model/shader.s"
 	@echo "... Game/source/light.o"
 	@echo "... Game/source/light.i"
 	@echo "... Game/source/light.s"

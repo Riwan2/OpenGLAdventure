@@ -1,7 +1,7 @@
 #include "map.h"
 #include <iostream>
 
-Map::Map(const int& width, const int& height, const float& vertexSize)
+Map::Map(const int& width, const int& height, const float& vertexSize, ShaderLoader& shaderLoader)
 {
     m_width = width;
     m_height = height;
@@ -12,12 +12,14 @@ Map::Map(const int& width, const int& height, const float& vertexSize)
     
     m_vertices = new float[m_numVertices * 6];
     m_indices = new unsigned int[m_numIndices];
+    m_shader = new Shader(shaderLoader);
 }
 
 Map::~Map()
 {
     delete m_vertices;
     delete m_indices;
+    delete m_shader;
 }
 
 void Map::Initialize(float* heightMap)

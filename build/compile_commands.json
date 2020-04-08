@@ -16,8 +16,13 @@
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
-  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Loader/shader.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shader.cpp",
-  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shader.cpp"
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Loader/modelloader.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.cpp"
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
@@ -48,6 +53,11 @@
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
   "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Model/model.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.cpp",
   "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Model/shader.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.cpp"
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",

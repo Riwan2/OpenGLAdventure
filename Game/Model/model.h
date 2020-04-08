@@ -2,16 +2,14 @@
 #define MODEL_H
 
 #include <GL/glew.h>
-#include <GL/gl.h>
 
 #include <string>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "../Loader/stb_image.h"
-#include "../Loader/shaderLoader.h"
-#include "../Loader/shader.h"
+#include "../Model/shader.h"
+#include "../Loader/modelloader.h"
 
 class Model
 {
@@ -19,13 +17,13 @@ public:
     Model();
     ~Model();
     
-    void Load(const std::string& ModelFileName, const unsigned int& TextureId, ShaderLoader& shaderLoader);
+    void Load(const ModelLoader& modelLoader, const unsigned int& TextureId, const ShaderLoader& shaderLoader);
     void Render(const glm::mat4& CameraProjection, const glm::mat4& cameraView, const glm::vec3& lightPos, const glm::vec3& lightColor);
     
     void Move(const float& x, const float& y, const float& z);
     void Rotate(const float& degree, const char& axes); //only x, y and z for axes
 private:
-    unsigned int m_VAO, m_VBO, m_EBO, m_Texture;
+    GLuint m_VAO, m_VBO, m_EBO, m_Texture;
     int m_drawCall;
     Shader* m_shader;
     

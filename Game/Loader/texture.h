@@ -2,10 +2,9 @@
 #define TEXTURE_H
 
 #include <GL/glew.h>
-#include <GL/gl.h>
 #include <string>
 
-#include "../Loader/stb_image.h"
+#include "stb_image.h"
 
 class Texture 
 {
@@ -14,10 +13,10 @@ public:
     ~Texture();
     
     void Load(const std::string& fileName);
-    const unsigned int& getId() { return m_textureId; }
+    const GLuint& getId() { return m_textureId; }
     
 private:
-    unsigned int m_textureId;
+    GLuint m_textureId;
 };
 
 #endif // TEXTURE_H

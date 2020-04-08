@@ -12,14 +12,14 @@
 #include "../Basic/camera.h"
 #include "../headers/light.h"
 
+#define STB_IMAGE_IMPLEMENTATION
+
 #include "../Map/terrain.h"
 #include "../Map/water.h"
 
 #include "../Loader/texture.h"
 #include "../Loader/shaderLoader.h"
-
-//Load
-#define STB_IMAGE_IMPLEMENTATION
+#include "../Loader/modelloader.h"
 
 //Model
 #include "../Model/model.h"
@@ -99,14 +99,17 @@ int main(int argc, char **argv)
     
     camera.SetTarget(glm::vec3(0, 0, 0));
     
-    Texture stallTexture;
-    stallTexture.Load("stall");
+    Texture myTexture;
+    myTexture.Load("white");
     
     ShaderLoader basicShader;
     basicShader.Load("basicShader");
     
+    ModelLoader myModel;
+    myModel.Load("dragon");
+    
     Model stall;
-    stall.Load("lightguy", stallTexture.getId(), basicShader);
+    stall.Load(myModel, myTexture.getId(), basicShader);
     
     while(!myEvent.HasQuit()) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);

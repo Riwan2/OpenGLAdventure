@@ -1,12 +1,10 @@
 #include "water.h"
 
 Water::Water(const int& width, const int& height, const float& vertexSize, ShaderLoader& shaderLoader) 
-: Map { width, height, vertexSize }
+: Map { width, height, vertexSize, shaderLoader }
 {
     FlatHeightMap();
     Initialize(m_heightMap);
-    
-    m_shader = new Shader(shaderLoader);
     
     m_model = glm::mat4(1.0f);
     m_color = glm::vec3(0.2f, 0.3f, 1.0f);
@@ -16,7 +14,6 @@ Water::Water(const int& width, const int& height, const float& vertexSize, Shade
 Water::~Water()
 {
     delete m_heightMap;
-    delete m_shader;
 }
 
 void Water::Render(const glm::mat4& projection, const glm::mat4& view, const glm::vec3& lightColor, const glm::vec3& lightPos)

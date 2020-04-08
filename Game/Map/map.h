@@ -2,15 +2,13 @@
 #define MAP_H
 
 #include <glm/glm.hpp>
-#include "../Loader/shader.h"
+#include "../Model/shader.h"
 #include "../headers/vaoobject.h"
-
-#include "../Loader/shaderLoader.h"
 
 class Map
 {
 public:
-    Map(const int& width, const int& height, const float& vertexSize);
+    Map(const int& width, const int& height, const float& vertexSize, ShaderLoader& shaderLoader);
     ~Map();
     
     void Initialize(float* heightMap);
@@ -27,6 +25,10 @@ public:
     int getHeight() { return m_height; }
     float getVertexSize() { return m_vertexSize; }
     int getCount() { return m_numIndices + m_numVertices; }
+
+protected:
+    Shader* m_shader;
+    
 private:
     float m_vertexSize;
     int m_width;
