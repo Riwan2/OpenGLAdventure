@@ -2,14 +2,16 @@
 #define TERRAIN_H
 
 #include <glm/glm.hpp>
-#include "../headers/shader.h"
+#include "../Loader/shader.h"
 #include "../headers/vaoobject.h"
-#include "../headers/map.h"
+#include "../Basic/util.h"
+
+#include "map.h"
 
 class Terrain : public Map
 {
 public:
-    Terrain(const int& width, const int& height, const float& vertexSize);
+    Terrain(const int& width, const int& height, const float& vertexSize, ShaderLoader& shaderLoader);
     ~Terrain();
     
     void Render(const glm::mat4& projection, const glm::mat4& view, const glm::vec3& lightColor, const glm::vec3& lightPos);

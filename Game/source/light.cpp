@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Light::Light(const glm::vec3& color, const float& size)
+Light::Light(const glm::vec3& color, ShaderLoader& shaderLoader, const float& size)
 {
     
     float vertices[] = {
@@ -33,7 +33,7 @@ Light::Light(const glm::vec3& color, const float& size)
     m_vaoObject = new VaoObject();
     m_vaoObject->Initialize(vertices, 8, indices, 36);
 
-    m_shader = new Shader("../Shader/lightShader");
+    m_shader = new Shader(shaderLoader);
     m_model = glm::mat4(1.0f);
     m_position = glm::vec3(0.0, 0.0f, 0.0);
     

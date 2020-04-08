@@ -169,59 +169,275 @@ coucou/fast:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/build
 .PHONY : coucou/fast
 
-Game/Loader/objloader.o: Game/Loader/objloader.cpp.o
+Game/Basic/camera.o: Game/Basic/camera.cpp.o
 
-.PHONY : Game/Loader/objloader.o
-
-# target to build an object file
-Game/Loader/objloader.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/objloader.cpp.o
-.PHONY : Game/Loader/objloader.cpp.o
-
-Game/Loader/objloader.i: Game/Loader/objloader.cpp.i
-
-.PHONY : Game/Loader/objloader.i
-
-# target to preprocess a source file
-Game/Loader/objloader.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/objloader.cpp.i
-.PHONY : Game/Loader/objloader.cpp.i
-
-Game/Loader/objloader.s: Game/Loader/objloader.cpp.s
-
-.PHONY : Game/Loader/objloader.s
-
-# target to generate assembly for a file
-Game/Loader/objloader.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/objloader.cpp.s
-.PHONY : Game/Loader/objloader.cpp.s
-
-Game/source/camera.o: Game/source/camera.cpp.o
-
-.PHONY : Game/source/camera.o
+.PHONY : Game/Basic/camera.o
 
 # target to build an object file
-Game/source/camera.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/camera.cpp.o
-.PHONY : Game/source/camera.cpp.o
+Game/Basic/camera.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/camera.cpp.o
+.PHONY : Game/Basic/camera.cpp.o
 
-Game/source/camera.i: Game/source/camera.cpp.i
+Game/Basic/camera.i: Game/Basic/camera.cpp.i
 
-.PHONY : Game/source/camera.i
+.PHONY : Game/Basic/camera.i
 
 # target to preprocess a source file
-Game/source/camera.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/camera.cpp.i
-.PHONY : Game/source/camera.cpp.i
+Game/Basic/camera.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/camera.cpp.i
+.PHONY : Game/Basic/camera.cpp.i
 
-Game/source/camera.s: Game/source/camera.cpp.s
+Game/Basic/camera.s: Game/Basic/camera.cpp.s
 
-.PHONY : Game/source/camera.s
+.PHONY : Game/Basic/camera.s
 
 # target to generate assembly for a file
-Game/source/camera.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/camera.cpp.s
-.PHONY : Game/source/camera.cpp.s
+Game/Basic/camera.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/camera.cpp.s
+.PHONY : Game/Basic/camera.cpp.s
+
+Game/Basic/myevent.o: Game/Basic/myevent.cpp.o
+
+.PHONY : Game/Basic/myevent.o
+
+# target to build an object file
+Game/Basic/myevent.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/myevent.cpp.o
+.PHONY : Game/Basic/myevent.cpp.o
+
+Game/Basic/myevent.i: Game/Basic/myevent.cpp.i
+
+.PHONY : Game/Basic/myevent.i
+
+# target to preprocess a source file
+Game/Basic/myevent.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/myevent.cpp.i
+.PHONY : Game/Basic/myevent.cpp.i
+
+Game/Basic/myevent.s: Game/Basic/myevent.cpp.s
+
+.PHONY : Game/Basic/myevent.s
+
+# target to generate assembly for a file
+Game/Basic/myevent.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/myevent.cpp.s
+.PHONY : Game/Basic/myevent.cpp.s
+
+Game/Basic/util.o: Game/Basic/util.cpp.o
+
+.PHONY : Game/Basic/util.o
+
+# target to build an object file
+Game/Basic/util.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/util.cpp.o
+.PHONY : Game/Basic/util.cpp.o
+
+Game/Basic/util.i: Game/Basic/util.cpp.i
+
+.PHONY : Game/Basic/util.i
+
+# target to preprocess a source file
+Game/Basic/util.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/util.cpp.i
+.PHONY : Game/Basic/util.cpp.i
+
+Game/Basic/util.s: Game/Basic/util.cpp.s
+
+.PHONY : Game/Basic/util.s
+
+# target to generate assembly for a file
+Game/Basic/util.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/util.cpp.s
+.PHONY : Game/Basic/util.cpp.s
+
+Game/Loader/shader.o: Game/Loader/shader.cpp.o
+
+.PHONY : Game/Loader/shader.o
+
+# target to build an object file
+Game/Loader/shader.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/shader.cpp.o
+.PHONY : Game/Loader/shader.cpp.o
+
+Game/Loader/shader.i: Game/Loader/shader.cpp.i
+
+.PHONY : Game/Loader/shader.i
+
+# target to preprocess a source file
+Game/Loader/shader.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/shader.cpp.i
+.PHONY : Game/Loader/shader.cpp.i
+
+Game/Loader/shader.s: Game/Loader/shader.cpp.s
+
+.PHONY : Game/Loader/shader.s
+
+# target to generate assembly for a file
+Game/Loader/shader.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/shader.cpp.s
+.PHONY : Game/Loader/shader.cpp.s
+
+Game/Loader/shaderLoader.o: Game/Loader/shaderLoader.cpp.o
+
+.PHONY : Game/Loader/shaderLoader.o
+
+# target to build an object file
+Game/Loader/shaderLoader.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/shaderLoader.cpp.o
+.PHONY : Game/Loader/shaderLoader.cpp.o
+
+Game/Loader/shaderLoader.i: Game/Loader/shaderLoader.cpp.i
+
+.PHONY : Game/Loader/shaderLoader.i
+
+# target to preprocess a source file
+Game/Loader/shaderLoader.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/shaderLoader.cpp.i
+.PHONY : Game/Loader/shaderLoader.cpp.i
+
+Game/Loader/shaderLoader.s: Game/Loader/shaderLoader.cpp.s
+
+.PHONY : Game/Loader/shaderLoader.s
+
+# target to generate assembly for a file
+Game/Loader/shaderLoader.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/shaderLoader.cpp.s
+.PHONY : Game/Loader/shaderLoader.cpp.s
+
+Game/Loader/texture.o: Game/Loader/texture.cpp.o
+
+.PHONY : Game/Loader/texture.o
+
+# target to build an object file
+Game/Loader/texture.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/texture.cpp.o
+.PHONY : Game/Loader/texture.cpp.o
+
+Game/Loader/texture.i: Game/Loader/texture.cpp.i
+
+.PHONY : Game/Loader/texture.i
+
+# target to preprocess a source file
+Game/Loader/texture.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/texture.cpp.i
+.PHONY : Game/Loader/texture.cpp.i
+
+Game/Loader/texture.s: Game/Loader/texture.cpp.s
+
+.PHONY : Game/Loader/texture.s
+
+# target to generate assembly for a file
+Game/Loader/texture.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/texture.cpp.s
+.PHONY : Game/Loader/texture.cpp.s
+
+Game/Map/map.o: Game/Map/map.cpp.o
+
+.PHONY : Game/Map/map.o
+
+# target to build an object file
+Game/Map/map.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Map/map.cpp.o
+.PHONY : Game/Map/map.cpp.o
+
+Game/Map/map.i: Game/Map/map.cpp.i
+
+.PHONY : Game/Map/map.i
+
+# target to preprocess a source file
+Game/Map/map.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Map/map.cpp.i
+.PHONY : Game/Map/map.cpp.i
+
+Game/Map/map.s: Game/Map/map.cpp.s
+
+.PHONY : Game/Map/map.s
+
+# target to generate assembly for a file
+Game/Map/map.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Map/map.cpp.s
+.PHONY : Game/Map/map.cpp.s
+
+Game/Map/terrain.o: Game/Map/terrain.cpp.o
+
+.PHONY : Game/Map/terrain.o
+
+# target to build an object file
+Game/Map/terrain.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o
+.PHONY : Game/Map/terrain.cpp.o
+
+Game/Map/terrain.i: Game/Map/terrain.cpp.i
+
+.PHONY : Game/Map/terrain.i
+
+# target to preprocess a source file
+Game/Map/terrain.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Map/terrain.cpp.i
+.PHONY : Game/Map/terrain.cpp.i
+
+Game/Map/terrain.s: Game/Map/terrain.cpp.s
+
+.PHONY : Game/Map/terrain.s
+
+# target to generate assembly for a file
+Game/Map/terrain.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Map/terrain.cpp.s
+.PHONY : Game/Map/terrain.cpp.s
+
+Game/Map/water.o: Game/Map/water.cpp.o
+
+.PHONY : Game/Map/water.o
+
+# target to build an object file
+Game/Map/water.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Map/water.cpp.o
+.PHONY : Game/Map/water.cpp.o
+
+Game/Map/water.i: Game/Map/water.cpp.i
+
+.PHONY : Game/Map/water.i
+
+# target to preprocess a source file
+Game/Map/water.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Map/water.cpp.i
+.PHONY : Game/Map/water.cpp.i
+
+Game/Map/water.s: Game/Map/water.cpp.s
+
+.PHONY : Game/Map/water.s
+
+# target to generate assembly for a file
+Game/Map/water.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Map/water.cpp.s
+.PHONY : Game/Map/water.cpp.s
+
+Game/Model/model.o: Game/Model/model.cpp.o
+
+.PHONY : Game/Model/model.o
+
+# target to build an object file
+Game/Model/model.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Model/model.cpp.o
+.PHONY : Game/Model/model.cpp.o
+
+Game/Model/model.i: Game/Model/model.cpp.i
+
+.PHONY : Game/Model/model.i
+
+# target to preprocess a source file
+Game/Model/model.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Model/model.cpp.i
+.PHONY : Game/Model/model.cpp.i
+
+Game/Model/model.s: Game/Model/model.cpp.s
+
+.PHONY : Game/Model/model.s
+
+# target to generate assembly for a file
+Game/Model/model.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Model/model.cpp.s
+.PHONY : Game/Model/model.cpp.s
 
 Game/source/light.o: Game/source/light.cpp.o
 
@@ -277,168 +493,6 @@ Game/source/main.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/main.cpp.s
 .PHONY : Game/source/main.cpp.s
 
-Game/source/map.o: Game/source/map.cpp.o
-
-.PHONY : Game/source/map.o
-
-# target to build an object file
-Game/source/map.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/map.cpp.o
-.PHONY : Game/source/map.cpp.o
-
-Game/source/map.i: Game/source/map.cpp.i
-
-.PHONY : Game/source/map.i
-
-# target to preprocess a source file
-Game/source/map.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/map.cpp.i
-.PHONY : Game/source/map.cpp.i
-
-Game/source/map.s: Game/source/map.cpp.s
-
-.PHONY : Game/source/map.s
-
-# target to generate assembly for a file
-Game/source/map.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/map.cpp.s
-.PHONY : Game/source/map.cpp.s
-
-Game/source/model.o: Game/source/model.cpp.o
-
-.PHONY : Game/source/model.o
-
-# target to build an object file
-Game/source/model.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/model.cpp.o
-.PHONY : Game/source/model.cpp.o
-
-Game/source/model.i: Game/source/model.cpp.i
-
-.PHONY : Game/source/model.i
-
-# target to preprocess a source file
-Game/source/model.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/model.cpp.i
-.PHONY : Game/source/model.cpp.i
-
-Game/source/model.s: Game/source/model.cpp.s
-
-.PHONY : Game/source/model.s
-
-# target to generate assembly for a file
-Game/source/model.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/model.cpp.s
-.PHONY : Game/source/model.cpp.s
-
-Game/source/myevent.o: Game/source/myevent.cpp.o
-
-.PHONY : Game/source/myevent.o
-
-# target to build an object file
-Game/source/myevent.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/myevent.cpp.o
-.PHONY : Game/source/myevent.cpp.o
-
-Game/source/myevent.i: Game/source/myevent.cpp.i
-
-.PHONY : Game/source/myevent.i
-
-# target to preprocess a source file
-Game/source/myevent.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/myevent.cpp.i
-.PHONY : Game/source/myevent.cpp.i
-
-Game/source/myevent.s: Game/source/myevent.cpp.s
-
-.PHONY : Game/source/myevent.s
-
-# target to generate assembly for a file
-Game/source/myevent.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/myevent.cpp.s
-.PHONY : Game/source/myevent.cpp.s
-
-Game/source/shader.o: Game/source/shader.cpp.o
-
-.PHONY : Game/source/shader.o
-
-# target to build an object file
-Game/source/shader.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/shader.cpp.o
-.PHONY : Game/source/shader.cpp.o
-
-Game/source/shader.i: Game/source/shader.cpp.i
-
-.PHONY : Game/source/shader.i
-
-# target to preprocess a source file
-Game/source/shader.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/shader.cpp.i
-.PHONY : Game/source/shader.cpp.i
-
-Game/source/shader.s: Game/source/shader.cpp.s
-
-.PHONY : Game/source/shader.s
-
-# target to generate assembly for a file
-Game/source/shader.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/shader.cpp.s
-.PHONY : Game/source/shader.cpp.s
-
-Game/source/terrain.o: Game/source/terrain.cpp.o
-
-.PHONY : Game/source/terrain.o
-
-# target to build an object file
-Game/source/terrain.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/terrain.cpp.o
-.PHONY : Game/source/terrain.cpp.o
-
-Game/source/terrain.i: Game/source/terrain.cpp.i
-
-.PHONY : Game/source/terrain.i
-
-# target to preprocess a source file
-Game/source/terrain.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/terrain.cpp.i
-.PHONY : Game/source/terrain.cpp.i
-
-Game/source/terrain.s: Game/source/terrain.cpp.s
-
-.PHONY : Game/source/terrain.s
-
-# target to generate assembly for a file
-Game/source/terrain.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/terrain.cpp.s
-.PHONY : Game/source/terrain.cpp.s
-
-Game/source/util.o: Game/source/util.cpp.o
-
-.PHONY : Game/source/util.o
-
-# target to build an object file
-Game/source/util.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/util.cpp.o
-.PHONY : Game/source/util.cpp.o
-
-Game/source/util.i: Game/source/util.cpp.i
-
-.PHONY : Game/source/util.i
-
-# target to preprocess a source file
-Game/source/util.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/util.cpp.i
-.PHONY : Game/source/util.cpp.i
-
-Game/source/util.s: Game/source/util.cpp.s
-
-.PHONY : Game/source/util.s
-
-# target to generate assembly for a file
-Game/source/util.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/util.cpp.s
-.PHONY : Game/source/util.cpp.s
-
 Game/source/vaoobject.o: Game/source/vaoobject.cpp.o
 
 .PHONY : Game/source/vaoobject.o
@@ -466,33 +520,6 @@ Game/source/vaoobject.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.s
 .PHONY : Game/source/vaoobject.cpp.s
 
-Game/source/water.o: Game/source/water.cpp.o
-
-.PHONY : Game/source/water.o
-
-# target to build an object file
-Game/source/water.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/water.cpp.o
-.PHONY : Game/source/water.cpp.o
-
-Game/source/water.i: Game/source/water.cpp.i
-
-.PHONY : Game/source/water.i
-
-# target to preprocess a source file
-Game/source/water.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/water.cpp.i
-.PHONY : Game/source/water.cpp.i
-
-Game/source/water.s: Game/source/water.cpp.s
-
-.PHONY : Game/source/water.s
-
-# target to generate assembly for a file
-Game/source/water.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/water.cpp.s
-.PHONY : Game/source/water.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -506,42 +533,45 @@ help:
 	@echo "... list_install_components"
 	@echo "... install/local"
 	@echo "... install"
-	@echo "... Game/Loader/objloader.o"
-	@echo "... Game/Loader/objloader.i"
-	@echo "... Game/Loader/objloader.s"
-	@echo "... Game/source/camera.o"
-	@echo "... Game/source/camera.i"
-	@echo "... Game/source/camera.s"
+	@echo "... Game/Basic/camera.o"
+	@echo "... Game/Basic/camera.i"
+	@echo "... Game/Basic/camera.s"
+	@echo "... Game/Basic/myevent.o"
+	@echo "... Game/Basic/myevent.i"
+	@echo "... Game/Basic/myevent.s"
+	@echo "... Game/Basic/util.o"
+	@echo "... Game/Basic/util.i"
+	@echo "... Game/Basic/util.s"
+	@echo "... Game/Loader/shader.o"
+	@echo "... Game/Loader/shader.i"
+	@echo "... Game/Loader/shader.s"
+	@echo "... Game/Loader/shaderLoader.o"
+	@echo "... Game/Loader/shaderLoader.i"
+	@echo "... Game/Loader/shaderLoader.s"
+	@echo "... Game/Loader/texture.o"
+	@echo "... Game/Loader/texture.i"
+	@echo "... Game/Loader/texture.s"
+	@echo "... Game/Map/map.o"
+	@echo "... Game/Map/map.i"
+	@echo "... Game/Map/map.s"
+	@echo "... Game/Map/terrain.o"
+	@echo "... Game/Map/terrain.i"
+	@echo "... Game/Map/terrain.s"
+	@echo "... Game/Map/water.o"
+	@echo "... Game/Map/water.i"
+	@echo "... Game/Map/water.s"
+	@echo "... Game/Model/model.o"
+	@echo "... Game/Model/model.i"
+	@echo "... Game/Model/model.s"
 	@echo "... Game/source/light.o"
 	@echo "... Game/source/light.i"
 	@echo "... Game/source/light.s"
 	@echo "... Game/source/main.o"
 	@echo "... Game/source/main.i"
 	@echo "... Game/source/main.s"
-	@echo "... Game/source/map.o"
-	@echo "... Game/source/map.i"
-	@echo "... Game/source/map.s"
-	@echo "... Game/source/model.o"
-	@echo "... Game/source/model.i"
-	@echo "... Game/source/model.s"
-	@echo "... Game/source/myevent.o"
-	@echo "... Game/source/myevent.i"
-	@echo "... Game/source/myevent.s"
-	@echo "... Game/source/shader.o"
-	@echo "... Game/source/shader.i"
-	@echo "... Game/source/shader.s"
-	@echo "... Game/source/terrain.o"
-	@echo "... Game/source/terrain.i"
-	@echo "... Game/source/terrain.s"
-	@echo "... Game/source/util.o"
-	@echo "... Game/source/util.i"
-	@echo "... Game/source/util.s"
 	@echo "... Game/source/vaoobject.o"
 	@echo "... Game/source/vaoobject.i"
 	@echo "... Game/source/vaoobject.s"
-	@echo "... Game/source/water.o"
-	@echo "... Game/source/water.i"
-	@echo "... Game/source/water.s"
 .PHONY : help
 
 

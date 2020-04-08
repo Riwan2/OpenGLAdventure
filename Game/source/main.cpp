@@ -8,21 +8,21 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "../headers/shader.h"
-#include "../headers/myevent.h"
-#include "../headers/util.h"
-#include "../headers/camera.h"
-#include "../headers/map.h"
+#include "../Basic/myevent.h"
+#include "../Basic/camera.h"
 #include "../headers/light.h"
 
-#include "../headers/terrain.h"
-#include "../headers/water.h"
+#include "../Map/terrain.h"
+#include "../Map/water.h"
+
+#include "../Loader/texture.h"
+#include "../Loader/shaderLoader.h"
 
 //Load
 #define STB_IMAGE_IMPLEMENTATION
 
 //Model
-#include "../headers/model.h"
+#include "../Model/model.h"
 
 const char* _TITLE = "coucou";
 const int _WIDTH = 850;
@@ -66,8 +66,11 @@ int main(int argc, char **argv)
     glClearColor(0.2f, 0.2f, 0.2f, 0.0f);
     
     GLenum res = glewInit();
+    
+    ShaderLoader waterShader;
+    waterShader.Load("waterShader");
 
-    Water water(50, 50, 1.0f); //200, 200, 0.5F
+    Water water(50, 50, 1.0f, waterShader); //200, 200, 0.5F
     //Terrain terrain(50, 50, 1.0f);
     
     MyEvent myEvent;
@@ -86,17 +89,24 @@ int main(int argc, char **argv)
     water.getVertexSize() / 2, 20.0f, (float)water.getHeight() * water.getVertexSize() / 2 - water.getVertexSize()/2);
     camera.SetTarget(center);
     
-    //Light 
-    Light light(glm::vec3(0.9f, 0.9f, 0.4f));
+    //Light
+    ShaderLoader lightShader;
+    lightShader.Load("lightShader");
+    
+    Light light(glm::vec3(0.9f, 0.9f, 0.4f), lightShader);
     //light.Move(glm::vec3(center.x, 2.0f, center.z));
     light.Move(glm::vec3(5.0, 7.0f, 0));
     
-    Shader basicShader("../Shader/basicShader");
-    glm::mat4 basicModel = glm::mat4(1.0f);
     camera.SetTarget(glm::vec3(0, 0, 0));
     
+    Texture stallTexture;
+    stallTexture.Load("stall");
+    
+    ShaderLoader basicShader;
+    basicShader.Load("basicShader");
+    
     Model stall;
-    stall.Load("cube", "stall");
+    stall.Load("lightguy", stallTexture.getId(), basicShader);
     
     while(!myEvent.HasQuit()) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
@@ -112,15 +122,7 @@ int main(int argc, char **argv)
         //terrain.Render(projection, *camera.getView(), *light.getColor(), *light.getPosition());
         light.Move(glm::vec3(-0.01f, -0.01f, -0.01f));
         
-        basicShader.Use();
-        basicShader.SetMat4("projection", projection);
-        basicShader.SetMat4("view", *camera.getView());
-        basicShader.SetMat4("model", basicModel);
-        basicShader.SetVec3("lightColor", *light.getColor());
-        basicShader.SetVec3("lightPos", *light.getPosition());
-        //basicShader.SetVec3("myColor", glm::vec3(0.2, 0.7, 0.3));
-        
-        stall.Render();
+        stall.Render(projection, *camera.getView(), *light.getPosition(), *light.getColor());
         
         SDL_GL_SwapWindow(m_window);        
         myEvent.Update(&deltaTime, &camera);

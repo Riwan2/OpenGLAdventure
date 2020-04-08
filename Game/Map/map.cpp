@@ -1,4 +1,4 @@
-#include "../headers/map.h"
+#include "map.h"
 #include <iostream>
 
 Map::Map(const int& width, const int& height, const float& vertexSize)

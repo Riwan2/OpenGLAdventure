@@ -2,8 +2,10 @@
 #define MAP_H
 
 #include <glm/glm.hpp>
-#include "../headers/shader.h"
+#include "../Loader/shader.h"
 #include "../headers/vaoobject.h"
+
+#include "../Loader/shaderLoader.h"
 
 class Map
 {

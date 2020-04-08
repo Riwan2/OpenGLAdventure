@@ -2,14 +2,14 @@
 #define WATER_H
 
 #include <glm/glm.hpp>
-#include "../headers/shader.h"
+#include "../Loader/shader.h"
 #include "../headers/vaoobject.h"
-#include "../headers/map.h"
+#include "map.h"
 
 class Water : public Map
 {
 public:
-    Water(const int& width, const int& height, const float& vertexSize);
+    Water(const int& width, const int& height, const float& vertexSize, ShaderLoader& shaderLoader);
     ~Water();
     
     void Render(const glm::mat4& projection, const glm::mat4& view, const glm::vec3& lightColor, const glm::vec3& lightPos);

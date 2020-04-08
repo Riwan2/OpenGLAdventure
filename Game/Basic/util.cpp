@@ -1,4 +1,4 @@
-#include "../headers/util.h"
+#include "util.h"
 
 void Util::InitRandom() {
     srand(time(NULL));

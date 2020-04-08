@@ -8,14 +8,15 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 
-#include "../headers/shader.h"
-#include "../headers/camera.h"
+#include "../Loader/shaderLoader.h"
+#include "../Loader/shader.h"
+#include "../Basic/camera.h"
 #include "../headers/vaoobject.h"
 
 class Light
 {
 public:
-    Light(const glm::vec3& color, const float& size = 1.0f);
+    Light(const glm::vec3& color, ShaderLoader& shaderLoader, const float& size = 1.0f);
     ~Light();
     
     void Move(const glm::vec3& position);

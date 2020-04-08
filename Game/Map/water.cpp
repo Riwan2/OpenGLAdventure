@@ -1,12 +1,12 @@
-#include "../headers/water.h"
+#include "water.h"
 
-Water::Water(const int& width, const int& height, const float& vertexSize) 
+Water::Water(const int& width, const int& height, const float& vertexSize, ShaderLoader& shaderLoader) 
 : Map { width, height, vertexSize }
 {
     FlatHeightMap();
     Initialize(m_heightMap);
     
-    m_shader = new Shader("../Shader/waterShader");
+    m_shader = new Shader(shaderLoader);
     
     m_model = glm::mat4(1.0f);
     m_color = glm::vec3(0.2f, 0.3f, 1.0f);

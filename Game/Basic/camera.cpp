@@ -1,4 +1,4 @@
-#include "../headers/camera.h"
+#include "camera.h"
 
 #include <GL/gl.h>
 #include <iostream>

@@ -4,18 +4,19 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Loader/objloader.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/camera.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/camera.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Basic/camera.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/myevent.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Basic/myevent.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Basic/util.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shader.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Loader/shader.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Loader/shaderLoader.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Loader/texture.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Map/map.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/water.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Map/water.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Model/model.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/light.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/light.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/main.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/map.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/map.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/model.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/model.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/myevent.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/myevent.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/shader.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/shader.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/terrain.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/terrain.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/util.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/util.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/vaoobject.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/water.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/water.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 #include <GL/gl.h>
 
-#include "../headers/camera.h"
+#include "camera.h"
 
 class MyEvent
 {
