@@ -93,9 +93,10 @@ int main(int argc, char **argv)
     ShaderLoader lightShader;
     lightShader.Load("lightShader");
     
-    Light light(glm::vec3(0.9f, 0.9f, 0.4f), lightShader);
+    glm::vec3 lightColor = glm::vec3(0.9f, 0.9f, 0.4f);
+    Light light(lightColor, lightShader);
     //light.Move(glm::vec3(center.x, 2.0f, center.z));
-    light.Move(glm::vec3(5.0, 7.0f, 0));
+    light.Move(glm::vec3(-10, 10, 10.0));
     
     camera.SetTarget(glm::vec3(0, 0, 0));
     
@@ -123,9 +124,10 @@ int main(int argc, char **argv)
         //water.Render(projection, *camera.getView(), *light.getColor(), *light.getPosition());
         //Terrain
         //terrain.Render(projection, *camera.getView(), *light.getColor(), *light.getPosition());
-        light.Move(glm::vec3(-0.01f, -0.01f, -0.01f));
+        //light.Move(glm::vec3(-0.001, -0.001, -0.001));
         
         stall.Render(projection, *camera.getView(), *light.getPosition(), *light.getColor());
+        stall.Rotate(0.25f, 'y');
         
         SDL_GL_SwapWindow(m_window);        
         myEvent.Update(&deltaTime, &camera);

@@ -54,13 +54,13 @@ void ModelLoader::Load(const std::string& fileName)
     
     glEnableVertexAttribArray(0); //Position
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-    
+
     glEnableVertexAttribArray(1); //Normals
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
     
     glEnableVertexAttribArray(2); //Texture Position
     glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-    
+        
     glBindVertexArray(0);
     
     delete vertices;

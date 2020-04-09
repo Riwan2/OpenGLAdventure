@@ -2,12 +2,48 @@
 
 out vec4 color;
 in vec2 TexCoord;
-in vec3 outColor;
 
 uniform sampler2D myTexture;
+uniform vec3 lightColor;
+
+in vec3 cameraDirection;
+in vec3 normal;
+in vec3 lightVector;
+
+float shineDamper = 64;
+float reflectivity = 1.0;
+float ambientStrenght = 0.0f;
+vec3 finalSpecular;
+vec3 appliedLightColor;
+vec4 textureVector;
+
+void lighting()
+{
+    //basic
+    vec3 norm = normalize(normal);
+    vec3 toLight = normalize(lightVector);
+    float dotLight = dot(norm, toLight);
+    float brightness = max(dotLight, 0.0);
+    vec3 diffuse = brightness * lightColor;
+
+    //specular
+    vec3 cameraNorm = normalize(cameraDirection);
+    vec3 lightDirection = -toLight;
+    vec3 lightReflection = reflect(lightDirection, norm);
+    float dotReflection = dot(cameraNorm, lightReflection);
+    float reflection = max(dotReflection, 0.0);
+    float dampedFactor = pow(reflection, shineDamper);
+    finalSpecular = dampedFactor * lightColor * reflectivity;
+
+    vec3 ambient = ambientStrenght * vec3(textureVector);
+    appliedLightColor = diffuse + ambient;
+}
 
 void main()
 {
     //color = vec4(1.0, 1.0, 1.0, 1.0);
-    color = texture(myTexture, TexCoord) * vec4(outColor, 1.0);
+    textureVector = texture(myTexture, TexCoord);
+
+    lighting();
+    color =  textureVector * vec4(appliedLightColor, 1.0) + vec4(finalSpecular, 1.0);
 }

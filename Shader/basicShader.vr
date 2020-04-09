@@ -7,41 +7,24 @@ layout (location = 2) in vec2 aTexCoord;
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
-
-uniform vec3 lightColor;
 uniform vec3 lightPos;
-
-//Basic
-vec3 Normal;
-vec3 FragPos;
-float ambientStrenght = 0.5f;
-
-//Light
-vec3 diffuse;
-float brightness;
 
 out vec2 TexCoord;
 out vec3 outColor;
 
-void baseLighting()
-{
-    vec3 norm = normalize(Normal);
-    vec3 lightDir = normalize(lightPos - FragPos);
-    float nDot1 = dot(norm, lightDir);
-    brightness = max(nDot1, 0.0);
-    diffuse = brightness * lightColor;
+out vec3 cameraDirection;
+out vec3 lightVector;
+out vec3 normal;
 
-    vec3 ambient = ambientStrenght * lightColor;
-    outColor = diffuse + ambient;
-}
-
+vec4 worldPosition;
 
 void main()
 {
-    gl_Position = projection * view * model * vec4(aPos, 1.0);
-    FragPos = vec3(model * vec4(aPos, 1.0));
-    Normal = mat3(transpose(inverse(model))) * aNormal;
+    worldPosition = model * vec4(aPos, 1.0);
+    gl_Position = projection * view * worldPosition;
+    normal = mat3(transpose(inverse(model))) * aNormal;
+    cameraDirection = vec3(inverse(view) * vec4(0, 0, 0, 1)) - vec3(worldPosition);
+    lightVector = lightPos - vec3(worldPosition);
 
-    baseLighting();
     TexCoord = aTexCoord;
 }

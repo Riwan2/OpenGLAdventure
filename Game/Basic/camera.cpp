@@ -12,7 +12,7 @@ Camera::Camera()
     
     m_yaw = 0.0f;
     m_pitch = -20.0f;
-    m_distance = 20.0f; //10.0f
+    m_distance = 30.0f; //10.0f
     m_angleAround = 90.0f;
 }
 
@@ -23,19 +23,8 @@ Camera::~Camera()
 
 glm::mat4 * Camera::getView()
 {
-    static float rotate = 1.0f;
-    rotate += 0.1f;
-
-    //m_yaw = rotate;
-    //m_pitch = -3.1f;
-
-    
-    //m_position -= 0.1f * m_target;
- 
-    
     float horizontalDistance = m_distance * cos(glm::radians(m_pitch));
     float verticalDistance = m_distance * sin(glm::radians(-m_pitch));
-    
     
     m_position.y = verticalDistance;
     m_position.x = horizontalDistance * cos(glm::radians(m_angleAround)) + m_target.x;
@@ -43,7 +32,6 @@ glm::mat4 * Camera::getView()
     
     //m_position -= glm::normalize(glm::cross(m_front, m_up)) * 0.01f;
     //m_position -= -0.02f * m_front;
-    
      
     m_yaw = 180 + m_angleAround;
     

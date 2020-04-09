@@ -17,9 +17,9 @@ public:
         
     void Use();
 private:
-    unsigned int m_shaderProgramId, m_vertexShaderId, m_fragmentShaderId;
+    GLuint m_shaderProgramId, m_vertexShaderId, m_fragmentShaderId;
 public:
-    unsigned int UniformLoc(const std::string& name) { return glGetUniformLocation(m_shaderProgramId, name.c_str()); }
+    GLuint UniformLoc(const std::string& name) { return glGetUniformLocation(m_shaderProgramId, name.c_str()); }
     
     void SetMat4(const std::string& name, const glm::mat4& value) {
         glUniformMatrix4fv(UniformLoc(name), 1, GL_FALSE, glm::value_ptr(value)); 

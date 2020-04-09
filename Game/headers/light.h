@@ -15,7 +15,7 @@
 class Light
 {
 public:
-    Light(const glm::vec3& color, ShaderLoader& shaderLoader, const float& size = 1.0f);
+    Light(const glm::vec3& color, ShaderLoader& shaderLoader, const float& size = 0.2f);
     ~Light();
     
     void Move(const glm::vec3& position);
