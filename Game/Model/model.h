@@ -21,6 +21,7 @@ public:
     void Render(const glm::mat4& CameraProjection, const glm::mat4& cameraView, const glm::vec3& lightPos, const glm::vec3& lightColor);
     
     void Move(const float& x, const float& y, const float& z);
+    void Scale(const float& x, const float& y, const float& z);
     void Rotate(const float& degree, const char& axes); //only x, y and z for axes
 private:
     GLuint m_VAO, m_VBO, m_EBO, m_Texture;
@@ -29,9 +30,11 @@ private:
     
     glm::mat4 m_model;
     glm::vec3 m_position;
+    glm::vec3 m_scale;
     glm::vec3 m_rotation; //in degree
 public:
     const glm::vec3& GetPosition() { return m_position; }
+    const glm::vec3& GetScale() { return m_scale; }
     const glm::vec3& GetRotation() { return m_rotation; }
 };
 

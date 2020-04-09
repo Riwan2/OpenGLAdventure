@@ -16,6 +16,13 @@ void Model::Move(const float& x, const float& y, const float& z)
     m_model = glm::translate(m_model, glm::vec3(x, y , z));
 }
 
+void Model::Scale(const float& x, const float& y, const float& z)
+{
+    m_model = glm::scale(m_model, glm::vec3(1 / m_scale.x, 1 / m_scale.y, 1 / m_scale.z));
+    m_scale = glm::vec3(x, y, z);
+    m_model = glm::scale(m_model, m_scale);
+}
+
 void Model::Rotate(const float& degree, const char& axes) //only x, y and z for the axes
 {
     if (degree > -360 && degree < 360) {
@@ -74,5 +81,6 @@ void Model::Load(const ModelLoader& modelLoader, const unsigned int& TextureId, 
     m_shader = new Shader(shaderLoader);
     m_model = glm::mat4(1.0);
     m_position = glm::vec3(0.0, 0.0, 0.0);
+    m_scale = glm::vec3(1.0, 1.0, 1.0);
     m_rotation = glm::vec3(0.0, 0.0, 0.0);
 }

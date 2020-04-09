@@ -56,8 +56,8 @@ int main(int argc, char **argv)
     SDL_Window* m_window = SDL_CreateWindow(_TITLE, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _WIDTH, _HEIGHT, SDL_WINDOW_OPENGL);
 	SDL_GLContext m_glContext = SDL_GL_CreateContext(m_window);
     glEnable(GL_DEPTH_TEST);
-    //glEnable(GL_CULL_FACE);
-    //glCullFace(GL_BACK);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
     
     SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
     //SDL_SetWindowGrab(m_window, SDL_TRUE);
@@ -109,8 +109,13 @@ int main(int argc, char **argv)
     ModelLoader myModel;
     myModel.Load("dragon");
     
-    Model stall;
-    stall.Load(myModel, myTexture.getId(), basicShader);
+    int nbModel = 1;
+    Model listModel[nbModel];
+    
+    for (int i = 0; i < nbModel; i++) {
+        listModel[i].Load(myModel, myTexture.getId(), basicShader);
+        //listModel[i].Move(Util::getInt(70)-35, Util::getInt(10)-5, Util::getInt(70)-35);
+    }
     
     while(!myEvent.HasQuit()) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
@@ -120,14 +125,20 @@ int main(int argc, char **argv)
         
         //Light
         light.Render(projection, *camera.getView());
+        static float a = 0;
+        a += 0.05f;
+        float b = (cos(a) / 2 + 1.0) * 0.1 + 1.0;
         //Water
         //water.Render(projection, *camera.getView(), *light.getColor(), *light.getPosition());
         //Terrain
         //terrain.Render(projection, *camera.getView(), *light.getColor(), *light.getPosition());
         //light.Move(glm::vec3(-0.001, -0.001, -0.001));
         
-        stall.Render(projection, *camera.getView(), *light.getPosition(), *light.getColor());
-        stall.Rotate(0.25f, 'y');
+        for (int i = 0; i < nbModel; i++) {
+            listModel[i].Render(projection, *camera.getView(), *light.getPosition(), *light.getColor());
+            listModel[i].Rotate(0.25f, 'y');
+            //listModel[i].Scale(b, b, b);
+        }
         
         SDL_GL_SwapWindow(m_window);        
         myEvent.Update(&deltaTime, &camera);

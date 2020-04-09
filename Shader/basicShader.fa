@@ -12,9 +12,9 @@ in vec3 lightVector;
 
 float shineDamper = 64;
 float reflectivity = 1.0;
-float ambientStrenght = 0.0f;
+float ambientStrenght = 0.2f;
 vec3 finalSpecular;
-vec3 appliedLightColor;
+vec3 diffuse;
 vec4 textureVector;
 
 void lighting()
@@ -23,8 +23,8 @@ void lighting()
     vec3 norm = normalize(normal);
     vec3 toLight = normalize(lightVector);
     float dotLight = dot(norm, toLight);
-    float brightness = max(dotLight, 0.0);
-    vec3 diffuse = brightness * lightColor;
+    float brightness = max(dotLight, ambientStrenght);
+    diffuse = brightness * lightColor;
 
     //specular
     vec3 cameraNorm = normalize(cameraDirection);
@@ -34,16 +34,11 @@ void lighting()
     float reflection = max(dotReflection, 0.0);
     float dampedFactor = pow(reflection, shineDamper);
     finalSpecular = dampedFactor * lightColor * reflectivity;
-
-    vec3 ambient = ambientStrenght * vec3(textureVector);
-    appliedLightColor = diffuse + ambient;
 }
 
 void main()
 {
     //color = vec4(1.0, 1.0, 1.0, 1.0);
-    textureVector = texture(myTexture, TexCoord);
-
     lighting();
-    color =  textureVector * vec4(appliedLightColor, 1.0) + vec4(finalSpecular, 1.0);
+    color =  texture(myTexture, TexCoord) * vec4(diffuse, 1.0) + vec4(finalSpecular, 1.0);
 }
