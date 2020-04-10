@@ -6,13 +6,6 @@ ShaderLoader::ShaderLoader()
 
 ShaderLoader::~ShaderLoader()
 {
-    glDetachShader(m_shaderProgramId, m_vertexShaderId);
-    glDetachShader(m_shaderProgramId, m_fragmentShaderId);
-    
-    glDeleteShader(m_vertexShaderId);
-    glDeleteShader(m_fragmentShaderId);
-    
-    glDeleteProgram(m_shaderProgramId);
 }
 
 void ShaderLoader::Load(const std::string& fileName)

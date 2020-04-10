@@ -30,11 +30,17 @@ public:
     void Render(const glm::mat4& projection, Camera& camera);
     
 private:
-    std::unordered_map<Model, std::vector<Entity*>, ModelHashFunction>* m_entities;
+    std::unordered_map<Model, std::vector<Entity*>, ModelHashFunction> m_entities;
     GLuint m_UBOMatrices;
     Light* m_light;
     
-    std::vector<Model*> listModel;
+    std::vector<Model*> m_listModel;
+    std::vector<std::vector<Entity*>> m_listEntity;
+    
+    void LoadEntity(ShaderLoader*& basicShader);
+    void SetUniform(ShaderLoader*& basicShader, const glm::mat4& projection);
+    void UpdateUniform(Camera& camera);
+    void RenderEntity();
 };
 
 #endif // RENDERER_H

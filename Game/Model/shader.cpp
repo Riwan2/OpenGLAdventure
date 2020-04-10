@@ -9,7 +9,13 @@ Shader::Shader(const ShaderLoader& shaderLoader)
 
 Shader::~Shader()
 {
+    glDetachShader(m_shaderProgramId, m_vertexShaderId);
+    glDetachShader(m_shaderProgramId, m_fragmentShaderId);
     
+    glDeleteShader(m_vertexShaderId);
+    glDeleteShader(m_fragmentShaderId);
+    
+    glDeleteProgram(m_shaderProgramId);
 }
 
 void Shader::Use()
