@@ -27,16 +27,16 @@ public:
     const GLuint& GetVAO() const { return m_VAO; }
     const GLuint& GetVBO() const { return m_VBO; }
     const GLuint& GetEBO() const { return m_EBO; }
-    const GLuint& GetTextureID() const { return m_textureId; }
+    const  GLuint& GetTextureID() const { return m_textureId; }
     const int& GetDrawCall() const { return m_drawCall; }
 };
 
 class ModelHashFunction { 
 public:
     
-    size_t operator()(const Model& m) const
+    size_t operator()(const Model* m) const
     { 
-        return m.GetVAO() + m.GetVBO() + m.GetEBO() + m.GetTextureID() + m.GetDrawCall();
+        return m->GetVAO() + m->GetVBO() + m->GetEBO() + m->GetTextureID() + m->GetDrawCall();
     } 
 }; 
 
