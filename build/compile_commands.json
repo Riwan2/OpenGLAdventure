@@ -61,6 +61,11 @@
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
   "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/source/light.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/light.cpp",
   "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/light.cpp"
 },

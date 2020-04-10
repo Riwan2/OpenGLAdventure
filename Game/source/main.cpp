@@ -23,6 +23,12 @@
 
 //Model
 #include "../Model/model.h"
+#include "../Entity/entity.h"
+#include <unordered_map>
+#include <vector>
+#include <iostream>
+
+#include "../Renderer/renderer.h"
 
 const char* _TITLE = "coucou";
 const int _WIDTH = 850;
@@ -54,7 +60,7 @@ int main(int argc, char **argv)
     
     Util::InitRandom();
     SDL_Window* m_window = SDL_CreateWindow(_TITLE, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _WIDTH, _HEIGHT, SDL_WINDOW_OPENGL);
-	SDL_GLContext m_glContext = SDL_GL_CreateContext(m_window);
+    SDL_GLContext m_glContext = SDL_GL_CreateContext(m_window);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
@@ -67,10 +73,10 @@ int main(int argc, char **argv)
     
     GLenum res = glewInit();
     
-    ShaderLoader waterShader;
-    waterShader.Load("waterShader");
-
-    Water water(50, 50, 1.0f, waterShader); //200, 200, 0.5F
+    //ShaderLoader waterShader;
+    //waterShader.Load("waterShader");
+    
+    //Water water(50, 50, 1.0f, waterShader); //200, 200, 0.5F
     //Terrain terrain(50, 50, 1.0f);
     
     MyEvent myEvent;
@@ -85,37 +91,8 @@ int main(int argc, char **argv)
     unsigned int deltaTime = 0;
     unsigned int lastFrame = 0;
     
-    glm::vec3 center = glm::vec3((float)water.getWidth() * water.getVertexSize() / 2 - 
-    water.getVertexSize() / 2, 20.0f, (float)water.getHeight() * water.getVertexSize() / 2 - water.getVertexSize()/2);
-    camera.SetTarget(center);
-    
-    //Light
-    ShaderLoader lightShader;
-    lightShader.Load("lightShader");
-    
-    glm::vec3 lightColor = glm::vec3(0.9f, 0.9f, 0.4f);
-    Light light(lightColor, lightShader);
-    //light.Move(glm::vec3(center.x, 2.0f, center.z));
-    light.Move(glm::vec3(-10, 10, 10.0));
-    
-    camera.SetTarget(glm::vec3(0, 0, 0));
-    
-    Texture myTexture;
-    myTexture.Load("white");
-    
-    ShaderLoader basicShader;
-    basicShader.Load("basicShader");
-    
-    ModelLoader myModel;
-    myModel.Load("dragon");
-    
-    int nbModel = 1;
-    Model listModel[nbModel];
-    
-    for (int i = 0; i < nbModel; i++) {
-        listModel[i].Load(myModel, myTexture.getId(), basicShader);
-        //listModel[i].Move(Util::getInt(70)-35, Util::getInt(10)-5, Util::getInt(70)-35);
-    }
+    Renderer renderer;
+    renderer.Load(projection);
     
     while(!myEvent.HasQuit()) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
@@ -123,25 +100,14 @@ int main(int argc, char **argv)
         deltaTime = SDL_GetTicks() - lastFrame;
         lastFrame = SDL_GetTicks();
         
-        //Light
-        light.Render(projection, *camera.getView());
-        static float a = 0;
-        a += 0.05f;
-        float b = (cos(a) / 2 + 1.0) * 0.1 + 1.0;
+        myEvent.Update(&deltaTime, &camera);
+        renderer.Render(projection, camera);
         //Water
-        //water.Render(projection, *camera.getView(), *light.getColor(), *light.getPosition());
+        //water.Render(projection, camera.getView(), light.getColor(), light.getPosition());
         //Terrain
         //terrain.Render(projection, *camera.getView(), *light.getColor(), *light.getPosition());
         //light.Move(glm::vec3(-0.001, -0.001, -0.001));
-        
-        for (int i = 0; i < nbModel; i++) {
-            listModel[i].Render(projection, *camera.getView(), *light.getPosition(), *light.getColor());
-            listModel[i].Rotate(0.25f, 'y');
-            //listModel[i].Scale(b, b, b);
-        }
-        
         SDL_GL_SwapWindow(m_window);        
-        myEvent.Update(&deltaTime, &camera);
     }
     
     return 0;

@@ -1,18 +1,27 @@
 #version 330 core
 
 out vec4 color;
-in vec2 TexCoord;
 
 uniform sampler2D myTexture;
-uniform vec3 lightColor;
 
-in vec3 cameraDirection;
-in vec3 normal;
-in vec3 lightVector;
+layout (std140) uniform Matrices
+{
+    uniform mat4 projection;
+    uniform mat4 view;
+    uniform vec3 lightPos;
+    uniform vec3 lightColor;
+};
+
+in VS_OUT {
+    vec2 TexCoord;
+    vec3 cameraDirection;
+    vec3 lightVector;
+    vec3 normal;
+} fs_in;
 
 float shineDamper = 64;
 float reflectivity = 1.0;
-float ambientStrenght = 0.2f;
+float ambientStrenght = 0.0f;
 vec3 finalSpecular;
 vec3 diffuse;
 vec4 textureVector;
@@ -20,14 +29,14 @@ vec4 textureVector;
 void lighting()
 {
     //basic
-    vec3 norm = normalize(normal);
-    vec3 toLight = normalize(lightVector);
+    vec3 norm = normalize(fs_in.normal);
+    vec3 toLight = normalize(fs_in.lightVector);
     float dotLight = dot(norm, toLight);
     float brightness = max(dotLight, ambientStrenght);
     diffuse = brightness * lightColor;
 
     //specular
-    vec3 cameraNorm = normalize(cameraDirection);
+    vec3 cameraNorm = normalize(fs_in.cameraDirection);
     vec3 lightDirection = -toLight;
     vec3 lightReflection = reflect(lightDirection, norm);
     float dotReflection = dot(cameraNorm, lightReflection);
@@ -40,5 +49,5 @@ void main()
 {
     //color = vec4(1.0, 1.0, 1.0, 1.0);
     lighting();
-    color =  texture(myTexture, TexCoord) * vec4(diffuse, 1.0) + vec4(finalSpecular, 1.0);
+    color =  texture(myTexture, fs_in.TexCoord) * vec4(diffuse, 1.0) + vec4(finalSpecular, 1.0);
 }

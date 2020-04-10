@@ -8,6 +8,7 @@ Water::Water(const int& width, const int& height, const float& vertexSize, Shade
     
     m_model = glm::mat4(1.0f);
     m_color = glm::vec3(0.2f, 0.3f, 1.0f);
+    m_model = glm::translate(m_model, glm::vec3(-40, 0, -30));
     m_time = 0;
 }
 

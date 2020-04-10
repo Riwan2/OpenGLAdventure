@@ -1,18 +1,16 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
 
+#include <iostream>
 #include <GL/glew.h>
-#include <string>
-
 #include "stb_image.h"
 
 class Texture 
 {
 public:
-    Texture();
+    Texture(const std::string& fileName);
     ~Texture();
     
-    void Load(const std::string& fileName);
     const GLuint& getId() { return m_textureId; }
     
 private:

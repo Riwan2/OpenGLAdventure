@@ -1,10 +1,10 @@
 #ifndef SHADERLOADER_H
 #define SHADERLOADER_H
 
-#include <iostream>
 #include <GL/glew.h>
-#include <GL/gl.h>
-#include <string.h>
+
+#include <string>
+#include <iostream>
 #include <fstream>
 
 class ShaderLoader

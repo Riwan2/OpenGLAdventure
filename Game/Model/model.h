@@ -1,41 +1,43 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include <GL/glew.h>
-
-#include <string>
-#include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "../Model/shader.h"
 #include "../Loader/modelloader.h"
+#include <bits/stdc++.h> 
 
 class Model
 {
 public:
     Model();
+    Model(const Model& copy);
+    Model(ModelLoader* modelLoader, const unsigned int& TextureId);
     ~Model();
     
-    void Load(const ModelLoader& modelLoader, const unsigned int& TextureId, const ShaderLoader& shaderLoader);
-    void Render(const glm::mat4& CameraProjection, const glm::mat4& cameraView, const glm::vec3& lightPos, const glm::vec3& lightColor);
+    void Bind() const;
+    void Render() const;
+    void Unbind() const;
     
-    void Move(const float& x, const float& y, const float& z);
-    void Scale(const float& x, const float& y, const float& z);
-    void Rotate(const float& degree, const char& axes); //only x, y and z for axes
 private:
-    GLuint m_VAO, m_VBO, m_EBO, m_Texture;
+    GLuint m_VAO, m_VBO, m_EBO, m_textureId;
     int m_drawCall;
-    Shader* m_shader;
     
-    glm::mat4 m_model;
-    glm::vec3 m_position;
-    glm::vec3 m_scale;
-    glm::vec3 m_rotation; //in degree
 public:
-    const glm::vec3& GetPosition() { return m_position; }
-    const glm::vec3& GetScale() { return m_scale; }
-    const glm::vec3& GetRotation() { return m_rotation; }
+    const GLuint& GetVAO() const { return m_VAO; }
+    const GLuint& GetVBO() const { return m_VBO; }
+    const GLuint& GetEBO() const { return m_EBO; }
+    const GLuint& GetTextureID() const { return m_textureId; }
+    const int& GetDrawCall() const { return m_drawCall; }
 };
+
+class ModelHashFunction { 
+public:
+    
+    size_t operator()(const Model& m) const
+    { 
+        return m.GetVAO() + m.GetVBO() + m.GetEBO() + m.GetTextureID() + m.GetDrawCall();
+    } 
+}; 
 
 #endif // MODEL_H

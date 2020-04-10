@@ -15,14 +15,14 @@
 class Light
 {
 public:
-    Light(const glm::vec3& color, ShaderLoader& shaderLoader, const float& size = 0.2f);
+    Light(const glm::vec3& color, ShaderLoader& shaderLoader, const float& size = 2.0f);
     ~Light();
     
     void Move(const glm::vec3& position);
     void Render(const glm::mat4& projection, const glm::mat4& cameraView);
-    glm::mat4* getModel() { return &m_model; }
-    glm::vec3* getPosition() { return &m_position; }
-    glm::vec3* getColor() { return &m_color; }
+    const glm::mat4& getModel() const { return m_model; }
+    const glm::vec3& getPosition() const { return m_position; }
+    const glm::vec3& getColor() const { return m_color; }
 
 private:
     Shader* m_shader;

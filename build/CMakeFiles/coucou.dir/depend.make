@@ -13,6 +13,10 @@ CMakeFiles/coucou.dir/Game/Basic/util.cpp.o: ../Game/Basic/util.h
 
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Entity/entity.cpp
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Entity/entity.h
+CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Loader/modelloader.h
+CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Loader/shaderLoader.h
+CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Model/model.h
+CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Model/shader.h
 
 CMakeFiles/coucou.dir/Game/Loader/modelloader.cpp.o: ../Game/Loader/modelloader.cpp
 CMakeFiles/coucou.dir/Game/Loader/modelloader.cpp.o: ../Game/Loader/modelloader.h
@@ -47,14 +51,26 @@ CMakeFiles/coucou.dir/Game/Map/water.cpp.o: ../Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/Map/water.cpp.o: ../Game/headers/vaoobject.h
 
 CMakeFiles/coucou.dir/Game/Model/model.cpp.o: ../Game/Loader/modelloader.h
-CMakeFiles/coucou.dir/Game/Model/model.cpp.o: ../Game/Loader/shaderLoader.h
 CMakeFiles/coucou.dir/Game/Model/model.cpp.o: ../Game/Model/model.cpp
 CMakeFiles/coucou.dir/Game/Model/model.cpp.o: ../Game/Model/model.h
-CMakeFiles/coucou.dir/Game/Model/model.cpp.o: ../Game/Model/shader.h
 
 CMakeFiles/coucou.dir/Game/Model/shader.cpp.o: ../Game/Loader/shaderLoader.h
 CMakeFiles/coucou.dir/Game/Model/shader.cpp.o: ../Game/Model/shader.cpp
 CMakeFiles/coucou.dir/Game/Model/shader.cpp.o: ../Game/Model/shader.h
+
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Basic/camera.h
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Basic/util.h
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Entity/entity.h
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Loader/modelloader.h
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Loader/shaderLoader.h
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Loader/stb_image.h
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Loader/texture.h
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Model/model.h
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Model/shader.h
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Renderer/renderer.cpp
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Renderer/renderer.h
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/headers/light.h
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/headers/vaoobject.h
 
 CMakeFiles/coucou.dir/Game/source/light.cpp.o: ../Game/Basic/camera.h
 CMakeFiles/coucou.dir/Game/source/light.cpp.o: ../Game/Loader/shaderLoader.h
@@ -66,6 +82,7 @@ CMakeFiles/coucou.dir/Game/source/light.cpp.o: ../Game/source/light.cpp
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/camera.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/myevent.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/util.h
+CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Entity/entity.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Loader/modelloader.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Loader/shaderLoader.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Loader/stb_image.h
@@ -75,6 +92,7 @@ CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Map/terrain.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Map/water.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Model/model.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Model/shader.h
+CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Renderer/renderer.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/light.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/headers/vaoobject.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/source/main.cpp

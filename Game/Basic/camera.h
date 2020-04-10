@@ -14,7 +14,7 @@ public:
     void SetTarget(const glm::vec3 target);
     void Zoom(const float& amount);
     void Rotate(const float& angleY, const float& angleX); 
-    glm::mat4* getView();
+    const glm::mat4& getView();
 private:
     glm::mat4 m_view;
     

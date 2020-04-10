@@ -11,6 +11,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/coucou.dir/Game/Map/water.cpp.o"
   "CMakeFiles/coucou.dir/Game/Model/model.cpp.o"
   "CMakeFiles/coucou.dir/Game/Model/shader.cpp.o"
+  "CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/light.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/main.cpp.o"
   "CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.o"

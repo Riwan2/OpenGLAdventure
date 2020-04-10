@@ -21,7 +21,7 @@ Camera::~Camera()
     
 }
 
-glm::mat4 * Camera::getView()
+const glm::mat4& Camera::getView()
 {
     float horizontalDistance = m_distance * cos(glm::radians(m_pitch));
     float verticalDistance = m_distance * sin(glm::radians(-m_pitch));
@@ -43,7 +43,7 @@ glm::mat4 * Camera::getView()
         
     m_view = glm::lookAt(m_position, m_position + m_front, m_up);
     
-    return &m_view;
+    return m_view;
 }
 
 void Camera::Rotate(const float& angleAround, const float& pitch)

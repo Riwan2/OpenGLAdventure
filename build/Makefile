@@ -493,6 +493,33 @@ Game/Model/shader.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Model/shader.cpp.s
 .PHONY : Game/Model/shader.cpp.s
 
+Game/Renderer/renderer.o: Game/Renderer/renderer.cpp.o
+
+.PHONY : Game/Renderer/renderer.o
+
+# target to build an object file
+Game/Renderer/renderer.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o
+.PHONY : Game/Renderer/renderer.cpp.o
+
+Game/Renderer/renderer.i: Game/Renderer/renderer.cpp.i
+
+.PHONY : Game/Renderer/renderer.i
+
+# target to preprocess a source file
+Game/Renderer/renderer.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.i
+.PHONY : Game/Renderer/renderer.cpp.i
+
+Game/Renderer/renderer.s: Game/Renderer/renderer.cpp.s
+
+.PHONY : Game/Renderer/renderer.s
+
+# target to generate assembly for a file
+Game/Renderer/renderer.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.s
+.PHONY : Game/Renderer/renderer.cpp.s
+
 Game/source/light.o: Game/source/light.cpp.o
 
 .PHONY : Game/source/light.o
@@ -623,6 +650,9 @@ help:
 	@echo "... Game/Model/shader.o"
 	@echo "... Game/Model/shader.i"
 	@echo "... Game/Model/shader.s"
+	@echo "... Game/Renderer/renderer.o"
+	@echo "... Game/Renderer/renderer.i"
+	@echo "... Game/Renderer/renderer.s"
 	@echo "... Game/source/light.o"
 	@echo "... Game/source/light.i"
 	@echo "... Game/source/light.s"
