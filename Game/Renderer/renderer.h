@@ -36,16 +36,18 @@ private:
     ShaderLoader* m_basicShader;
     GLuint m_UBOMatrices;
     Light* m_light;
-    Terrain* m_terrain;
     
     std::vector<Model*> m_listModel;
     std::vector<std::vector<Entity*>> m_listEntity;
+    std::vector<Terrain*> m_listTerrain;
     
     void LoadEntity();
     void SetUniform(const glm::mat4& projection);
     void UpdateUniform(const Camera& camera);
     void ProcessEntity(Entity*& entity);
     void RenderEntity();
+    void EnableCulling();
+    void DisableCulling();
 };
 
 #endif // RENDERER_H

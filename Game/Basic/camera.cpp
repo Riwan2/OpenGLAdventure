@@ -6,7 +6,9 @@ Camera::Camera(const float& distance)
     m_position = glm::vec3(0.0);
     m_target = glm::vec3(0.0);
     m_up = glm::vec3(0.0, 1.0, 0.0);
-    m_projection = glm::perspective(glm::radians(45.0f), (float)parameters::Width/(float)parameters::Height, 0.1f, 100.0f);
+    float zFar = 300.0;
+    float zNear = 0.1;
+    m_projection = glm::perspective(glm::radians(45.0f), (float)parameters::Width/(float)parameters::Height, zNear, zFar);
     
     m_distance = distance;
     m_yaw = 0.0;

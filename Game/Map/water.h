@@ -8,7 +8,7 @@
 class Water : public Map
 {
 public:
-    Water(const float& size, ShaderLoader& shaderLoader);
+    Water(const float& posX, const float& posZ, const float& size, ShaderLoader& shaderLoader);
     ~Water();
     
     void Render(const glm::mat4& projection, const glm::mat4& view, const glm::vec3& lightColor, const glm::vec3& lightPos);
@@ -18,6 +18,7 @@ private:
     float m_time;
     
     float* m_heightMap;
+    Shader* m_shader;
     
     void FlatHeightMap();
 };

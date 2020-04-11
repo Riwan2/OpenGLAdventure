@@ -1,24 +1,24 @@
 #include "map.h"
 #include <iostream>
 
-Map::Map(const float& size, ShaderLoader& shaderLoader)
+Map::Map(const float& posX, const float& posZ, const float& size)
 {
-    m_width = 16;
-    m_height = 16;
+    m_width = 128;
+    m_height = 128;
     m_size = size;
+    m_posX = posX * size;
+    m_posZ = posZ * size;
     m_numVertices = m_width * m_height;
     m_numIndices = (m_width-1) * (m_height-1) * 6;
     m_normal = glm::vec3(1.0f);
     
     m_vertex = new basic::Vertex[m_numVertices];
     m_indices = new unsigned int[m_numIndices];
-    m_shader = new Shader(shaderLoader);
 }
 
 Map::~Map()
 {
     delete m_indices;
-    delete m_shader;
     delete m_vertex;
     
     glDeleteBuffers(1, &m_VBO);
@@ -39,7 +39,7 @@ void Map::Initialize(float* heightMap)
     glBindVertexArray(m_VAO);
     
     glBindBuffer(GL_ARRAY_BUFFER, m_VBO); //Vertices
-    glBufferData(GL_ARRAY_BUFFER, m_numVertices * sizeof(basic::Vertex) * sizeof(float), m_vertex, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, m_numVertices * sizeof(basic::Vertex) + 8, m_vertex, GL_STATIC_DRAW);
     
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO); //Triangle Indices
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_numIndices * sizeof(unsigned int), m_indices, GL_STATIC_DRAW);
@@ -65,19 +65,17 @@ void Map::BasicRendering()
 
 void Map::CreateVertices(float* heightMap)
 {
-    m_size = 1;
     int index = 0;
     for (int y = 0; y < m_height; y++) {
         for (int x = 0; x < m_width; x++) {
-            m_vertex[index].PosX = (float)x / (float)(m_width-1) * m_size;
+            m_vertex[index].PosX = m_posX + (float)x / (float)(m_width-1) * m_size;
             m_vertex[index].PosY = 0;
-            m_vertex[index].PosZ = (float)y / (float)(m_height-1) * m_size;
+            m_vertex[index].PosZ = m_posZ + (float)y / (float)(m_height-1) * m_size;
             m_vertex[index].NormX = 0;
             m_vertex[index].NormY = 1;
             m_vertex[index].NormZ = 0;
             m_vertex[index].TexCoordX = (float)x / (float)(m_width-1);
             m_vertex[index].TexCoordY = (float)y / (float)(m_height-1);
-            
             index++;
         }
     }

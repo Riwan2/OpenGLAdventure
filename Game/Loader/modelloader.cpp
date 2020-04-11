@@ -34,7 +34,7 @@ ModelLoader::ModelLoader(const std::string& fileName)
         glGenBuffers(1, &m_EBO);
         
         glBindVertexArray(m_VAO);
-        
+            
         glBindBuffer(GL_ARRAY_BUFFER, m_VBO); //Vertices
         glBufferData(GL_ARRAY_BUFFER, verticesSize * sizeof(objl::Vertex), vertices, GL_STATIC_DRAW);
         
@@ -43,7 +43,7 @@ ModelLoader::ModelLoader(const std::string& fileName)
         
         glEnableVertexAttribArray(0); //Position
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-
+        
         glEnableVertexAttribArray(1); //Normals
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
         

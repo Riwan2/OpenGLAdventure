@@ -1,4 +1,5 @@
 #include "entity.h"
+#include "../Basic/parameters.h"
 
 Entity::Entity(const Model& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z)
 {
@@ -22,6 +23,9 @@ void Entity::Update()
 {
     m_shader->Use();
     m_shader->SetMat4("model", m_transformation);
+    m_shader->SetFloat("reflectivity", m_model->GetTexture().getReflectivity());
+    m_shader->SetFloat("shineDamper", m_model->GetTexture().getShineDamper());
+    m_shader->SetVec3("skyColor", parameters::skyColor);
 }
 
 void Entity::SetTransformation() {

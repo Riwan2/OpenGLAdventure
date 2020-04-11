@@ -19,17 +19,28 @@ out VS_OUT {
     vec3 cameraDirection;
     vec3 lightVector;
     vec3 normal;
+    float visibility;
 } vs_out;
 
 vec4 worldPosition;
+vec3 cameraPosition;
+const float density = 0.004;
+const float gradient = 2.5;
 
 void main()
 {
     worldPosition = model * vec4(aPos, 1.0);
-    gl_Position = projection * view * worldPosition;
+    cameraPosition = vec3(inverse(view) * vec4(0, 0, 0, 1));
+    vec4 positionRelativeToCamera = view * worldPosition;
     
+    gl_Position = projection * positionRelativeToCamera;
+    
+    float distance = length(positionRelativeToCamera.xyz);
+    vs_out.visibility = exp(-pow((distance*density), gradient));
+    vs_out.visibility = clamp(vs_out.visibility, 0.0, 1.0);
+
     vs_out.normal = mat3(transpose(inverse(model))) * aNormal;
-    vs_out.cameraDirection = vec3(inverse(view) * vec4(0, 0, 0, 1)) - vec3(worldPosition);
-    vs_out.lightVector = lightPos - vec3(worldPosition);
+    vs_out.cameraDirection = cameraPosition - vec3(worldPosition);
+    vs_out.lightVector = vec3(0.5, 0.4, 0.0);//lightPos - vec3(worldPosition);
     vs_out.TexCoord = aTexCoord;
 }

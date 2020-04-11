@@ -45,7 +45,7 @@ int main(int argc, char **argv)
     //SDL_SetWindowGrab(m_window, SDL_TRUE);
     //SDL_ShowCursor(0);
     
-    glClearColor(0.2f, 0.2f, 0.2f, 0.0f);    
+    glClearColor(parameters::skyColor.x, parameters::skyColor.y, parameters::skyColor.z, 0.0f);    
     GLenum res = glewInit();
     
     MyEvent myEvent;

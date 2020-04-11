@@ -2,11 +2,11 @@
 
 bool operator==(const Model& m1, const Model& m2) {
         return (m1.GetVAO() == m2.GetVAO() && m1.GetVBO() == m2.GetVBO() && m1.GetEBO() == m2.GetEBO() &&
-        m1.GetTextureID() == m2.GetTextureID() && m1.GetDrawCall() == m2.GetDrawCall());
+        m1.GetTexture().getId() == m2.GetTexture().getId() && m1.GetDrawCall() == m2.GetDrawCall());
 }
 
 enum eEntity {
-     dragon, stall
+     fern, tree
 };
 
 Renderer::Renderer()
@@ -15,16 +15,10 @@ Renderer::Renderer()
 
 Renderer::~Renderer()
 {
-    for (int i = 0; i < m_listModel.size(); i++) {
-        delete m_listModel[i];
-    }
-    for (int i = 0; i < m_listEntity.size(); i++) {
-        for (int a = 0; a < m_listEntity[i].size(); a++) {
-            delete m_listEntity[i][a];
-        }
-    }
+    m_listEntity.clear();
+    m_listModel.clear();
+    m_listTerrain.clear();
     m_entities.clear();
-    delete m_terrain;
     delete m_light;
     delete m_basicShader;
 }
@@ -33,17 +27,21 @@ void Renderer::Load(const glm::mat4& projection)
 {
     ShaderLoader* lightShader = new ShaderLoader();
     lightShader->Load("lightShader");
+    ShaderLoader* terrainShader = new ShaderLoader();
+    terrainShader->Load("terrainShader");
     m_basicShader = new ShaderLoader();
     m_basicShader->Load("basicShader");
 
-    glm::vec3 lightColor = glm::vec3(1.0, 1.0, 1.0); //0.9, 0.8, 0.7
+    //Light
+    glm::vec3 lightColor = glm::vec3(1.0, 1.0, 1.0f); //0.9, 0.8, 0.7
     m_light = new Light(lightColor, *lightShader);
     m_light->Move(glm::vec3(-10, 10, 10.0));  
     delete lightShader;
     
-    Texture* raindrop = new Texture("stall");
-    m_terrain = new Terrain(1, *m_basicShader, raindrop->getId());
-    delete raindrop;
+    //Terrain
+    Texture* grass = new Texture("grass", 0.0, 64);
+    m_listTerrain.push_back(new Terrain(-0.5, -0.5, 400, *terrainShader, grass));
+    delete grass;
     
     SetUniform(projection);
     LoadEntity();
@@ -52,49 +50,53 @@ void Renderer::Load(const glm::mat4& projection)
 void Renderer::LoadEntity()
 {
     //Set Texture
-    Texture* dragonTexture = new Texture("white");
-    Texture* stallTexture = new Texture("stall");
+    Texture* fernTexture = new Texture("fern", 0.0, 64, true);
+    Texture* treeTexture = new Texture("tree", 0.0, 64);
     //Set Model
     int nbEntity = 2;
-    m_listModel.push_back(new Model(new ModelLoader("dragon"), dragonTexture->getId()));
-    m_listModel.push_back(new Model(new ModelLoader("stall"), stallTexture->getId()));
+    m_listModel.push_back(new Model(new ModelLoader("fern"), fernTexture, true));
+    m_listModel.push_back(new Model(new ModelLoader("tree"), treeTexture));
     //Delete Texture
-    delete dragonTexture;
-    delete stallTexture;
+    delete fernTexture;
+    delete treeTexture;
     //Set Entities
     for (int i = 0; i < nbEntity; i++) {
         m_listEntity.push_back(std::vector<Entity*>());
     }
     glm::vec3 randomPos;
-    //Dragon
-    for (int i = 0; i < 10; i++) {
-        randomPos = glm::vec3(Util::getInt(70)-35, Util::getInt(10)-5, Util::getInt(70)-35);
-        m_listEntity[eEntity::dragon].push_back(new Entity(*m_listModel[eEntity::dragon], *m_basicShader, randomPos.x, randomPos.y, randomPos.z));
+    //Fern
+    for (int i = 0; i < 500; i++) {
+        randomPos = glm::vec3(Util::getInt(300)-150, 0, Util::getInt(300)-150);
+        m_listEntity[eEntity::fern].push_back(new Entity(*m_listModel[eEntity::fern], *m_basicShader, randomPos.x, randomPos.y, randomPos.z));
     }
-    //Stall
-    for (int i = 0; i < 10; i++) {
-        randomPos = glm::vec3(Util::getInt(70)-35, Util::getInt(10)-5, Util::getInt(70)-35);
-        m_listEntity[eEntity::stall].push_back(new Entity(*m_listModel[eEntity::stall], *m_basicShader, randomPos.x, randomPos.y, randomPos.z));
+    //Tree
+    for (int i = 0; i < 100; i++) {
+        randomPos = glm::vec3(Util::getInt(200)-100, -0.5, Util::getInt(200)-100);
+        m_listEntity[eEntity::tree].push_back(new Entity(*m_listModel[eEntity::tree], *m_basicShader, randomPos.x, randomPos.y, randomPos.z));
+        m_listEntity[eEntity::tree][i]->SetScale(2.0, 2.0, 2.0);
     }
 }
 
 void Renderer::Render(const Camera& camera)
 {
     UpdateUniform(camera);
-    m_light->Render(camera.GetProjection(), camera.GetView());
     
-    m_terrain->Render();
+    //m_light->Render(camera.GetProjection(), camera.GetView());
     
-    //Stall
-    for (int i = 0; i < m_listEntity[eEntity::stall].size(); i++) {
-        Entity* stall = m_listEntity[eEntity::stall][i];
-        ProcessEntity(stall);
+    for (int i = 0; i < m_listTerrain.size(); i++) {
+        m_listTerrain[i]->Render(&camera, m_light);
     }
-    //Dragon
-    for (int i = 0; i < m_listEntity[eEntity::dragon].size(); i++) {
-        Entity* dragon = m_listEntity[eEntity::dragon][i];
-         dragon->Rotate(0, 0, 0.25);
-         ProcessEntity(dragon);
+    
+    //Tree
+    for (int i = 0; i < m_listEntity[eEntity::tree].size(); i++) {
+        Entity* tree = m_listEntity[eEntity::tree][i];
+        ProcessEntity(tree);
+    }
+    //Fern
+    for (int i = 0; i < m_listEntity[eEntity::fern].size(); i++) {
+        Entity* fern = m_listEntity[eEntity::fern][i];
+        //fern->Rotate(0, 0, 0.25);
+        ProcessEntity(fern);
     }
     
     RenderEntity();
@@ -118,7 +120,9 @@ void Renderer::ProcessEntity(Entity*& entity)
 void Renderer::RenderEntity()
 {
     std::unordered_map<Model*, std::vector<Entity*>, ModelHashFunction>:: iterator p;
-    for (p = m_entities.begin(); p != m_entities.end(); p++) {             
+    for (p = m_entities.begin(); p != m_entities.end(); p++) {
+        if (p->first->GetTransparency()) DisableCulling();
+        else EnableCulling();
         p->first->Bind();
         for (int i = 0; i < p->second.size(); i++) {
             p->second[i]->Update();
@@ -154,4 +158,15 @@ void Renderer::UpdateUniform(const Camera& camera)
     glBufferSubData(GL_UNIFORM_BUFFER, 2 * sizeof(glm::mat4), sizeof(glm::vec4), glm::value_ptr(m_light->getPosition()));
     glBufferSubData(GL_UNIFORM_BUFFER, 2 * sizeof(glm::mat4) + sizeof(glm::vec4), sizeof(glm::vec4), glm::value_ptr(m_light->getColor()));
     glBindBuffer(GL_UNIFORM_BUFFER, 0);
+}
+
+void Renderer::EnableCulling()
+{
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
+}
+
+void Renderer::DisableCulling()
+{
+    glDisable(GL_CULL_FACE);
 }

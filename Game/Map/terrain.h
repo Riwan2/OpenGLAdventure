@@ -2,23 +2,28 @@
 #define TERRAIN_H
 
 #include <glm/glm.hpp>
-#include "../headers/vaoobject.h"
+#include "../Loader/texture.h"
 #include "../Basic/util.h"
+#include "../Map/map.h"
+#include "../Basic/camera.h"
+#include "../headers/light.h"
 
 #include "map.h"
 
-class Terrain : public Map
+class Terrain
 {
 public:
-    Terrain(const float& size, ShaderLoader& shaderLoader, int textureId);
+    Terrain(const float& posX, const float& posZ, const float& size, ShaderLoader& shaderLoader, Texture* texture);
     ~Terrain();
     
-    void Render();
+    void Render(const Camera* camera, const Light* light);
 private:
     glm::mat4 m_model;
     glm::vec3 m_color;
     
-    GLuint m_textureId;
+    Texture* m_texture;
+    Map* m_map;
+    Shader* m_shader;
     float* m_heightMap;
     
     void GenerateHeigtMap();

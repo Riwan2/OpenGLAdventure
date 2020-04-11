@@ -12,10 +12,13 @@ CMakeFiles/coucou.dir/Game/Basic/myevent.cpp.o: ../Game/Basic/myevent.h
 CMakeFiles/coucou.dir/Game/Basic/util.cpp.o: ../Game/Basic/util.cpp
 CMakeFiles/coucou.dir/Game/Basic/util.cpp.o: ../Game/Basic/util.h
 
+CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Basic/parameters.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Entity/entity.cpp
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Entity/entity.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Loader/modelloader.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Loader/shaderLoader.h
+CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Loader/stb_image.h
+CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Loader/texture.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Model/model.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Model/shader.h
 
@@ -38,12 +41,17 @@ CMakeFiles/coucou.dir/Game/Map/map.cpp.o: ../Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/Map/map.cpp.o: ../Game/headers/vaoobject.h
 
 CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Basic/basicStruct.h
+CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Basic/camera.h
+CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Basic/parameters.h
 CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Basic/util.h
 CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Loader/shaderLoader.h
+CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Loader/stb_image.h
+CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Loader/texture.h
 CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Map/map.h
 CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Map/terrain.cpp
 CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Map/terrain.h
 CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Model/shader.h
+CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/headers/light.h
 CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/headers/vaoobject.h
 
 CMakeFiles/coucou.dir/Game/Map/water.cpp.o: ../Game/Basic/basicStruct.h
@@ -55,6 +63,8 @@ CMakeFiles/coucou.dir/Game/Map/water.cpp.o: ../Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/Map/water.cpp.o: ../Game/headers/vaoobject.h
 
 CMakeFiles/coucou.dir/Game/Model/model.cpp.o: ../Game/Loader/modelloader.h
+CMakeFiles/coucou.dir/Game/Model/model.cpp.o: ../Game/Loader/stb_image.h
+CMakeFiles/coucou.dir/Game/Model/model.cpp.o: ../Game/Loader/texture.h
 CMakeFiles/coucou.dir/Game/Model/model.cpp.o: ../Game/Model/model.cpp
 CMakeFiles/coucou.dir/Game/Model/model.cpp.o: ../Game/Model/model.h
 

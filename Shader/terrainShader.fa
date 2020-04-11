@@ -1,9 +1,49 @@
 #version 330 core
 
 out vec4 color;
-in vec3 outColor; //flat for law poly aspect
+
+uniform sampler2D myTexture;
+uniform vec3 lightColor;
+uniform vec3 skyColor;
+
+in VS_OUT {
+    vec2 TexCoord;
+    vec3 cameraDirection;
+    vec3 lightVector;
+    vec3 normal;
+    float visibility;
+} fs_in;
+
+vec3 finalSpecular;
+vec3 diffuse;
+vec4 textureVector;
+const float shineDamper = 64;
+const float reflectivity = 0.0;
+const float ambientStrenght = 0.2f;
+
+void lighting()
+{
+    //basic
+    vec3 norm = normalize(fs_in.normal);
+    vec3 toLight = normalize(fs_in.lightVector);
+    float dotLight = dot(norm, toLight);
+    float brightness = max(dotLight, ambientStrenght);
+    diffuse = brightness * lightColor;
+
+    //specular
+    vec3 cameraNorm = normalize(fs_in.cameraDirection);
+    vec3 lightDirection = -toLight;
+    vec3 lightReflection = reflect(lightDirection, norm);
+    float dotReflection = dot(cameraNorm, lightReflection);
+    float reflection = max(dotReflection, 0.0);
+    float dampedFactor = pow(reflection, shineDamper);
+    finalSpecular = dampedFactor * lightColor * reflectivity;
+}
 
 void main()
 {
-    color = vec4(outColor, 1.0);
+    //color = vec4(1.0, 1.0, 1.0, 1.0);
+    lighting();
+    color =  texture(myTexture, fs_in.TexCoord) * vec4(diffuse, 1.0) + vec4(finalSpecular, 1.0);
+    color = mix(vec4(skyColor, 1.0), color, fs_in.visibility);
 }

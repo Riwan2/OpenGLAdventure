@@ -3,6 +3,8 @@
 out vec4 color;
 
 uniform sampler2D myTexture;
+uniform float shineDamper;
+uniform float reflectivity;
 
 layout (std140) uniform Matrices
 {
@@ -17,14 +19,15 @@ in VS_OUT {
     vec3 cameraDirection;
     vec3 lightVector;
     vec3 normal;
+    float visibility;
 } fs_in;
 
-float shineDamper = 64;
-float reflectivity = 1.0;
-float ambientStrenght = 0.0f;
+uniform vec3 skyColor;
+
 vec3 finalSpecular;
 vec3 diffuse;
 vec4 textureVector;
+const float ambientStrenght = 0.2f;
 
 void lighting()
 {
@@ -47,7 +50,9 @@ void lighting()
 
 void main()
 {
-    //color = vec4(1.0, 1.0, 1.0, 1.0);
-    lighting();
-    color =  texture(myTexture, fs_in.TexCoord) * vec4(diffuse, 1.0) + vec4(finalSpecular, 1.0);
+    lighting();    
+    vec4 textureColor = texture(myTexture, fs_in.TexCoord);
+    if (textureColor.a < 0.5) discard;
+    color = textureColor * vec4(diffuse, 1.0) + vec4(finalSpecular, 1.0);
+    color = mix(vec4(skyColor, 1.0), color, fs_in.visibility);
 }

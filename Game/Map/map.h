@@ -9,7 +9,7 @@
 class Map
 {
 public:
-    Map(const float& size, ShaderLoader& shaderLoader);
+    Map(const float& posX, const float& posZ, const float& size);
     ~Map();
     
     void Initialize(float* heightMap);
@@ -17,12 +17,9 @@ public:
 
     float getSize() { return m_size; }
     int& GetNumVertices() { return m_numVertices; }
-
-protected:
-    Shader* m_shader;
     
 private:
-    float m_size;
+    float m_posX, m_posZ, m_size;
     int m_width, m_height, m_numVertices, m_numIndices;
     glm::vec3 m_normal;
 
