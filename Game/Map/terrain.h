@@ -18,6 +18,7 @@ private:
     glm::mat4 m_model;
     glm::vec3 m_color;
     
+    GLuint m_textureId;
     float* m_heightMap;
     
     void GenerateHeigtMap();

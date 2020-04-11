@@ -1,9 +1,8 @@
 #include "map.h"
 #include <iostream>
 
-Map::Map(const float& size, ShaderLoader& shaderLoader, int textureId)
+Map::Map(const float& size, ShaderLoader& shaderLoader)
 {
-    m_textureId = textureId;
     m_width = 16;
     m_height = 16;
     m_size = size;
@@ -21,6 +20,10 @@ Map::~Map()
     delete m_indices;
     delete m_shader;
     delete m_vertex;
+    
+    glDeleteBuffers(1, &m_VBO);
+    glDeleteBuffers(1, &m_EBO);
+    glDeleteVertexArrays(1, &m_VAO);
 }
 
 void Map::Initialize(float* heightMap)
@@ -55,12 +58,9 @@ void Map::Initialize(float* heightMap)
 
 void Map::BasicRendering() 
 {
-    glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, m_textureId);
     glBindVertexArray(m_VAO);
     glDrawElements(GL_TRIANGLES, m_numIndices, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
-    glDisable(GL_TEXTURE_2D);
 }
 
 void Map::CreateVertices(float* heightMap)

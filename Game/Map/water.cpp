@@ -1,7 +1,7 @@
 #include "water.h"
 
-Water::Water(const float& size, ShaderLoader& shaderLoader, int textureId) 
-: Map { size, shaderLoader, textureId }
+Water::Water(const float& size, ShaderLoader& shaderLoader) 
+: Map { size, shaderLoader }
 {
     FlatHeightMap();
     Initialize(m_heightMap);

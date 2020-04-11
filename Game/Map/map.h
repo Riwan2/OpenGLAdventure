@@ -9,7 +9,7 @@
 class Map
 {
 public:
-    Map(const float& size, ShaderLoader& shaderLoader, int textureId);
+    Map(const float& size, ShaderLoader& shaderLoader);
     ~Map();
     
     void Initialize(float* heightMap);
@@ -29,7 +29,7 @@ private:
     basic::Vertex* m_vertex;
     unsigned int* m_indices;
 
-    GLuint m_VAO, m_VBO, m_EBO, m_textureId;
+    GLuint m_VAO, m_VBO, m_EBO;
     int m_drawCall;
     
     void CreateVertices(float* heightMap);
