@@ -10,10 +10,10 @@
 class Terrain : public Map
 {
 public:
-    Terrain(const int& width, const int& height, const float& vertexSize, ShaderLoader& shaderLoader);
+    Terrain(const float& size, ShaderLoader& shaderLoader, int textureId);
     ~Terrain();
     
-    void Render(const glm::mat4& projection, const glm::mat4& view, const glm::vec3& lightColor, const glm::vec3& lightPos);
+    void Render();
 private:
     glm::mat4 m_model;
     glm::vec3 m_color;

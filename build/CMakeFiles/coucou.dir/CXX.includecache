@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
+
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.cpp
 camera.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
-GL/gl.h
--
-iostream
--
+../Basic/parameters.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
 glm/glm.hpp
@@ -35,6 +35,8 @@ GL/gl.h
 -
 camera.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.cpp
 util.h
@@ -157,6 +159,8 @@ glm/glm.hpp
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
 ../headers/vaoobject.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/vaoobject.h
+../Basic/basicStruct.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.cpp
 terrain.h
@@ -243,6 +247,8 @@ string
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
 ../Basic/util.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
+../Map/terrain.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
 unordered_map
 -
 map
@@ -263,8 +269,6 @@ GL/gl.h
 -
 ../Model/shader.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
-../Basic/camera.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
 ../headers/vaoobject.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/vaoobject.h
 
@@ -297,38 +301,12 @@ string
 -
 SDL2/SDL.h
 -
-glm/glm.hpp
--
-glm/gtc/matrix_transform.hpp
--
-glm/gtc/type_ptr.hpp
--
+../Basic/parameters.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
 ../Basic/myevent.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/myevent.h
 ../Basic/camera.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
-../headers/light.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/light.h
-../Map/terrain.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
-../Map/water.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/water.h
-../Loader/texture.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
-../Loader/shaderLoader.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h
-../Loader/modelloader.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
-../Model/model.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h
-../Entity/entity.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h
-unordered_map
--
-vector
--
-iostream
--
 ../Renderer/renderer.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.h
 

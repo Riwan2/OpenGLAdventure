@@ -16,6 +16,8 @@
 #include "../Basic/camera.h"
 #include "../Basic/util.h"
 
+#include "../Map/terrain.h"
+
 #include <unordered_map>
 #include <map>
 #include <vector>
@@ -27,20 +29,21 @@ public:
     ~Renderer();
     
     void Load(const glm::mat4& projection);
-    void Render(const glm::mat4& projection, Camera& camera);
+    void Render(const Camera& camera);
     
 private:
     std::unordered_map<Model*, std::vector<Entity*>, ModelHashFunction> m_entities;
     ShaderLoader* m_basicShader;
     GLuint m_UBOMatrices;
     Light* m_light;
+    Terrain* m_terrain;
     
     std::vector<Model*> m_listModel;
     std::vector<std::vector<Entity*>> m_listEntity;
     
     void LoadEntity();
     void SetUniform(const glm::mat4& projection);
-    void UpdateUniform(Camera& camera);
+    void UpdateUniform(const Camera& camera);
     void ProcessEntity(Entity*& entity);
     void RenderEntity();
 };

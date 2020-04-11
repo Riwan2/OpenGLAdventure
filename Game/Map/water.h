@@ -8,7 +8,7 @@
 class Water : public Map
 {
 public:
-    Water(const int& width, const int& height, const float& vertexSize, ShaderLoader& shaderLoader);
+    Water(const float& size, ShaderLoader& shaderLoader, int textureId);
     ~Water();
     
     void Render(const glm::mat4& projection, const glm::mat4& view, const glm::vec3& lightColor, const glm::vec3& lightPos);

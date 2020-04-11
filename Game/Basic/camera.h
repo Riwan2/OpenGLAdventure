@@ -8,25 +8,23 @@
 class Camera
 {
 public:
-    Camera();
+    Camera(const float& distance);
     ~Camera();
     
     void SetTarget(const glm::vec3 target);
     void Zoom(const float& amount);
-    void Rotate(const float& angleY, const float& angleX); 
-    const glm::mat4& getView();
+    void Rotate(const float& angleY, const float& angleX);
+    
 private:
-    glm::mat4 m_view;
+    glm::mat4 m_view, m_projection;
+    glm::vec3 m_position, m_target, m_front, m_up;
+    float m_angleAround, m_yaw, m_pitch, m_distance;
     
-    glm::vec3 m_position;
-    glm::vec3 m_target;
-    glm::vec3 m_front;
-    glm::vec3 m_up;
+    void CalculateView();
     
-    float m_angleAround;
-    float m_yaw;
-    float m_pitch;
-    float m_distance;
+public:
+    const glm::mat4& GetView() const { return m_view; }
+    const glm::mat4& GetProjection() const { return m_projection; }
 };
 
 #endif // CAMERA_H

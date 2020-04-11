@@ -24,6 +24,7 @@ Renderer::~Renderer()
         }
     }
     m_entities.clear();
+    delete m_terrain;
     delete m_light;
     delete m_basicShader;
 }
@@ -39,7 +40,11 @@ void Renderer::Load(const glm::mat4& projection)
     m_light = new Light(lightColor, *lightShader);
     m_light->Move(glm::vec3(-10, 10, 10.0));  
     delete lightShader;
-
+    
+    Texture* raindrop = new Texture("stall");
+    m_terrain = new Terrain(1, *m_basicShader, raindrop->getId());
+    delete raindrop;
+    
     SetUniform(projection);
     LoadEntity();
 }
@@ -67,16 +72,18 @@ void Renderer::LoadEntity()
         m_listEntity[eEntity::dragon].push_back(new Entity(*m_listModel[eEntity::dragon], *m_basicShader, randomPos.x, randomPos.y, randomPos.z));
     }
     //Stall
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 10; i++) {
         randomPos = glm::vec3(Util::getInt(70)-35, Util::getInt(10)-5, Util::getInt(70)-35);
         m_listEntity[eEntity::stall].push_back(new Entity(*m_listModel[eEntity::stall], *m_basicShader, randomPos.x, randomPos.y, randomPos.z));
     }
 }
 
-void Renderer::Render(const glm::mat4& projection, Camera& camera)
+void Renderer::Render(const Camera& camera)
 {
     UpdateUniform(camera);
-    m_light->Render(projection, camera.getView());
+    m_light->Render(camera.GetProjection(), camera.GetView());
+    
+    m_terrain->Render();
     
     //Stall
     for (int i = 0; i < m_listEntity[eEntity::stall].size(); i++) {
@@ -140,10 +147,10 @@ void Renderer::SetUniform(const glm::mat4& projection)
     glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
 
-void Renderer::UpdateUniform(Camera& camera)
+void Renderer::UpdateUniform(const Camera& camera)
 {
     glBindBuffer(GL_UNIFORM_BUFFER, m_UBOMatrices);
-    glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::mat4), sizeof(glm::mat4), glm::value_ptr(camera.getView()));
+    glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::mat4), sizeof(glm::mat4), glm::value_ptr(camera.GetView()));
     glBufferSubData(GL_UNIFORM_BUFFER, 2 * sizeof(glm::mat4), sizeof(glm::vec4), glm::value_ptr(m_light->getPosition()));
     glBufferSubData(GL_UNIFORM_BUFFER, 2 * sizeof(glm::mat4) + sizeof(glm::vec4), sizeof(glm::vec4), glm::value_ptr(m_light->getColor()));
     glBindBuffer(GL_UNIFORM_BUFFER, 0);

@@ -1,79 +1,108 @@
 #include "map.h"
 #include <iostream>
 
-Map::Map(const int& width, const int& height, const float& vertexSize, ShaderLoader& shaderLoader)
+Map::Map(const float& size, ShaderLoader& shaderLoader, int textureId)
 {
-    m_width = width;
-    m_height = height;
-    m_vertexSize = vertexSize;
+    m_textureId = textureId;
+    m_width = 16;
+    m_height = 16;
+    m_size = size;
     m_numVertices = m_width * m_height;
     m_numIndices = (m_width-1) * (m_height-1) * 6;
     m_normal = glm::vec3(1.0f);
     
-    m_vertices = new float[m_numVertices * 6];
+    m_vertex = new basic::Vertex[m_numVertices];
     m_indices = new unsigned int[m_numIndices];
     m_shader = new Shader(shaderLoader);
 }
 
 Map::~Map()
 {
-    delete m_vertices;
     delete m_indices;
     delete m_shader;
+    delete m_vertex;
 }
 
 void Map::Initialize(float* heightMap)
 {
     CreateVertices(heightMap);
     CreateIndices();
-    CreateNormals(heightMap);
+    //CreateNormals(heightMap);
+
+    glGenVertexArrays(1, &m_VAO);
+    glGenBuffers(1, &m_VBO);
+    glGenBuffers(1, &m_EBO);
     
-    m_vaoObject.Initialize(m_vertices, m_numVertices, m_indices, m_numIndices);
+    glBindVertexArray(m_VAO);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, m_VBO); //Vertices
+    glBufferData(GL_ARRAY_BUFFER, m_numVertices * sizeof(basic::Vertex) * sizeof(float), m_vertex, GL_STATIC_DRAW);
+    
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO); //Triangle Indices
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_numIndices * sizeof(unsigned int), m_indices, GL_STATIC_DRAW);
+    
+    glEnableVertexAttribArray(0); //Position
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+
+    glEnableVertexAttribArray(1); //Normals
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    
+    glEnableVertexAttribArray(2); //Texture Position
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+        
+    glBindVertexArray(0);
 }
 
 void Map::BasicRendering() 
 {
-    m_vaoObject.Render();
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, m_textureId);
+    glBindVertexArray(m_VAO);
+    glDrawElements(GL_TRIANGLES, m_numIndices, GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
+    glDisable(GL_TEXTURE_2D);
 }
 
 void Map::CreateVertices(float* heightMap)
 {
+    m_size = 1;
+    int index = 0;
     for (int y = 0; y < m_height; y++) {
         for (int x = 0; x < m_width; x++) {
-            for (int i = 0; i < 3; i++) {
-                int index = y * (m_width*6) + x * 6 + i;
-    
-                if (index % 3 == 0)
-                    m_vertices[index] = x * m_vertexSize;
-                else if (index % 3 == 1) 
-                    m_vertices[index] = heightMap[y * m_width + x];
-                else if (index % 3 == 2) 
-                    m_vertices[index] = y * m_vertexSize;
-            }
+            m_vertex[index].PosX = (float)x / (float)(m_width-1) * m_size;
+            m_vertex[index].PosY = 0;
+            m_vertex[index].PosZ = (float)y / (float)(m_height-1) * m_size;
+            m_vertex[index].NormX = 0;
+            m_vertex[index].NormY = 1;
+            m_vertex[index].NormZ = 0;
+            m_vertex[index].TexCoordX = (float)x / (float)(m_width-1);
+            m_vertex[index].TexCoordY = (float)y / (float)(m_height-1);
+            
+            index++;
         }
     }
-    //PrintVertices();
+   // PrintVertices();
 }
 
 void Map::CreateNormals(float* heightMap)
 {
-    for (int y = 0; y < m_height; y++) {
-        for (int x = 0; x < m_width; x++) {
-            int vertexIndex = y * (m_width * 6) + x * 6;
-            CalculateNormal(vertexIndex / 6, heightMap);
-            
-            for (int i = 0; i < 3; i++) {
-                int index = y * (m_width*6) + x * 6 + i + 3;
-                
-                if (index % 3 == 0)
-                    m_vertices[index] = m_normal.x;
-                else if (index % 3 == 1)
-                    m_vertices[index] = m_normal.y;
-                else if (index % 3 == 2)
-                    m_vertices[index] = m_normal.z;
-            }
-        }
-    }
+//     for (int y = 0; y < m_height; y++) {
+//         for (int x = 0; x < m_width; x++) {
+//             int vertexIndex = y * (m_width * 6) + x * 6;
+//             CalculateNormal(vertexIndex / 6, heightMap);
+//             
+//             for (int i = 0; i < 3; i++) {
+//                 int index = y * (m_width*6) + x * 6 + i + 3;
+//                 
+//                 if (index % 3 == 0)
+//                     m_vertices[index] = m_normal.x;
+//                 else if (index % 3 == 1)
+//                     m_vertices[index] = m_normal.y;
+//                 else if (index % 3 == 2)
+//                     m_vertices[index] = m_normal.z;
+//             }
+//         }
+//     }
     //PrintVertices();
 }
 
@@ -99,25 +128,19 @@ void Map::CalculateNormal(const int& index, float* heightMap)
 
 void Map::CreateIndices()
 {
-    for (int y = 0; y < m_height-1; y++) {
-        for (int  x = 0; x < m_width-1; x++) {
-            int index = y * m_width + x;
-            for (int i = 0; i < 6; i++) {
-                int indice_index = y * (m_width-1) * 6 + x * 6 + i;
-                if (i % 6 == 0) {
-                    m_indices[indice_index] = index;
-                } else if (i % 6 == 1) {
-                    m_indices[indice_index] = index + m_width;
-                } else if (i % 6 == 2) {
-                    m_indices[indice_index] = index + m_width + 1;
-                } else if (i % 6 == 3) {
-                    m_indices[indice_index] = index + m_width + 1;
-                } else if (i % 6 == 4) {
-                    m_indices[indice_index] = index + 1;
-                } else {
-                    m_indices[indice_index] = index;
-                }
-            }
+    int index = 0;
+    for (int y = 0; y < m_height - 1; y++) {
+        for (int x = 0; x < m_width - 1; x++) {
+            int topLeft = (y * m_width) + x;
+            int topRight = topLeft + 1;
+            int botLeft = ((y+1) * m_width) + x;
+            int botRight = botLeft + 1;
+            m_indices[index++] = topLeft;
+            m_indices[index++] = botLeft;
+            m_indices[index++] = topRight;
+            m_indices[index++] = topRight;
+            m_indices[index++] = botLeft;
+            m_indices[index++] = botRight;
         }
     }
     //PrintIndices();
@@ -126,10 +149,10 @@ void Map::CreateIndices()
 void Map::PrintVertices()
 {
     std::cout << "Vertices :" << std::endl;
-    for (int i = 0; i < m_numVertices * 6; i++) {
-        std::cout << m_vertices[i];
-        if (i % 6 == 5) std::cout << std::endl;
-        else std::cout << " ; ";
+    for (int i = 0; i < m_numVertices; i++) {
+        std::cout << m_vertex[i].PosX << " ; " << m_vertex[i].PosY << " ; " << m_vertex[i].PosZ <<
+        " / " << m_vertex[i].NormX << " ; " << m_vertex[i].NormY << " ; " << m_vertex[i].NormZ << " / " <<
+        m_vertex[i].TexCoordX << " ; " << m_vertex[i].TexCoordY << std::endl;
     }
 }
 

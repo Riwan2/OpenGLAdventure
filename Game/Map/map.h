@@ -4,42 +4,33 @@
 #include <glm/glm.hpp>
 #include "../Model/shader.h"
 #include "../headers/vaoobject.h"
+#include "../Basic/basicStruct.h"
 
 class Map
 {
 public:
-    Map(const int& width, const int& height, const float& vertexSize, ShaderLoader& shaderLoader);
+    Map(const float& size, ShaderLoader& shaderLoader, int textureId);
     ~Map();
     
     void Initialize(float* heightMap);
     void BasicRendering();
-    
-    float* GetVertices() { return m_vertices; }
-    int GetNumVertices() { return m_numVertices; }
-    int GetVerticesSize() { return m_numVertices * 6 * sizeof(float); }
 
-    unsigned int* GetIndices() { return m_indices; }
-    int GetIndicesSize() { return m_numIndices * sizeof(unsigned int); }
-    
-    int getWidth() { return m_width; }
-    int getHeight() { return m_height; }
-    float getVertexSize() { return m_vertexSize; }
-    int getCount() { return m_numIndices + m_numVertices; }
+    float getSize() { return m_size; }
+    int& GetNumVertices() { return m_numVertices; }
 
 protected:
     Shader* m_shader;
     
 private:
-    float m_vertexSize;
-    int m_width;
-    int m_height;
-    int m_numVertices;
-    int m_numIndices;
+    float m_size;
+    int m_width, m_height, m_numVertices, m_numIndices;
     glm::vec3 m_normal;
-    
-    float* m_vertices;
+
+    basic::Vertex* m_vertex;
     unsigned int* m_indices;
-    VaoObject m_vaoObject;
+
+    GLuint m_VAO, m_VBO, m_EBO, m_textureId;
+    int m_drawCall;
     
     void CreateVertices(float* heightMap);
     void CreateIndices();

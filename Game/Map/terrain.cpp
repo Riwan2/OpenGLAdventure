@@ -1,7 +1,7 @@
 #include "terrain.h"
 
-Terrain::Terrain(const int& width, const int& height, const float& vertexSize, ShaderLoader& shaderLoader) 
-: Map { width, height, vertexSize, shaderLoader }
+Terrain::Terrain(const float& size, ShaderLoader& shaderLoader, int textureId) 
+: Map { size, shaderLoader, textureId }
 {
     GenerateHeigtMap();
     Initialize(m_heightMap);
@@ -24,16 +24,11 @@ void Terrain::GenerateHeigtMap()
     }
 }
 
-void Terrain::Render(const glm::mat4& projection, const glm::mat4& view, const glm::vec3& lightColor, const glm::vec3& lightPos)
+void Terrain::Render()
 {   
     m_shader->Use();
-    
-    m_shader->SetMat4("projection", projection);
-    m_shader->SetMat4("view", view);
     m_shader->SetMat4("model", m_model);
     m_shader->SetVec3("myColor", m_color);
-    m_shader->SetVec3("lightColor", lightColor);
-    m_shader->SetVec3("lightPos", lightPos);
     
     Map::BasicRendering();
 }

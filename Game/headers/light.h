@@ -9,13 +9,12 @@
 #include <GL/gl.h>
 
 #include "../Model/shader.h"
-#include "../Basic/camera.h"
 #include "../headers/vaoobject.h"
 
 class Light
 {
 public:
-    Light(const glm::vec3& color, ShaderLoader& shaderLoader, const float& size = 2.0f);
+    Light(const glm::vec3& color, ShaderLoader& shaderLoader, const float& size = 0.5f);
     ~Light();
     
     void Move(const glm::vec3& position);
