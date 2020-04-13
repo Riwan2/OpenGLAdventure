@@ -24,12 +24,18 @@ out VS_OUT {
 
 vec4 worldPosition;
 vec3 cameraPosition;
-const float density = 0.004;
+const float density = 0.006;
 const float gradient = 2.5;
+uniform float time;
 
 void main()
 {
-    worldPosition = model * vec4(aPos, 1.0);
+    vec3 position = aPos;
+    if (1 / position.y < 0.4) {
+        position.y += sin(aPos.x + time) * clamp(aPos.y, 0.0, 0.2) * 0.4;
+    }
+
+    worldPosition = model * vec4(position, 1.0);
     cameraPosition = vec3(inverse(view) * vec4(0, 0, 0, 1));
     vec4 positionRelativeToCamera = view * worldPosition;
     

@@ -25,6 +25,7 @@ private:
 public:
     const glm::mat4& GetView() const { return m_view; }
     const glm::mat4& GetProjection() const { return m_projection; }
+    const float& GetAngleAround() const { return m_angleAround; }
 };
 
 #endif // CAMERA_H

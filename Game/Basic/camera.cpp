@@ -51,10 +51,10 @@ void Camera::Rotate(const float& angleAround, const float& pitch)
 
 void Camera::Zoom(const float& amount)
 {
-    m_distance += amount;
+    m_distance += amount * (m_distance / 10);
     
-    if (m_distance <= 1.0f) m_distance = 1.0f;
-    else if (m_distance >= 50.0f) m_distance = 50.0f;
+    if (m_distance <= 10.0f) m_distance = 10.0f;
+    else if (m_distance >= 80.0f) m_distance = 80.0f;
     m_position.z = m_distance;
     CalculateView();
 }

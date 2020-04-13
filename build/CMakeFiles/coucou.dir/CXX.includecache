@@ -57,6 +57,8 @@ entity.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h
 ../Basic/parameters.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
+../Basic/util.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h
 glm/gtc/matrix_transform.hpp

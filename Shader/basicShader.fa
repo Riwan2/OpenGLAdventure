@@ -5,6 +5,7 @@ out vec4 color;
 uniform sampler2D myTexture;
 uniform float shineDamper;
 uniform float reflectivity;
+uniform float fakeLighting;
 
 layout (std140) uniform Matrices
 {
@@ -50,9 +51,10 @@ void lighting()
 
 void main()
 {
-    lighting();    
+    if (fakeLighting < 0.5) lighting();    
     vec4 textureColor = texture(myTexture, fs_in.TexCoord);
     if (textureColor.a < 0.5) discard;
-    color = textureColor * vec4(diffuse, 1.0) + vec4(finalSpecular, 1.0);
+    color = textureColor;
+    if (fakeLighting < 0.5) color *= vec4(diffuse, 1.0) + vec4(finalSpecular, 1.0);
     color = mix(vec4(skyColor, 1.0), color, fs_in.visibility);
 }

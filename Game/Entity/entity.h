@@ -9,7 +9,7 @@
 class Entity
 {
 public:
-    Entity(const Model& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z);
+    Entity(const Model& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z, const bool& fakeLighting = false);
     ~Entity();
     
     void Update();
@@ -19,6 +19,8 @@ public:
 private:
     Shader* m_shader;
     Model* m_model;
+    float m_time;
+    float m_fakeLighting;
     
     glm::mat4 m_transformation;
     glm::vec3 m_position;

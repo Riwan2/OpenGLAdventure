@@ -13,6 +13,7 @@ CMakeFiles/coucou.dir/Game/Basic/util.cpp.o: ../Game/Basic/util.cpp
 CMakeFiles/coucou.dir/Game/Basic/util.cpp.o: ../Game/Basic/util.h
 
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Basic/parameters.h
+CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Basic/util.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Entity/entity.cpp
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Entity/entity.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Loader/modelloader.h
