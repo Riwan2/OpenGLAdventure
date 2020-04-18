@@ -12,20 +12,20 @@ public:
     ~Camera();
     
     void SetTarget(const glm::vec3 target);
-    void Zoom(const float& amount);
-    void Rotate(const float& angleY, const float& angleX);
-    
+    void Update();
 private:
     glm::mat4 m_view, m_projection;
     glm::vec3 m_position, m_target, m_front, m_up;
     float m_angleAround, m_yaw, m_pitch, m_distance;
     
     void CalculateView();
-    
 public:
+    void Zoom(const float& amount);
+    void Rotate(const float& angleY, const float& angleX);
     const glm::mat4& GetView() const { return m_view; }
     const glm::mat4& GetProjection() const { return m_projection; }
     const float& GetAngleAround() const { return m_angleAround; }
+    const float& GetPitch() const { return m_pitch; }
 };
 
 #endif // CAMERA_H

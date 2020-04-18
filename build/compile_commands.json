@@ -6,8 +6,8 @@
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
-  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Basic/myevent.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/myevent.cpp",
-  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/myevent.cpp"
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Basic/input.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.cpp"
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
@@ -18,6 +18,11 @@
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
   "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp",
   "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Entity/player.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.cpp"
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",

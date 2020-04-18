@@ -5,7 +5,7 @@
 #include <SDL2/SDL.h>
 
 #include "../Basic/parameters.h"
-#include "../Basic/myevent.h"
+#include "../Basic/input.h"
 #include "../Basic/camera.h"
 
 #define STB_IMAGE_IMPLEMENTATION
@@ -48,25 +48,40 @@ int main(int argc, char **argv)
     glClearColor(parameters::skyColor.x, parameters::skyColor.y, parameters::skyColor.z, 0.0f);    
     GLenum res = glewInit();
     
-    MyEvent myEvent;
+    Input myEvent;
     bool isRunning = true;
     float myTime = 0;
     
     Camera camera(30);
-    unsigned int deltaTime = 0;
-    unsigned int lastFrame = 0;
+    float deltaTime = 0;
+    float lastFrame = 0;
     
     Renderer renderer;
     renderer.Load(camera.GetProjection());
     
-    while(!myEvent.HasQuit()) {
+    bool polygonMode, quit = false;
+    
+    while(!quit) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        deltaTime = SDL_GetTicks() - lastFrame;
+        deltaTime = (SDL_GetTicks() - lastFrame) / 1000;
         lastFrame = SDL_GetTicks();
         
-        myEvent.Update(&deltaTime, &camera);
-        renderer.Render(camera);
+        camera.Update();
+        myEvent.Update();
+        renderer.Render(deltaTime, camera);
+        
+        if (Input::KeyJustPressed(Input::eAction::lineMode)) {
+            polygonMode = !polygonMode;
+            if (polygonMode) glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+            else glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        }
+        
+        if (Input::KeyJustPressed(Input::eAction::quit)) {
+            quit = true;
+        }
+        
+        //std::cout << 1 / deltaTime << std::endl;
         //Water
         //water.Render(projection, camera.getView(), light.getColor(), light.getPosition());
         //Terrain

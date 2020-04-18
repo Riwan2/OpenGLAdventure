@@ -9,15 +9,16 @@
 class Entity
 {
 public:
-    Entity(const Model& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z, const bool& fakeLighting = false);
+    Entity(Model*& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z, const bool& fakeLighting = false);
     ~Entity();
     
     void Update();
     void Move(const float& x, const float& y, const float& z);
     void Rotate(const float& degreeX, const float& degreeY, const float& degreeZ);
     
-private:
+protected:
     Shader* m_shader;
+private:
     Model* m_model;
     float m_time;
     float m_fakeLighting;

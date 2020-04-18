@@ -6,7 +6,7 @@ bool operator==(const Model& m1, const Model& m2) {
 }
 
 enum eEntity {
-     grass, tree
+     tree
 };
 
 Renderer::Renderer()
@@ -16,9 +16,9 @@ Renderer::Renderer()
 Renderer::~Renderer()
 {
     m_listEntity.clear();
-    m_listModel.clear();
     m_listTerrain.clear();
     m_entities.clear();
+    m_listModel.clear();
     delete m_light;
     delete m_basicShader;
 }
@@ -37,70 +37,69 @@ void Renderer::Load(const glm::mat4& projection)
     m_light = new Light(lightColor, *lightShader);
     m_light->Move(glm::vec3(-10, 10, 10.0));
     delete lightShader;
+
+    //Player
+    ShaderLoader* playerShader = new ShaderLoader();
+    playerShader->Load("Player/playerShader");
+    Model* playerModel = new Model(new ModelLoader("character"), new Texture("green", 1.0, 64));
+    m_player = new Player(playerModel, *playerShader, 0, 0, 0);
     
     //Terrain
     Texture* grass = new Texture("green", 0.0, 64);
-    m_listTerrain.push_back(new Terrain(-0.5, -0.5, 500, *terrainShader, grass));
-    delete grass;
+    Texture* path = new Texture("path", 0.0, 64);
+    Texture* blendMap = new Texture("blendmap", 0.0, 64);
+    m_listTerrain.push_back(new Terrain(-0.5, -0.5, 200, *terrainShader, grass, path, blendMap));
     
     SetUniform(projection);
+
     LoadEntity();
+    delete blendMap;
+    delete path;
+    delete grass;
 }
 
 void Renderer::LoadEntity()
 {
     //Set Texture
-    Texture* grassTexture = new Texture("grassobject", 0.0, 64, true);
     Texture* treeTexture = new Texture("tree", 0.0, 64);
     //Set Model
-    int nbEntity = 2;
-    m_listModel.push_back(new Model(new ModelLoader("grass"), grassTexture, true));
+    int nbEntity = 1;
     m_listModel.push_back(new Model(new ModelLoader("tree"), treeTexture));
     //Delete Texture
-    delete grassTexture;
     delete treeTexture;
     //Set Entities
     for (int i = 0; i < nbEntity; i++) {
         m_listEntity.push_back(std::vector<Entity*>());
     }
     glm::vec3 randomPos;
-    //grass
     //Tree
     for (int i = 0; i < 10; i++) {
         randomPos = glm::vec3(Util::getInt(100)-50, 0, Util::getInt(100)-50);
-        for (int a = 0; a < 20; a++) {
-            m_listEntity[eEntity::tree].push_back(new Entity(*m_listModel[eEntity::tree], *m_basicShader, randomPos.x + float(Util::getInt(300)-150) / 10, randomPos.y,
-            randomPos.z + float(Util::getInt(300)-150) / 10));
-            
-            for (int b = 0; b < 2; b++) {
-                m_listEntity[eEntity::grass].push_back(new Entity(*m_listModel[eEntity::grass], *m_basicShader, randomPos.x + (float)(Util::getInt(300)-150) / 10, randomPos.y, randomPos.z + (float)(Util::getInt(300)-150) / 10, true));
-            }
+        for (int a = 0; a < 10; a++) {
+            m_listEntity[eEntity::tree].push_back(new Entity(m_listModel[eEntity::tree], 
+                *m_basicShader, randomPos.x + float(Util::getInt(300)-150) / 10, randomPos.y, 
+                randomPos.z + float(Util::getInt(300)-150) / 10));
         }
     }
-    
-    std::cout << m_listEntity[eEntity::grass].size() << std::endl;
 }
 
-void Renderer::Render(const Camera& camera)
+void Renderer::Render(const float& deltaTime, const Camera& camera)
 {
     UpdateUniform(camera);
     
+    m_player->Update(deltaTime, &camera, m_light);
+    
     //m_light->Render(camera.GetProjection(), camera.GetView());
     
+    //Terrain
+    EnableCulling();
     for (int i = 0; i < m_listTerrain.size(); i++) {
         m_listTerrain[i]->Render(&camera, m_light);
     }
-    
     //Tree
     for (int i = 0; i < m_listEntity[eEntity::tree].size(); i++) {
         Entity* tree = m_listEntity[eEntity::tree][i];
         ProcessEntity(tree);
-    }
-    //grass
-    for (int i = 0; i < m_listEntity[eEntity::grass].size(); i++) {
-        Entity* grass = m_listEntity[eEntity::grass][i];
-        grass->SetRotation(0, 0, 180 - camera.GetAngleAround() + 90);
-        ProcessEntity(grass);
     }
     
     RenderEntity();

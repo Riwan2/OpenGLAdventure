@@ -17,6 +17,7 @@
 #include "../Basic/util.h"
 
 #include "../Map/terrain.h"
+#include "../Entity/player.h"
 
 #include <unordered_map>
 #include <map>
@@ -29,13 +30,14 @@ public:
     ~Renderer();
     
     void Load(const glm::mat4& projection);
-    void Render(const Camera& camera);
+    void Render(const float& deltaTime, const Camera& camera);
     
 private:
     std::unordered_map<Model*, std::vector<Entity*>, ModelHashFunction> m_entities;
     ShaderLoader* m_basicShader;
     GLuint m_UBOMatrices;
     Light* m_light;
+    Player* m_player;
     
     std::vector<Model*> m_listModel;
     std::vector<std::vector<Entity*>> m_listEntity;

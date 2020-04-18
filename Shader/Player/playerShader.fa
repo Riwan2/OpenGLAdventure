@@ -2,12 +2,11 @@
 
 out vec4 color;
 
-uniform sampler2D grass;
-uniform sampler2D path;
-uniform sampler2D blendMap;
-
+uniform sampler2D myTexture;
 uniform vec3 lightColor;
 uniform vec3 skyColor;
+uniform float shineDamper;
+uniform float reflectivity;
 
 in VS_OUT {
     vec2 TexCoord;
@@ -19,11 +18,7 @@ in VS_OUT {
 
 vec3 finalSpecular;
 vec3 diffuse;
-vec4 textureVector;
-const float shineDamper = 64;
-const float reflectivity = 0.0;
 const float ambientStrenght = 0.2f;
-vec4 terrainColor;
 
 void lighting()
 {
@@ -44,23 +39,10 @@ void lighting()
     finalSpecular = dampedFactor * lightColor * reflectivity;
 }
 
-void textureGestion()
-{
-    vec4 blendMapColor = texture(blendMap, fs_in.TexCoord);
-
-    float grassTextureAmount = 1 - (blendMapColor.r + blendMapColor.g + blendMapColor.b);
-    vec2 tiledCoords = fs_in.TexCoord;
-    vec4 grassTextureColor = texture(grass, tiledCoords * 20) * grassTextureAmount;
-    vec4 pathTextureColor = texture(path, tiledCoords * 30) * blendMapColor.r;
-
-    terrainColor = grassTextureColor + pathTextureColor;
-}
-
 void main()
 {
     //color = vec4(1.0, 1.0, 1.0, 1.0);
     lighting();
-    textureGestion();
-    color =  terrainColor * vec4(diffuse, 1.0) + vec4(finalSpecular, 1.0);
+    color = texture(myTexture, fs_in.TexCoord) * vec4(diffuse, 1.0) + vec4(finalSpecular, 1.0);
     color = mix(vec4(skyColor, 1.0), color, fs_in.visibility);
 }

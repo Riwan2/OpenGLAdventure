@@ -32,9 +32,11 @@ void main()
 {
     vec3 position = aPos;
     if (1 / position.y < 0.4) {
-        position.y += sin(aPos.x + time) * clamp(aPos.y, 0.0, 0.2) * 0.4;
+        position.y += sin(aPos.x + time) * clamp(aPos.y, 0.0, 0.1) * 0.4;
+        position.y += sin(aPos.z + time) * clamp(aPos.y, 0.0, 0.1) * 0.3;
+        position.y += sin(aPos.z / 2 + time) * clamp(aPos.y, 0.0, 0.1) * 0.2;
     }
-
+    
     worldPosition = model * vec4(position, 1.0);
     cameraPosition = vec3(inverse(view) * vec4(0, 0, 0, 1));
     vec4 positionRelativeToCamera = view * worldPosition;

@@ -25,7 +25,7 @@ Model::Model(ModelLoader* modelLoader, Texture* texture, const bool& transparenc
     
     //Texture :
     m_texture = new Texture(*texture);
-    
+
     delete modelLoader;
 }
 
@@ -41,6 +41,7 @@ Model::~Model()
 void Model::Bind() const
 {
     glEnable(GL_TEXTURE_2D);
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_texture->getId());
     glBindVertexArray(m_VAO);
 }

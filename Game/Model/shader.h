@@ -30,6 +30,9 @@ public:
     void SetFloat(const std::string& name, const float& value) {
         glUniform1f(UniformLoc(name), value);
     }
+    void SetInt(const std::string& name, const int& value) {
+        glUniform1i(UniformLoc(name), value);
+    }
 };
     
 

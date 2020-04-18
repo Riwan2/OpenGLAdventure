@@ -1,0 +1,19 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"settings": {
+				"easy_clang_complete_verbose": true,
+        		"ecc_use_libclang": true,
+        	}
+		}
+	],
+	
+	// "common_flags" : [
+ //    	"-I/usr/include",
+ //    	"-I$project_base_path/src",
+ //    	// this is needed to include the correct headers for clang
+ //    	"-I/usr/lib/clang/$clang_version/include",
+	// ],
+}

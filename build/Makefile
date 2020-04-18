@@ -196,32 +196,32 @@ Game/Basic/camera.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/camera.cpp.s
 .PHONY : Game/Basic/camera.cpp.s
 
-Game/Basic/myevent.o: Game/Basic/myevent.cpp.o
+Game/Basic/input.o: Game/Basic/input.cpp.o
 
-.PHONY : Game/Basic/myevent.o
+.PHONY : Game/Basic/input.o
 
 # target to build an object file
-Game/Basic/myevent.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/myevent.cpp.o
-.PHONY : Game/Basic/myevent.cpp.o
+Game/Basic/input.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/input.cpp.o
+.PHONY : Game/Basic/input.cpp.o
 
-Game/Basic/myevent.i: Game/Basic/myevent.cpp.i
+Game/Basic/input.i: Game/Basic/input.cpp.i
 
-.PHONY : Game/Basic/myevent.i
+.PHONY : Game/Basic/input.i
 
 # target to preprocess a source file
-Game/Basic/myevent.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/myevent.cpp.i
-.PHONY : Game/Basic/myevent.cpp.i
+Game/Basic/input.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/input.cpp.i
+.PHONY : Game/Basic/input.cpp.i
 
-Game/Basic/myevent.s: Game/Basic/myevent.cpp.s
+Game/Basic/input.s: Game/Basic/input.cpp.s
 
-.PHONY : Game/Basic/myevent.s
+.PHONY : Game/Basic/input.s
 
 # target to generate assembly for a file
-Game/Basic/myevent.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/myevent.cpp.s
-.PHONY : Game/Basic/myevent.cpp.s
+Game/Basic/input.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/input.cpp.s
+.PHONY : Game/Basic/input.cpp.s
 
 Game/Basic/util.o: Game/Basic/util.cpp.o
 
@@ -276,6 +276,33 @@ Game/Entity/entity.s: Game/Entity/entity.cpp.s
 Game/Entity/entity.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Entity/entity.cpp.s
 .PHONY : Game/Entity/entity.cpp.s
+
+Game/Entity/player.o: Game/Entity/player.cpp.o
+
+.PHONY : Game/Entity/player.o
+
+# target to build an object file
+Game/Entity/player.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Entity/player.cpp.o
+.PHONY : Game/Entity/player.cpp.o
+
+Game/Entity/player.i: Game/Entity/player.cpp.i
+
+.PHONY : Game/Entity/player.i
+
+# target to preprocess a source file
+Game/Entity/player.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Entity/player.cpp.i
+.PHONY : Game/Entity/player.cpp.i
+
+Game/Entity/player.s: Game/Entity/player.cpp.s
+
+.PHONY : Game/Entity/player.s
+
+# target to generate assembly for a file
+Game/Entity/player.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Entity/player.cpp.s
+.PHONY : Game/Entity/player.cpp.s
 
 Game/Loader/modelloader.o: Game/Loader/modelloader.cpp.o
 
@@ -617,15 +644,18 @@ help:
 	@echo "... Game/Basic/camera.o"
 	@echo "... Game/Basic/camera.i"
 	@echo "... Game/Basic/camera.s"
-	@echo "... Game/Basic/myevent.o"
-	@echo "... Game/Basic/myevent.i"
-	@echo "... Game/Basic/myevent.s"
+	@echo "... Game/Basic/input.o"
+	@echo "... Game/Basic/input.i"
+	@echo "... Game/Basic/input.s"
 	@echo "... Game/Basic/util.o"
 	@echo "... Game/Basic/util.i"
 	@echo "... Game/Basic/util.s"
 	@echo "... Game/Entity/entity.o"
 	@echo "... Game/Entity/entity.i"
 	@echo "... Game/Entity/entity.s"
+	@echo "... Game/Entity/player.o"
+	@echo "... Game/Entity/player.i"
+	@echo "... Game/Entity/player.s"
 	@echo "... Game/Loader/modelloader.o"
 	@echo "... Game/Loader/modelloader.i"
 	@echo "... Game/Loader/modelloader.s"

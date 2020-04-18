@@ -1,5 +1,6 @@
 #include "camera.h"
 #include "../Basic/parameters.h"
+#include "../Basic/input.h"
 
 Camera::Camera(const float& distance)
 {
@@ -20,6 +21,19 @@ Camera::Camera(const float& distance)
 Camera::~Camera()
 {
     
+}
+
+void Camera::Update()
+{
+    if (Input::LeftClick(Input::eMouse::leftButton)) {
+        if (abs(Input::MouseOffset().Y) < 300)
+            Rotate(0.0, -(float)Input::MouseOffset().Y / 15);
+        
+        if (abs(Input::MouseOffset().X) < 300)
+            Rotate((float)Input::MouseOffset().X / 8, 0.0);
+    }
+    if (Input::ScrollDown()) Zoom(0.5);
+    if (Input::ScrollUp()) Zoom(-0.5);
 }
 
 void Camera::CalculateView()
@@ -64,5 +78,3 @@ void Camera::SetTarget(const glm::vec3 target)
     m_target = target;
     CalculateView();
 }
-
-
