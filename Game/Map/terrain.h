@@ -1,13 +1,10 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
 
-#include <glm/glm.hpp>
 #include "../Loader/texture.h"
 #include "../Basic/util.h"
-#include "../Map/map.h"
 #include "../Basic/camera.h"
-#include "../headers/light.h"
-
+#include "../Basic/light.h"
 #include "map.h"
 
 class Terrain

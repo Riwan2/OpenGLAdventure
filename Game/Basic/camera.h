@@ -1,9 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 
 class Camera
 {
@@ -12,7 +10,7 @@ public:
     ~Camera();
     
     void SetTarget(const glm::vec3 target);
-    void Update();
+    void Update(const glm::vec3& targetPosition);
 private:
     glm::mat4 m_view, m_projection;
     glm::vec3 m_position, m_target, m_front, m_up;

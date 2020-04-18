@@ -17,38 +17,32 @@ camera.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
-glm/glm.hpp
--
 glm/gtc/matrix_transform.hpp
--
-glm/gtc/type_ptr.hpp
 -
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.cpp
 input.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.h
-iostream
--
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.h
 SDL2/SDL.h
 -
-GL/gl.h
--
-camera.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.cpp
+light.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
+../Model/shader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
-glm/glm.hpp
--
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.cpp
 util.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
-stdio.h
--
 stdlib.h
 -
 time.h
@@ -63,10 +57,6 @@ entity.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h
-glm/gtc/matrix_transform.hpp
--
-glm/gtc/type_ptr.hpp
--
 ../Model/shader.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
 ../Model/model.h
@@ -83,15 +73,15 @@ player.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.h
 ../Entity/entity.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h
-../headers/light.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/light.h
+../Basic/light.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
 ../Basic/camera.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.cpp
 modelloader.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
-../Loader/objloader.h
+objloader.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
@@ -105,8 +95,6 @@ iostream
 -
 vector
 -
-string
--
 fstream
 -
 math.h
@@ -118,8 +106,6 @@ shaderLoader.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h
 GL/glew.h
--
-string
 -
 iostream
 -
@@ -173,16 +159,10 @@ stb_image.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.cpp
 map.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h
-iostream
--
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h
-glm/glm.hpp
--
 ../Model/shader.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
-../headers/vaoobject.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/vaoobject.h
 ../Basic/basicStruct.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
 
@@ -193,18 +173,14 @@ terrain.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
-glm/glm.hpp
--
 ../Loader/texture.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
 ../Basic/util.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
-../Map/map.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h
 ../Basic/camera.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
-../headers/light.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/light.h
+../Basic/light.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
 map.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h
 
@@ -213,10 +189,6 @@ water.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/water.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/water.h
-glm/glm.hpp
--
-../headers/vaoobject.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/vaoobject.h
 map.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h
 
@@ -225,10 +197,6 @@ model.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h
-glm/gtc/matrix_transform.hpp
--
-glm/gtc/type_ptr.hpp
--
 ../Loader/modelloader.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
 ../Loader/texture.h
@@ -241,12 +209,6 @@ shader.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
-iostream
--
-GL/glew.h
--
-glm/glm.hpp
--
 glm/gtc/matrix_transform.hpp
 -
 glm/gtc/type_ptr.hpp
@@ -259,96 +221,30 @@ renderer.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.h
-GL/glew.h
--
-glm/glm.hpp
--
-iostream
--
-string
--
-../Loader/texture.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
-../Model/shader.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
-../Model/model.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h
 ../Entity/entity.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h
-../headers/light.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/light.h
-../Basic/camera.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
-../Basic/util.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
 ../Map/terrain.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
-../Entity/player.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.h
 unordered_map
 -
 map
 -
-vector
--
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/light.h
-glm/glm.hpp
--
-glm/gtc/matrix_transform.hpp
--
-glm/gtc/type_ptr.hpp
--
-GL/glew.h
--
-GL/gl.h
--
-../Model/shader.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
-../headers/vaoobject.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/vaoobject.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.cpp
+scene.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.h
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/vaoobject.h
-glm/glm.hpp
--
-glm/gtc/matrix_transform.hpp
--
-glm/gtc/type_ptr.hpp
--
-GL/glew.h
--
-GL/gl.h
--
-
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/light.cpp
-../headers/light.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/light.h
-iostream
--
-
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp
-iostream
--
-GL/glew.h
--
-GL/gl.h
--
-string
--
-SDL2/SDL.h
--
-../Basic/parameters.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
-../Basic/input.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.h
-../Basic/camera.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.h
 ../Renderer/renderer.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.h
+../Entity/player.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.h
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/vaoobject.cpp
-../headers/vaoobject.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/vaoobject.h
-iostream
--
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp
+../Basic/input.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.h
+../Scene/scene.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.h
+../Basic/parameters.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
 

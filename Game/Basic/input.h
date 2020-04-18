@@ -2,9 +2,6 @@
 #define INPUT_H
 
 #include <SDL2/SDL.h>
-#include <GL/gl.h>
-
-#include "camera.h"
 
 struct DoubleInt {
     int X, Y;
@@ -19,6 +16,7 @@ public:
         moveRight,
         moveDown,
         moveLeft,
+        jump,
         lineMode,
         quit,
     };
@@ -47,7 +45,7 @@ private:
     void EventKeyDown(SDL_Event* myEvent);
     void EventKeyUp(SDL_Event* myEvent);
 
-    static const int numAction = 6;
+    static const int numAction = 7;
     static const int numMouse = 3;
     static bool keyDown[numAction];
     static bool lastKeyDown[numAction];

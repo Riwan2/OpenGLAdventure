@@ -1,8 +1,6 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 #include "../Model/shader.h"
 #include "../Model/model.h"
 
@@ -15,18 +13,19 @@ public:
     void Update();
     void Move(const float& x, const float& y, const float& z);
     void Rotate(const float& degreeX, const float& degreeY, const float& degreeZ);
+    void Scale(const float& x, const float& y, const float& z);
     
 protected:
     Shader* m_shader;
+    glm::vec3 m_position;
+    glm::vec3 m_scale;
+    glm::vec3 m_rotation; //in degree
 private:
     Model* m_model;
     float m_time;
     float m_fakeLighting;
     
     glm::mat4 m_transformation;
-    glm::vec3 m_position;
-    glm::vec3 m_scale;
-    glm::vec3 m_rotation; //in degree
     void SetTransformation();
     
 public:

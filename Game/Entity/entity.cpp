@@ -60,3 +60,8 @@ void Entity::Rotate(const float& degreeX, const float& degreeY, const float& deg
     else if (m_rotation.z > 360) m_rotation.z -= 360;
     SetTransformation();
 }
+
+void Entity::Scale(const float& x, const float& y, const float& z)
+{
+    m_scale *= glm::vec3(x, y, z);
+}

@@ -5,6 +5,10 @@
  Player::Player(Model*& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z) : Entity { model, shaderLoader, x, y, z }
  {
      SetRotation(0, 180, 0);
+     m_currentSpeed = 0;
+     m_currentTurnSpeed = 0;
+     m_currentUpwardSpeed = 0;
+     m_canJump = false;
  }
 
  Player::~Player()
@@ -15,19 +19,40 @@
 void Player::Update(const float& deltaTime, const Camera* camera, const Light* light)
 {
     if (Input::KeyDown(Input::eAction::moveDown)) {
-        Move(0, 0, m_SPEED * deltaTime);
+        m_currentSpeed = -m_SPEED;
     } else if (Input::KeyDown(Input::eAction::moveUp)) {
-        Move(0, 0, -m_SPEED * deltaTime);
+        m_currentSpeed = m_SPEED;
+    } else {
+        m_currentSpeed = 0;
     }
     
     if (Input::KeyDown(Input::eAction::moveRight)) {
-        Move(m_SPEED * deltaTime, 0, 0);
+        m_currentTurnSpeed = -m_TURN_SPEED;
     } else if (Input::KeyDown(Input::eAction::moveLeft)) {
-        Move(-m_SPEED * deltaTime, 0, 0);        
+        m_currentTurnSpeed = m_TURN_SPEED;
+    } else {
+        m_currentTurnSpeed = 0;
     }
-    
-    //Rotate(0, 0.3, 0);
-    
+
+    if (Input::KeyDown(Input::eAction::jump)) {
+        if (m_canJump) m_currentUpwardSpeed = m_JUMP_POWER;
+        m_canJump = false;
+    }
+
+    m_currentUpwardSpeed += m_GRAVITY * deltaTime;
+    Move(0, m_currentUpwardSpeed * deltaTime, 0);
+    if (m_position.y < m_TERRAIN_HEIGHT) {
+        m_currentUpwardSpeed = 0;
+        m_canJump = true;
+        m_position.y = m_TERRAIN_HEIGHT;
+    }
+
+    float distance = m_currentSpeed * deltaTime;
+    float distanceX = sin(glm::radians(m_rotation.y)) * distance;
+    float distanceZ = cos(glm::radians(m_rotation.y)) * distance;
+
+    Move(distanceX, 0, distanceZ);
+    Rotate(0, m_currentTurnSpeed * deltaTime, 0);
     BasicRender(camera, light);
 }
 
@@ -44,4 +69,3 @@ void Player::BasicRender(const Camera* camera, const Light* light)
     GetModel().Render();
     GetModel().Unbind();
 }
-

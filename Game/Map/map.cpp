@@ -1,5 +1,4 @@
 #include "map.h"
-#include <iostream>
 
 Map::Map(const float& posX, const float& posZ, const float& size)
 {
@@ -17,10 +16,7 @@ Map::Map(const float& posX, const float& posZ, const float& size)
 }
 
 Map::~Map()
-{
-    delete m_indices;
-    delete m_vertex;
-    
+{   
     glDeleteBuffers(1, &m_VBO);
     glDeleteBuffers(1, &m_EBO);
     glDeleteVertexArrays(1, &m_VAO);
@@ -54,6 +50,9 @@ void Map::Initialize(float* heightMap)
     glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
         
     glBindVertexArray(0);
+
+    delete m_indices;
+    delete m_vertex;
 }
 
 void Map::BasicRendering() 

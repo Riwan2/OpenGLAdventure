@@ -1,8 +1,6 @@
 #ifndef PARAMETERS_H
 #define PARAMATERS_H
 
-#include <glm/glm.hpp>
-
 namespace parameters {
     static const char* Title = "coucou";
     static const int PosX = 100;

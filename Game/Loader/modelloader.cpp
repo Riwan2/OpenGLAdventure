@@ -1,5 +1,5 @@
 #include "modelloader.h"
-#include "../Loader/objloader.h"
+#include "objloader.h"
 
 ModelLoader::ModelLoader(const std::string& fileName)
 {

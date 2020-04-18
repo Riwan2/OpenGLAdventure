@@ -16,46 +16,19 @@ Renderer::Renderer()
 Renderer::~Renderer()
 {
     m_listEntity.clear();
-    m_listTerrain.clear();
     m_entities.clear();
     m_listModel.clear();
-    delete m_light;
     delete m_basicShader;
 }
 
 void Renderer::Load(const glm::mat4& projection)
 {
-    ShaderLoader* lightShader = new ShaderLoader();
-    lightShader->Load("lightShader");
-    ShaderLoader* terrainShader = new ShaderLoader();
-    terrainShader->Load("terrainShader");
     m_basicShader = new ShaderLoader();
     m_basicShader->Load("basicShader");
-
-    //Light
-    glm::vec3 lightColor = glm::vec3(1.0, 1.0, 1.0f); //0.9, 0.8, 0.7
-    m_light = new Light(lightColor, *lightShader);
-    m_light->Move(glm::vec3(-10, 10, 10.0));
-    delete lightShader;
-
-    //Player
-    ShaderLoader* playerShader = new ShaderLoader();
-    playerShader->Load("Player/playerShader");
-    Model* playerModel = new Model(new ModelLoader("character"), new Texture("green", 1.0, 64));
-    m_player = new Player(playerModel, *playerShader, 0, 0, 0);
     
-    //Terrain
-    Texture* grass = new Texture("green", 0.0, 64);
-    Texture* path = new Texture("path", 0.0, 64);
-    Texture* blendMap = new Texture("blendmap", 0.0, 64);
-    m_listTerrain.push_back(new Terrain(-0.5, -0.5, 200, *terrainShader, grass, path, blendMap));
-    
+    //Entity
     SetUniform(projection);
-
     LoadEntity();
-    delete blendMap;
-    delete path;
-    delete grass;
 }
 
 void Renderer::LoadEntity()
@@ -83,18 +56,16 @@ void Renderer::LoadEntity()
     }
 }
 
-void Renderer::Render(const float& deltaTime, const Camera& camera)
+void Renderer::Render(const float& deltaTime, const Camera& camera, const std::vector<Terrain*>& listTerrain, Light* light)
 {
-    UpdateUniform(camera);
+    UpdateUniform(camera, light);    
     
-    m_player->Update(deltaTime, &camera, m_light);
-    
-    //m_light->Render(camera.GetProjection(), camera.GetView());
+    //light->Render(camera.GetProjection(), camera.GetView());
     
     //Terrain
     EnableCulling();
-    for (int i = 0; i < m_listTerrain.size(); i++) {
-        m_listTerrain[i]->Render(&camera, m_light);
+    for (int i = 0; i < listTerrain.size(); i++) {
+        listTerrain[i]->Render(&camera, light);
     }
     //Tree
     for (int i = 0; i < m_listEntity[eEntity::tree].size(); i++) {
@@ -154,12 +125,12 @@ void Renderer::SetUniform(const glm::mat4& projection)
     glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
 
-void Renderer::UpdateUniform(const Camera& camera)
+void Renderer::UpdateUniform(const Camera& camera, Light* light)
 {
     glBindBuffer(GL_UNIFORM_BUFFER, m_UBOMatrices);
     glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::mat4), sizeof(glm::mat4), glm::value_ptr(camera.GetView()));
-    glBufferSubData(GL_UNIFORM_BUFFER, 2 * sizeof(glm::mat4), sizeof(glm::vec4), glm::value_ptr(m_light->getPosition()));
-    glBufferSubData(GL_UNIFORM_BUFFER, 2 * sizeof(glm::mat4) + sizeof(glm::vec4), sizeof(glm::vec4), glm::value_ptr(m_light->getColor()));
+    glBufferSubData(GL_UNIFORM_BUFFER, 2 * sizeof(glm::mat4), sizeof(glm::vec4), glm::value_ptr(light->getPosition()));
+    glBufferSubData(GL_UNIFORM_BUFFER, 2 * sizeof(glm::mat4) + sizeof(glm::vec4), sizeof(glm::vec4), glm::value_ptr(light->getColor()));
     glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
 

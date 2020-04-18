@@ -223,6 +223,33 @@ Game/Basic/input.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/input.cpp.s
 .PHONY : Game/Basic/input.cpp.s
 
+Game/Basic/light.o: Game/Basic/light.cpp.o
+
+.PHONY : Game/Basic/light.o
+
+# target to build an object file
+Game/Basic/light.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/light.cpp.o
+.PHONY : Game/Basic/light.cpp.o
+
+Game/Basic/light.i: Game/Basic/light.cpp.i
+
+.PHONY : Game/Basic/light.i
+
+# target to preprocess a source file
+Game/Basic/light.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/light.cpp.i
+.PHONY : Game/Basic/light.cpp.i
+
+Game/Basic/light.s: Game/Basic/light.cpp.s
+
+.PHONY : Game/Basic/light.s
+
+# target to generate assembly for a file
+Game/Basic/light.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/light.cpp.s
+.PHONY : Game/Basic/light.cpp.s
+
 Game/Basic/util.o: Game/Basic/util.cpp.o
 
 .PHONY : Game/Basic/util.o
@@ -547,32 +574,32 @@ Game/Renderer/renderer.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.s
 .PHONY : Game/Renderer/renderer.cpp.s
 
-Game/source/light.o: Game/source/light.cpp.o
+Game/Scene/scene.o: Game/Scene/scene.cpp.o
 
-.PHONY : Game/source/light.o
+.PHONY : Game/Scene/scene.o
 
 # target to build an object file
-Game/source/light.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/light.cpp.o
-.PHONY : Game/source/light.cpp.o
+Game/Scene/scene.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o
+.PHONY : Game/Scene/scene.cpp.o
 
-Game/source/light.i: Game/source/light.cpp.i
+Game/Scene/scene.i: Game/Scene/scene.cpp.i
 
-.PHONY : Game/source/light.i
+.PHONY : Game/Scene/scene.i
 
 # target to preprocess a source file
-Game/source/light.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/light.cpp.i
-.PHONY : Game/source/light.cpp.i
+Game/Scene/scene.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Scene/scene.cpp.i
+.PHONY : Game/Scene/scene.cpp.i
 
-Game/source/light.s: Game/source/light.cpp.s
+Game/Scene/scene.s: Game/Scene/scene.cpp.s
 
-.PHONY : Game/source/light.s
+.PHONY : Game/Scene/scene.s
 
 # target to generate assembly for a file
-Game/source/light.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/light.cpp.s
-.PHONY : Game/source/light.cpp.s
+Game/Scene/scene.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Scene/scene.cpp.s
+.PHONY : Game/Scene/scene.cpp.s
 
 Game/source/main.o: Game/source/main.cpp.o
 
@@ -601,33 +628,6 @@ Game/source/main.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/main.cpp.s
 .PHONY : Game/source/main.cpp.s
 
-Game/source/vaoobject.o: Game/source/vaoobject.cpp.o
-
-.PHONY : Game/source/vaoobject.o
-
-# target to build an object file
-Game/source/vaoobject.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.o
-.PHONY : Game/source/vaoobject.cpp.o
-
-Game/source/vaoobject.i: Game/source/vaoobject.cpp.i
-
-.PHONY : Game/source/vaoobject.i
-
-# target to preprocess a source file
-Game/source/vaoobject.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.i
-.PHONY : Game/source/vaoobject.cpp.i
-
-Game/source/vaoobject.s: Game/source/vaoobject.cpp.s
-
-.PHONY : Game/source/vaoobject.s
-
-# target to generate assembly for a file
-Game/source/vaoobject.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.s
-.PHONY : Game/source/vaoobject.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -647,6 +647,9 @@ help:
 	@echo "... Game/Basic/input.o"
 	@echo "... Game/Basic/input.i"
 	@echo "... Game/Basic/input.s"
+	@echo "... Game/Basic/light.o"
+	@echo "... Game/Basic/light.i"
+	@echo "... Game/Basic/light.s"
 	@echo "... Game/Basic/util.o"
 	@echo "... Game/Basic/util.i"
 	@echo "... Game/Basic/util.s"
@@ -683,15 +686,12 @@ help:
 	@echo "... Game/Renderer/renderer.o"
 	@echo "... Game/Renderer/renderer.i"
 	@echo "... Game/Renderer/renderer.s"
-	@echo "... Game/source/light.o"
-	@echo "... Game/source/light.i"
-	@echo "... Game/source/light.s"
+	@echo "... Game/Scene/scene.o"
+	@echo "... Game/Scene/scene.i"
+	@echo "... Game/Scene/scene.s"
 	@echo "... Game/source/main.o"
 	@echo "... Game/source/main.i"
 	@echo "... Game/source/main.s"
-	@echo "... Game/source/vaoobject.o"
-	@echo "... Game/source/vaoobject.i"
-	@echo "... Game/source/vaoobject.s"
 .PHONY : help
 
 

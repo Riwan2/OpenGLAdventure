@@ -1,8 +1,6 @@
 #ifndef WATER_H
 #define WATER_H
 
-#include <glm/glm.hpp>
-#include "../headers/vaoobject.h"
 #include "map.h"
 
 class Water : public Map

@@ -1,16 +1,8 @@
-#include <iostream>
-#include <GL/glew.h>
-#include <GL/gl.h>
-#include <string>
-#include <SDL2/SDL.h>
-
-#include "../Basic/parameters.h"
-#include "../Basic/input.h"
-#include "../Basic/camera.h"
-
 #define STB_IMAGE_IMPLEMENTATION
 
-#include "../Renderer/renderer.h"
+#include "../Basic/input.h"
+#include "../Scene/scene.h"
+#include "../Basic/parameters.h"
 
 int main(int argc, char **argv)
 {    
@@ -29,7 +21,6 @@ int main(int argc, char **argv)
     SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE,32);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,16);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,1);
-    
     //SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
     //SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
     //glEnable(GL_MULTISAMPLE);
@@ -48,37 +39,29 @@ int main(int argc, char **argv)
     glClearColor(parameters::skyColor.x, parameters::skyColor.y, parameters::skyColor.z, 0.0f);    
     GLenum res = glewInit();
     
-    Input myEvent;
-    bool isRunning = true;
-    float myTime = 0;
-    
-    Camera camera(30);
-    float deltaTime = 0;
-    float lastFrame = 0;
-    
-    Renderer renderer;
-    renderer.Load(camera.GetProjection());
-    
+    Input myEvent;    
     bool polygonMode, quit = false;
+    float deltaTime, lastFrame = 0;
+
+    Scene* basicScene = new Scene();
+    basicScene->Initialize();
     
     while(!quit) {
         //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         deltaTime = (SDL_GetTicks() - lastFrame) / 1000;
         lastFrame = SDL_GetTicks();
-        
-        camera.Update();
+    
         myEvent.Update();
-        renderer.Render(deltaTime, camera);
+        basicScene->Update(deltaTime);
         
+        if (Input::KeyJustPressed(Input::eAction::quit))
+            quit = true;
+
         if (Input::KeyJustPressed(Input::eAction::lineMode)) {
             polygonMode = !polygonMode;
             if (polygonMode) glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
             else glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        }
-        
-        if (Input::KeyJustPressed(Input::eAction::quit)) {
-            quit = true;
         }
         
         //std::cout << 1 / deltaTime << std::endl;
@@ -86,9 +69,10 @@ int main(int argc, char **argv)
         //water.Render(projection, camera.getView(), light.getColor(), light.getPosition());
         //Terrain
         //terrain.Render(projection, *camera.getView(), *light.getColor(), *light.getPosition());
-        //light.Move(glm::vec3(-0.001, -0.001, -0.001));
         SDL_GL_SwapWindow(m_window);        
     }
+
+    delete basicScene;
     
     return 0;
 }

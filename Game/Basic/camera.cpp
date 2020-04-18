@@ -23,8 +23,9 @@ Camera::~Camera()
     
 }
 
-void Camera::Update()
+void Camera::Update(const glm::vec3& targetPosition)
 {
+    m_target = targetPosition;
     if (Input::LeftClick(Input::eMouse::leftButton)) {
         if (abs(Input::MouseOffset().Y) < 300)
             Rotate(0.0, -(float)Input::MouseOffset().Y / 15);

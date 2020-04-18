@@ -4,6 +4,54 @@
 		"selected_items":
 		[
 			[
+				"vertic",
+				"verticesSize"
+			],
+			[
+				"ver",
+				"verticesSize"
+			],
+			[
+				"num",
+				"numVertices"
+			],
+			[
+				"vert",
+				"verticesSize\tint verticesSize"
+			],
+			[
+				"tar",
+				"targetPosition\tconst glm::vec3 & targetPosition"
+			],
+			[
+				"m_cur",
+				"m_currentUpwardSpeed"
+			],
+			[
+				"m_cr",
+				"m_currentJumpSpeed"
+			],
+			[
+				"m_",
+				"m_JUMP_POWER\tconst float m_JUMP_POWER"
+			],
+			[
+				"m_curr",
+				"m_currentTurnSpeed\tfloat m_currentTurnSpeed"
+			],
+			[
+				"m_spe",
+				"m_currentSpeed\tfloat m_currentSpeed"
+			],
+			[
+				"n",
+				"normalize\tvec<L, T, Q> normalize(const vec<L, T, Q> &x)"
+			],
+			[
+				"Ba",
+				"Basic"
+			],
+			[
 				"m_list",
 				"m_listEntity"
 			]
@@ -12,19 +60,40 @@
 	"buffers":
 	[
 		{
-			"file": "Game/Renderer/renderer.cpp",
+			"file": "Game/source/light.cpp",
 			"settings":
 			{
-				"buffer_size": 5488,
+				"buffer_size": 2446,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "coucou.sublime-project",
+			"contents": "#ifndef LIGHT_H\n#define LIGHT_H\n\n#include \"../Model/shader.h\"\n\nclass Light\n{\npublic:\n    Light(const glm::vec3& color, ShaderLoader& shaderLoader, const float& size = 0.5f);\n    ~Light();\n    \n    void Move(const glm::vec3& position);\n    void Render(const glm::mat4& projection, const glm::mat4& cameraView);\n    const glm::mat4& getModel() const { return m_model; }\n    const glm::vec3& getPosition() const { return m_position; }\n    const glm::vec3& getColor() const { return m_color; }\n\nprivate:\n    Shader* m_shader;\n    GLuint m_VAO, m_VBO, m_EBO;\n    int m_drawCall;\n    \n    glm::mat4 m_model;\n    glm::vec3 m_position;\n    glm::vec3 m_color;\n};\n\n#endif // LIGHT_H\n",
+			"file": "Game/headers/light.h",
+			"file_size": 673,
+			"file_write_time": 132316895516719573,
 			"settings":
 			{
-				"buffer_size": 364,
+				"buffer_size": 673,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "CMakeLists.txt",
+			"settings":
+			{
+				"buffer_size": 460,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Game/source/main.cpp",
+			"settings":
+			{
+				"buffer_size": 2745,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -50,20 +119,28 @@
 				"Package Control: Remove Package"
 			],
 			[
-				"Package Control: dis",
-				"Package Control: Disable Package"
+				"Package Control: ",
+				"Package Control: Install Package"
 			],
 			[
 				"Package Control: enab",
 				"Package Control: Enable Package"
 			],
 			[
+				"Package Control: remov",
+				"Package Control: Remove Package"
+			],
+			[
 				"Package Control: ins",
 				"Package Control: Install Package"
 			],
 			[
-				"Package Control: remov",
-				"Package Control: Remove Package"
+				"menu ",
+				"View: Toggle Menu"
+			],
+			[
+				"Package Control: dis",
+				"Package Control: Disable Package"
 			],
 			[
 				"Package Control: instal",
@@ -92,10 +169,6 @@
 			[
 				"Package Control: reomve",
 				"Package Control: Remove Package"
-			],
-			[
-				"Package Control: ",
-				"Package Control: List Packages"
 			],
 			[
 				"setting",
@@ -156,24 +229,64 @@
 		"menu_visible": true,
 		"show_minimap": false,
 		"show_open_files": false,
-		"show_tabs": false,
-		"side_bar_visible": false,
-		"status_bar_visible": false
+		"show_tabs": true,
+		"side_bar_visible": true,
+		"status_bar_visible": true
 	},
 	"expanded_folders":
 	[
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou"
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game"
 	],
 	"file_history":
 	[
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/water.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/light.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/lightShader.vr",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/light.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/CMakeLists.txt",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Player/playerShader.vr",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/basicShader.fa",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/basicShader.vr",
+		"/home/riwan/.config/sublime-text-3/Packages/User/clang_format_custom.sublime-settings",
+		"/home/riwan/.config/sublime-text-3/Packages/User/clang_format.sublime-settings",
+		"/home/riwan/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/riwan/.config/sublime-text-3/Packages/Clang Format/clang_format_custom.sublime-settings",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/coucou.sublime-project",
+		"/home/riwan/.config/sublime-text-3/Packages/Clang Format/clang_format.sublime-settings",
 		"/home/riwan/.config/sublime-text-3/Packages/CodeComplice/Default (Linux).sublime-keymap",
 		"/home/riwan/coucou",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/coucou.sublime-project",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/.kdev4/coucou.kdev4",
 		"/home/riwan/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
 		"/home/riwan/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/3.10.2/CMakeSystem.cmake",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.cpp"
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/3.10.2/CMakeSystem.cmake"
 	],
 	"find":
 	{
@@ -214,31 +327,29 @@
 			[
 				{
 					"buffer": 0,
-					"file": "Game/Renderer/renderer.cpp",
+					"file": "Game/source/light.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5488,
+						"buffer_size": 2446,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1010,
-								1010
+								114,
+								114
 							]
 						],
 						"settings":
 						{
-							"auto_complete": true,
-							"spell_check": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 408.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -246,31 +357,90 @@
 				},
 				{
 					"buffer": 1,
-					"file": "coucou.sublime-project",
+					"file": "Game/headers/light.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 364,
+						"buffer_size": 673,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								174,
-								174
+								76,
+								76
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "CMakeLists.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 460,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								460,
+								460
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Game/source/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2745,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								90,
+								90
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -329,6 +499,106 @@
 		"selected_items":
 		[
 			[
+				"cmake",
+				"CMakeLists.txt"
+			],
+			[
+				"ren",
+				"Game/Renderer/renderer.cpp"
+			],
+			[
+				"lightShader",
+				"Shader/lightShader.vr"
+			],
+			[
+				"re",
+				"Game/Renderer/renderer.cpp"
+			],
+			[
+				"in",
+				"Game/Basic/input.h"
+			],
+			[
+				"main",
+				"Game/source/main.cpp"
+			],
+			[
+				"camera",
+				"Game/Basic/camera.cpp"
+			],
+			[
+				"camer",
+				"Game/Basic/camera.h"
+			],
+			[
+				"scene",
+				"Game/Scene/scene.cpp"
+			],
+			[
+				"render",
+				"Game/Renderer/renderer.cpp"
+			],
+			[
+				"cma",
+				"CMakeLists.txt"
+			],
+			[
+				"rend",
+				"Game/Renderer/renderer.h"
+			],
+			[
+				"sc",
+				"Game/Scene/scene.cpp"
+			],
+			[
+				"enti",
+				"Game/Entity/entity.h"
+			],
+			[
+				"player",
+				"Game/Entity/player.h"
+			],
+			[
+				"inpu",
+				"Game/Basic/input.cpp"
+			],
+			[
+				"input",
+				"Game/Basic/input.cpp"
+			],
+			[
+				"pla",
+				"Game/Entity/player.h"
+			],
+			[
+				"play",
+				"Game/Entity/player.h"
+			],
+			[
+				"ent",
+				"Game/Entity/entity.h"
+			],
+			[
+				"mai",
+				"Game/source/main.cpp"
+			],
+			[
+				"rendere",
+				"Game/Renderer/renderer.cpp"
+			],
+			[
+				"shader",
+				"Shader/basicShader.fa"
+			],
+			[
+				"player.h",
+				"Game/Entity/player.h"
+			],
+			[
+				"playe",
+				"Game/Entity/player.cpp"
+			],
+			[
 				"coucou.",
 				"coucou.sublime-project"
 			],
@@ -343,22 +613,18 @@
 			[
 				"coucou.subli",
 				"coucou.sublime-project"
-			],
-			[
-				"rend",
-				"Game/Renderer/renderer.cpp"
 			]
 		],
 		"width": 0.0
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"last_filter": "",
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"select_symbol":
 	{
@@ -377,7 +643,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 176.0,
+	"side_bar_width": 165.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

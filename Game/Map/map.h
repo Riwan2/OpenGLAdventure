@@ -1,9 +1,7 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include <glm/glm.hpp>
 #include "../Model/shader.h"
-#include "../headers/vaoobject.h"
 #include "../Basic/basicStruct.h"
 
 class Map

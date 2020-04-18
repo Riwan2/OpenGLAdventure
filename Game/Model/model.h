@@ -1,9 +1,6 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
 #include "../Loader/modelloader.h"
 #include "../Loader/texture.h"
 #include <bits/stdc++.h> 

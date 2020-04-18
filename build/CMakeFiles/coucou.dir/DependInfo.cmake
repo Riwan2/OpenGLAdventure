@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Basic/camera.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Basic/input.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Basic/light.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Basic/util.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Entity/player.cpp.o"
@@ -18,9 +19,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Model/model.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Model/shader.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/light.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/light.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/main.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/vaoobject.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/source/vaoobject.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

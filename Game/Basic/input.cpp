@@ -1,5 +1,4 @@
 #include "input.h"
-#include <iostream>
 
 bool Input::keyDown[] = {0};
 bool Input::lastKeyDown[] = {0};
@@ -77,6 +76,9 @@ void Input::EventKeyDown(SDL_Event* myEvent)
         case SDLK_q:
             keyDown[Input::eAction::moveLeft] = true;
             break;
+        case SDLK_SPACE:
+            keyDown[Input::eAction::jump] = true;
+            break;
     }
 }
 
@@ -100,6 +102,9 @@ void Input::EventKeyUp(SDL_Event* myEvent)
             break;
         case SDLK_q:
             keyDown[Input::eAction::moveLeft] = false;
+            break;
+        case SDLK_SPACE:
+            keyDown[Input::eAction::jump] = false;
             break;
     }
 }
