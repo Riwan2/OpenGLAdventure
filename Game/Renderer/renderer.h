@@ -12,7 +12,7 @@ public:
     Renderer();
     ~Renderer();
     
-    void Load(const glm::mat4& projection);
+    void Load(const glm::mat4& projection, Terrain* terrain);
     void Render(const float& deltaTime, const Camera& camera, const std::vector<Terrain*>& listTerrain, Light* light);
     
 private:
@@ -23,7 +23,7 @@ private:
     std::vector<Model*> m_listModel;
     std::vector<std::vector<Entity*>> m_listEntity;
     
-    void LoadEntity();
+    void LoadEntity(Terrain* terrain);
     void SetUniform(const glm::mat4& projection);
     void UpdateUniform(const Camera& camera, Light* light);
     void ProcessEntity(Entity*& entity);

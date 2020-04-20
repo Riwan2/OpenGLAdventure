@@ -77,6 +77,8 @@ player.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
 ../Basic/camera.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
+../Map/terrain.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.cpp
 modelloader.h

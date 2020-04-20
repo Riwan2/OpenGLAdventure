@@ -8,6 +8,7 @@
      m_currentSpeed = 0;
      m_currentTurnSpeed = 0;
      m_currentUpwardSpeed = 0;
+     m_terrainHeight = 0;
      m_canJump = false;
  }
 
@@ -16,7 +17,7 @@
      
  }
  
-void Player::Update(const float& deltaTime, const Camera* camera, const Light* light)
+void Player::Update(const float& deltaTime, const Camera* camera, const Light* light, Terrain* terrain)
 {
     if (Input::KeyDown(Input::eAction::moveDown)) {
         m_currentSpeed = -m_SPEED;
@@ -39,12 +40,14 @@ void Player::Update(const float& deltaTime, const Camera* camera, const Light* l
         m_canJump = false;
     }
 
+    TerrainCollision(terrain);
+
     m_currentUpwardSpeed += m_GRAVITY * deltaTime;
     Move(0, m_currentUpwardSpeed * deltaTime, 0);
-    if (m_position.y < m_TERRAIN_HEIGHT) {
+    if (m_position.y < m_terrainHeight) {
         m_currentUpwardSpeed = 0;
         m_canJump = true;
-        m_position.y = m_TERRAIN_HEIGHT;
+        m_position.y = m_terrainHeight;
     }
 
     float distance = m_currentSpeed * deltaTime;
@@ -54,6 +57,11 @@ void Player::Update(const float& deltaTime, const Camera* camera, const Light* l
     Move(distanceX, 0, distanceZ);
     Rotate(0, m_currentTurnSpeed * deltaTime, 0);
     BasicRender(camera, light);
+}
+
+void Player::TerrainCollision(Terrain* terrain)
+{
+    m_terrainHeight = terrain->GetMapHeight(m_position.x, m_position.z);
 }
 
 void Player::BasicRender(const Camera* camera, const Light* light)

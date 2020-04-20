@@ -18,8 +18,6 @@ void Scene::Initialize()
 {
 	//Camera
 	m_camera = new Camera(30);
-    m_renderer = new Renderer();
-    m_renderer->Load(m_camera->GetProjection());
 
     //Terrain
     ShaderLoader* terrainShader = new ShaderLoader();
@@ -32,6 +30,10 @@ void Scene::Initialize()
     delete path;
     delete grass;
     delete terrainShader;
+
+    //Entity
+    m_renderer = new Renderer();
+    m_renderer->Load(m_camera->GetProjection(), m_listTerrain[0]);
 
     //Light
     ShaderLoader* lightShader = new ShaderLoader();
@@ -46,12 +48,13 @@ void Scene::Initialize()
     playerShader->Load("Player/playerShader");
     Model* playerModel = new Model(new ModelLoader("character"), new Texture("green", 1.0, 64));
     m_player = new Player(playerModel, *playerShader, 0, 0, 0);
+    m_player->SetScale(0.25, 0.25, 0.25);
     delete playerShader;
 }
 
 void Scene::Update(const float& deltaTime)
 {
-	m_camera->Update(glm::vec3(0.0));
-	m_player->Update(deltaTime, m_camera, m_light);
+	m_player->Update(deltaTime, m_camera, m_light, m_listTerrain[0]);
     m_renderer->Render(deltaTime, *m_camera, m_listTerrain, m_light);
+    m_camera->Update(m_player->GetPosition(), m_player->GetRotation().y);
 }

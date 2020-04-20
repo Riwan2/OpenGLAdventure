@@ -24,7 +24,7 @@ Entity::~Entity()
 
 void Entity::Update()
 {
-    m_time += 0.1f;
+    m_time += 0.05f;
     m_shader->Use();
     m_shader->SetMat4("model", m_transformation);
     m_shader->SetFloat("reflectivity", m_model->GetTexture().getReflectivity());
@@ -36,8 +36,8 @@ void Entity::Update()
 
 void Entity::SetTransformation() {
     m_transformation = glm::mat4(1.0);
-    m_transformation = glm::scale(m_transformation, m_scale);
     m_transformation = glm::translate(m_transformation, m_position);
+    m_transformation = glm::scale(m_transformation, m_scale);
     m_transformation = glm::rotate(m_transformation, (float)glm::radians(m_rotation.x), glm::vec3(1, 0, 0));
     m_transformation = glm::rotate(m_transformation, (float)glm::radians(m_rotation.y), glm::vec3(0, 1, 0));
     m_transformation = glm::rotate(m_transformation, (float)glm::radians(m_rotation.z), glm::vec3(0, 0, 1));

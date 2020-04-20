@@ -21,17 +21,17 @@ Renderer::~Renderer()
     delete m_basicShader;
 }
 
-void Renderer::Load(const glm::mat4& projection)
+void Renderer::Load(const glm::mat4& projection, Terrain* terrain)
 {
     m_basicShader = new ShaderLoader();
     m_basicShader->Load("basicShader");
     
     //Entity
     SetUniform(projection);
-    LoadEntity();
+    LoadEntity(terrain);
 }
 
-void Renderer::LoadEntity()
+void Renderer::LoadEntity(Terrain* terrain)
 {
     //Set Texture
     Texture* treeTexture = new Texture("tree", 0.0, 64);
@@ -46,12 +46,13 @@ void Renderer::LoadEntity()
     }
     glm::vec3 randomPos;
     //Tree
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 9; i++) {
         randomPos = glm::vec3(Util::getInt(100)-50, 0, Util::getInt(100)-50);
         for (int a = 0; a < 10; a++) {
-            m_listEntity[eEntity::tree].push_back(new Entity(m_listModel[eEntity::tree], 
-                *m_basicShader, randomPos.x + float(Util::getInt(300)-150) / 10, randomPos.y, 
-                randomPos.z + float(Util::getInt(300)-150) / 10));
+            float posX = randomPos.x + float(Util::getInt(300)-150) / 10;
+            float posZ = randomPos.z + float(Util::getInt(300)-150) / 10;
+            m_listEntity[eEntity::tree].push_back(new Entity(m_listModel[eEntity::tree],
+                *m_basicShader, posX, terrain->GetMapHeight(posX, posZ), posZ));
         }
     }
 }

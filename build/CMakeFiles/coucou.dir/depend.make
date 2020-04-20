@@ -28,10 +28,12 @@ CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Loader/texture.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Model/model.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Model/shader.h
 
+CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Basic/basicStruct.h
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Basic/camera.h
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Basic/input.h
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Basic/light.h
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Basic/parameters.h
+CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Basic/util.h
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Entity/entity.h
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Entity/player.cpp
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Entity/player.h
@@ -39,6 +41,8 @@ CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Loader/modelloader.h
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Loader/shaderLoader.h
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Loader/stb_image.h
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Loader/texture.h
+CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Map/map.h
+CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Map/terrain.h
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Model/model.h
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Model/shader.h
 

@@ -7,7 +7,7 @@
 #include "../Basic/light.h"
 #include "map.h"
 
-class Terrain
+class Terrain : public Map
 {
 public:
     Terrain(const float& posX, const float& posZ, const float& size, ShaderLoader& shaderLoader, Texture* grass, Texture* path,
@@ -20,13 +20,11 @@ private:
     glm::vec3 m_color;
     
     Texture* m_grass;
-    Texture* m_path;
+    Texture* m_path;    
     Texture* m_blendMap;
-    Map* m_map;
     Shader* m_shader;
-    float* m_heightMap;
     
-    void GenerateHeigtMap();
+    void LoadHeightMap();
 };
 
 #endif // TERRAIN_H

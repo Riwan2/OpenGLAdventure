@@ -2,17 +2,17 @@
 #include "../Basic/parameters.h"
 
 Terrain::Terrain(const float& posX, const float& posZ, const float& size, ShaderLoader& shaderLoader, Texture* grass, Texture* path,
-Texture* blendMap) 
+Texture* blendMap) : Map { posX, posZ, size }
 {
-    //GenerateHeigtMap();
     m_shader = new Shader(shaderLoader);
     m_grass = new Texture(*grass);
     m_path = new Texture(*path);
     m_blendMap = new Texture(*blendMap);
-    
-    m_map = new Map(posX, posZ, size);
-    m_map->Initialize(m_heightMap);
-    
+
+    m_maxHeight = 30;
+    LoadHeightMap();
+    Map::Initialize(m_heightMap);
+
     m_model = glm::mat4(1.0f);
     m_color = glm::vec3(0.1f, 0.5f, 0.4f);
 }
@@ -27,18 +27,28 @@ Terrain::~Terrain()
     delete m_grass;
     delete m_path;
     delete m_blendMap;
-
-    delete m_map;
     delete m_shader;
+    delete m_heightMap;
 }
 
-void Terrain::GenerateHeigtMap()
+void Terrain::LoadHeightMap()
 {
-//     m_heightMap = new float[GetNumVertices()];
-//     
-//     for (int i = 0; i < GetNumVertices(); i++) {
-//         m_heightMap[i] = 0.0f;//float(Util::getInt(10)) / 150;
-//     }
+    std::string name = "../Asset/Texture/heightmap.png";
+    int width, height, nrChannels;
+    unsigned char* data = stbi_load(name.c_str(), &width, &height, &nrChannels, 1);
+    unsigned int r, g, b, a;
+    unsigned char* current_head = data;
+    m_heightMapWidth = width;
+    m_heightMapHeight = height;
+    m_heightMap = new float[width * height];
+
+    for(int z = 0; z < height; z++) {
+        for(int x = 0; x < width; x++) {            
+            m_heightMap[z * width + x] = ((float)data[z * width + x] - 127.5) / 127.5 * m_maxHeight;
+        }
+    }
+
+    stbi_image_free(data);
 }
 
 void Terrain::Render(const Camera* camera, const Light* light)
@@ -62,7 +72,7 @@ void Terrain::Render(const Camera* camera, const Light* light)
     glActiveTexture(GL_TEXTURE2);
     glBindTexture(GL_TEXTURE_2D, m_blendMap->getId());
 
-    m_map->BasicRendering();
+    Map::BasicRendering();
     glDisable(GL_TEXTURE_2D);
 }
 

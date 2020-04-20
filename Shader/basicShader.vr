@@ -32,8 +32,8 @@ void main()
 {
     vec3 position = aPos;
     if (1 / position.y < 0.4) {
-        position.y += sin(aPos.x + time) * clamp(aPos.y, 0.0, 0.1) * 0.4;
-        position.y += sin(aPos.z + time) * clamp(aPos.y, 0.0, 0.1) * 0.3;
+        position.x += sin(aPos.x + time / 2) * clamp(aPos.y, 0.0, 0.1) * 0.4;
+        position.z += sin(aPos.z / 3 + time) * clamp(aPos.y, 0.0, 0.1) * 0.3;
         position.y += sin(aPos.z / 2 + time) * clamp(aPos.y, 0.0, 0.1) * 0.2;
     }
     
