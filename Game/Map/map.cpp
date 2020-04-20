@@ -2,17 +2,9 @@
 
 Map::Map(const float& posX, const float& posZ, const float& size)
 {
-    m_width = 256;
-    m_height = 256;
     m_size = size;
-    m_verticesSize = (float)(m_size / m_width);
     m_posX = posX * size;
     m_posZ = posZ * size;
-    m_numVertices = m_width * m_height;
-    m_numIndices = (m_width-1) * (m_height-1) * 6;
-    
-    m_vertex = new basic::Vertex[m_numVertices];
-    m_indices = new unsigned int[m_numIndices];
 }
 
 Map::~Map()
@@ -24,6 +16,17 @@ Map::~Map()
 
 void Map::Initialize(float* heightMap)
 {
+    m_width = m_heightMapWidth;
+    m_height = m_heightMapHeight;
+    m_verticesSize = (float)(m_size / (m_width-1));
+    m_numVertices = m_width * m_height;
+    m_numIndices = (m_width-1) * (m_height-1) * 6;
+    
+    m_vertex = new basic::Vertex[m_numVertices];
+    m_indices = new unsigned int[m_numIndices];
+
+    std::cout << m_width << " ; " << m_height << std::endl;
+
     CreateVertices(heightMap);
     CreateIndices();
 
@@ -66,16 +69,15 @@ void Map::CreateVertices(float* heightMap)
     int index = 0;
     for (int z = 0; z < m_height; z++) {
         for (int x = 0; x < m_width; x++) {
-            m_vertex[index].PosX = m_posX + (float)x / (float)(m_width-1) * m_size;
-            m_vertex[index].PosY = GetHeight(x, z);
-            m_vertex[index].PosZ = m_posZ + (float)z / (float)(m_height-1) * m_size;
+            m_vertex[z * m_width + x].PosX = m_posX + (float)x / (float)(m_width-1) * m_size;
+            m_vertex[z * m_width + x].PosY = GetHeight(x, z);
+            m_vertex[z * m_width + x].PosZ = m_posZ + (float)z / (float)(m_height-1) * m_size;
             glm::vec3 normal = CalculateNormal(x, z, heightMap);
-            m_vertex[index].NormX = normal.x;
-            m_vertex[index].NormY = normal.y;
-            m_vertex[index].NormZ = normal.z;
-            m_vertex[index].TexCoordX = (float)x / (float)(m_width-1);
-            m_vertex[index].TexCoordY = (float)z / (float)(m_height-1);
-            index++;
+            m_vertex[z * m_width + x].NormX = normal.x;
+            m_vertex[z * m_width + x].NormY = normal.y;
+            m_vertex[z * m_width + x].NormZ = normal.z;
+            m_vertex[z * m_width + x].TexCoordX = (float)x / (float)(m_width-1);
+            m_vertex[z * m_width + x].TexCoordY = (float)z / (float)(m_height-1);
         }
     }
    // PrintVertices();
@@ -83,9 +85,9 @@ void Map::CreateVertices(float* heightMap)
 
 float Map::GetHeight(const int& x, const int& z)
 {
-    if (x < 0 || x > m_heightMapWidth || z < 0 || z > m_heightMapHeight)
+    if (x < 0 || x > m_heightMapWidth-1 || z < 0 || z > m_heightMapHeight-1)
         return 0;
-    return m_heightMap[z * m_heightMapWidth + x];
+    return m_heightMap[z * m_width + x];
 }
 
 float Map::GetMapHeight(const float &worldX, const float &worldZ)
@@ -99,13 +101,13 @@ float Map::GetMapHeight(const float &worldX, const float &worldZ)
 
     if (xCoord <= 1 - zCoord) { //Top Left triangle     
         return barryCentric(glm::vec3(0, GetHeight(GridX, GridZ), 0),
-            glm::vec3(1, GetHeight(GridX + 1, GridZ), 0),
-            glm::vec3(0, GetHeight(GridX, GridZ + 1), 1),
+            glm::vec3(1, GetHeight(GridX+1, GridZ), 0),
+            glm::vec3(0, GetHeight(GridX, GridZ+1), 1),
             glm::vec2(xCoord, zCoord));
     } else { //Bottom Right triangle
         return barryCentric(glm::vec3(1, GetHeight(GridX+1, GridZ), 0),
             glm::vec3(0, GetHeight(GridX, GridZ+1), 1),
-            glm::vec3(1, GetHeight(GridX+1, GridZ + 1), 1),
+            glm::vec3(1, GetHeight(GridX+1, GridZ+1), 1),
             glm::vec2(xCoord, zCoord));
     }
     return 0;

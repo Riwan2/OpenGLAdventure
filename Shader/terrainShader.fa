@@ -17,22 +17,20 @@ in VS_OUT {
     float visibility;
 } fs_in;
 
+in vec3 aDiffuse;
+
 vec3 finalSpecular;
 vec3 diffuse;
 vec4 textureVector;
 const float shineDamper = 64;
 const float reflectivity = 0.0;
-const float ambientStrenght = 0.2f;
 vec4 terrainColor;
 
 void lighting()
 {
     //basic
-    vec3 norm = normalize(fs_in.normal);
     vec3 toLight = normalize(fs_in.lightVector);
-    float dotLight = dot(norm, toLight);
-    float brightness = max(dotLight, ambientStrenght);
-    diffuse = brightness * lightColor;
+    vec3 norm = normalize(fs_in.normal);
 
     //specular
     vec3 cameraNorm = normalize(fs_in.cameraDirection);
@@ -61,6 +59,6 @@ void main()
     //color = vec4(1.0, 1.0, 1.0, 1.0);
     lighting();
     textureGestion();
-    color =  terrainColor * vec4(diffuse, 1.0) + vec4(finalSpecular, 1.0);
+    color =  terrainColor * vec4(aDiffuse, 1.0) + vec4(finalSpecular, 1.0);
     color = mix(vec4(skyColor, 1.0), color, fs_in.visibility);
 }

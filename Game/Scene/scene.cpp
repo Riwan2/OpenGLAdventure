@@ -22,10 +22,10 @@ void Scene::Initialize()
     //Terrain
     ShaderLoader* terrainShader = new ShaderLoader();
     terrainShader->Load("terrainShader");
-    Texture* grass = new Texture("green", 0.0, 64);
+    Texture* grass = new Texture("grass", 0.0, 64);
     Texture* path = new Texture("path", 0.0, 64);
     Texture* blendMap = new Texture("blendmap", 0.0, 64);
-    m_listTerrain.push_back(new Terrain(-0.5, -0.5, 200, *terrainShader, grass, path, blendMap));
+    m_listTerrain.push_back(new Terrain(-0.5, -0.5, 800, *terrainShader, grass, path, blendMap));
     delete blendMap;
     delete path;
     delete grass;

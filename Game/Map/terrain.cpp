@@ -9,7 +9,7 @@ Texture* blendMap) : Map { posX, posZ, size }
     m_path = new Texture(*path);
     m_blendMap = new Texture(*blendMap);
 
-    m_maxHeight = 30;
+    m_maxHeight = 40;
     LoadHeightMap();
     Map::Initialize(m_heightMap);
 
@@ -44,7 +44,14 @@ void Terrain::LoadHeightMap()
 
     for(int z = 0; z < height; z++) {
         for(int x = 0; x < width; x++) {            
-            m_heightMap[z * width + x] = ((float)data[z * width + x] - 127.5) / 127.5 * m_maxHeight;
+            //m_heightMap[z * width + x] = ((float)data[z * width + x] - 127.5) / 127.5 * m_maxHeight;
+            unsigned int pix = current_head[0] << 16 | current_head[1] << 8 | current_head[2];
+            current_head += 1;
+            float height = (float)pix;
+            height -= (256* 256 * 256) / 2;
+            height /= (256 * 256 * 256) / 2;
+            height *= m_maxHeight;
+            m_heightMap[z * width + x] = height;
         }
     }
 
