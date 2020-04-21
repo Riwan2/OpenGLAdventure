@@ -34,7 +34,7 @@ void Renderer::Load(const glm::mat4& projection, Terrain* terrain)
 void Renderer::LoadEntity(Terrain* terrain)
 {
     //Set Texture
-    Texture* treeTexture = new Texture("tree", 0.0, 64);
+    Texture* treeTexture = new Texture("tree", 0.0, 64, 2);
     //Set Model
     int nbEntity = 1;
     m_listModel.push_back(new Model(new ModelLoader("tree"), treeTexture));

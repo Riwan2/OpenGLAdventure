@@ -22,10 +22,10 @@ void Scene::Initialize()
     //Terrain
     ShaderLoader* terrainShader = new ShaderLoader();
     terrainShader->Load("terrainShader");
-    Texture* grass = new Texture("grass", 0.0, 64);
+    Texture* grass = new Texture("green", 0.0, 64);
     Texture* path = new Texture("path", 0.0, 64);
     Texture* blendMap = new Texture("blendmap", 0.0, 64);
-    m_listTerrain.push_back(new Terrain(-0.5, -0.5, 800, *terrainShader, grass, path, blendMap));
+    m_listTerrain.push_back(new Terrain(-0.5, -0.5, 600, *terrainShader, grass, path, blendMap));
     delete blendMap;
     delete path;
     delete grass;
@@ -56,5 +56,6 @@ void Scene::Update(const float& deltaTime)
 {
 	m_player->Update(deltaTime, m_camera, m_light, m_listTerrain[0]);
     m_renderer->Render(deltaTime, *m_camera, m_listTerrain, m_light);
-    m_camera->Update(m_player->GetPosition(), m_player->GetRotation().y);
+    m_camera->Update(glm::vec3(m_player->GetPosition().x, m_player->GetTerrainHeight(), m_player->GetPosition().z),
+        m_player->GetRotation().y);
 }

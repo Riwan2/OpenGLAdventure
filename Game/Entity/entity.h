@@ -24,6 +24,7 @@ private:
     Model* m_model;
     float m_time;
     float m_fakeLighting;
+    int m_textureIndex;
     
     glm::mat4 m_transformation;
     void SetTransformation();
@@ -34,15 +35,16 @@ public:
     const glm::vec3& GetScale() { return m_scale; }
     const glm::vec3& GetRotation() { return m_rotation; }
 
-    void SetPosition(const float& x, const float& y, const float& z) {
+    inline void SetTextureIndex(const int& index) { m_textureIndex = index; }
+    inline void SetPosition(const float& x, const float& y, const float& z) {
         m_position = glm::vec3(x, y, z);
         SetTransformation();
     }
-    void SetRotation(const float& degreeX, const float& degreeY, const float& degreeZ) {
+    inline void SetRotation(const float& degreeX, const float& degreeY, const float& degreeZ) {
         m_rotation = glm::vec3(degreeX, degreeY, degreeZ);
         SetTransformation();
     }
-    void SetScale(const float& x, const float& y, const float& z) {
+    inline void SetScale(const float& x, const float& y, const float& z) {
         m_scale = glm::vec3(x, y, z);
         SetTransformation(); 
     }

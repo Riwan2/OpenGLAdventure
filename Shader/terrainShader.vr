@@ -17,14 +17,9 @@ out VS_OUT {
     float visibility;
 } vs_out;
 
-out vec3 aDiffuse;
-
 vec4 worldPosition;
 const float density = 0.006;
 const float gradient = 2.5;
-const float ambientStrenght = 0.2f;
-
-uniform vec3 lightColor;
 
 void main()
 {
@@ -41,10 +36,4 @@ void main()
     vs_out.cameraDirection = vec3(inverse(view) * vec4(0, 0, 0, 1)) - vec3(worldPosition);
     vs_out.lightVector = vec3(0.5, 0.4, 0.0);//lightPos - vec3(worldPosition);
     vs_out.TexCoord = aTexCoord;
-
-    vec3 norm = normalize(vs_out.normal);
-    vec3 toLight = normalize(vs_out.lightVector);
-    float dotLight = dot(norm, toLight);
-    float brightness = max(dotLight, ambientStrenght);
-    aDiffuse = brightness * lightColor;
 }

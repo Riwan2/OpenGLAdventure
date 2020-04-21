@@ -44,7 +44,7 @@ void Camera::CalculateView(const float& rotationY)
     float horizontalDistance = m_distance * cos(glm::radians(m_pitch));
     float verticalDistance = m_distance * sin(glm::radians(-m_pitch));
     
-    m_position.y = verticalDistance;
+    m_position.y = verticalDistance + m_target.y;
     m_position.x = horizontalDistance * cos(glm::radians(m_angleAround) + glm::radians(180 - rotationY)) + m_target.x;
     m_position.z = horizontalDistance * sin(glm::radians(m_angleAround) + glm::radians(180 - rotationY)) + m_target.z;    
     

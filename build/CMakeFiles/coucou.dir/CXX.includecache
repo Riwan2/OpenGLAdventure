@@ -157,6 +157,8 @@ GL/glew.h
 -
 stb_image.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
+glm/glm.hpp
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/glm/glm.hpp
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.cpp
 map.h

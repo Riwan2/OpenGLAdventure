@@ -25,8 +25,6 @@ void Map::Initialize(float* heightMap)
     m_vertex = new basic::Vertex[m_numVertices];
     m_indices = new unsigned int[m_numIndices];
 
-    std::cout << m_width << " ; " << m_height << std::endl;
-
     CreateVertices(heightMap);
     CreateIndices();
 
@@ -96,9 +94,9 @@ float Map::GetMapHeight(const float &worldX, const float &worldZ)
     float terrainZ = worldZ - m_posZ;
     int GridX = floor(terrainX / m_verticesSize);
     int GridZ = floor(terrainZ / m_verticesSize);
-    float xCoord = (terrainX - GridX * m_verticesSize) / m_verticesSize;
-    float zCoord = (terrainZ - GridZ * m_verticesSize) / m_verticesSize;
-
+    float xCoord = fmod(terrainX, m_verticesSize) / m_verticesSize;
+    float zCoord = fmod(terrainZ, m_verticesSize) / m_verticesSize;
+    
     if (xCoord <= 1 - zCoord) { //Top Left triangle     
         return barryCentric(glm::vec3(0, GetHeight(GridX, GridZ), 0),
             glm::vec3(1, GetHeight(GridX+1, GridZ), 0),

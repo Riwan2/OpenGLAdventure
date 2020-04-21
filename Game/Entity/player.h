@@ -13,12 +13,13 @@ public:
     ~Player();
     
     void Update(const float& deltaTime, const Camera* camera, const Light* light, Terrain* terrain);
+    inline float GetTerrainHeight() { return m_terrainHeight; }
 
 private:
 	float m_currentSpeed, m_currentTurnSpeed, m_currentUpwardSpeed;
     float m_terrainHeight;
 	bool m_canJump;
-    static constexpr float m_SPEED = 50;
+    static constexpr float m_SPEED = 20;
     static constexpr const float m_TURN_SPEED = 100;
     static constexpr const float m_GRAVITY = -100;
     static constexpr const float m_JUMP_POWER = 20;

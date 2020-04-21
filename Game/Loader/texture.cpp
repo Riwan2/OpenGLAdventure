@@ -1,9 +1,10 @@
 #include "texture.h"
 
-Texture::Texture(const std::string& fileName, const float& reflectivity, const float& shineDamper, const bool& png)
+Texture::Texture(const std::string& fileName, const float& reflectivity, const float& shineDamper, const int& rowNumber, const bool& png)
 {
     m_reflectivity = reflectivity;
     m_shineDamper = shineDamper;
+    m_rowNumber = rowNumber;
     
     int width, height, nrChannels;
     std::string myTextureFileName;
@@ -32,4 +33,11 @@ Texture::Texture(const std::string& fileName, const float& reflectivity, const f
 
 Texture::~Texture()
 {
+}
+
+const glm::vec2 Texture::getOffset(const int& index) const
+{
+    float offsetX = (float)(index % m_rowNumber) / m_rowNumber;
+    float offsetY = (float)floor(index / m_rowNumber) / m_rowNumber;
+    return glm::vec2(offsetX, offsetY);
 }

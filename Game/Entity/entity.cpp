@@ -7,6 +7,7 @@ Entity::Entity(Model*& model, const ShaderLoader& shaderLoader, const float& x, 
     m_model = model;
     m_shader = new Shader(shaderLoader);
     m_fakeLighting = fakeLighting;
+    m_textureIndex = 0;
     
     m_transformation = glm::mat4(1.0);
     m_position = glm::vec3(x, y, z);
@@ -32,6 +33,8 @@ void Entity::Update()
     m_shader->SetVec3("skyColor", parameters::skyColor);
     m_shader->SetFloat("time", m_time);
     m_shader->SetFloat("fakeLighting", m_fakeLighting);
+    m_shader->SetInt("rowNumber", m_model->GetTexture().getNumRow());
+    m_shader->SetVec2("textureOffset", m_model->GetTexture().getOffset(m_textureIndex));
 }
 
 void Entity::SetTransformation() {
