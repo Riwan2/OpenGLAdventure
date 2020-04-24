@@ -1,0 +1,57 @@
+#version 330 core
+
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec3 aNormal;
+layout (location = 2) in vec2 aTexCoord;
+layout (location = 3) in mat4 aModel;
+
+layout (std140) uniform Matrices
+{
+    uniform mat4 projection;
+    uniform mat4 view;
+    uniform vec3 lightPos;
+    uniform vec3 lightColor;
+};
+
+//texture
+uniform vec2 textureOffset;
+uniform int rowNumber;
+
+out VS_OUT {
+    vec2 TexCoord;
+    vec3 cameraDirection;
+    vec3 lightVector;
+    vec3 normal;
+    float visibility;
+} vs_out;
+
+vec4 worldPosition;
+vec3 cameraPosition;
+const float density = 0.006 / 2;
+const float gradient = 2.5;
+uniform float time;
+
+void main()
+{
+    vec3 position = aPos;
+    if (1 / position.y < 0.4) {
+        position.x += sin(aPos.x + time / 2) * clamp(aPos.y, 0.0, 0.1) * 0.4;
+        position.z += sin(aPos.z / 3 + time) * clamp(aPos.y, 0.0, 0.1) * 0.3;
+        position.y += sin(aPos.z / 2 + time) * clamp(aPos.y, 0.0, 0.1) * 0.2;
+    }
+    
+    worldPosition = aModel * vec4(position, 1.0);
+    cameraPosition = vec3(inverse(view) * vec4(0, 0, 0, 1));
+    vec4 positionRelativeToCamera = view * worldPosition;
+    
+    gl_Position = projection * positionRelativeToCamera;
+    
+    float distance = length(positionRelativeToCamera.xyz);
+    vs_out.visibility = exp(-pow((distance*density), gradient));
+    vs_out.visibility = clamp(vs_out.visibility, 0.0, 1.0);
+
+    vs_out.normal = mat3(transpose(inverse(aModel))) * aNormal;
+    vs_out.cameraDirection = cameraPosition - vec3(worldPosition);
+    vs_out.lightVector = vec3(0.5, 0.4, 0.0);//lightPos - vec3(worldPosition);
+    vs_out.TexCoord = (aTexCoord / rowNumber) + textureOffset;
+}

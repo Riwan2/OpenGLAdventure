@@ -24,7 +24,7 @@ Renderer::~Renderer()
 void Renderer::Load(const glm::mat4& projection, Terrain* terrain)
 {
     m_basicShader = new ShaderLoader();
-    m_basicShader->Load("basicShader");
+    m_basicShader->Load("basicShaderInstanced");
     
     //Entity
     SetUniform(projection);
@@ -34,10 +34,10 @@ void Renderer::Load(const glm::mat4& projection, Terrain* terrain)
 void Renderer::LoadEntity(Terrain* terrain)
 {
     //Set Texture
-    Texture* treeTexture = new Texture("tree", 0.0, 64, 2);
+    Texture* treeTexture = new Texture("tree", 0.0, 64);
     //Set Model
     int nbEntity = 1;
-    m_listModel.push_back(new Model(new ModelLoader("tree"), treeTexture));
+    m_listModel.push_back(new Model(new ModelLoader("tree", true), treeTexture));
     //Delete Texture
     delete treeTexture;
     //Set Entities
@@ -46,13 +46,17 @@ void Renderer::LoadEntity(Terrain* terrain)
     }
     glm::vec3 randomPos;
     //Tree
-    for (int i = 0; i < 9; i++) {
-        randomPos = glm::vec3(Util::getInt(100)-50, 0, Util::getInt(100)-50);
-        for (int a = 0; a < 10; a++) {
-            float posX = randomPos.x + float(Util::getInt(300)-150) / 10;
-            float posZ = randomPos.z + float(Util::getInt(300)-150) / 10;
+    for (int i = 0; i < 50; i++) {
+        randomPos = glm::vec3(Util::getInt(600)-300, 0, Util::getInt(600)-300);
+        for (int a = 0; a < 50; a++) {
+            float posX, posZ;
+            do {
+                posX = randomPos.x + float(Util::getInt(300)-150) / 5;
+                posZ = randomPos.z + float(Util::getInt(300)-150) / 5;
+            } while(terrain->GetMapHeight(posX, posZ) < -5.5);
+
             m_listEntity[eEntity::tree].push_back(new Entity(m_listModel[eEntity::tree],
-                *m_basicShader, posX, terrain->GetMapHeight(posX, posZ), posZ));
+                *m_basicShader, posX, terrain->GetMapHeight(posX, posZ), posZ, 1.2));
         }
     }
 }
@@ -99,9 +103,23 @@ void Renderer::RenderEntity()
         if (p->first->GetTransparency()) DisableCulling();
         else EnableCulling();
         p->first->Bind();
-        for (int i = 0; i < p->second.size(); i++) {
-            p->second[i]->Update();
-            p->first->Render();
+        if (p->first->isInstanced()) 
+        {
+            glm::mat4* modelMatrices = new glm::mat4[p->second.size()];
+            for (int i = 0; i < p->second.size(); i++) {
+                modelMatrices[i] = p->second[i]->GetModelMatrix();
+            }
+
+            p->second[0]->Update();
+            p->first->Render(modelMatrices, p->second.size());
+            delete[] modelMatrices;
+        }
+         else 
+        {
+            for (int i = 0; i < p->second.size(); i++) {
+                p->second[i]->Update();
+                p->first->Render();
+            }
         }
         p->first->Unbind();
     }

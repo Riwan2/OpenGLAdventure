@@ -28,8 +28,18 @@ void Scene::Initialize()
     m_listTerrain.push_back(new Terrain(-0.5, -0.5, 600, *terrainShader, grass, path, blendMap));
     delete blendMap;
     delete path;
-    delete grass;
     delete terrainShader;
+    delete grass;
+
+    //Water
+    ShaderLoader* waterShader = new ShaderLoader();
+    waterShader->Load("waterShader");
+    Texture* caca = new Texture("displacementmap", 0, 64);
+    Texture* water = new Texture("watermap", 0, 64);
+    m_water = new Water(-0.5, -0.5, 600, *waterShader, water, caca);
+    delete waterShader;
+    delete caca;
+    delete water;
 
     //Entity
     m_renderer = new Renderer();
@@ -58,4 +68,12 @@ void Scene::Update(const float& deltaTime)
     m_renderer->Render(deltaTime, *m_camera, m_listTerrain, m_light);
     m_camera->Update(glm::vec3(m_player->GetPosition().x, m_player->GetTerrainHeight(), m_player->GetPosition().z),
         m_player->GetRotation().y);
+    glDisable(GL_CULL_FACE);
+
+    //std::cout << 1/deltaTime << std::endl;
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    m_water->Render(m_camera->GetProjection(), m_camera->GetView());
+    glDisable(GL_BLEND);
 }

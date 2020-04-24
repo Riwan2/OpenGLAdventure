@@ -3,6 +3,7 @@
 
 #include "../Model/shader.h"
 #include "../Basic/basicStruct.h"
+#include "../Loader/texture.h"
 
 class Map
 {

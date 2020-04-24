@@ -7,7 +7,7 @@
 class Entity
 {
 public:
-    Entity(Model*& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z, const bool& fakeLighting = false);
+    Entity(Model*& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z, const float& size = 1.0, const bool& fakeLighting = false);
     ~Entity();
     
     void Update();
@@ -20,6 +20,7 @@ protected:
     glm::vec3 m_position;
     glm::vec3 m_scale;
     glm::vec3 m_rotation; //in degree
+    bool m_instanced;
 private:
     Model* m_model;
     float m_time;
@@ -34,6 +35,7 @@ public:
     const glm::vec3& GetPosition() { return m_position; }
     const glm::vec3& GetScale() { return m_scale; }
     const glm::vec3& GetRotation() { return m_rotation; }
+    const glm::mat4& GetModelMatrix() { return m_transformation; }
 
     inline void SetTextureIndex(const int& index) { m_textureIndex = index; }
     inline void SetPosition(const float& x, const float& y, const float& z) {

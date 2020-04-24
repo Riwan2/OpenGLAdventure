@@ -2,16 +2,17 @@
 #include "../Basic/parameters.h"
 #include "../Basic/util.h"
 
-Entity::Entity(Model*& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z, const bool& fakeLighting)
+Entity::Entity(Model*& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z, const float& size, const bool& fakeLighting)
 {
     m_model = model;
+    m_instanced = model->isInstanced();
     m_shader = new Shader(shaderLoader);
     m_fakeLighting = fakeLighting;
     m_textureIndex = 0;
     
     m_transformation = glm::mat4(1.0);
     m_position = glm::vec3(x, y, z);
-    m_scale = glm::vec3(1.0);
+    m_scale = glm::vec3(size);
     m_rotation = glm::vec3(0.0);
     SetTransformation();
     m_time = (float)Util::getInt(1000) / 100;
@@ -25,9 +26,12 @@ Entity::~Entity()
 
 void Entity::Update()
 {
+    if (!m_instanced) {
+        m_shader->SetMat4("model", m_transformation);
+    }
+    
     m_time += 0.05f;
     m_shader->Use();
-    m_shader->SetMat4("model", m_transformation);
     m_shader->SetFloat("reflectivity", m_model->GetTexture().getReflectivity());
     m_shader->SetFloat("shineDamper", m_model->GetTexture().getShineDamper());
     m_shader->SetVec3("skyColor", parameters::skyColor);

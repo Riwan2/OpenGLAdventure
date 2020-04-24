@@ -15,21 +15,24 @@ public:
     
     void Bind() const;
     void Render() const;
+    void Render(const glm::mat4* modelMatrices, const int& numInstance) const;
     void Unbind() const;
     
 private:
-    GLuint m_VAO, m_VBO, m_EBO;
+    GLuint m_VAO, m_VBO, m_EBO, m_Model;
     int m_drawCall;
     Texture* m_texture;
-    bool m_transparency;
+    bool m_transparency, m_instanced;
     
 public:
     const GLuint& GetVAO() const { return m_VAO; }
     const GLuint& GetVBO() const { return m_VBO; }
     const GLuint& GetEBO() const { return m_EBO; }
+    const GLuint& GetModelId() const { return m_Model; }
     Texture& GetTexture() const { return *m_texture; }
     const int& GetDrawCall() const { return m_drawCall; }
     const bool& GetTransparency() const { return m_transparency; }
+    const bool& isInstanced() const { return m_instanced; }
 };
 
 class ModelHashFunction { 

@@ -91,6 +91,8 @@ GL/glew.h
 -
 string
 -
+glm/glm.hpp
+-
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
 iostream
@@ -169,6 +171,8 @@ map.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
 ../Basic/basicStruct.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
+../Loader/texture.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.cpp
 terrain.h
@@ -177,8 +181,6 @@ terrain.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
-../Loader/texture.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
 ../Basic/util.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
 ../Basic/camera.h
@@ -243,6 +245,8 @@ scene.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.h
 ../Entity/player.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.h
+../Map/water.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/water.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp
 ../Basic/input.h

@@ -3,6 +3,7 @@
 
 #include "../Renderer/renderer.h"
 #include "../Entity/player.h"
+#include "../Map/water.h"
 
 class Scene
 {
@@ -13,6 +14,7 @@ public:
 	void Initialize();
 	void Update(const float& deltaTime);
 private:
+	Water* m_water;
 	Renderer* m_renderer;
 	Camera* m_camera;
     Player* m_player;

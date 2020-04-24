@@ -1,8 +1,9 @@
 #include "modelloader.h"
 #include "objloader.h"
 
-ModelLoader::ModelLoader(const std::string& fileName)
+ModelLoader::ModelLoader(const std::string& fileName, const bool& instancedModel)
 {
+    m_instanced = instancedModel;
     objl::Vertex* vertices;
     GLuint* indices;
     int verticesSize, indicesSize;
@@ -49,6 +50,28 @@ ModelLoader::ModelLoader(const std::string& fileName)
         
         glEnableVertexAttribArray(2); //Texture Position
         glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+
+        if (instancedModel) {
+            glGenBuffers(1, &m_Model);
+            std::size_t vec4Size = sizeof(glm::vec4);
+            glBindBuffer(GL_ARRAY_BUFFER, m_Model);
+            glBufferData(GL_ARRAY_BUFFER, sizeof(glm::mat4), NULL, GL_STREAM_DRAW);
+
+            glEnableVertexAttribArray(3);
+            glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)0);
+            glEnableVertexAttribArray(4);
+            glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(1 * vec4Size));
+            glEnableVertexAttribArray(5);
+            glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(2 * vec4Size));
+            glEnableVertexAttribArray(6);
+            glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(3 * vec4Size));
+
+            glVertexAttribDivisor(0, 0);
+            glVertexAttribDivisor(3, 1);
+            glVertexAttribDivisor(4, 1);
+            glVertexAttribDivisor(5, 1);
+            glVertexAttribDivisor(6, 1);
+        }
             
         glBindVertexArray(0);
     } else {

@@ -1,24 +1,26 @@
 #include "water.h"
 
-Water::Water(const float& posX, const float& posZ, const float& size, ShaderLoader& shaderLoader) 
+Water::Water(const float& posX, const float& posZ, const float& size, ShaderLoader& shaderLoader, Texture* texture, Texture* displacementMap) 
 : Map { posX, posZ, size }
 {
     FlatHeightMap();
     Initialize(m_heightMap);
     m_shader = new Shader(shaderLoader);
+    m_texture = new Texture(*texture);
+    m_displacementMap = new Texture(*displacementMap);
     
     m_model = glm::mat4(1.0f);
-    m_color = glm::vec3(0.2f, 0.3f, 1.0f);
-    m_model = glm::translate(m_model, glm::vec3(-40, 0, -30));
+    m_model = glm::translate(m_model, glm::vec3(0.0, -6.0, 0.0));
     m_time = 0;
 }
 
 Water::~Water()
 {
-    delete m_heightMap;
+    delete m_texture;
+    delete m_displacementMap;
 }
 
-void Water::Render(const glm::mat4& projection, const glm::mat4& view, const glm::vec3& lightColor, const glm::vec3& lightPos)
+void Water::Render(const glm::mat4& projection, const glm::mat4& view)
 {
     m_time += 0.01f;
     m_shader->Use();
@@ -26,19 +28,30 @@ void Water::Render(const glm::mat4& projection, const glm::mat4& view, const glm
     m_shader->SetMat4("projection", projection);
     m_shader->SetMat4("view", view);
     m_shader->SetMat4("model", m_model);
-    m_shader->SetVec3("myColor", m_color);
-    m_shader->SetVec3("lightColor", lightColor);
-    m_shader->SetVec3("lightPos", lightPos);
     m_shader->SetFloat("time", m_time);
-    
+    m_shader->SetInt("myTexture1", 0);
+    m_shader->SetInt("displacementMap", 1);
+
+    glEnable(GL_TEXTURE_2D);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_texture->getId());
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, m_displacementMap->getId());
+
     Map::BasicRendering();
+    glDisable(GL_TEXTURE_2D);
 }
 
 void Water::FlatHeightMap()
 {
-    m_heightMap = new float[GetNumVertices()];
-    for (int i = 0; i < GetNumVertices(); i++) {
+    int width = 128;
+    m_heightMapWidth = width;
+    m_heightMapHeight = width;
+    m_heightMap = new float[width*width];
+
+    for (int i = 0; i < width * width; i++) {
         m_heightMap[i] = 0.0f;
     }
 }
+
 

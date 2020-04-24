@@ -6,16 +6,16 @@
 class Water : public Map
 {
 public:
-    Water(const float& posX, const float& posZ, const float& size, ShaderLoader& shaderLoader);
+    Water(const float& posX, const float& posZ, const float& size, ShaderLoader& shaderLoader, Texture* texture, Texture* displacementMap);
     ~Water();
     
-    void Render(const glm::mat4& projection, const glm::mat4& view, const glm::vec3& lightColor, const glm::vec3& lightPos);
+    void Render(const glm::mat4& projection, const glm::mat4& view);
 private:
     glm::mat4 m_model;
-    glm::vec3 m_color;
     float m_time;
     
-    float* m_heightMap;
+    Texture* m_texture;
+    Texture* m_displacementMap;    
     Shader* m_shader;
     
     void FlatHeightMap();

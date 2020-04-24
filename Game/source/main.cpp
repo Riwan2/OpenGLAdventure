@@ -27,10 +27,12 @@ int main(int argc, char **argv)
     
     Util::InitRandom();
     SDL_Window* m_window = SDL_CreateWindow(parameters::Title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, parameters::Width, parameters::Height, SDL_WINDOW_OPENGL);
+
     SDL_GLContext m_glContext = SDL_GL_CreateContext(m_window);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
+
     
     SDL_WarpMouseInWindow(m_window, parameters::Width/2, parameters::Height/2);
     //SDL_SetWindowGrab(m_window, SDL_TRUE);

@@ -1,7 +1,6 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
 
-#include "../Loader/texture.h"
 #include "../Basic/util.h"
 #include "../Basic/camera.h"
 #include "../Basic/light.h"

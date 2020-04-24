@@ -7,7 +7,7 @@ Camera::Camera(const float& distance)
     m_position = glm::vec3(0.0);
     m_target = glm::vec3(0.0);
     m_up = glm::vec3(0.0, 1.0, 0.0);
-    float zFar = 300.0;
+    float zFar = 500.0;
     float zNear = 0.1;
     m_projection = glm::perspective(glm::radians(45.0f), (float)parameters::Width/(float)parameters::Height, zNear, zFar);
     
@@ -70,7 +70,7 @@ void Camera::Zoom(const float& amount)
     m_distance += amount * (m_distance / 10);
     
     if (m_distance <= 10.0f) m_distance = 10.0f;
-    else if (m_distance >= 80.0f) m_distance = 80.0f;
+    else if (m_distance >= 200.0f) m_distance = 200.0f;
     m_position.z = m_distance;
 }
 

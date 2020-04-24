@@ -7,7 +7,7 @@ namespace parameters {
     static const int PosY = 100;
     static int Width = 850;
     static int Height = 540;
-    static glm::vec3 skyColor = glm::vec3(0.5f, 0.5f, 0.6f);
+    static glm::vec3 skyColor = glm::vec3(0.23, 0.65, 0.68);
 }
 
 #endif

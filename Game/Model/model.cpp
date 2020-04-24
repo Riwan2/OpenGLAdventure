@@ -6,6 +6,8 @@ Model::Model()
 
 Model::Model(const Model& copy) 
 {
+    m_instanced = copy.isInstanced();
+    if (m_instanced) m_Model = copy.GetModelId();
     m_VAO = copy.GetVAO();
     m_VBO = copy.GetVBO();
     m_EBO = copy.GetEBO();
@@ -17,6 +19,8 @@ Model::Model(const Model& copy)
 Model::Model(ModelLoader* modelLoader, Texture* texture, const bool& transparency)
 {
     //Raw Model :
+    m_instanced = modelLoader->isInstanced();
+    if (m_instanced) m_Model = modelLoader->getModelId();
     m_VAO = modelLoader->getVaoId();
     m_VBO = modelLoader->getVboId();
     m_EBO = modelLoader->getEboId();
@@ -34,6 +38,7 @@ Model::~Model()
     glDeleteBuffers(1, &m_VBO);
     glDeleteBuffers(1, &m_EBO);
     glDeleteVertexArrays(1, &m_VAO);
+    if (m_instanced) glDeleteBuffers(1, &m_Model);
     glDeleteTextures(1, &m_texture->getId());
     delete m_texture;
 }
@@ -49,6 +54,15 @@ void Model::Bind() const
 void Model::Render() const
 {
     glDrawElements(GL_TRIANGLES, m_drawCall, GL_UNSIGNED_INT, 0);
+}
+
+void Model::Render(const glm::mat4* modelMatrices, const int& numInstance) const
+{
+    glBindBuffer(GL_ARRAY_BUFFER, m_Model);
+    glBufferData(GL_ARRAY_BUFFER, numInstance * sizeof(glm::mat4), NULL, GL_STREAM_DRAW);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, numInstance * sizeof(glm::mat4), modelMatrices);
+
+    glDrawElementsInstanced(GL_TRIANGLES, m_drawCall, GL_UNSIGNED_INT, 0, numInstance);
 }
 
 void Model::Unbind() const

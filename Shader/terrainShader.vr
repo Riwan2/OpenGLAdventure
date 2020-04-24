@@ -18,7 +18,7 @@ out VS_OUT {
 } vs_out;
 
 vec4 worldPosition;
-const float density = 0.006;
+const float density = 0.006 / 2;
 const float gradient = 2.5;
 
 void main()
