@@ -9,7 +9,7 @@ public:
     Water(const float& posX, const float& posZ, const float& size, ShaderLoader& shaderLoader, Texture* texture, Texture* displacementMap);
     ~Water();
     
-    void Render(const glm::mat4& projection, const glm::mat4& view);
+    void Render(const Camera* camera);
 private:
     glm::mat4 m_model;
     float m_time;

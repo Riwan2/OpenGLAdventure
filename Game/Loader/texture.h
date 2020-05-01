@@ -9,7 +9,7 @@
 class Texture 
 {
 public:
-    Texture(const std::string& fileName, const float& reflectivity, const float& shineDamper, const int& rowNumber = 1, const bool& png = false);
+    Texture(const std::string& fileName, const float& reflectivity = 0.0, const float& shineDamper = 64, const int& rowNumber = 1, const bool& png = false);
     ~Texture();
     
     const GLuint& getId() const { return m_textureId; }

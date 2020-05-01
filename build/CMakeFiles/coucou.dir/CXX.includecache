@@ -28,15 +28,15 @@ input.h
 SDL2/SDL.h
 -
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.cpp
-light.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
-
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
 ../Model/shader.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
+vector
+-
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
+glm/glm.hpp
+-
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.cpp
 util.h
@@ -173,6 +173,10 @@ map.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
 ../Loader/texture.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
+../Basic/camera.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
+vector
+-
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.cpp
 terrain.h
@@ -183,8 +187,6 @@ terrain.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
 ../Basic/util.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
-../Basic/camera.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
 ../Basic/light.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
 map.h

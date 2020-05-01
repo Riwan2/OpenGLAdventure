@@ -80,6 +80,9 @@ ModelLoader::ModelLoader(const std::string& fileName, const bool& instancedModel
     
     delete vertices;
     delete indices;
+
+    glDeleteBuffers(1, &m_VBO);
+    glDeleteBuffers(1, &m_EBO);
 }
 
 ModelLoader::~ModelLoader()

@@ -18,7 +18,7 @@ private:
 	Renderer* m_renderer;
 	Camera* m_camera;
     Player* m_player;
-    Light* m_light;
+    std::vector<light::PointLight*> m_listPointLight;
     std::vector<Terrain*> m_listTerrain;
 };
 

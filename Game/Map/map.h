@@ -4,6 +4,8 @@
 #include "../Model/shader.h"
 #include "../Basic/basicStruct.h"
 #include "../Loader/texture.h"
+#include "../Basic/camera.h"
+#include <vector>
 
 class Map
 {

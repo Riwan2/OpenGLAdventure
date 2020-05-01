@@ -17,7 +17,7 @@
      
  }
  
-void Player::Update(const float& deltaTime, const Camera* camera, const Light* light, Terrain* terrain)
+void Player::Update(const float& deltaTime, const Camera* camera, const std::vector<light::PointLight*> listPointLight, Terrain* terrain)
 {
     if (Input::KeyDown(Input::eAction::moveDown)) {
         m_currentSpeed = -m_SPEED;
@@ -56,7 +56,7 @@ void Player::Update(const float& deltaTime, const Camera* camera, const Light* l
 
     Move(distanceX, 0, distanceZ);
     Rotate(0, m_currentTurnSpeed * deltaTime, 0);
-    BasicRender(camera, light);
+    BasicRender(camera, listPointLight);
 }
 
 void Player::TerrainCollision(Terrain* terrain)
@@ -64,14 +64,16 @@ void Player::TerrainCollision(Terrain* terrain)
     m_terrainHeight = terrain->GetMapHeight(m_position.x, m_position.z);
 }
 
-void Player::BasicRender(const Camera* camera, const Light* light)
+void Player::BasicRender(const Camera* camera, const std::vector<light::PointLight*> listPointLight)
 {
     GetModel().Bind();
     m_shader->Use();
     m_shader->SetMat4("projection", camera->GetProjection());
     m_shader->SetMat4("view", camera->GetView());
-    m_shader->SetVec3("lightPos", light->getPosition());
-    m_shader->SetVec3("lightColor", light->getColor());
+
+    //Load light
+    light::LoadLigthIntoShader(m_shader, listPointLight);
+
     m_shader->SetVec3("skyColor", parameters::skyColor);
     Entity::Update();
     GetModel().Render();

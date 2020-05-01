@@ -223,33 +223,6 @@ Game/Basic/input.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/input.cpp.s
 .PHONY : Game/Basic/input.cpp.s
 
-Game/Basic/light.o: Game/Basic/light.cpp.o
-
-.PHONY : Game/Basic/light.o
-
-# target to build an object file
-Game/Basic/light.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/light.cpp.o
-.PHONY : Game/Basic/light.cpp.o
-
-Game/Basic/light.i: Game/Basic/light.cpp.i
-
-.PHONY : Game/Basic/light.i
-
-# target to preprocess a source file
-Game/Basic/light.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/light.cpp.i
-.PHONY : Game/Basic/light.cpp.i
-
-Game/Basic/light.s: Game/Basic/light.cpp.s
-
-.PHONY : Game/Basic/light.s
-
-# target to generate assembly for a file
-Game/Basic/light.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/light.cpp.s
-.PHONY : Game/Basic/light.cpp.s
-
 Game/Basic/util.o: Game/Basic/util.cpp.o
 
 .PHONY : Game/Basic/util.o
@@ -647,9 +620,6 @@ help:
 	@echo "... Game/Basic/input.o"
 	@echo "... Game/Basic/input.i"
 	@echo "... Game/Basic/input.s"
-	@echo "... Game/Basic/light.o"
-	@echo "... Game/Basic/light.i"
-	@echo "... Game/Basic/light.s"
 	@echo "... Game/Basic/util.o"
 	@echo "... Game/Basic/util.i"
 	@echo "... Game/Basic/util.s"

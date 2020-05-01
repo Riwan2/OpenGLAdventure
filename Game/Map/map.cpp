@@ -8,9 +8,7 @@ Map::Map(const float& posX, const float& posZ, const float& size)
 }
 
 Map::~Map()
-{   
-    glDeleteBuffers(1, &m_VBO);
-    glDeleteBuffers(1, &m_EBO);
+{
     glDeleteVertexArrays(1, &m_VAO);
 }
 
@@ -53,6 +51,9 @@ void Map::Initialize(float* heightMap)
 
     delete m_indices;
     delete m_vertex;
+
+    glDeleteBuffers(1, &m_VBO);
+    glDeleteBuffers(1, &m_EBO);
 }
 
 void Map::BasicRendering() 

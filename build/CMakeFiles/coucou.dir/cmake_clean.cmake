@@ -1,7 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/coucou.dir/Game/Basic/camera.cpp.o"
   "CMakeFiles/coucou.dir/Game/Basic/input.cpp.o"
-  "CMakeFiles/coucou.dir/Game/Basic/light.cpp.o"
   "CMakeFiles/coucou.dir/Game/Basic/util.cpp.o"
   "CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o"
   "CMakeFiles/coucou.dir/Game/Entity/player.cpp.o"

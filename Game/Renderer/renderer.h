@@ -13,7 +13,7 @@ public:
     ~Renderer();
     
     void Load(const glm::mat4& projection, Terrain* terrain);
-    void Render(const float& deltaTime, const Camera& camera, const std::vector<Terrain*>& listTerrain, Light* light);
+    void Render(const float& deltaTime, const Camera& camera, const std::vector<Terrain*>& listTerrain, const std::vector<light::PointLight*>& listPointLight);
     
 private:
     std::unordered_map<Model*, std::vector<Entity*>, ModelHashFunction> m_entities;
@@ -25,7 +25,7 @@ private:
     
     void LoadEntity(Terrain* terrain);
     void SetUniform(const glm::mat4& projection);
-    void UpdateUniform(const Camera& camera, Light* light);
+    void UpdateUniform(const Camera& camera, const std::vector<light::PointLight*>& listPointLight);
     void ProcessEntity(Entity*& entity);
     void RenderEntity();
     void EnableCulling();

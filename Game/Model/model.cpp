@@ -9,8 +9,6 @@ Model::Model(const Model& copy)
     m_instanced = copy.isInstanced();
     if (m_instanced) m_Model = copy.GetModelId();
     m_VAO = copy.GetVAO();
-    m_VBO = copy.GetVBO();
-    m_EBO = copy.GetEBO();
     m_drawCall = copy.GetDrawCall();
     m_texture = new Texture(copy.GetTexture());
     m_transparency = copy.GetTransparency();
@@ -22,8 +20,6 @@ Model::Model(ModelLoader* modelLoader, Texture* texture, const bool& transparenc
     m_instanced = modelLoader->isInstanced();
     if (m_instanced) m_Model = modelLoader->getModelId();
     m_VAO = modelLoader->getVaoId();
-    m_VBO = modelLoader->getVboId();
-    m_EBO = modelLoader->getEboId();
     m_drawCall = modelLoader->getDrawCall();
     m_transparency = transparency;
     
@@ -35,8 +31,6 @@ Model::Model(ModelLoader* modelLoader, Texture* texture, const bool& transparenc
 
 Model::~Model()
 {
-    glDeleteBuffers(1, &m_VBO);
-    glDeleteBuffers(1, &m_EBO);
     glDeleteVertexArrays(1, &m_VAO);
     if (m_instanced) glDeleteBuffers(1, &m_Model);
     glDeleteTextures(1, &m_texture->getId());

@@ -15,6 +15,11 @@ Texture* blendMap) : Map { posX, posZ, size }
 
     m_model = glm::mat4(1.0f);
     m_color = glm::vec3(0.1f, 0.5f, 0.4f);
+
+    m_shader->Use();
+    m_shader->SetFloat("ambientStrength", 0.0);
+    m_shader->SetFloat("density", parameters::FogDensity);
+    m_shader->SetFloat("gradient", parameters::FogGradient);
 }
 
 Terrain::~Terrain()
@@ -58,18 +63,18 @@ void Terrain::LoadHeightMap()
     stbi_image_free(data);
 }
 
-void Terrain::Render(const Camera* camera, const Light* light)
+void Terrain::Render(const Camera* camera, const std::vector<light::PointLight*>& listPointLight)
 {   
     m_shader->Use();
     m_shader->SetMat4("projection", camera->GetProjection());
     m_shader->SetMat4("view", camera->GetView());
     m_shader->SetMat4("model", m_model);
-    m_shader->SetVec3("lightPos", light->getPosition());
-    m_shader->SetVec3("lightColor", light->getColor());
     m_shader->SetVec3("skyColor", parameters::skyColor);
     m_shader->SetInt("grass", 0);
     m_shader->SetInt("path", 1);
     m_shader->SetInt("blendMap", 2);
+
+    light::LoadLigthIntoShader(m_shader, listPointLight);
     
     glEnable(GL_TEXTURE_2D);
     glActiveTexture(GL_TEXTURE0);

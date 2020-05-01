@@ -4,22 +4,24 @@ layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
 layout (location = 2) in vec2 aTexCoord;
 
+const int maxLight = 4;
+
 uniform mat4 projection;
 uniform mat4 view;
 uniform mat4 model;
-uniform vec3 lightPos;
+uniform vec3 lightPos[maxLight];
+uniform float density = 0.003;
+uniform float gradient = 2.5;
 
 out VS_OUT {
     vec2 TexCoord;
     vec3 cameraDirection;
-    vec3 lightVector;
+    vec3 lightVector[4];
     vec3 normal;
     float visibility;
 } vs_out;
 
 vec4 worldPosition;
-const float density = 0.006 / 2;
-const float gradient = 2.5;
 
 void main()
 {
@@ -34,6 +36,8 @@ void main()
     
     vs_out.normal = mat3(transpose(inverse(model))) * aNormal;
     vs_out.cameraDirection = vec3(inverse(view) * vec4(0, 0, 0, 1)) - vec3(worldPosition);
-    vs_out.lightVector = vec3(0.5, 0.4, 0.0);//lightPos - vec3(worldPosition);
+    for (int i = 0; i < maxLight; i++) {
+        vs_out.lightVector[i] = lightPos[i] - vec3(worldPosition);
+    }
     vs_out.TexCoord = aTexCoord;
 }

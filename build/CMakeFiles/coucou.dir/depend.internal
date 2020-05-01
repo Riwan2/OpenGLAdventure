@@ -9,11 +9,6 @@ CMakeFiles/coucou.dir/Game/Basic/camera.cpp.o
 CMakeFiles/coucou.dir/Game/Basic/input.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.cpp
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.h
-CMakeFiles/coucou.dir/Game/Basic/light.cpp.o
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.cpp
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/Basic/util.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.cpp
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
@@ -59,6 +54,7 @@ CMakeFiles/coucou.dir/Game/Loader/texture.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
 CMakeFiles/coucou.dir/Game/Map/map.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
@@ -80,6 +76,7 @@ CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/Map/water.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h

@@ -5,30 +5,32 @@ layout (location = 1) in vec3 aNormal;
 layout (location = 2) in vec2 aTexCoord;
 layout (location = 3) in mat4 aModel;
 
+const int maxLight = 4;
+
 layout (std140) uniform Matrices
 {
     uniform mat4 projection;
     uniform mat4 view;
-    uniform vec3 lightPos;
-    uniform vec3 lightColor;
+    uniform vec3 lightPos[maxLight];
+    uniform vec3 lightColor[maxLight];
+    uniform vec3 lightAttenuation[maxLight];
 };
 
-//texture
 uniform vec2 textureOffset;
 uniform int rowNumber;
+uniform float density = 0.003;
+uniform float gradient = 2.5;
 
 out VS_OUT {
     vec2 TexCoord;
     vec3 cameraDirection;
-    vec3 lightVector;
+    vec3 lightVector[maxLight];
     vec3 normal;
     float visibility;
 } vs_out;
 
 vec4 worldPosition;
 vec3 cameraPosition;
-const float density = 0.006 / 2;
-const float gradient = 2.5;
 uniform float time;
 
 void main()
@@ -42,8 +44,8 @@ void main()
     
     worldPosition = aModel * vec4(position, 1.0);
     cameraPosition = vec3(inverse(view) * vec4(0, 0, 0, 1));
-    vec4 positionRelativeToCamera = view * worldPosition;
     
+    vec4 positionRelativeToCamera = view * worldPosition;
     gl_Position = projection * positionRelativeToCamera;
     
     float distance = length(positionRelativeToCamera.xyz);
@@ -52,6 +54,8 @@ void main()
 
     vs_out.normal = mat3(transpose(inverse(aModel))) * aNormal;
     vs_out.cameraDirection = cameraPosition - vec3(worldPosition);
-    vs_out.lightVector = vec3(0.5, 0.4, 0.0);//lightPos - vec3(worldPosition);
+    for (int i = 0; i < maxLight; i++) {
+        vs_out.lightVector[i] = lightPos[i] - vec3(worldPosition);
+    }
     vs_out.TexCoord = (aTexCoord / rowNumber) + textureOffset;
 }

@@ -10,13 +10,13 @@ Scene::~Scene()
 	delete m_camera;
 	delete m_renderer;
 	delete m_player;
-	delete m_light;
+	m_listPointLight.clear();
 	m_listTerrain.clear();
 }
 
 void Scene::Initialize()
 {
-	//Camera
+	//Camera 
 	m_camera = new Camera(30);
 
     //Terrain
@@ -34,24 +34,26 @@ void Scene::Initialize()
     //Water
     ShaderLoader* waterShader = new ShaderLoader();
     waterShader->Load("waterShader");
-    Texture* caca = new Texture("displacementmap", 0, 64);
-    Texture* water = new Texture("watermap", 0, 64);
-    m_water = new Water(-0.5, -0.5, 600, *waterShader, water, caca);
+    Texture* displacement = new Texture("displacementmap");
+    Texture* water = new Texture("heightmap", 0, 64, 1, true);
+    m_water = new Water(-0.5, -0.5, 600, *waterShader, water, displacement);
     delete waterShader;
-    delete caca;
+    delete displacement;
     delete water;
 
     //Entity
     m_renderer = new Renderer();
     m_renderer->Load(m_camera->GetProjection(), m_listTerrain[0]);
 
-    //Light
-    ShaderLoader* lightShader = new ShaderLoader();
-    lightShader->Load("lightShader");
-    glm::vec3 lightColor = glm::vec3(1.0, 1.0, 1.0f); //0.9, 0.8, 0.7
-    m_light = new Light(lightColor, *lightShader);
-    m_light->Move(glm::vec3(-10, 10, 10.0));
-    delete lightShader;
+    //PointLight
+    m_listPointLight.push_back(new light::PointLight(glm::vec3(1.0, 0.3, 0.3)));
+    m_listPointLight.push_back(new light::PointLight(glm::vec3(0.3, 1.0, 0.3)));
+    m_listPointLight.push_back(new light::PointLight(glm::vec3(0.1, 0.1, 1.0)));
+    m_listPointLight.push_back(new light::PointLight(glm::vec3(1.0, 1.0, 1.0)));
+
+    for (int i = 0; i < m_listPointLight.size(); i++) {
+        m_listPointLight[i]->position = glm::vec3(i * 50, m_listTerrain[0]->GetMapHeight(i * 50, 10) + 10, 10);
+    }
 
     //Player
     ShaderLoader* playerShader = new ShaderLoader();
@@ -64,16 +66,16 @@ void Scene::Initialize()
 
 void Scene::Update(const float& deltaTime)
 {
-	m_player->Update(deltaTime, m_camera, m_light, m_listTerrain[0]);
-    m_renderer->Render(deltaTime, *m_camera, m_listTerrain, m_light);
-    m_camera->Update(glm::vec3(m_player->GetPosition().x, m_player->GetTerrainHeight(), m_player->GetPosition().z),
-        m_player->GetRotation().y);
+	m_player->Update(deltaTime, m_camera, m_listPointLight, m_listTerrain[0]);
+    m_renderer->Render(deltaTime, *m_camera, m_listTerrain, m_listPointLight);
     glDisable(GL_CULL_FACE);
 
     //std::cout << 1/deltaTime << std::endl;
+    // glEnable(GL_BLEND);
+    // glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    // m_water->Render(m_camera);
+    // glDisable(GL_BLEND);
 
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    m_water->Render(m_camera->GetProjection(), m_camera->GetView());
-    glDisable(GL_BLEND);
+    m_camera->Update(glm::vec3(m_player->GetPosition().x, m_player->GetTerrainHeight(), m_player->GetPosition().z),
+        m_player->GetRotation().y);
 }

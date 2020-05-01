@@ -12,8 +12,6 @@ public:
     ~ModelLoader();
     
     const GLuint& getVaoId() const { return m_VAO; }
-    const GLuint& getVboId() const { return m_VBO; }
-    const GLuint& getEboId() const { return m_EBO; }
     const GLuint& getModelId() const { return m_Model; }
     const bool& isInstanced() const { return m_instanced; }
     const int& getDrawCall() const { return m_drawCall; }

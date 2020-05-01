@@ -16,6 +16,11 @@ Entity::Entity(Model*& model, const ShaderLoader& shaderLoader, const float& x, 
     m_rotation = glm::vec3(0.0);
     SetTransformation();
     m_time = (float)Util::getInt(1000) / 100;
+
+    m_shader->Use();
+    m_shader->SetFloat("ambientStrength", 0.0);
+    m_shader->SetFloat("density", parameters::FogDensity);
+    m_shader->SetFloat("gradient", parameters::FogGradient);
 }
 
 Entity::~Entity()

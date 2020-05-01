@@ -20,13 +20,13 @@ Water::~Water()
     delete m_displacementMap;
 }
 
-void Water::Render(const glm::mat4& projection, const glm::mat4& view)
+void Water::Render(const Camera* camera)
 {
     m_time += 0.01f;
     m_shader->Use();
     
-    m_shader->SetMat4("projection", projection);
-    m_shader->SetMat4("view", view);
+    m_shader->SetMat4("projection", camera->GetProjection());
+    m_shader->SetMat4("view", camera->GetView());
     m_shader->SetMat4("model", m_model);
     m_shader->SetFloat("time", m_time);
     m_shader->SetInt("myTexture1", 0);
@@ -44,7 +44,7 @@ void Water::Render(const glm::mat4& projection, const glm::mat4& view)
 
 void Water::FlatHeightMap()
 {
-    int width = 128;
+    int width = 64;
     m_heightMapWidth = width;
     m_heightMapHeight = width;
     m_heightMap = new float[width*width];

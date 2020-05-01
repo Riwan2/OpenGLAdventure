@@ -9,11 +9,6 @@ CMakeFiles/coucou.dir/Game/Basic/camera.cpp.o: ../Game/Basic/parameters.h
 CMakeFiles/coucou.dir/Game/Basic/input.cpp.o: ../Game/Basic/input.cpp
 CMakeFiles/coucou.dir/Game/Basic/input.cpp.o: ../Game/Basic/input.h
 
-CMakeFiles/coucou.dir/Game/Basic/light.cpp.o: ../Game/Basic/light.cpp
-CMakeFiles/coucou.dir/Game/Basic/light.cpp.o: ../Game/Basic/light.h
-CMakeFiles/coucou.dir/Game/Basic/light.cpp.o: ../Game/Loader/shaderLoader.h
-CMakeFiles/coucou.dir/Game/Basic/light.cpp.o: ../Game/Model/shader.h
-
 CMakeFiles/coucou.dir/Game/Basic/util.cpp.o: ../Game/Basic/util.cpp
 CMakeFiles/coucou.dir/Game/Basic/util.cpp.o: ../Game/Basic/util.h
 
@@ -58,6 +53,7 @@ CMakeFiles/coucou.dir/Game/Loader/texture.cpp.o: ../Game/Loader/texture.cpp
 CMakeFiles/coucou.dir/Game/Loader/texture.cpp.o: ../Game/Loader/texture.h
 
 CMakeFiles/coucou.dir/Game/Map/map.cpp.o: ../Game/Basic/basicStruct.h
+CMakeFiles/coucou.dir/Game/Map/map.cpp.o: ../Game/Basic/camera.h
 CMakeFiles/coucou.dir/Game/Map/map.cpp.o: ../Game/Loader/shaderLoader.h
 CMakeFiles/coucou.dir/Game/Map/map.cpp.o: ../Game/Loader/stb_image.h
 CMakeFiles/coucou.dir/Game/Map/map.cpp.o: ../Game/Loader/texture.h
@@ -79,6 +75,7 @@ CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Map/terrain.h
 CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Model/shader.h
 
 CMakeFiles/coucou.dir/Game/Map/water.cpp.o: ../Game/Basic/basicStruct.h
+CMakeFiles/coucou.dir/Game/Map/water.cpp.o: ../Game/Basic/camera.h
 CMakeFiles/coucou.dir/Game/Map/water.cpp.o: ../Game/Loader/shaderLoader.h
 CMakeFiles/coucou.dir/Game/Map/water.cpp.o: ../Game/Loader/stb_image.h
 CMakeFiles/coucou.dir/Game/Map/water.cpp.o: ../Game/Loader/texture.h

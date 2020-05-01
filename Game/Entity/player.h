@@ -12,7 +12,7 @@ public:
     Player(Model*& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z);
     ~Player();
     
-    void Update(const float& deltaTime, const Camera* camera, const Light* light, Terrain* terrain);
+    void Update(const float& deltaTime, const Camera* camera, const std::vector<light::PointLight*> listPointLight, Terrain* terrain);
     inline float GetTerrainHeight() { return m_terrainHeight; }
 
 private:
@@ -24,7 +24,7 @@ private:
     static constexpr const float m_GRAVITY = -100;
     static constexpr const float m_JUMP_POWER = 20;
     
-    void BasicRender(const Camera* camera, const Light* light);
+    void BasicRender(const Camera* camera, const std::vector<light::PointLight*> listPointLight);
     void TerrainCollision(Terrain* terrain);
 };
 

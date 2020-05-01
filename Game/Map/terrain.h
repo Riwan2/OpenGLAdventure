@@ -2,7 +2,6 @@
 #define TERRAIN_H
 
 #include "../Basic/util.h"
-#include "../Basic/camera.h"
 #include "../Basic/light.h"
 #include "map.h"
 
@@ -13,7 +12,7 @@ public:
 Texture* blendMap);
     ~Terrain();
     
-    void Render(const Camera* camera, const Light* light);
+    void Render(const Camera* camera, const std::vector<light::PointLight*>& listPointLight);
 private:
     glm::mat4 m_model;
     glm::vec3 m_color;
