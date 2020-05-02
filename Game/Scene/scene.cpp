@@ -20,8 +20,7 @@ void Scene::Initialize()
 	m_camera = new Camera(30);
 
     //Terrain
-    ShaderLoader* terrainShader = new ShaderLoader();
-    terrainShader->Load("terrainShader");
+    shaderLoader::ShaderObj* terrainShader = new shaderLoader::ShaderObj(shaderLoader::Load("terrainShader"));
     Texture* grass = new Texture("green", 0.0, 64);
     Texture* path = new Texture("path", 0.0, 64);
     Texture* blendMap = new Texture("blendmap", 0.0, 64);
@@ -32,8 +31,7 @@ void Scene::Initialize()
     delete grass;
 
     //Water
-    ShaderLoader* waterShader = new ShaderLoader();
-    waterShader->Load("waterShader");
+    shaderLoader::ShaderObj* waterShader = new shaderLoader::ShaderObj(shaderLoader::Load("waterShader"));
     Texture* displacement = new Texture("displacementmap");
     Texture* water = new Texture("heightmap", 0, 64, 1, true);
     m_water = new Water(-0.5, -0.5, 600, *waterShader, water, displacement);
@@ -56,9 +54,8 @@ void Scene::Initialize()
     }
 
     //Player
-    ShaderLoader* playerShader = new ShaderLoader();
-    playerShader->Load("Player/playerShader");
-    Model* playerModel = new Model(new ModelLoader("character"), new Texture("green", 1.0, 64));
+    shaderLoader::ShaderObj* playerShader = new shaderLoader::ShaderObj(shaderLoader::Load("Player/playerShader"));
+    Model* playerModel = new Model("character", new Texture("green", 1.0, 64));
     m_player = new Player(playerModel, *playerShader, 0, 0, 0);
     m_player->SetScale(0.25, 0.25, 0.25);
     delete playerShader;

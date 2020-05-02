@@ -1,11 +1,11 @@
 #include "water.h"
 
-Water::Water(const float& posX, const float& posZ, const float& size, ShaderLoader& shaderLoader, Texture* texture, Texture* displacementMap) 
+Water::Water(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, Texture* texture, Texture* displacementMap) 
 : Map { posX, posZ, size }
 {
     FlatHeightMap();
     Initialize(m_heightMap);
-    m_shader = new Shader(shaderLoader);
+    m_shader = new Shader(shaderObj);
     m_texture = new Texture(*texture);
     m_displacementMap = new Texture(*displacementMap);
     

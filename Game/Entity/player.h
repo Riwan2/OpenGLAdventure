@@ -9,7 +9,7 @@
 class Player : public Entity
 {
 public:
-    Player(Model*& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z);
+    Player(Model*& model, const shaderLoader::ShaderObj& shaderObj, const float& x, const float& y, const float& z);
     ~Player();
     
     void Update(const float& deltaTime, const Camera* camera, const std::vector<light::PointLight*> listPointLight, Terrain* terrain);

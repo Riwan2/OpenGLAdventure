@@ -8,7 +8,7 @@
 class Shader
 {
 public:
-    Shader(const ShaderLoader& shaderLoader);
+    Shader(const shaderLoader::ShaderObj& shaderObj);
     ~Shader();
         
     void Use();

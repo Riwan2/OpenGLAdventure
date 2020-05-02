@@ -9,8 +9,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Basic/util.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Entity/player.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Loader/modelloader.cpp.o"
-  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Loader/shaderLoader.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Loader/texture.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Map/map.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o"

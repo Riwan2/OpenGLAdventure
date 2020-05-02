@@ -80,12 +80,6 @@ player.h
 ../Map/terrain.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.cpp
-modelloader.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
-objloader.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
-
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
 GL/glew.h
 -
@@ -93,6 +87,8 @@ string
 -
 glm/glm.hpp
 -
+objloader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
 iostream
@@ -103,10 +99,6 @@ fstream
 -
 math.h
 -
-
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.cpp
-shaderLoader.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h
 GL/glew.h
@@ -203,10 +195,10 @@ map.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.cpp
 model.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h
-
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h
 ../Loader/modelloader.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h
 ../Loader/texture.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
 bits/stdc++.h

@@ -304,60 +304,6 @@ Game/Entity/player.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Entity/player.cpp.s
 .PHONY : Game/Entity/player.cpp.s
 
-Game/Loader/modelloader.o: Game/Loader/modelloader.cpp.o
-
-.PHONY : Game/Loader/modelloader.o
-
-# target to build an object file
-Game/Loader/modelloader.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/modelloader.cpp.o
-.PHONY : Game/Loader/modelloader.cpp.o
-
-Game/Loader/modelloader.i: Game/Loader/modelloader.cpp.i
-
-.PHONY : Game/Loader/modelloader.i
-
-# target to preprocess a source file
-Game/Loader/modelloader.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/modelloader.cpp.i
-.PHONY : Game/Loader/modelloader.cpp.i
-
-Game/Loader/modelloader.s: Game/Loader/modelloader.cpp.s
-
-.PHONY : Game/Loader/modelloader.s
-
-# target to generate assembly for a file
-Game/Loader/modelloader.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/modelloader.cpp.s
-.PHONY : Game/Loader/modelloader.cpp.s
-
-Game/Loader/shaderLoader.o: Game/Loader/shaderLoader.cpp.o
-
-.PHONY : Game/Loader/shaderLoader.o
-
-# target to build an object file
-Game/Loader/shaderLoader.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/shaderLoader.cpp.o
-.PHONY : Game/Loader/shaderLoader.cpp.o
-
-Game/Loader/shaderLoader.i: Game/Loader/shaderLoader.cpp.i
-
-.PHONY : Game/Loader/shaderLoader.i
-
-# target to preprocess a source file
-Game/Loader/shaderLoader.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/shaderLoader.cpp.i
-.PHONY : Game/Loader/shaderLoader.cpp.i
-
-Game/Loader/shaderLoader.s: Game/Loader/shaderLoader.cpp.s
-
-.PHONY : Game/Loader/shaderLoader.s
-
-# target to generate assembly for a file
-Game/Loader/shaderLoader.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Loader/shaderLoader.cpp.s
-.PHONY : Game/Loader/shaderLoader.cpp.s
-
 Game/Loader/texture.o: Game/Loader/texture.cpp.o
 
 .PHONY : Game/Loader/texture.o
@@ -629,12 +575,6 @@ help:
 	@echo "... Game/Entity/player.o"
 	@echo "... Game/Entity/player.i"
 	@echo "... Game/Entity/player.s"
-	@echo "... Game/Loader/modelloader.o"
-	@echo "... Game/Loader/modelloader.i"
-	@echo "... Game/Loader/modelloader.s"
-	@echo "... Game/Loader/shaderLoader.o"
-	@echo "... Game/Loader/shaderLoader.i"
-	@echo "... Game/Loader/shaderLoader.s"
 	@echo "... Game/Loader/texture.o"
 	@echo "... Game/Loader/texture.i"
 	@echo "... Game/Loader/texture.s"

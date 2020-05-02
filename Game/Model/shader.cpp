@@ -1,10 +1,10 @@
 #include "shader.h"
 
-Shader::Shader(const ShaderLoader& shaderLoader)
+Shader::Shader(const shaderLoader::ShaderObj& shaderObj)
 {
-    m_shaderProgramId = shaderLoader.getShaderProgramId();
-    m_vertexShaderId = shaderLoader.getVertexShaderId();
-    m_fragmentShaderId = shaderLoader.getFragmentShaderId();
+    m_shaderProgramId = shaderObj.programId;
+    m_vertexShaderId = shaderObj.vertexId;
+    m_fragmentShaderId = shaderObj.fragmentId;
 }
 
 Shader::~Shader()

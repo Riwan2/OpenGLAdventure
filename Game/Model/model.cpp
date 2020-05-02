@@ -1,4 +1,5 @@
 #include "model.h"
+#include "../Loader/modelloader.h"
 
 Model::Model()
 {
@@ -14,19 +15,22 @@ Model::Model(const Model& copy)
     m_transparency = copy.GetTransparency();
 }
 
-Model::Model(ModelLoader* modelLoader, Texture* texture, const bool& transparency)
+Model::Model(const std::string& fileName, Texture* texture, const bool& instanced, const bool& transparency)
 {
     //Raw Model :
-    m_instanced = modelLoader->isInstanced();
-    if (m_instanced) m_Model = modelLoader->getModelId();
-    m_VAO = modelLoader->getVaoId();
-    m_drawCall = modelLoader->getDrawCall();
+    m_instanced = instanced;
+
+    vaoLoader::VaoObject myVao;
+    if (m_instanced) myVao = vaoLoader::LoadInstancedObj(fileName);
+    else myVao = vaoLoader::LoadBasicObj(fileName);
+
+    if (m_instanced) m_Model = myVao.modelId;
+    m_VAO = myVao.vaoId;
+    m_drawCall = myVao.drawCall;
     m_transparency = transparency;
     
     //Texture :
     m_texture = new Texture(*texture);
-
-    delete modelLoader;
 }
 
 Model::~Model()

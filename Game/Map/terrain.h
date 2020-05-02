@@ -8,7 +8,7 @@
 class Terrain : public Map
 {
 public:
-    Terrain(const float& posX, const float& posZ, const float& size, ShaderLoader& shaderLoader, Texture* grass, Texture* path,
+    Terrain(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, Texture* grass, Texture* path,
 Texture* blendMap);
     ~Terrain();
     

@@ -1,10 +1,10 @@
 #include "terrain.h"
 #include "../Basic/parameters.h"
 
-Terrain::Terrain(const float& posX, const float& posZ, const float& size, ShaderLoader& shaderLoader, Texture* grass, Texture* path,
+Terrain::Terrain(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, Texture* grass, Texture* path,
 Texture* blendMap) : Map { posX, posZ, size }
 {
-    m_shader = new Shader(shaderLoader);
+    m_shader = new Shader(shaderObj);
     m_grass = new Texture(*grass);
     m_path = new Texture(*path);
     m_blendMap = new Texture(*blendMap);
@@ -17,7 +17,7 @@ Texture* blendMap) : Map { posX, posZ, size }
     m_color = glm::vec3(0.1f, 0.5f, 0.4f);
 
     m_shader->Use();
-    m_shader->SetFloat("ambientStrength", 0.0);
+    m_shader->SetFloat("ambientStrength", 0.1);
     m_shader->SetFloat("density", parameters::FogDensity);
     m_shader->SetFloat("gradient", parameters::FogGradient);
 }

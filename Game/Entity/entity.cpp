@@ -2,11 +2,11 @@
 #include "../Basic/parameters.h"
 #include "../Basic/util.h"
 
-Entity::Entity(Model*& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z, const float& size, const bool& fakeLighting)
+Entity::Entity(Model*& model, const shaderLoader::ShaderObj& shaderObj, const float& x, const float& y, const float& z, const float& size, const bool& fakeLighting)
 {
     m_model = model;
     m_instanced = model->isInstanced();
-    m_shader = new Shader(shaderLoader);
+    m_shader = new Shader(shaderObj);
     m_fakeLighting = fakeLighting;
     m_textureIndex = 0;
     
@@ -18,7 +18,7 @@ Entity::Entity(Model*& model, const ShaderLoader& shaderLoader, const float& x, 
     m_time = (float)Util::getInt(1000) / 100;
 
     m_shader->Use();
-    m_shader->SetFloat("ambientStrength", 0.0);
+    m_shader->SetFloat("ambientStrength", 0.1);
     m_shader->SetFloat("density", parameters::FogDensity);
     m_shader->SetFloat("gradient", parameters::FogGradient);
 }

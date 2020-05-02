@@ -1,7 +1,6 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include "../Loader/modelloader.h"
 #include "../Loader/texture.h"
 #include <bits/stdc++.h> 
 
@@ -10,7 +9,7 @@ class Model
 public:
     Model();
     Model(const Model& copy);
-    Model(ModelLoader* modelLoader, Texture* texture, const bool& transparency = false);
+    Model(const std::string& fileName, Texture* texture, const bool& instanced = false, const bool& transparency = false);
     ~Model();
     
     void Bind() const;

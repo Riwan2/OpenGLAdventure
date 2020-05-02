@@ -23,8 +23,7 @@ Renderer::~Renderer()
 
 void Renderer::Load(const glm::mat4& projection, Terrain* terrain)
 {
-    m_basicShader = new ShaderLoader();
-    m_basicShader->Load("Instanced/basicShaderInstanced");
+    m_basicShader = new shaderLoader::ShaderObj(shaderLoader::Load("Instanced/basicShaderInstanced"));
     
     //Entity
     SetUniform(projection);
@@ -37,7 +36,7 @@ void Renderer::LoadEntity(Terrain* terrain)
     Texture* treeTexture = new Texture("tree", 0.0, 64);
     //Set Model
     int nbEntity = 1;
-    m_listModel.push_back(new Model(new ModelLoader("tree", true), treeTexture));
+    m_listModel.push_back(new Model("tree", treeTexture, true));
     //Delete Texture
     delete treeTexture;
     //Set Entities
@@ -130,8 +129,8 @@ void Renderer::RenderEntity()
 
 void Renderer::SetUniform(const glm::mat4& projection)
 {
-    GLuint uniformBlockIndexBasicShader = glGetUniformBlockIndex(m_basicShader->getShaderProgramId(), "Matrices");
-    glUniformBlockBinding(m_basicShader->getShaderProgramId(), uniformBlockIndexBasicShader, 0);
+    GLuint uniformBlockIndexBasicShader = glGetUniformBlockIndex(m_basicShader->programId, "Matrices");
+    glUniformBlockBinding(m_basicShader->programId, uniformBlockIndexBasicShader, 0);
     
     glGenBuffers(1, &m_UBOMatrices);
 

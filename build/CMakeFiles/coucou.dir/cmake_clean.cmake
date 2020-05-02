@@ -4,8 +4,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/coucou.dir/Game/Basic/util.cpp.o"
   "CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o"
   "CMakeFiles/coucou.dir/Game/Entity/player.cpp.o"
-  "CMakeFiles/coucou.dir/Game/Loader/modelloader.cpp.o"
-  "CMakeFiles/coucou.dir/Game/Loader/shaderLoader.cpp.o"
   "CMakeFiles/coucou.dir/Game/Loader/texture.cpp.o"
   "CMakeFiles/coucou.dir/Game/Map/map.cpp.o"
   "CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o"

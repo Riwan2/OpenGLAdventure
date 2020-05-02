@@ -2,7 +2,7 @@
 #include "../Basic/input.h"
 #include "../Basic/parameters.h"
 
- Player::Player(Model*& model, const ShaderLoader& shaderLoader, const float& x, const float& y, const float& z) : Entity { model, shaderLoader, x, y, z }
+ Player::Player(Model*& model, const shaderLoader::ShaderObj& shaderObj, const float& x, const float& y, const float& z) : Entity { model, shaderObj, x, y, z }
  {
      SetRotation(0, 180, 0);
      m_currentSpeed = 0;
