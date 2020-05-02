@@ -89,7 +89,7 @@ void Scene::Update(const float& deltaTime)
 
     m_skybox->Render(*m_camera, m_player->GetPosition());
 
-
+    float height = m_listTerrain[0]->GetMapHeight(m_camera->GetPosition().x, m_camera->GetPosition().z);
     m_camera->Update(glm::vec3(m_player->GetPosition().x, m_player->GetTerrainHeight(), m_player->GetPosition().z),
-        m_player->GetRotation().y);
+        m_player->GetRotation().y, height);
 }

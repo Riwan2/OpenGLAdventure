@@ -15,6 +15,8 @@ camera.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
 ../Basic/input.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.h
+iostream
+-
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
 glm/gtc/matrix_transform.hpp

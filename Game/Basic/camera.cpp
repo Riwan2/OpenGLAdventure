@@ -15,7 +15,8 @@ Camera::Camera(const float& distance)
     m_yaw = 0.0;
     m_pitch = -20.0;
     m_angleAround = 90;
-    CalculateView(0);
+    CalculateView(0, 0);
+    blocked = false;
 }
 
 Camera::~Camera()
@@ -23,7 +24,7 @@ Camera::~Camera()
     
 }
 
-void Camera::Update(const glm::vec3& targetPosition, const float& rotationY)
+void Camera::Update(const glm::vec3& targetPosition, const float& rotationY, const float& terrainHeight)
 {
     m_target = targetPosition;
     if (Input::LeftClick(Input::eMouse::leftButton)) {
@@ -36,21 +37,29 @@ void Camera::Update(const glm::vec3& targetPosition, const float& rotationY)
     if (Input::ScrollDown()) Zoom(0.5);
     if (Input::ScrollUp()) Zoom(-0.5);
 
-    CalculateView(rotationY);
+    CalculateView(rotationY, terrainHeight);
 }
 
-void Camera::CalculateView(const float& rotationY)
+void Camera::CalculateView(const float& rotationY, const float& terrainHeight)
 {
     float horizontalDistance = m_distance * cos(glm::radians(m_pitch));
     float verticalDistance = m_distance * sin(glm::radians(-m_pitch));
     
     m_position.y = verticalDistance + m_target.y;
     m_position.x = horizontalDistance * cos(glm::radians(m_angleAround) + glm::radians(180 - rotationY)) + m_target.x;
-    m_position.z = horizontalDistance * sin(glm::radians(m_angleAround) + glm::radians(180 - rotationY)) + m_target.z;    
-    
+    m_position.z = horizontalDistance * sin(glm::radians(m_angleAround) + glm::radians(180 - rotationY)) + m_target.z;
+
     m_yaw = 180 + m_angleAround + 180 - rotationY;
-    
+
     glm::vec3 direction;
+
+    if (m_position.y < terrainHeight + 1) {
+        m_position.y = terrainHeight + 1;
+        blocked = true;
+    } else {
+        blocked = false;
+    }
+
     direction.x = cos(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));
     direction.y = sin(glm::radians(m_pitch));
     direction.z = sin(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));
@@ -59,9 +68,13 @@ void Camera::CalculateView(const float& rotationY)
     m_view = glm::lookAt(m_position, m_position + m_front, m_up);
 }
 
+#include <iostream>
+
 void Camera::Rotate(const float& angleAround, const float& pitch)
 {
-    m_pitch += pitch;
+    if (m_pitch > -85 || pitch > 0.1) {
+        if (!blocked || pitch < -0.1) m_pitch += pitch;
+    }
     m_angleAround += angleAround;
 }
 
