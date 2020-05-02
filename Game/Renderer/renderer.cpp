@@ -1,7 +1,7 @@
 #include "renderer.h"
 
 bool operator==(const Model& m1, const Model& m2) {
-    return (m1.GetVAO() == m2.GetVAO() && m1.GetTexture().getId() == m2.GetTexture().getId() &&
+    return (m1.GetVAO() == m2.GetVAO() && m1.GetTexture().textureId == m2.GetTexture().textureId &&
         m1.GetDrawCall() == m2.GetDrawCall());
 }
 
@@ -16,8 +16,10 @@ Renderer::Renderer()
 Renderer::~Renderer()
 {
     m_listEntity.clear();
-    m_entities.clear();
+    m_listEntity.shrink_to_fit();
     m_listModel.clear();
+    m_listModel.shrink_to_fit();
+    m_entities.clear();
     delete m_basicShader;
 }
 
@@ -33,7 +35,7 @@ void Renderer::Load(const glm::mat4& projection, Terrain* terrain)
 void Renderer::LoadEntity(Terrain* terrain)
 {
     //Set Texture
-    Texture* treeTexture = new Texture("tree", 0.0, 64);
+    txtl::Texture2d* treeTexture = new txtl::Texture2d(txtl::Load2dJPGTexture("tree"));
     //Set Model
     int nbEntity = 1;
     m_listModel.push_back(new Model("tree", treeTexture, true));

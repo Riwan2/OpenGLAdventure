@@ -6,7 +6,7 @@
 class Water : public Map
 {
 public:
-    Water(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, Texture* texture, Texture* displacementMap);
+    Water(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, txtl::Texture2d* texture, txtl::Texture2d* displacementMap);
     ~Water();
     
     void Render(const Camera* camera);
@@ -14,8 +14,8 @@ private:
     glm::mat4 m_model;
     float m_time;
     
-    Texture* m_texture;
-    Texture* m_displacementMap;    
+    txtl::Texture2d* m_texture;
+    txtl::Texture2d* m_displacementMap;    
     Shader* m_shader;
     
     void FlatHeightMap();

@@ -18,9 +18,10 @@ namespace vaoLoader
 		}
 	};
 
-	VaoObject LoadBasicObj(const std::string& fileName);
-	VaoObject LoadInstancedObj(const std::string& fileName);
-
+	inline VaoObject LoadBasicObj(const std::string& fileName);
+	inline VaoObject LoadInstancedObj(const std::string& fileName);
+	inline VaoObject LoadSkyBox(const float& size = 500); 
+	//LOAD INSTANCED OBJ FILE
 	inline VaoObject LoadInstancedObj(const std::string& fileName) 
 	{
 		VaoObject myVao = LoadBasicObj(fileName);
@@ -52,7 +53,7 @@ namespace vaoLoader
         myVao.instanced = true;
         return myVao;
 	}
-
+	//LOAD OBJ FILE
 	inline VaoObject LoadBasicObj(const std::string& fileName) {
 	    objl::Vertex* vertices;
 	    GLuint* indices;
@@ -107,6 +108,75 @@ namespace vaoLoader
 	    delete indices;
 	    glDeleteBuffers(1, &VBO);
 	    glDeleteBuffers(1, &EBO);
+
+	    return VaoObject(VAO, drawCall, false);
+	}
+	//LOAD SKY BOX (SIMPLE CUBE) MESH
+	inline VaoObject LoadSkyBox(const float& size) 
+	{
+        int verticesSize = 108;
+        int drawCall = verticesSize;
+
+		float* vertices = new float[verticesSize] {
+		    -size,  size, -size,
+		    -size, -size, -size,
+		     size, -size, -size,
+		     size, -size, -size,
+		     size,  size, -size,
+		    -size,  size, -size,
+
+		    -size, -size,  size,
+		    -size, -size, -size,
+		    -size,  size, -size,
+		    -size,  size, -size,
+		    -size,  size,  size,
+		    -size, -size,  size,
+
+		     size, -size, -size,
+		     size, -size,  size,
+		     size,  size,  size,
+		     size,  size,  size,
+		     size,  size, -size,
+		     size, -size, -size,
+
+		    -size, -size,  size,
+		    -size,  size,  size,
+		     size,  size,  size,
+		     size,  size,  size,
+		     size, -size,  size,
+		    -size, -size,  size,
+
+		    -size,  size, -size,
+		     size,  size, -size,
+		     size,  size,  size,
+		     size,  size,  size,
+		    -size,  size,  size,
+		    -size,  size, -size,
+
+		    -size, -size, -size,
+		    -size, -size,  size,
+		     size, -size, -size,
+		     size, -size, -size,
+		    -size, -size,  size,
+		     size, -size,  size
+		};
+
+	    GLuint VAO, VBO;
+        glGenVertexArrays(1, &VAO);
+        glGenBuffers(1, &VBO);
+        
+        glBindVertexArray(VAO);
+            
+        glBindBuffer(GL_ARRAY_BUFFER, VBO); //Vertices
+        glBufferData(GL_ARRAY_BUFFER, verticesSize * 3 * sizeof(float), vertices, GL_STATIC_DRAW);
+	     
+        glEnableVertexAttribArray(0); //Position
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	            
+        glBindVertexArray(0);
+	    
+	    delete[] vertices;
+	    glDeleteBuffers(1, &VBO);
 
 	    return VaoObject(VAO, drawCall, false);
 	}

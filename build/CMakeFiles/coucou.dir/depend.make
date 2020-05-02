@@ -39,9 +39,7 @@ CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Map/terrain.h
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Model/model.h
 CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Model/shader.h
 
-CMakeFiles/coucou.dir/Game/Loader/texture.cpp.o: ../Game/Loader/stb_image.h
 CMakeFiles/coucou.dir/Game/Loader/texture.cpp.o: ../Game/Loader/texture.cpp
-CMakeFiles/coucou.dir/Game/Loader/texture.cpp.o: ../Game/Loader/texture.h
 
 CMakeFiles/coucou.dir/Game/Map/map.cpp.o: ../Game/Basic/basicStruct.h
 CMakeFiles/coucou.dir/Game/Map/map.cpp.o: ../Game/Basic/camera.h
@@ -51,6 +49,17 @@ CMakeFiles/coucou.dir/Game/Map/map.cpp.o: ../Game/Loader/texture.h
 CMakeFiles/coucou.dir/Game/Map/map.cpp.o: ../Game/Map/map.cpp
 CMakeFiles/coucou.dir/Game/Map/map.cpp.o: ../Game/Map/map.h
 CMakeFiles/coucou.dir/Game/Map/map.cpp.o: ../Game/Model/shader.h
+
+CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o: ../Game/Basic/camera.h
+CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o: ../Game/Basic/parameters.h
+CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o: ../Game/Loader/modelloader.h
+CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o: ../Game/Loader/objloader.h
+CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o: ../Game/Loader/shaderLoader.h
+CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o: ../Game/Loader/stb_image.h
+CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o: ../Game/Loader/texture.h
+CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o: ../Game/Map/skybox.cpp
+CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o: ../Game/Map/skybox.h
+CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o: ../Game/Model/shader.h
 
 CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Basic/basicStruct.h
 CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o: ../Game/Basic/camera.h
@@ -107,10 +116,13 @@ CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/light.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/util.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Entity/entity.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Entity/player.h
+CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Loader/modelloader.h
+CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Loader/objloader.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Loader/shaderLoader.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Loader/stb_image.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Loader/texture.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Map/map.h
+CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Map/skybox.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Map/terrain.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Map/water.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Model/model.h
@@ -127,10 +139,13 @@ CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/parameters.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/util.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Entity/entity.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Entity/player.h
+CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Loader/modelloader.h
+CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Loader/objloader.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Loader/shaderLoader.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Loader/stb_image.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Loader/texture.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Map/map.h
+CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Map/skybox.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Map/terrain.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Map/water.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Model/model.h

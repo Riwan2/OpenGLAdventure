@@ -40,9 +40,7 @@ CMakeFiles/coucou.dir/Game/Entity/player.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/Loader/texture.cpp.o
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.cpp
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
 CMakeFiles/coucou.dir/Game/Map/map.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
@@ -51,6 +49,17 @@ CMakeFiles/coucou.dir/Game/Map/map.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.cpp
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
+CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/skybox.cpp
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/skybox.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
@@ -108,10 +117,13 @@ CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/skybox.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/water.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h
@@ -128,10 +140,13 @@ CMakeFiles/coucou.dir/Game/source/main.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/skybox.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/water.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h

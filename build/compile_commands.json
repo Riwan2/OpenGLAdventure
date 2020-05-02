@@ -36,6 +36,11 @@
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/skybox.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/skybox.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
   "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.cpp",
   "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.cpp"
 },

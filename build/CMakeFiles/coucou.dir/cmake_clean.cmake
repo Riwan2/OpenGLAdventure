@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/coucou.dir/Game/Entity/player.cpp.o"
   "CMakeFiles/coucou.dir/Game/Loader/texture.cpp.o"
   "CMakeFiles/coucou.dir/Game/Map/map.cpp.o"
+  "CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o"
   "CMakeFiles/coucou.dir/Game/Map/terrain.cpp.o"
   "CMakeFiles/coucou.dir/Game/Map/water.cpp.o"
   "CMakeFiles/coucou.dir/Game/Model/model.cpp.o"

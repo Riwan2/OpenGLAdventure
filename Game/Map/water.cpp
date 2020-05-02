@@ -1,13 +1,13 @@
 #include "water.h"
 
-Water::Water(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, Texture* texture, Texture* displacementMap) 
+Water::Water(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, txtl::Texture2d* texture, txtl::Texture2d* displacementMap) 
 : Map { posX, posZ, size }
 {
     FlatHeightMap();
     Initialize(m_heightMap);
     m_shader = new Shader(shaderObj);
-    m_texture = new Texture(*texture);
-    m_displacementMap = new Texture(*displacementMap);
+    m_texture = new txtl::Texture2d(*texture);
+    m_displacementMap = new txtl::Texture2d(*displacementMap);
     
     m_model = glm::mat4(1.0f);
     m_model = glm::translate(m_model, glm::vec3(0.0, -6.0, 0.0));
@@ -34,9 +34,9 @@ void Water::Render(const Camera* camera)
 
     glEnable(GL_TEXTURE_2D);
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, m_texture->getId());
+    glBindTexture(GL_TEXTURE_2D, m_texture->textureId);
     glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, m_displacementMap->getId());
+    glBindTexture(GL_TEXTURE_2D, m_displacementMap->textureId);
 
     Map::BasicRendering();
     glDisable(GL_TEXTURE_2D);

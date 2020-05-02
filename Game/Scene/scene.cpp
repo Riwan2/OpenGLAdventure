@@ -10,8 +10,11 @@ Scene::~Scene()
 	delete m_camera;
 	delete m_renderer;
 	delete m_player;
+    delete m_skybox;
 	m_listPointLight.clear();
+    m_listPointLight.shrink_to_fit();
 	m_listTerrain.clear();
+    m_listTerrain.shrink_to_fit();
 }
 
 void Scene::Initialize()
@@ -19,21 +22,31 @@ void Scene::Initialize()
 	//Camera 
 	m_camera = new Camera(30);
 
+    //GLuint hello = txtl::LoadCubemapTexture(coucou)
+    std::vector<std::string> facesFileName;
+    facesFileName.push_back("right");
+    facesFileName.push_back("left");
+    facesFileName.push_back("top");
+    facesFileName.push_back("bottom");
+    facesFileName.push_back("front");
+    facesFileName.push_back("back");
+    m_skybox = new Skybox(shaderLoader::ShaderObj(shaderLoader::Load("Cubemap/cubemapShader")), facesFileName, 500);
+
     //Terrain
     shaderLoader::ShaderObj* terrainShader = new shaderLoader::ShaderObj(shaderLoader::Load("terrainShader"));
-    Texture* grass = new Texture("green", 0.0, 64);
-    Texture* path = new Texture("path", 0.0, 64);
-    Texture* blendMap = new Texture("blendmap", 0.0, 64);
+    txtl::Texture2d* grass = new txtl::Texture2d(txtl::Load2dJPGTexture("green"));
+    txtl::Texture2d* path = new txtl::Texture2d(txtl::Load2dJPGTexture("path"));
+    txtl::Texture2d* blendMap = new txtl::Texture2d(txtl::Load2dJPGTexture("blendmap"));
     m_listTerrain.push_back(new Terrain(-0.5, -0.5, 600, *terrainShader, grass, path, blendMap));
     delete blendMap;
     delete path;
-    delete terrainShader;
     delete grass;
+    delete terrainShader;
 
     //Water
     shaderLoader::ShaderObj* waterShader = new shaderLoader::ShaderObj(shaderLoader::Load("waterShader"));
-    Texture* displacement = new Texture("displacementmap");
-    Texture* water = new Texture("heightmap", 0, 64, 1, true);
+    txtl::Texture2d* displacement = new txtl::Texture2d(txtl::Load2dJPGTexture("displacementmap"));
+    txtl::Texture2d* water = new txtl::Texture2d(txtl::Load2dPNGTexture("heightmap"));
     m_water = new Water(-0.5, -0.5, 600, *waterShader, water, displacement);
     delete waterShader;
     delete displacement;
@@ -55,7 +68,7 @@ void Scene::Initialize()
 
     //Player
     shaderLoader::ShaderObj* playerShader = new shaderLoader::ShaderObj(shaderLoader::Load("Player/playerShader"));
-    Model* playerModel = new Model("character", new Texture("green", 1.0, 64));
+    Model* playerModel = new Model("character", new txtl::Texture2d(txtl::Load2dJPGTexture("green")));
     m_player = new Player(playerModel, *playerShader, 0, 0, 0);
     m_player->SetScale(0.25, 0.25, 0.25);
     delete playerShader;
@@ -63,15 +76,19 @@ void Scene::Initialize()
 
 void Scene::Update(const float& deltaTime)
 {
+
 	m_player->Update(deltaTime, m_camera, m_listPointLight, m_listTerrain[0]);
     m_renderer->Render(deltaTime, *m_camera, m_listTerrain, m_listPointLight);
-    glDisable(GL_CULL_FACE);
+    //glDisable(GL_CULL_FACE);
 
     //std::cout << 1/deltaTime << std::endl;
     // glEnable(GL_BLEND);
     // glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     // m_water->Render(m_camera);
     // glDisable(GL_BLEND);
+
+    m_skybox->Render(*m_camera, m_player->GetPosition());
+
 
     m_camera->Update(glm::vec3(m_player->GetPosition().x, m_player->GetTerrainHeight(), m_player->GetPosition().z),
         m_player->GetRotation().y);

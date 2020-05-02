@@ -358,6 +358,33 @@ Game/Map/map.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Map/map.cpp.s
 .PHONY : Game/Map/map.cpp.s
 
+Game/Map/skybox.o: Game/Map/skybox.cpp.o
+
+.PHONY : Game/Map/skybox.o
+
+# target to build an object file
+Game/Map/skybox.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Map/skybox.cpp.o
+.PHONY : Game/Map/skybox.cpp.o
+
+Game/Map/skybox.i: Game/Map/skybox.cpp.i
+
+.PHONY : Game/Map/skybox.i
+
+# target to preprocess a source file
+Game/Map/skybox.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Map/skybox.cpp.i
+.PHONY : Game/Map/skybox.cpp.i
+
+Game/Map/skybox.s: Game/Map/skybox.cpp.s
+
+.PHONY : Game/Map/skybox.s
+
+# target to generate assembly for a file
+Game/Map/skybox.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Map/skybox.cpp.s
+.PHONY : Game/Map/skybox.cpp.s
+
 Game/Map/terrain.o: Game/Map/terrain.cpp.o
 
 .PHONY : Game/Map/terrain.o
@@ -581,6 +608,9 @@ help:
 	@echo "... Game/Map/map.o"
 	@echo "... Game/Map/map.i"
 	@echo "... Game/Map/map.s"
+	@echo "... Game/Map/skybox.o"
+	@echo "... Game/Map/skybox.i"
+	@echo "... Game/Map/skybox.s"
 	@echo "... Game/Map/terrain.o"
 	@echo "... Game/Map/terrain.i"
 	@echo "... Game/Map/terrain.s"

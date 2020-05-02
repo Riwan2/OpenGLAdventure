@@ -4,6 +4,7 @@
 #include "../Renderer/renderer.h"
 #include "../Entity/player.h"
 #include "../Map/water.h"
+#include "../Map/skybox.h"
 
 class Scene
 {
@@ -14,6 +15,7 @@ public:
 	void Initialize();
 	void Update(const float& deltaTime);
 private:
+	Skybox* m_skybox;
 	Water* m_water;
 	Renderer* m_renderer;
 	Camera* m_camera;

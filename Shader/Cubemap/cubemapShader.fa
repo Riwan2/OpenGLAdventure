@@ -1,0 +1,20 @@
+#version 330 core
+
+out vec4 outColor;
+
+in vec3 texCoord;
+
+uniform samplerCube skybox;
+uniform vec3 fogColor;
+
+const float lowerLimit = -20;
+const float upperLimit = 50;
+
+void main() 
+{
+	vec4 textureColor = texture(skybox, texCoord);
+	//float factor = (texCoord.y - lowerLimit) / (upperLimit - lowerLimit);
+	//factor = clamp(factor, 0.0, 1.0);
+	//outColor = mix(vec4(fogColor, 1.0), textureColor, factor);
+	outColor = textureColor;
+}

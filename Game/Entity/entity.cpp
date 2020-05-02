@@ -37,13 +37,13 @@ void Entity::Update()
     
     m_time += 0.05f;
     m_shader->Use();
-    m_shader->SetFloat("reflectivity", m_model->GetTexture().getReflectivity());
-    m_shader->SetFloat("shineDamper", m_model->GetTexture().getShineDamper());
+    m_shader->SetFloat("reflectivity", m_model->GetTexture().reflectivity);
+    m_shader->SetFloat("shineDamper", m_model->GetTexture().shineDamper);
     m_shader->SetVec3("skyColor", parameters::skyColor);
     m_shader->SetFloat("time", m_time);
     m_shader->SetFloat("fakeLighting", m_fakeLighting);
-    m_shader->SetInt("rowNumber", m_model->GetTexture().getNumRow());
-    m_shader->SetVec2("textureOffset", m_model->GetTexture().getOffset(m_textureIndex));
+    m_shader->SetInt("rowNumber", m_model->GetTexture().rowNumber);
+    m_shader->SetVec2("textureOffset", txtl::OffsetByIndex(m_textureIndex, m_model->GetTexture().rowNumber));
 }
 
 void Entity::SetTransformation() {

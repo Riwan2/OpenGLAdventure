@@ -8,8 +8,7 @@
 class Terrain : public Map
 {
 public:
-    Terrain(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, Texture* grass, Texture* path,
-Texture* blendMap);
+    Terrain(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, txtl::Texture2d* grass, txtl::Texture2d* path, txtl::Texture2d* blendMap);
     ~Terrain();
     
     void Render(const Camera* camera, const std::vector<light::PointLight*>& listPointLight);
@@ -17,9 +16,9 @@ private:
     glm::mat4 m_model;
     glm::vec3 m_color;
     
-    Texture* m_grass;
-    Texture* m_path;    
-    Texture* m_blendMap;
+    txtl::Texture2d* m_grass;
+    txtl::Texture2d* m_path;    
+    txtl::Texture2d* m_blendMap;
     Shader* m_shader;
     
     void LoadHeightMap();

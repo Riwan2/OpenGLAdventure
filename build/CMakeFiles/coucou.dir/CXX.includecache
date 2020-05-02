@@ -141,8 +141,6 @@ arm_neon.h
 -
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.cpp
-texture.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
 iostream
@@ -153,6 +151,8 @@ stb_image.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
 glm/glm.hpp
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/glm/glm.hpp
+vector
+-
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.cpp
 map.h
@@ -169,6 +169,22 @@ map.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
 vector
 -
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/skybox.cpp
+skybox.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/skybox.h
+../Basic/parameters.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/skybox.h
+../Loader/modelloader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
+../Model/shader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
+../Basic/camera.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
+../Loader/texture.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.cpp
 terrain.h
@@ -241,6 +257,8 @@ scene.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.h
 ../Map/water.h
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/water.h
+../Map/skybox.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/skybox.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp
 ../Basic/input.h

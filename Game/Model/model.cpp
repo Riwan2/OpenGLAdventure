@@ -11,11 +11,11 @@ Model::Model(const Model& copy)
     if (m_instanced) m_Model = copy.GetModelId();
     m_VAO = copy.GetVAO();
     m_drawCall = copy.GetDrawCall();
-    m_texture = new Texture(copy.GetTexture());
+    m_texture = new txtl::Texture2d(copy.GetTexture());
     m_transparency = copy.GetTransparency();
 }
 
-Model::Model(const std::string& fileName, Texture* texture, const bool& instanced, const bool& transparency)
+Model::Model(const std::string& fileName, txtl::Texture2d* texture, const bool& instanced, const bool& transparency)
 {
     //Raw Model :
     m_instanced = instanced;
@@ -30,14 +30,14 @@ Model::Model(const std::string& fileName, Texture* texture, const bool& instance
     m_transparency = transparency;
     
     //Texture :
-    m_texture = new Texture(*texture);
+    m_texture = new txtl::Texture2d(*texture);
 }
 
 Model::~Model()
 {
     glDeleteVertexArrays(1, &m_VAO);
     if (m_instanced) glDeleteBuffers(1, &m_Model);
-    glDeleteTextures(1, &m_texture->getId());
+    glDeleteTextures(1, &m_texture->textureId);
     delete m_texture;
 }
 
@@ -45,7 +45,7 @@ void Model::Bind() const
 {
     glEnable(GL_TEXTURE_2D);
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, m_texture->getId());
+    glBindTexture(GL_TEXTURE_2D, m_texture->textureId);
     glBindVertexArray(m_VAO);
 }
 

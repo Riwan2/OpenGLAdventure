@@ -24,6 +24,7 @@ public:
     const glm::mat4& GetProjection() const { return m_projection; }
     const float& GetAngleAround() const { return m_angleAround; }
     const float& GetPitch() const { return m_pitch; }
+    const glm::vec3 GetPosition() const { return m_position; }
 };
 
 #endif // CAMERA_H

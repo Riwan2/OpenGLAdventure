@@ -1,13 +1,12 @@
 #include "terrain.h"
 #include "../Basic/parameters.h"
 
-Terrain::Terrain(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, Texture* grass, Texture* path,
-Texture* blendMap) : Map { posX, posZ, size }
+Terrain::Terrain(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, txtl::Texture2d* grass, txtl::Texture2d* path, txtl::Texture2d* blendMap) : Map { posX, posZ, size }
 {
     m_shader = new Shader(shaderObj);
-    m_grass = new Texture(*grass);
-    m_path = new Texture(*path);
-    m_blendMap = new Texture(*blendMap);
+    m_grass = grass;
+    m_path = path;
+    m_blendMap = blendMap;
 
     m_maxHeight = 40;
     LoadHeightMap();
@@ -25,9 +24,9 @@ Texture* blendMap) : Map { posX, posZ, size }
 Terrain::~Terrain()
 {
     //delete m_heightMap;
-    glDeleteTextures(1, &m_grass->getId());
-    glDeleteTextures(1, &m_path->getId());
-    glDeleteTextures(1, &m_blendMap->getId());
+    glDeleteTextures(1, &m_grass->textureId);
+    glDeleteTextures(1, &m_path->textureId);
+    glDeleteTextures(1, &m_blendMap->textureId);
 
     delete m_grass;
     delete m_path;
@@ -78,11 +77,11 @@ void Terrain::Render(const Camera* camera, const std::vector<light::PointLight*>
     
     glEnable(GL_TEXTURE_2D);
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, m_grass->getId());
+    glBindTexture(GL_TEXTURE_2D, m_grass->textureId);
     glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, m_path->getId());
+    glBindTexture(GL_TEXTURE_2D, m_path->textureId);
     glActiveTexture(GL_TEXTURE2);
-    glBindTexture(GL_TEXTURE_2D, m_blendMap->getId());
+    glBindTexture(GL_TEXTURE_2D, m_blendMap->textureId);
 
     Map::BasicRendering();
     glDisable(GL_TEXTURE_2D);
