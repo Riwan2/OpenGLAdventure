@@ -1,7 +1,7 @@
 #include "skybox.h"
 #include "../Basic/parameters.h"
 
-Skybox::Skybox(const shaderLoader::ShaderObj& shaderObj, const std::vector<std::string> facesFileName, const float& size)
+Skybox::Skybox(const shld::ShaderObj& shaderObj, const std::vector<std::string> facesFileName, const float& size)
 {
 	m_vaoObject = vaoLoader::LoadSkyBox(size);
 	m_shader = new Shader(shaderObj);

@@ -9,7 +9,7 @@
 class Skybox
 {
 public:
-	Skybox(const shaderLoader::ShaderObj& shaderObj, const std::vector<std::string> facesFileName, const float& size);
+	Skybox(const shld::ShaderObj& shaderObj, const std::vector<std::string> facesFileName, const float& size);
 	~Skybox();
 	void Render(const Camera& camera, const glm::vec3& playerPos);
 private:

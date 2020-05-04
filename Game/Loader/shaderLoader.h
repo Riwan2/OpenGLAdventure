@@ -6,7 +6,7 @@
 #include <iostream>
 #include <fstream>
 
-namespace shaderLoader
+namespace shld
 {
     struct ShaderObj {
         GLuint programId, vertexId, fragmentId;

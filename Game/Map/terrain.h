@@ -8,7 +8,7 @@
 class Terrain : public Map
 {
 public:
-    Terrain(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, txtl::Texture2d* grass, txtl::Texture2d* path, txtl::Texture2d* blendMap);
+    Terrain(const float& posX, const float& posZ, const float& size, const shld::ShaderObj& shaderObj, txtl::Texture2d* grass, txtl::Texture2d* path, txtl::Texture2d* blendMap);
     ~Terrain();
     
     void Render(const Camera* camera, const std::vector<light::PointLight*>& listPointLight);

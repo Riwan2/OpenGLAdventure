@@ -25,7 +25,7 @@ Renderer::~Renderer()
 
 void Renderer::Load(const glm::mat4& projection, Terrain* terrain)
 {
-    m_basicShader = new shaderLoader::ShaderObj(shaderLoader::Load("Instanced/basicShaderInstanced"));
+    m_basicShader = new shld::ShaderObj(shld::Load("Instanced/basicShaderInstanced"));
     
     //Entity
     SetUniform(projection);

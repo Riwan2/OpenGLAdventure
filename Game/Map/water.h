@@ -6,7 +6,7 @@
 class Water : public Map
 {
 public:
-    Water(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, txtl::Texture2d* texture, txtl::Texture2d* displacementMap);
+    Water(const float& posX, const float& posZ, const float& size, const shld::ShaderObj& shaderObj, txtl::Texture2d* texture, txtl::Texture2d* displacementMap);
     ~Water();
     
     void Render(const Camera* camera);

@@ -1,7 +1,7 @@
 #include "terrain.h"
 #include "../Basic/parameters.h"
 
-Terrain::Terrain(const float& posX, const float& posZ, const float& size, const shaderLoader::ShaderObj& shaderObj, txtl::Texture2d* grass, txtl::Texture2d* path, txtl::Texture2d* blendMap) : Map { posX, posZ, size }
+Terrain::Terrain(const float& posX, const float& posZ, const float& size, const shld::ShaderObj& shaderObj, txtl::Texture2d* grass, txtl::Texture2d* path, txtl::Texture2d* blendMap) : Map { posX, posZ, size }
 {
     m_shader = new Shader(shaderObj);
     m_grass = grass;

@@ -2,7 +2,7 @@
 #include "../Basic/parameters.h"
 #include "../Basic/util.h"
 
-Entity::Entity(Model*& model, const shaderLoader::ShaderObj& shaderObj, const float& x, const float& y, const float& z, const float& size, const bool& fakeLighting)
+Entity::Entity(Model*& model, const shld::ShaderObj& shaderObj, const float& x, const float& y, const float& z, const float& size, const bool& fakeLighting)
 {
     m_model = model;
     m_instanced = model->isInstanced();

@@ -5,6 +5,8 @@
 #include "../Entity/player.h"
 #include "../Map/water.h"
 #include "../Map/skybox.h"
+#include "../Interaction/mousepicker.h"
+#include "../Model/simpleobject.h"
 
 class Scene
 {
@@ -15,6 +17,7 @@ public:
 	void Initialize();
 	void Update(const float& deltaTime);
 private:
+	MousePicker* m_mousePicker;
 	Skybox* m_skybox;
 	Water* m_water;
 	Renderer* m_renderer;

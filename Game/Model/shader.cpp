@@ -1,6 +1,6 @@
 #include "shader.h"
 
-Shader::Shader(const shaderLoader::ShaderObj& shaderObj)
+Shader::Shader(const shld::ShaderObj& shaderObj)
 {
     m_shaderProgramId = shaderObj.programId;
     m_vertexShaderId = shaderObj.vertexId;

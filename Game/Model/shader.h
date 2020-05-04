@@ -8,9 +8,9 @@
 class Shader
 {
 public:
-    Shader(const shaderLoader::ShaderObj& shaderObj);
+    Shader(const shld::ShaderObj& shaderObj);
     ~Shader();
-        
+    
     void Use();
 private:
     GLuint m_shaderProgramId, m_vertexShaderId, m_fragmentShaderId;

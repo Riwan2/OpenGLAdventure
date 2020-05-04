@@ -1,0 +1,9 @@
+Package: coucou
+Version: 0.1.1
+Section: devel
+Priority: optional
+Architecture: amd64
+Installed-Size: 3169
+Maintainer: Riwan
+Description: coucou built using CMake
+

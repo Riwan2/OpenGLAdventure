@@ -7,7 +7,7 @@
 class Entity
 {
 public:
-    Entity(Model*& model, const shaderLoader::ShaderObj& shaderObj, const float& x, const float& y, const float& z, const float& size = 1.0, const bool& fakeLighting = false);
+    Entity(Model*& model, const shld::ShaderObj& shaderObj, const float& x, const float& y, const float& z, const float& size = 1.0, const bool& fakeLighting = false);
     ~Entity();
     
     void Update();

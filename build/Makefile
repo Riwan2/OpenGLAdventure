@@ -68,6 +68,52 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	/usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+
+.PHONY : package/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	/usr/bin/cpack --config ./CPackSourceConfig.cmake /home/riwan/1-OpenGL/OpenGlStart/coucou/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+
+.PHONY : package_source/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -99,30 +145,6 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -303,6 +325,33 @@ Game/Entity/player.s: Game/Entity/player.cpp.s
 Game/Entity/player.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Entity/player.cpp.s
 .PHONY : Game/Entity/player.cpp.s
+
+Game/Interaction/mousepicker.o: Game/Interaction/mousepicker.cpp.o
+
+.PHONY : Game/Interaction/mousepicker.o
+
+# target to build an object file
+Game/Interaction/mousepicker.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Interaction/mousepicker.cpp.o
+.PHONY : Game/Interaction/mousepicker.cpp.o
+
+Game/Interaction/mousepicker.i: Game/Interaction/mousepicker.cpp.i
+
+.PHONY : Game/Interaction/mousepicker.i
+
+# target to preprocess a source file
+Game/Interaction/mousepicker.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Interaction/mousepicker.cpp.i
+.PHONY : Game/Interaction/mousepicker.cpp.i
+
+Game/Interaction/mousepicker.s: Game/Interaction/mousepicker.cpp.s
+
+.PHONY : Game/Interaction/mousepicker.s
+
+# target to generate assembly for a file
+Game/Interaction/mousepicker.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Interaction/mousepicker.cpp.s
+.PHONY : Game/Interaction/mousepicker.cpp.s
 
 Game/Loader/texture.o: Game/Loader/texture.cpp.o
 
@@ -581,12 +630,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... edit_cache"
-	@echo "... coucou"
-	@echo "... rebuild_cache"
-	@echo "... list_install_components"
 	@echo "... install/local"
 	@echo "... install"
+	@echo "... package"
+	@echo "... package_source"
+	@echo "... coucou"
+	@echo "... edit_cache"
+	@echo "... rebuild_cache"
+	@echo "... list_install_components"
 	@echo "... Game/Basic/camera.o"
 	@echo "... Game/Basic/camera.i"
 	@echo "... Game/Basic/camera.s"
@@ -602,6 +653,9 @@ help:
 	@echo "... Game/Entity/player.o"
 	@echo "... Game/Entity/player.i"
 	@echo "... Game/Entity/player.s"
+	@echo "... Game/Interaction/mousepicker.o"
+	@echo "... Game/Interaction/mousepicker.i"
+	@echo "... Game/Interaction/mousepicker.s"
 	@echo "... Game/Loader/texture.o"
 	@echo "... Game/Loader/texture.i"
 	@echo "... Game/Loader/texture.s"

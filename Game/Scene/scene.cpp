@@ -11,11 +11,14 @@ Scene::~Scene()
 	delete m_renderer;
 	delete m_player;
     delete m_skybox;
+    delete m_mousePicker;
 	m_listPointLight.clear();
     m_listPointLight.shrink_to_fit();
 	m_listTerrain.clear();
     m_listTerrain.shrink_to_fit();
 }
+
+spl::SimpleObject* ball;
 
 void Scene::Initialize()
 {
@@ -30,10 +33,10 @@ void Scene::Initialize()
     facesFileName.push_back("bottom");
     facesFileName.push_back("front");
     facesFileName.push_back("back");
-    m_skybox = new Skybox(shaderLoader::ShaderObj(shaderLoader::Load("Cubemap/cubemapShader")), facesFileName, 500);
+    m_skybox = new Skybox(shld::ShaderObj(shld::Load("Cubemap/cubemapShader")), facesFileName, 500);
 
     //Terrain
-    shaderLoader::ShaderObj* terrainShader = new shaderLoader::ShaderObj(shaderLoader::Load("terrainShader"));
+    shld::ShaderObj* terrainShader = new shld::ShaderObj(shld::Load("terrainShader"));
     txtl::Texture2d* grass = new txtl::Texture2d(txtl::Load2dJPGTexture("green"));
     txtl::Texture2d* path = new txtl::Texture2d(txtl::Load2dJPGTexture("path"));
     txtl::Texture2d* blendMap = new txtl::Texture2d(txtl::Load2dJPGTexture("blendmap"));
@@ -44,7 +47,7 @@ void Scene::Initialize()
     delete terrainShader;
 
     //Water
-    shaderLoader::ShaderObj* waterShader = new shaderLoader::ShaderObj(shaderLoader::Load("waterShader"));
+    shld::ShaderObj* waterShader = new shld::ShaderObj(shld::Load("waterShader"));
     txtl::Texture2d* displacement = new txtl::Texture2d(txtl::Load2dJPGTexture("displacementmap"));
     txtl::Texture2d* water = new txtl::Texture2d(txtl::Load2dPNGTexture("heightmap"));
     m_water = new Water(-0.5, -0.5, 600, *waterShader, water, displacement);
@@ -67,18 +70,30 @@ void Scene::Initialize()
     }
 
     //Player
-    shaderLoader::ShaderObj* playerShader = new shaderLoader::ShaderObj(shaderLoader::Load("Player/playerShader"));
+    shld::ShaderObj* playerShader = new shld::ShaderObj(shld::Load("Player/playerShader"));
     Model* playerModel = new Model("character", new txtl::Texture2d(txtl::Load2dJPGTexture("green")));
     m_player = new Player(playerModel, *playerShader, 0, 0, 0);
     m_player->SetScale(0.25, 0.25, 0.25);
     delete playerShader;
+
+    shld::ShaderObj* basicShader = new shld::ShaderObj(shld::Load("Basic/basicShader"));
+    ball = new spl::SimpleObject(playerModel->GetVAO(), playerModel->GetDrawCall(), basicShader->programId, glm::mat4(1.0));
+
+    //MousePicker
+    m_mousePicker = new MousePicker();
 }
 
 void Scene::Update(const float& deltaTime)
 {
+    m_mousePicker->Update(*m_camera, m_listTerrain[0]);
 
 	m_player->Update(deltaTime, m_camera, m_listPointLight, m_listTerrain[0]);
     m_renderer->Render(deltaTime, *m_camera, m_listTerrain, m_listPointLight);
+
+    glm::vec3 littlePoint = m_mousePicker->GetTerrainPoint();
+    glm::vec3 ballPos = glm::vec3(littlePoint.x, littlePoint.y, littlePoint.z);
+    spl::SetPosition(*ball, ballPos);
+    spl::Render(*ball, *m_camera);
     //glDisable(GL_CULL_FACE);
 
     //std::cout << 1/deltaTime << std::endl;

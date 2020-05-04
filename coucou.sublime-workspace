@@ -4,6 +4,102 @@
 		"selected_items":
 		[
 			[
+				"Get",
+				"GetVAO\tconst GLuint & GetVAO() const"
+			],
+			[
+				"getModel",
+				"GetModel\tModel & GetModel()"
+			],
+			[
+				"inver",
+				"invertedView"
+			],
+			[
+				"Fog",
+				"fogColor"
+			],
+			[
+				"SetV",
+				"SetVec3\tvoid SetVec3(const std::string &name, const glm::vec3 &value)"
+			],
+			[
+				"tex",
+				"textureColor"
+			],
+			[
+				"T",
+				"Texture2d\tTexture2d"
+			],
+			[
+				"Load",
+				"LoadSkyBox\tVaoObject LoadSkyBox()"
+			],
+			[
+				"ind",
+				"indicesSize"
+			],
+			[
+				"facse",
+				"facesFileName"
+			],
+			[
+				"m_lis",
+				"m_listTerrain"
+			],
+			[
+				"m_list",
+				"m_listPointLight"
+			],
+			[
+				"Lad",
+				"Load2dJPGTexture\tTexture2d Load2dJPGTexture(const std::string &fileName)"
+			],
+			[
+				"Tex",
+				"Texture2d\tTexture2d"
+			],
+			[
+				"Load2d",
+				"Load2dJPGTexture\tTexture2d Load2dJPGTexture(const std::string &fileName)"
+			],
+			[
+				"row",
+				"rowNumber"
+			],
+			[
+				"refl",
+				"reflectivity"
+			],
+			[
+				"text",
+				"textureId"
+			],
+			[
+				"shin",
+				"shineDamper"
+			],
+			[
+				"ref",
+				"reflectivity"
+			],
+			[
+				"water",
+				"waterShader"
+			],
+			[
+				"verte",
+				"vertexId"
+			],
+			[
+				"progr",
+				"programId"
+			],
+			[
+				"loa",
+				"LoadBasicObj\tVaoObject LoadBasicObj(const std::string &fileName)"
+			],
+			[
 				"model",
 				"modelId"
 			],
@@ -28,10 +124,6 @@
 				"lightAttenuation"
 			],
 			[
-				"m_lis",
-				"m_listPointLight"
-			],
-			[
 				"pos",
 				"position"
 			],
@@ -42,10 +134,6 @@
 			[
 				"tot",
 				"totalDiffuse"
-			],
-			[
-				"m_list",
-				"m_listLight"
 			],
 			[
 				"list",
@@ -64,10 +152,6 @@
 				"maxLight"
 			],
 			[
-				"tex",
-				"textureColor4"
-			],
-			[
 				"myTex",
 				"myTexCoord"
 			],
@@ -76,24 +160,12 @@
 				"SDL_WINDOW_FULLSCREEN_DESKTOP\tSDL_WindowFlags SDL_WINDOW_FULLSCREEN_DESKTOP"
 			],
 			[
-				"text",
-				"textureColor"
-			],
-			[
 				"texture",
 				"textureColor2"
 			],
 			[
 				"out",
 				"outColor"
-			],
-			[
-				"Get",
-				"getColor\tconst glm::vec3 & getColor() const"
-			],
-			[
-				"getModel",
-				"GetModelMatrix\tconst glm::mat4 & GetModelMatrix()"
 			],
 			[
 				"insta",
@@ -207,7 +279,34 @@
 			"file": "Game/Scene/scene.cpp",
 			"settings":
 			{
-				"buffer_size": 2608,
+				"buffer_size": 4020,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Game/Map/skybox.h",
+			"settings":
+			{
+				"buffer_size": 470,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Game/Map/terrain.h",
+			"settings":
+			{
+				"buffer_size": 673,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Game/Map/water.h",
+			"settings":
+			{
+				"buffer_size": 512,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -216,26 +315,7 @@
 			"file": "Game/Renderer/renderer.cpp",
 			"settings":
 			{
-				"buffer_size": 6624,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Game/Model/model.cpp",
-			"settings":
-			{
-				"buffer_size": 1652,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Game/Model/model.h",
-			"settings":
-			{
-				"buffer_size": 1140,
-				"encoding": "UTF-8",
+				"buffer_size": 6650,
 				"line_ending": "Unix"
 			}
 		},
@@ -243,25 +323,44 @@
 			"file": "Game/Renderer/renderer.h",
 			"settings":
 			{
-				"buffer_size": 1009,
+				"buffer_size": 1012,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Game/Loader/modelloader.h",
+			"file": "Game/Interaction/mousepicker.cpp",
 			"settings":
 			{
-				"buffer_size": 4090,
+				"buffer_size": 1486,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Game/Basic/light.h",
+			"file": "Game/Loader/shaderLoader.h",
 			"settings":
 			{
-				"buffer_size": 1493,
+				"buffer_size": 3562,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Game/Entity/entity.cpp",
+			"settings":
+			{
+				"buffer_size": 2759,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Game/Entity/player.cpp",
+			"settings":
+			{
+				"buffer_size": 2386,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -406,67 +505,81 @@
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Asset",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Interaction",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Basic",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Cubemap",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Instanced"
 	],
 	"file_history":
 	[
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.cpp",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/water.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/skybox.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.cpp",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/simpleobject.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Basic/basicShader.vr",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Interaction/mousepicker.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Interaction/mousepicker.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Basic/basicShader.fa",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/lightShader.vr",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/entityShader.vr",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/CMakeLists.txt",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/skybox.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Cubemap/cubemapShader.vr",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Cubemap/cubemapShader.fa",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/basicShader.fa",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/basicShader.vr",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/water.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.h",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Player/playerShader.fa",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.cpp",
+		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Instanced/basicShaderInstanced.fa",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Instanced/basicShaderInstanced.vr",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/terrainShader.vr",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/terrainShader.fa",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.cpp",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Player/playerShader.fa",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/CMakeLists.txt",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Player/playerShader.vr",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/basicShaderInstanced.fa",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/basicShaderInstanced.vr",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Instanced/instancedShader.fa",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/Instanced/instancedShader.vr",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.cpp",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.cpp",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.cpp",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.cpp",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.cpp",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/water.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/water.cpp",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/waterShader.vr",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/waterShader.fa",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.cpp",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/basicShader.vr",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/basicShader.fa",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.cpp",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.cpp",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/headers/light.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.h",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/light.cpp",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Shader/lightShader.vr",
 		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h",
-		"/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.cpp",
 		"/home/riwan/.config/sublime-text-3/Packages/User/clang_format_custom.sublime-settings",
 		"/home/riwan/.config/sublime-text-3/Packages/User/clang_format.sublime-settings",
 		"/home/riwan/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
@@ -482,7 +595,7 @@
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -502,6 +615,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"shaderLoader",
+			"cout",
+			"SIZE",
+			"m_fragmentShaderId",
+			"m_vertexShaderId",
+			"m_shaderProgramId",
 			"ModelBuffer",
 			"^(.*)$",
 			"^.*\\S+.*$",
@@ -515,6 +634,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"shld",
 			"m_textureIndex"
 		],
 		"reverse": false,
@@ -535,15 +655,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2608,
+						"buffer_size": 4020,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1056,
-								1056
+								806,
+								806
 							]
 						],
 						"settings":
@@ -553,79 +673,19 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 153.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "Game/Renderer/renderer.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6624,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								829,
-								829
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 235.0,
+						"translation.y": 357.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "Game/Model/model.cpp",
+					"buffer": 1,
+					"file": "Game/Map/skybox.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1652,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								626,
-								626
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 51.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "Game/Model/model.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1140,
+						"buffer_size": 470,
 						"regions":
 						{
 						},
@@ -634,6 +694,34 @@
 							[
 								201,
 								201
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Game/Map/terrain.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 673,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								226,
+								226
 							]
 						],
 						"settings":
@@ -650,20 +738,48 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "Game/Renderer/renderer.h",
+					"buffer": 3,
+					"file": "Game/Map/water.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1009,
+						"buffer_size": 512,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								862,
-								862
+								163,
+								163
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Game/Renderer/renderer.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6650,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								583,
+								583
 							]
 						],
 						"settings":
@@ -676,52 +792,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "Game/Loader/modelloader.h",
+					"file": "Game/Renderer/renderer.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4090,
+						"buffer_size": 1012,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								501,
-								501
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 75.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "Game/Basic/light.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1493,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1473,
-								1473
+								556,
+								556
 							]
 						],
 						"settings":
@@ -731,10 +819,129 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 102.0,
+						"translation.y": 204.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Game/Interaction/mousepicker.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1486,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								183,
+								183
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Game/Loader/shaderLoader.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3562,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								123,
+								123
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Game/Entity/entity.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2759,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								325,
+								325
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "Game/Entity/player.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2386,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								132,
+								132
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -742,11 +949,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 26.0
+		"height": 40.0
 	},
 	"input":
 	{
-		"height": 39.0
+		"height": 40.0
 	},
 	"layout":
 	{
@@ -783,7 +990,7 @@
 	"project": "coucou.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 50.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -793,44 +1000,304 @@
 		"selected_items":
 		[
 			[
-				"light",
-				"Game/Basic/light.h"
+				"ren",
+				"Game/Renderer/renderer.h"
 			],
 			[
-				"modelLoa",
-				"Game/Loader/modelloader.h"
+				"rend",
+				"Game/Renderer/renderer.cpp"
 			],
 			[
-				"model.cp",
-				"Game/Model/model.cpp"
+				"wat",
+				"Game/Map/water.h"
 			],
 			[
-				"model.h",
-				"Game/Model/model.h"
+				"water",
+				"Game/Map/water.cpp"
+			],
+			[
+				"terrain",
+				"Game/Map/terrain.h"
+			],
+			[
+				"sk",
+				"Game/Map/skybox.h"
+			],
+			[
+				"sky",
+				"Game/Map/skybox.cpp"
+			],
+			[
+				"map",
+				"Game/Map/map.cpp"
+			],
+			[
+				"terri",
+				"Game/Map/terrain.cpp"
+			],
+			[
+				"sha",
+				"Game/Model/shader.cpp"
+			],
+			[
+				"shader",
+				"Game/Model/shader.h"
+			],
+			[
+				"enit",
+				"Game/Entity/entity.h"
+			],
+			[
+				"en",
+				"Game/Entity/entity.cpp"
+			],
+			[
+				"sahderload",
+				"Game/Loader/shaderLoader.h"
+			],
+			[
+				"enti",
+				"Game/Entity/entity.h"
+			],
+			[
+				"play",
+				"Game/Entity/player.h"
+			],
+			[
+				"player",
+				"Game/Entity/player.h"
+			],
+			[
+				"shade",
+				"Game/Model/shader.h"
+			],
+			[
+				"shaderloader",
+				"Game/Loader/shaderLoader.h"
+			],
+			[
+				"mouse",
+				"Game/Interaction/mousepicker.cpp"
+			],
+			[
+				"simple",
+				"Game/Model/simpleobject.h"
 			],
 			[
 				"model",
 				"Game/Model/model.cpp"
 			],
 			[
-				"loader",
-				"Game/Loader/modelloader.h"
+				"sc",
+				"Game/Scene/scene.h"
+			],
+			[
+				"scene",
+				"Game/Scene/scene.h"
+			],
+			[
+				"ent",
+				"Game/Entity/entity.h"
+			],
+			[
+				"moue",
+				"Game/Interaction/mousepicker.cpp"
+			],
+			[
+				"eni",
+				"Game/Entity/entity.h"
+			],
+			[
+				"entity",
+				"Game/Entity/entity.cpp"
+			],
+			[
+				"camera",
+				"Game/Basic/camera.h"
+			],
+			[
+				"camer",
+				"Game/Basic/camera.h"
+			],
+			[
+				"cmake",
+				"CMakeLists.txt"
+			],
+			[
+				"mous",
+				"Game/Interaction/mousepicker.h"
+			],
+			[
+				"input",
+				"Game/Basic/input.h"
 			],
 			[
 				"par",
 				"Game/Basic/parameters.h"
 			],
 			[
-				"terrain",
+				"modelLoa",
+				"Game/Loader/modelloader.h"
+			],
+			[
+				"textur",
+				"Game/Loader/texture.h"
+			],
+			[
+				"cub",
+				"Shader/Cubemap/cubemapShader.vr"
+			],
+			[
+				"shadermap",
+				"Shader/Cubemap/cubemapShader.fa"
+			],
+			[
+				"tex",
+				"Game/Loader/texture.h"
+			],
+			[
+				"text",
+				"Game/Loader/texture.h"
+			],
+			[
+				"te",
+				"Game/Loader/texture.h"
+			],
+			[
+				"main",
+				"Game/source/main.cpp"
+			],
+			[
+				"light",
+				"Game/Basic/light.h"
+			],
+			[
+				"texture",
+				"Game/Loader/texture.h"
+			],
+			[
+				"basic",
+				"Shader/basicShader.vr"
+			],
+			[
+				"model.cp",
+				"Game/Model/model.cpp"
+			],
+			[
+				"modello",
+				"Game/Loader/modelloader.h"
+			],
+			[
+				"scen",
+				"Game/Scene/scene.h"
+			],
+			[
+				"model.cpp",
+				"Game/Model/model.cpp"
+			],
+			[
+				"CUB",
+				"Shader/Cubemap/cubemapShader.fa"
+			],
+			[
+				"model.h",
+				"Game/Model/model.h"
+			],
+			[
+				"re",
+				"Game/Renderer/renderer.cpp"
+			],
+			[
+				"loader",
+				"Game/Loader/shaderLoader.h"
+			],
+			[
+				"texutre",
+				"Game/Loader/texture.cpp"
+			],
+			[
+				"terr",
 				"Game/Map/terrain.cpp"
+			],
+			[
+				"entit",
+				"Game/Entity/entity.cpp"
+			],
+			[
+				"render",
+				"Game/Renderer/renderer.cpp"
+			],
+			[
+				"scene.h",
+				"Game/Scene/scene.h"
+			],
+			[
+				"player.cpp",
+				"Game/Entity/player.cpp"
+			],
+			[
+				"shaderLoade",
+				"Game/Loader/shaderLoader.cpp"
+			],
+			[
+				"shaderLoa",
+				"Game/Loader/shaderLoader.cpp"
+			],
+			[
+				"terrain.h",
+				"Game/Map/terrain.h"
+			],
+			[
+				"ply",
+				"Game/Entity/player.cpp"
+			],
+			[
+				"water.c",
+				"Game/Map/water.cpp"
+			],
+			[
+				"rende",
+				"Game/Renderer/renderer.h"
+			],
+			[
+				"shader.h",
+				"Game/Model/shader.h"
+			],
+			[
+				"shader.cpp",
+				"Game/Model/shader.cpp"
+			],
+			[
+				"modelLo",
+				"Game/Loader/modelloader.h"
+			],
+			[
+				"light.h",
+				"Game/Basic/light.h"
+			],
+			[
+				"entyt",
+				"Game/Entity/entity.cpp"
+			],
+			[
+				"playerSha",
+				"Shader/Player/playerShader.fa"
+			],
+			[
+				"entiy",
+				"Game/Entity/entity.cpp"
+			],
+			[
+				"obj",
+				"Game/Loader/objloader.h"
+			],
+			[
+				"objL",
+				"Game/Loader/objloader.h"
 			],
 			[
 				"para",
 				"Game/Basic/parameters.h"
-			],
-			[
-				"entity",
-				"Game/Entity/entity.cpp"
 			],
 			[
 				"terrainSha",
@@ -845,32 +1312,8 @@
 				"Shader/Instanced/basicShaderInstanced.fa"
 			],
 			[
-				"scene",
-				"Game/Scene/scene.cpp"
-			],
-			[
-				"playerSha",
-				"Shader/Player/playerShader.fa"
-			],
-			[
 				"basicShade",
 				"Shader/Instanced/basicShaderInstanced.vr"
-			],
-			[
-				"scene.h",
-				"Game/Scene/scene.h"
-			],
-			[
-				"cmake",
-				"CMakeLists.txt"
-			],
-			[
-				"render",
-				"Game/Renderer/renderer.h"
-			],
-			[
-				"player",
-				"Game/Entity/player.h"
 			],
 			[
 				"insta",
@@ -879,10 +1322,6 @@
 			[
 				"player.",
 				"Shader/Player/playerShader.fa"
-			],
-			[
-				"terrain.h",
-				"Game/Map/terrain.h"
 			],
 			[
 				"terrain.cp",
@@ -897,14 +1336,6 @@
 				"Shader/basicShaderInstanced.fa"
 			],
 			[
-				"rend",
-				"Game/Renderer/renderer.cpp"
-			],
-			[
-				"re",
-				"Game/Renderer/renderer.cpp"
-			],
-			[
 				"playe",
 				"Game/Entity/player.h"
 			],
@@ -913,24 +1344,8 @@
 				"Game/Entity/player.cpp"
 			],
 			[
-				"enti",
-				"Game/Entity/entity.h"
-			],
-			[
-				"entit",
-				"Game/Entity/entity.h"
-			],
-			[
 				"terra",
 				"Game/Map/terrain.h"
-			],
-			[
-				"rende",
-				"Game/Renderer/renderer.h"
-			],
-			[
-				"ren",
-				"Game/Renderer/renderer.h"
 			],
 			[
 				"lig",
@@ -941,30 +1356,6 @@
 				"Game/Map/map.h"
 			],
 			[
-				"terr",
-				"Game/Map/terrain.h"
-			],
-			[
-				"main",
-				"Game/source/main.cpp"
-			],
-			[
-				"modello",
-				"Game/Loader/modelloader.cpp"
-			],
-			[
-				"map",
-				"Game/Map/map.cpp"
-			],
-			[
-				"camer",
-				"Game/Basic/camera.cpp"
-			],
-			[
-				"text",
-				"Game/Loader/texture.h"
-			],
-			[
 				"terain",
 				"Shader/terrainShader.fa"
 			],
@@ -973,28 +1364,12 @@
 				"Game/Map/terrain.h"
 			],
 			[
-				"sc",
-				"Game/Scene/scene.cpp"
-			],
-			[
-				"water",
-				"Game/Map/water.cpp"
-			],
-			[
-				"tex",
-				"Game/Loader/texture.h"
-			],
-			[
 				"map.cp",
 				"Game/Map/map.cpp"
 			],
 			[
 				"terrainShader",
 				"Shader/terrainShader.fa"
-			],
-			[
-				"basic",
-				"Shader/basicShader.vr"
 			],
 			[
 				"scne",
@@ -1021,14 +1396,6 @@
 				"Shader/waterShader.vr"
 			],
 			[
-				"camera",
-				"Game/Basic/camera.h"
-			],
-			[
-				"shader",
-				"Shader/basicShaderInstanced.fa"
-			],
-			[
 				"rener",
 				"Game/Renderer/renderer.cpp"
 			],
@@ -1045,24 +1412,12 @@
 				"Shader/Instanced/instancedShader.vr"
 			],
 			[
-				"modelLo",
-				"Game/Loader/modelloader.cpp"
-			],
-			[
 				"",
 				"Game/Renderer/renderer.cpp"
 			],
 			[
-				"entiy",
-				"Game/Entity/entity.cpp"
-			],
-			[
 				"terainShadr",
 				"Shader/terrainShader.vr"
-			],
-			[
-				"texture",
-				"Game/Loader/texture.h"
 			],
 			[
 				"terrainSh",
@@ -1083,10 +1438,6 @@
 			[
 				"player.h",
 				"Game/Entity/player.h"
-			],
-			[
-				"player.cpp",
-				"Game/Entity/player.cpp"
 			],
 			[
 				"teria",
@@ -1127,18 +1478,6 @@
 			[
 				"inpu",
 				"Game/Basic/input.cpp"
-			],
-			[
-				"input",
-				"Game/Basic/input.cpp"
-			],
-			[
-				"play",
-				"Game/Entity/player.h"
-			],
-			[
-				"ent",
-				"Game/Entity/entity.h"
 			],
 			[
 				"mai",
@@ -1189,7 +1528,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 165.0,
+	"side_bar_width": 212.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

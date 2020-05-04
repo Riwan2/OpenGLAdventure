@@ -17,7 +17,7 @@ public:
     
 private:
     std::unordered_map<Model*, std::vector<Entity*>, ModelHashFunction> m_entities;
-    shaderLoader::ShaderObj* m_basicShader;
+    shld::ShaderObj* m_basicShader;
     GLuint m_UBOMatrices;
 
     std::vector<Model*> m_listModel;
