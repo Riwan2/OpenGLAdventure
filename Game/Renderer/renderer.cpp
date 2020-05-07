@@ -38,7 +38,7 @@ void Renderer::LoadEntity(Terrain* terrain)
     txtl::Texture2d* treeTexture = new txtl::Texture2d(txtl::Load2dJPGTexture("tree"));
     //Set Model
     int nbEntity = 1;
-    m_listModel.push_back(new Model("tree", treeTexture, true));
+    m_listModel.push_back(new Model("tree", treeTexture, true, true));
     //Delete Texture
     delete treeTexture;
     //Set Entities
@@ -107,7 +107,7 @@ void Renderer::RenderEntity()
 {
     std::unordered_map<Model*, std::vector<Entity*>, ModelHashFunction>:: iterator p;
     for (p = m_entities.begin(); p != m_entities.end(); p++) {
-        if (p->first->GetTransparency()) DisableCulling();
+        if (p->first->GetCulling()) DisableCulling();
         else EnableCulling();
         p->first->Bind();
         if (p->first->isInstanced()) 

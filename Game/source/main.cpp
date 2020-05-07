@@ -49,7 +49,7 @@ int main(int argc, char **argv)
     basicScene->Initialize();
     
     while(!quit) {
-        //SDL_WarpMouseInWindow(m_window, _WIDTH/2, _HEIGHT/2);
+        //SDL_WarpMouseInWindow(m_window, _WIDTH/2, IsQuitGHT/2);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         deltaTime = (SDL_GetTicks() - lastFrame) / 1000;
         lastFrame = SDL_GetTicks();
@@ -57,7 +57,7 @@ int main(int argc, char **argv)
         myEvent.Update();
         basicScene->Update(deltaTime);
         
-        if (Input::KeyJustPressed(Input::eAction::quit))
+        if (Input::KeyJustPressed(Input::eAction::quit) || Input::IsQuit)
             quit = true;
 
         if (Input::KeyJustPressed(Input::eAction::lineMode)) {

@@ -12,10 +12,10 @@ Model::Model(const Model& copy)
     m_VAO = copy.GetVAO();
     m_drawCall = copy.GetDrawCall();
     m_texture = new txtl::Texture2d(copy.GetTexture());
-    m_transparency = copy.GetTransparency();
+    m_culling = copy.GetCulling();
 }
 
-Model::Model(const std::string& fileName, txtl::Texture2d* texture, const bool& instanced, const bool& transparency)
+Model::Model(const std::string& fileName, txtl::Texture2d* texture, const bool& instanced, const bool& culling)
 {
     //Raw Model :
     m_instanced = instanced;
@@ -27,7 +27,7 @@ Model::Model(const std::string& fileName, txtl::Texture2d* texture, const bool& 
     if (m_instanced) m_Model = myVao.modelId;
     m_VAO = myVao.vaoId;
     m_drawCall = myVao.drawCall;
-    m_transparency = transparency;
+    m_culling = culling;
     
     //Texture :
     m_texture = new txtl::Texture2d(*texture);

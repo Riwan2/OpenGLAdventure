@@ -19,8 +19,6 @@ Scene::~Scene()
     m_listTerrain.shrink_to_fit();
 }
 
-spl::SimpleObject* ball;
-
 void Scene::Initialize()
 {
 	//Camera 
@@ -80,9 +78,6 @@ void Scene::Initialize()
     m_player->SetScale(0.25, 0.25, 0.25);
     delete playerShader;
 
-    shld::ShaderObj* basicShader = new shld::ShaderObj(shld::Load("Basic/basicShader"));
-    ball = new spl::SimpleObject(playerModel->GetVAO(), playerModel->GetDrawCall(), basicShader->programId, glm::mat4(1.0));
-
     //MousePicker
     m_mousePicker = new MousePicker();
 }
@@ -90,29 +85,20 @@ void Scene::Initialize()
 void Scene::Update(const float& deltaTime)
 {
     m_mousePicker->Update(*m_camera, m_listTerrain[0]);
-
 	m_player->Update(deltaTime, m_camera, m_listPointLight, m_listTerrain[0]);
-
     //QuadTree processing
     m_quadTree->clear();
-    //Entity rendering plus update
-    m_renderer->Render(deltaTime, *m_camera, m_listTerrain, m_listPointLight, *m_quadTree);
-
     m_inRange.clear();
     m_inRange.shrink_to_fit();
+    //Entity rendering plus update
+    m_renderer->Render(deltaTime, *m_camera, m_listTerrain, m_listPointLight, *m_quadTree);
+    //Mouse picker
+    // m_quadTree->querry(data::Rectangle(m_mousePicker->GetTerrainPoint().x - 10, m_mousePicker->GetTerrainPoint().z - 10, 20),
+    //  m_inRange);
+    // for (int i = 0; i < m_inRange.size(); i++) {
+    //     m_inRange[i].data->Move(0, 0.5, 0);
+    // }
 
-    glm::vec3 pPos = m_player->GetPosition();
-    m_quadTree->querry(data::Rectangle(pPos.x - 25, pPos.z - 25, 50), m_inRange);
-    
-    for (int i = 0; i < m_inRange.size(); i++) {
-        Entity* e = m_inRange[i].data;
-        e->SetPosition(e->GetPosition().x, 20, e->GetPosition().z);
-    }
-
-    glm::vec3 littlePoint = m_mousePicker->GetTerrainPoint();
-    glm::vec3 ballPos = glm::vec3(littlePoint.x, littlePoint.y, littlePoint.z);
-    spl::SetPosition(*ball, ballPos);
-    spl::Render(*ball, *m_camera);
     //glDisable(GL_CULL_FACE);
 
     //std::cout << 1/deltaTime << std::endl;

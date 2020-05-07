@@ -36,6 +36,7 @@ public:
     static DoubleInt& MouseWheel() { return m_mouseWheel; }
     static bool ScrollUp() { return m_mouseWheel.Y > 0; }
     static bool ScrollDown() { return m_mouseWheel.Y < 0; }
+    static bool IsQuit;
 
     Input();
     ~Input();

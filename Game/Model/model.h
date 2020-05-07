@@ -9,7 +9,7 @@ class Model
 public:
     Model();
     Model(const Model& copy);
-    Model(const std::string& fileName, txtl::Texture2d* texture, const bool& instanced = false, const bool& transparency = false);
+    Model(const std::string& fileName, txtl::Texture2d* texture, const bool& instanced = false, const bool& culling = false);
     ~Model();
     
     void Bind() const;
@@ -21,14 +21,14 @@ private:
     GLuint m_VAO, m_Model;
     int m_drawCall;
     txtl::Texture2d* m_texture;
-    bool m_transparency, m_instanced;
+    bool m_culling, m_instanced;
     
 public:
     const GLuint& GetVAO() const { return m_VAO; }
     const GLuint& GetModelId() const { return m_Model; }
     txtl::Texture2d& GetTexture() const { return *m_texture; }
     const int& GetDrawCall() const { return m_drawCall; }
-    const bool& GetTransparency() const { return m_transparency; }
+    const bool& GetCulling() const { return m_culling; }
     const bool& isInstanced() const { return m_instanced; }
 };
 

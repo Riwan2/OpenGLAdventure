@@ -7,6 +7,7 @@ DoubleInt Input::m_mousePosition = DoubleInt(0, 0);
 DoubleInt Input::m_lastMousePosition = DoubleInt(0, 0);
 DoubleInt Input::m_mouseOffset = DoubleInt(0, 0);
 DoubleInt Input::m_mouseWheel = DoubleInt(0, 0);
+bool Input::IsQuit = false;
 
 Input::Input()
 {    
@@ -46,6 +47,10 @@ void Input::Update()
             case SDL_MOUSEWHEEL:
                 m_mouseWheel.X = event.wheel.x;
                 m_mouseWheel.Y = event.wheel.y;
+                break;
+            case SDL_QUIT:
+                IsQuit = true;
+                break;
         }
     }
     

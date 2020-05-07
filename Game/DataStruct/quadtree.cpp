@@ -44,7 +44,7 @@ void data::QuadTree::querry(const Rectangle &range, std::vector<Node>& pointsInR
 	for (int i = 0; i < dataVector.size(); i++) {
 		Node p = dataVector[i];
 		if (range.Contains(p.point))
-			pointsInRange.push_back(p);
+		pointsInRange.push_back(p);
 	}
 
 	if (!divided) return;
