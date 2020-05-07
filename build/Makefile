@@ -272,6 +272,33 @@ Game/Basic/util.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/util.cpp.s
 .PHONY : Game/Basic/util.cpp.s
 
+Game/DataStruct/quadtree.o: Game/DataStruct/quadtree.cpp.o
+
+.PHONY : Game/DataStruct/quadtree.o
+
+# target to build an object file
+Game/DataStruct/quadtree.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o
+.PHONY : Game/DataStruct/quadtree.cpp.o
+
+Game/DataStruct/quadtree.i: Game/DataStruct/quadtree.cpp.i
+
+.PHONY : Game/DataStruct/quadtree.i
+
+# target to preprocess a source file
+Game/DataStruct/quadtree.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.i
+.PHONY : Game/DataStruct/quadtree.cpp.i
+
+Game/DataStruct/quadtree.s: Game/DataStruct/quadtree.cpp.s
+
+.PHONY : Game/DataStruct/quadtree.s
+
+# target to generate assembly for a file
+Game/DataStruct/quadtree.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.s
+.PHONY : Game/DataStruct/quadtree.cpp.s
+
 Game/Entity/entity.o: Game/Entity/entity.cpp.o
 
 .PHONY : Game/Entity/entity.o
@@ -647,6 +674,9 @@ help:
 	@echo "... Game/Basic/util.o"
 	@echo "... Game/Basic/util.i"
 	@echo "... Game/Basic/util.s"
+	@echo "... Game/DataStruct/quadtree.o"
+	@echo "... Game/DataStruct/quadtree.i"
+	@echo "... Game/DataStruct/quadtree.s"
 	@echo "... Game/Entity/entity.o"
 	@echo "... Game/Entity/entity.i"
 	@echo "... Game/Entity/entity.s"

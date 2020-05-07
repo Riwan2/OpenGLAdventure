@@ -16,7 +16,7 @@ Terrain::Terrain(const float& posX, const float& posZ, const float& size, const 
     m_color = glm::vec3(0.1f, 0.5f, 0.4f);
 
     m_shader->Use();
-    m_shader->SetFloat("ambientStrength", 0.1);
+    m_shader->SetFloat("ambientStrength", 0.15);
     m_shader->SetFloat("density", parameters::FogDensity);
     m_shader->SetFloat("gradient", parameters::FogGradient);
 }

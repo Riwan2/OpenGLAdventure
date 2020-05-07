@@ -18,7 +18,7 @@ Entity::Entity(Model*& model, const shld::ShaderObj& shaderObj, const float& x, 
     m_time = (float)Util::getInt(1000) / 100;
 
     m_shader->Use();
-    m_shader->SetFloat("ambientStrength", 0.1);
+    m_shader->SetFloat("ambientStrength", 0.5);
     m_shader->SetFloat("density", parameters::FogDensity);
     m_shader->SetFloat("gradient", parameters::FogGradient);
 }

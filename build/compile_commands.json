@@ -16,6 +16,11 @@
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/DataStruct/quadtree.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/DataStruct/quadtree.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
   "command": "/usr/bin/c++   -I/usr/local/include/SDL2  -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp",
   "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp"
 },

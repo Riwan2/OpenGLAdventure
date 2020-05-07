@@ -12,6 +12,7 @@ Scene::~Scene()
 	delete m_player;
     delete m_skybox;
     delete m_mousePicker;
+    delete m_quadTree;
 	m_listPointLight.clear();
     m_listPointLight.shrink_to_fit();
 	m_listTerrain.clear();
@@ -59,6 +60,9 @@ void Scene::Initialize()
     m_renderer = new Renderer();
     m_renderer->Load(m_camera->GetProjection(), m_listTerrain[0]);
 
+    //QuadTree
+    m_quadTree = new data::QuadTree(data::Rectangle(m_listTerrain[0]->GetPosX(), m_listTerrain[0]->GetPosZ(), m_listTerrain[0]->GetSize()));
+
     //PointLight
     m_listPointLight.push_back(new light::PointLight(glm::vec3(1.0, 0.3, 0.3)));
     m_listPointLight.push_back(new light::PointLight(glm::vec3(0.3, 1.0, 0.3)));
@@ -88,7 +92,22 @@ void Scene::Update(const float& deltaTime)
     m_mousePicker->Update(*m_camera, m_listTerrain[0]);
 
 	m_player->Update(deltaTime, m_camera, m_listPointLight, m_listTerrain[0]);
-    m_renderer->Render(deltaTime, *m_camera, m_listTerrain, m_listPointLight);
+
+    //QuadTree processing
+    m_quadTree->clear();
+    //Entity rendering plus update
+    m_renderer->Render(deltaTime, *m_camera, m_listTerrain, m_listPointLight, *m_quadTree);
+
+    m_inRange.clear();
+    m_inRange.shrink_to_fit();
+
+    glm::vec3 pPos = m_player->GetPosition();
+    m_quadTree->querry(data::Rectangle(pPos.x - 25, pPos.z - 25, 50), m_inRange);
+    
+    for (int i = 0; i < m_inRange.size(); i++) {
+        Entity* e = m_inRange[i].data;
+        e->SetPosition(e->GetPosition().x, 20, e->GetPosition().z);
+    }
 
     glm::vec3 littlePoint = m_mousePicker->GetTerrainPoint();
     glm::vec3 ballPos = glm::vec3(littlePoint.x, littlePoint.y, littlePoint.z);

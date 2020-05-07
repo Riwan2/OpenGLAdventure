@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/coucou.dir/Game/Basic/camera.cpp.o"
   "CMakeFiles/coucou.dir/Game/Basic/input.cpp.o"
   "CMakeFiles/coucou.dir/Game/Basic/util.cpp.o"
+  "CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o"
   "CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o"
   "CMakeFiles/coucou.dir/Game/Entity/player.cpp.o"
   "CMakeFiles/coucou.dir/Game/Interaction/mousepicker.cpp.o"

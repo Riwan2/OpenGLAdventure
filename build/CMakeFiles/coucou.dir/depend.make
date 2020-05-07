@@ -12,6 +12,15 @@ CMakeFiles/coucou.dir/Game/Basic/input.cpp.o: ../Game/Basic/input.h
 CMakeFiles/coucou.dir/Game/Basic/util.cpp.o: ../Game/Basic/util.cpp
 CMakeFiles/coucou.dir/Game/Basic/util.cpp.o: ../Game/Basic/util.h
 
+CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o: ../Game/DataStruct/quadtree.cpp
+CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o: ../Game/DataStruct/quadtree.h
+CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o: ../Game/Entity/entity.h
+CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o: ../Game/Loader/shaderLoader.h
+CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o: ../Game/Loader/stb_image.h
+CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o: ../Game/Loader/texture.h
+CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o: ../Game/Model/model.h
+CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o: ../Game/Model/shader.h
+
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Basic/parameters.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Basic/util.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Entity/entity.cpp
@@ -114,6 +123,7 @@ CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Basic/basicStruct.h
 CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Basic/camera.h
 CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Basic/light.h
 CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Basic/util.h
+CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/DataStruct/quadtree.h
 CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Entity/entity.h
 CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Loader/shaderLoader.h
 CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Loader/stb_image.h
@@ -130,6 +140,7 @@ CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/camera.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/input.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/light.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/util.h
+CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/DataStruct/quadtree.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Entity/entity.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Entity/player.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Interaction/mousepicker.h
@@ -155,6 +166,7 @@ CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/input.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/light.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/parameters.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/util.h
+CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/DataStruct/quadtree.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Entity/entity.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Entity/player.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Interaction/mousepicker.h

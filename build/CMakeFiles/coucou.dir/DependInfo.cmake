@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Basic/camera.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Basic/input.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Basic/util.cpp.o"
+  "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/DataStruct/quadtree.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Entity/player.cpp.o"
   "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Interaction/mousepicker.cpp" "/home/riwan/1-OpenGL/OpenGlStart/coucou/build/CMakeFiles/coucou.dir/Game/Interaction/mousepicker.cpp.o"

@@ -62,7 +62,7 @@ void Renderer::LoadEntity(Terrain* terrain)
     }
 }
 
-void Renderer::Render(const float& deltaTime, const Camera& camera, const std::vector<Terrain*>& listTerrain, const std::vector<light::PointLight*>& listPointLight)
+void Renderer::Render(const float& deltaTime, const Camera& camera, const std::vector<Terrain*>& listTerrain, const std::vector<light::PointLight*>& listPointLight, data::QuadTree& quadTree)
 {
     UpdateUniform(camera, listPointLight);
 
@@ -78,14 +78,18 @@ void Renderer::Render(const float& deltaTime, const Camera& camera, const std::v
     //Tree
     for (int i = 0; i < m_listEntity[eEntity::tree].size(); i++) {
         Entity* tree = m_listEntity[eEntity::tree][i];
-        ProcessEntity(tree);
+        ProcessEntity(tree, quadTree);
     }
     
     RenderEntity();
 }
 
-void Renderer::ProcessEntity(Entity*& entity)
+void Renderer::ProcessEntity(Entity*& entity, data::QuadTree& quadTree)
 {
+    //Add to quadTree
+    quadTree.insert(data::Point(entity->GetPosition().x, entity->GetPosition().z), entity);
+    //quadTree.insert(data::Point(10, 10), 0);
+    //Process for rendering
     Model* model = &entity->GetModel();
     std::unordered_map<Model*, std::vector<Entity*>, ModelHashFunction>:: iterator batch;
     batch = m_entities.find(model);

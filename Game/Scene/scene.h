@@ -7,6 +7,7 @@
 #include "../Map/skybox.h"
 #include "../Interaction/mousepicker.h"
 #include "../Model/simpleobject.h"
+#include "../DataStruct/quadtree.h"
 
 class Scene
 {
@@ -17,6 +18,9 @@ public:
 	void Initialize();
 	void Update(const float& deltaTime);
 private:
+	data::QuadTree* m_quadTree;
+	std::vector<data::Node> m_inRange;
+
 	MousePicker* m_mousePicker;
 	Skybox* m_skybox;
 	Water* m_water;
