@@ -37,7 +37,7 @@ namespace collision
 	inline Plane::Plane(const glm::vec3& p1, const glm::vec3& p2, const glm::vec3& p3)
 	{
 		normal = glm::cross(p2 - p1, p3 - p1);
-		normal = glm::normalize(normal);
+		if (normal != glm::vec3(0.0)) normal = glm::normalize(normal);
 		origin = p1;
 		equation[0] = normal.x;
 		equation[1] = normal.y;
@@ -383,7 +383,7 @@ namespace collision
 			return position;
 
 		collisionObject.velocity = velocity;
-		collisionObject.normalizedVelocity = glm::normalize(velocity);
+		if (velocity != glm::vec3(0.0)) collisionObject.normalizedVelocity = glm::normalize(velocity);
 		collisionObject.basePoint = position;
 		collisionObject.foundCollision = false;
 
@@ -395,8 +395,6 @@ namespace collision
 			}
 		}	
 
-//		CheckTriangleCollision(&collisionObject, glm::vec3(-10, 0, 0), glm::vec3(0, 2, 10), glm::vec3(10, 0, 0));
-
 		if (!collisionObject.foundCollision)
 			return position + velocity;
 
@@ -404,17 +402,18 @@ namespace collision
 		glm::vec3 newBasePoint = position;
 
 		if (collisionObject.nearestDistance >= veryCloseDistance) {
-			glm::vec3 V = glm::normalize(velocity);
+			glm::vec3 V;
+			if (velocity != glm::vec3(0.0)) V = glm::normalize(velocity);
 			V = V * (float)(collisionObject.nearestDistance - veryCloseDistance);
 			newBasePoint = collisionObject.basePoint + V;
 
-			V = glm::normalize(V);
+			if (V != glm::vec3(0.0)) V = glm::normalize(V);
 			collisionObject.intersectPoint -= veryCloseDistance * V;
 		}
 
 		glm::vec3 slidePlaneOrigin = collisionObject.intersectPoint;
 		glm::vec3 slidePlaneNormal = newBasePoint - collisionObject.intersectPoint;
-		slidePlaneNormal = glm::normalize(slidePlaneNormal);
+		if (slidePlaneNormal != glm::vec3(0.0)) slidePlaneNormal = glm::normalize(slidePlaneNormal);
 		Plane slidingPlane(slidePlaneOrigin, slidePlaneNormal);
 
 		glm::vec3 newDestinationPoint = destinationPoint - (float)slidingPlane.SignedDistanceTo(destinationPoint) * slidePlaneNormal;

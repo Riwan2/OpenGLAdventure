@@ -92,11 +92,12 @@ void Scene::Initialize()
 
     shld::ShaderObj* basicShader = new shld::ShaderObj(shld::Load("Basic/basicShader"));
     //vaoLoader::VaoObject object = vaoLoader::LoadBasicTriangle(glm::vec3(-10, 0, 0), glm::vec3(0, 2, 10), glm::vec3(10, 0, 0));
-    vaoLoader::VaoObject object = vaoLoader::LoadBasicObj("cube");
+    vaoLoader::VaoObject object = vaoLoader::LoadBasicObj("house");
     cube1 = new stl::StaticObject(object, txtl::Load2dJPGTexture("cube"), basicShader->programId);
     cube2 = new stl::StaticObject(vaoLoader::LoadBasicObj("sphere"), txtl::Load2dJPGTexture("cube"), basicShader->programId);
-    cube3 = new stl::StaticObject(object, txtl::Load2dJPGTexture("cube"), basicShader->programId);
+    //cube3 = new stl::StaticObject(object, txtl::Load2dJPGTexture("cube"), basicShader->programId);
     // stl::SetModel(*cube1, glm::vec3(0.0), glm::vec3(5.0, 0.5, 5.0));
+    stl::SetModel(*cube1, glm::vec3(0.0), glm::vec3(1.0), 0, -90, 0);
 
     // std::cout << "LeftSide : " << cube1->box.IntersectLeft(cube2->box) << std::endl;
     // std::cout << "RightSide : " << cube1->box.IntersectRight(cube2->box) << std::endl;
@@ -107,8 +108,8 @@ void Scene::Initialize()
     //spl::SetModel(*cube, glm::vec3(10.0, -8.0, 0.0), glm::vec3(5.0, 0.5, 5.0));
 
     //stl::SetModel(*cube1, glm::vec3(10.0, 0.0, 0.0), glm::vec3(1.0), 0.0, 90.0, 0.0);
-    stl::SetModel(*cube1, glm::vec3(10.0, 0.0, 0.0), glm::vec3(10.0, 0.5, 10.0), 30);
-    stl::SetModel(*cube3, glm::vec3(10.0, 0.0, 0.0), glm::vec3(5.0, 1.0, 2.0));
+    //stl::SetModel(*cube1, glm::vec3(10.0, 0.0, 0.0), glm::vec3(10.0, 0.5, 10.0), 0);
+    //stl::SetModel(*cube3, glm::vec3(10.0, 0.0, 0.0), glm::vec3(5.0, 1.0, 2.0));
     
     //boundary.Translate(cube1->simpleObject.model);
     //std::cout << "triangle : " << boundary.a.x << " ; " << boundary.b.x << " ; " << boundary.b.x << std::endl;
@@ -117,8 +118,8 @@ void Scene::Initialize()
     listBoundary.push_back(new collision::CollisionShape(collision::CollisionShape(object.vertices, object.numVertices, object.indices, object.numIndices)));
     listBoundary[0]->Translate(cube1->simpleObject.model);
 
-    listBoundary.push_back(new collision::CollisionShape(collision::CollisionShape(object.vertices, object.numVertices, object.indices, object.numIndices)));
-    listBoundary[1]->Translate(cube3->simpleObject.model);
+    //listBoundary.push_back(new collision::CollisionShape(collision::CollisionShape(object.vertices, object.numVertices, object.indices, object.numIndices)));
+    //listBoundary[1]->Translate(cube3->simpleObject.model);
 
     stl::SetModel(*cube2, glm::vec3(0.5, 4.0, 0.5), glm::vec3(1.0, 1.0, 1.0));
     entity1 = new collision::CollisionEntity(collision::CollisionEntity(glm::vec3(0.5, 5.0, 0.5), glm::vec3(0.5, 1.0, 0.5)));
@@ -159,7 +160,7 @@ void Scene::Update(const float& deltaTime)
     // float speed = 0.1;
     stl::Render(*cube1, *m_camera);
     stl::Render(*cube2, *m_camera);
-    stl::Render(*cube3, *m_camera);
+    //stl::Render(*cube3, *m_camera);
     // if (!cube2->box.IntersectDown(cube1->box, speed))
     //     cube2->simpleObject.position.y -= speed;
 
@@ -180,7 +181,7 @@ void Scene::Update(const float& deltaTime)
     // stl::Render(*cube1, *m_camera);
     // stl::Render(*cube2, *m_camera);
     //Mouse picker
-    // m_quadTree->querry(data::Rectangle(m_mousePicker->GetTerrainPoint().x - 10, m_mousePicker->GetTerrainPoint().z - 10, 20),
+    //m_quadTree->querry(data::Rectangle(m_mousePicker->GetTerrainPoint().x - 10, m_mousePicker->GetTerrainPoint().z - 10, 20),
     //  m_inRange);
     // for (int i = 0; i < m_inRange.size(); i++) {
     //     m_inRange[i].data->Move(0, 0.5, 0);
