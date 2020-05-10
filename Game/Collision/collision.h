@@ -37,7 +37,7 @@ namespace collision
 	inline Plane::Plane(const glm::vec3& p1, const glm::vec3& p2, const glm::vec3& p3)
 	{
 		normal = glm::cross(p2 - p1, p3 - p1);
-		if (normal != glm::vec3(0.0)) normal = glm::normalize(normal);
+		normal = glm::normalize(normal);
 		origin = p1;
 		equation[0] = normal.x;
 		equation[1] = normal.y;
@@ -354,21 +354,22 @@ namespace collision
 		collisionObject.R3Position = position;
 		collisionObject.R3Velocity = velocity;
 
-		glm::vec3 eSpacePosition = collisionObject.R3Position / (collisionObject.ellipsoidRadius * 1.0f);
+		glm::vec3 squaredRadius = collisionObject.ellipsoidRadius * collisionObject.ellipsoidRadius;
+		glm::vec3 eSpacePosition = collisionObject.R3Position / squaredRadius;
 		glm::vec3 eSpaceVelocity = collisionObject.R3Velocity / collisionObject.ellipsoidRadius;
 
 		collisionRecursionDepth = 0;
 
 		glm::vec3 finalPosition = CollideWithWorld(eSpacePosition, eSpaceVelocity, boundaryList);
 
-		collisionObject.R3Position = finalPosition * collisionObject.ellipsoidRadius;
+		collisionObject.R3Position = finalPosition * squaredRadius;
 		collisionObject.R3Velocity = gravity;
 		eSpaceVelocity = gravity / collisionObject.ellipsoidRadius;
 		collisionRecursionDepth = 0;
 
 		finalPosition = CollideWithWorld(finalPosition, eSpaceVelocity, boundaryList);
 
-		finalPosition = finalPosition * collisionObject.ellipsoidRadius;
+		finalPosition = finalPosition * squaredRadius;
 		position = finalPosition;
 	}
 
@@ -391,6 +392,9 @@ namespace collision
 		for (int a = 0; a < boundaryList.size(); a++) {
 			for (int i = 0; i < boundaryList[a]->numTriangles; i++) {
 				Triangle t = boundaryList[a]->triangles[i];
+				t.a /= collisionObject.ellipsoidRadius;
+				t.b /= collisionObject.ellipsoidRadius;
+				t.c /= collisionObject.ellipsoidRadius;
 				CheckTriangleCollision(&collisionObject, t.a, t.b, t.c);
 			}
 		}	
@@ -403,7 +407,7 @@ namespace collision
 
 		if (collisionObject.nearestDistance >= veryCloseDistance) {
 			glm::vec3 V;
-			if (velocity != glm::vec3(0.0)) V = glm::normalize(velocity);
+			V = collisionObject.normalizedVelocity;
 			V = V * (float)(collisionObject.nearestDistance - veryCloseDistance);
 			newBasePoint = collisionObject.basePoint + V;
 

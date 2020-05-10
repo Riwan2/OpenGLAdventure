@@ -94,7 +94,7 @@ void Scene::Initialize()
     //vaoLoader::VaoObject object = vaoLoader::LoadBasicTriangle(glm::vec3(-10, 0, 0), glm::vec3(0, 2, 10), glm::vec3(10, 0, 0));
     vaoLoader::VaoObject object = vaoLoader::LoadBasicObj("house");
     cube1 = new stl::StaticObject(object, txtl::Load2dJPGTexture("cube"), basicShader->programId);
-    cube2 = new stl::StaticObject(vaoLoader::LoadBasicObj("sphere"), txtl::Load2dJPGTexture("cube"), basicShader->programId);
+    cube2 = new stl::StaticObject(vaoLoader::LoadBasicObj("character"), txtl::Load2dJPGTexture("cube"), basicShader->programId);
     //cube3 = new stl::StaticObject(object, txtl::Load2dJPGTexture("cube"), basicShader->programId);
     // stl::SetModel(*cube1, glm::vec3(0.0), glm::vec3(5.0, 0.5, 5.0));
     stl::SetModel(*cube1, glm::vec3(0.0), glm::vec3(1.0), 0, -90, 0);
@@ -121,8 +121,8 @@ void Scene::Initialize()
     //listBoundary.push_back(new collision::CollisionShape(collision::CollisionShape(object.vertices, object.numVertices, object.indices, object.numIndices)));
     //listBoundary[1]->Translate(cube3->simpleObject.model);
 
-    stl::SetModel(*cube2, glm::vec3(0.5, 4.0, 0.5), glm::vec3(1.0, 1.0, 1.0));
-    entity1 = new collision::CollisionEntity(collision::CollisionEntity(glm::vec3(0.5, 5.0, 0.5), glm::vec3(0.5, 1.0, 0.5)));
+    stl::SetModel(*cube2, glm::vec3(0.5, 4.0, 0.5), glm::vec3(0.5, 0.8, 0.5));
+    entity1 = new collision::CollisionEntity(collision::CollisionEntity(glm::vec3(0.5, 20.0, 0.5), glm::vec3(0.8, 1.4, 0.8)));
 }
 
 void Scene::Update(const float& deltaTime)
@@ -155,7 +155,8 @@ void Scene::Update(const float& deltaTime)
 
     entity1->CollideAndSlide(velocity, glm::vec3(0.0, -0.1, 0.0), listBoundary);
     glm::vec3 position = entity1->position / entity1->collisionObject.ellipsoidRadius;
-    stl::SetModel(*cube2, position, glm::vec3(0.5, 1.0, 0.5));
+    std::cout << "position : " << position.x << " ; " << position.y << " ; " << position.z << std::endl;
+    stl::SetModel(*cube2, glm::vec3(position.x, position.y - entity1->collisionObject.ellipsoidRadius.y, position.z), glm::vec3(0.25, 0.25, 0.25));
 
     // float speed = 0.1;
     stl::Render(*cube1, *m_camera);
