@@ -9,8 +9,10 @@
 namespace vaoLoader
 {
 	struct VaoObject {
+		objl::Vertex* vertices;
+		GLuint* indices;
 		GLuint vaoId, modelId;
-		int drawCall;
+		int drawCall, numVertices, numIndices;
 		bool instanced;
 		VaoObject() {}
 		VaoObject(GLuint vId, int nbCall, GLuint mId = 0, bool inst = false) : vaoId(vId), drawCall(nbCall), modelId(mId), instanced(inst)
@@ -88,7 +90,7 @@ namespace vaoLoader
 	        glBindVertexArray(VAO);
 	            
 	        glBindBuffer(GL_ARRAY_BUFFER, VBO); //Vertices
-	        glBufferData(GL_ARRAY_BUFFER, verticesSize * sizeof(objl::Vertex), vertices, GL_STATIC_DRAW);
+	        glBufferData(GL_ARRAY_BUFFER, (verticesSize + 1) * sizeof(objl::Vertex), vertices, GL_STATIC_DRAW);
 	        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO); //Triangle Indices
 	        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesSize * sizeof(unsigned int), indices, GL_STATIC_DRAW);
 	     
@@ -104,12 +106,65 @@ namespace vaoLoader
 	        std::cerr << "Failed to load model : " << fileName << std::endl;
 	    }
 	    
-	    delete vertices;
-	    delete indices;
+	    //delete vertices;
+	    //delete indices;
 	    glDeleteBuffers(1, &VBO);
 	    glDeleteBuffers(1, &EBO);
 
-	    return VaoObject(VAO, drawCall, false);
+	    VaoObject vaoObject = VaoObject(VAO, drawCall, false);
+	    vaoObject.vertices = vertices;
+	    vaoObject.indices = indices;
+	    vaoObject.numVertices = verticesSize;
+	    vaoObject.numIndices = indicesSize;
+	    return vaoObject;
+	}
+	//LOAD BASIC TRIANGLE
+	inline VaoObject LoadBasicTriangle(const glm::vec3& a, const glm::vec3& b, const glm::vec3& c)
+	{
+	    const int verticesSize = 24;
+	    const int indicesSize = 3;
+	    int drawCall = 3;
+
+		objl::Vertex* vertices = new objl::Vertex[verticesSize] {
+			objl::Vertex(a.x, a.y, a.z, 0.0, 0.0, 0.0, 0.0, 0.0), //-1.0, 0.0, 0.0
+			objl::Vertex(b.x, b.y, b.z, 0.0, 0.0, 0.0, 0.5, 1.0), //0.0, 0.0, 1.0
+			objl::Vertex(c.x, c.y, c.z, 0.0, 0.0, 0.0, 1.0, 0.0), //1.0, 0.0, 0.0
+		};
+		GLuint* indices = new GLuint[indicesSize] {
+			0, 1, 2,
+		};
+
+		GLuint VAO, VBO, EBO;
+
+		glGenVertexArrays(1, &VAO);
+        glGenBuffers(1, &VBO);
+        glGenBuffers(1, &EBO);
+        
+        glBindVertexArray(VAO);
+            
+        glBindBuffer(GL_ARRAY_BUFFER, VBO); //Vertices
+        glBufferData(GL_ARRAY_BUFFER, (verticesSize + 1) * sizeof(float), vertices, GL_STATIC_DRAW);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO); //Triangle Indices
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesSize * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+     
+        glEnableVertexAttribArray(0); //Position
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);   
+        glEnableVertexAttribArray(1); //Normals
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+        glEnableVertexAttribArray(2); //Texture Position
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+            
+        glBindVertexArray(0);
+
+        glDeleteBuffers(1, &VBO);
+	    glDeleteBuffers(1, &EBO);
+
+	    VaoObject vaoObject = VaoObject(VAO, drawCall, false);
+	    vaoObject.vertices = vertices;
+	    vaoObject.indices = indices;
+	    vaoObject.numIndices = indicesSize;
+	    vaoObject.numVertices = verticesSize;
+	    return vaoObject;
 	}
 	//LOAD SKY BOX (SIMPLE CUBE) MESH
 	inline VaoObject LoadSkyBox(const float& size) 

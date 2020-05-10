@@ -9,7 +9,7 @@ class Model
 public:
     Model();
     Model(const Model& copy);
-    Model(const std::string& fileName, txtl::Texture2d* texture, const bool& instanced = false, const bool& culling = false);
+    Model(const std::string& fileName, const txtl::Texture2d& texture, const bool& instanced = false, const bool& culling = false);
     ~Model();
     
     void Bind() const;

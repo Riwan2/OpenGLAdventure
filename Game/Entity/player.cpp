@@ -19,21 +19,21 @@
  
 void Player::Update(const float& deltaTime, const Camera* camera, const std::vector<light::PointLight*> listPointLight, Terrain* terrain)
 {
-    if (Input::KeyDown(Input::eAction::moveDown)) {
-        m_currentSpeed = -m_SPEED;
-    } else if (Input::KeyDown(Input::eAction::moveUp)) {
-        m_currentSpeed = m_SPEED;
-    } else {
-        m_currentSpeed = 0;
-    }
+    // if (Input::KeyDown(Input::eAction::moveDown)) {
+    //     m_currentSpeed = -m_SPEED;
+    // } else if (Input::KeyDown(Input::eAction::moveUp)) {
+    //     m_currentSpeed = m_SPEED;
+    // } else {
+    //     m_currentSpeed = 0;
+    // }
     
-    if (Input::KeyDown(Input::eAction::moveRight)) {
-        m_currentTurnSpeed = -m_TURN_SPEED;
-    } else if (Input::KeyDown(Input::eAction::moveLeft)) {
-        m_currentTurnSpeed = m_TURN_SPEED;
-    } else {
-        m_currentTurnSpeed = 0;
-    }
+    // if (Input::KeyDown(Input::eAction::moveRight)) {
+    //     m_currentTurnSpeed = -m_TURN_SPEED;
+    // } else if (Input::KeyDown(Input::eAction::moveLeft)) {
+    //     m_currentTurnSpeed = m_TURN_SPEED;
+    // } else {
+    //     m_currentTurnSpeed = 0;
+    // }
 
     if (Input::KeyDown(Input::eAction::jump)) {
         if (m_canJump) m_currentUpwardSpeed = m_JUMP_POWER;

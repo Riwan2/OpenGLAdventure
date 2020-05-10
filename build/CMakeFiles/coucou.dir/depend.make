@@ -140,6 +140,7 @@ CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/camera.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/input.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/light.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/util.h
+CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Collision/collision.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/DataStruct/quadtree.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Entity/entity.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Entity/player.h
@@ -156,6 +157,7 @@ CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Map/water.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Model/model.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Model/simpleobject.h
+CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Model/staticobject.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Renderer/renderer.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Scene/scene.cpp
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Scene/scene.h
@@ -166,6 +168,7 @@ CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/input.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/light.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/parameters.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/util.h
+CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Collision/collision.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/DataStruct/quadtree.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Entity/entity.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Entity/player.h
@@ -182,6 +185,7 @@ CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Map/water.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Model/model.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Model/simpleobject.h
+CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Model/staticobject.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Renderer/renderer.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Scene/scene.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/source/main.cpp

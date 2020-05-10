@@ -134,6 +134,12 @@ namespace objl
 
 		// Texture Coordinate Vector
 		Vector2 TextureCoordinate;
+
+		//Constructor
+		Vertex() : Position(Vector3()), Normal(Vector3()), TextureCoordinate(Vector2())
+		{}
+		Vertex(float x, float y, float z, float x1, float y1, float z1, float x2, float y2) : Position(Vector3(x, y, z)), Normal(Vector3(x1, y1, z1)), TextureCoordinate(Vector2(x2, y2))
+		{}
 	};
 
 	struct Material

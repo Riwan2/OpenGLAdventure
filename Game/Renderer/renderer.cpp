@@ -38,7 +38,7 @@ void Renderer::LoadEntity(Terrain* terrain)
     txtl::Texture2d* treeTexture = new txtl::Texture2d(txtl::Load2dJPGTexture("tree"));
     //Set Model
     int nbEntity = 1;
-    m_listModel.push_back(new Model("tree", treeTexture, true, true));
+    m_listModel.push_back(new Model("tree", *treeTexture, true, true));
     //Delete Texture
     delete treeTexture;
     //Set Entities

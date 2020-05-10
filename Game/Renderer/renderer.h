@@ -6,6 +6,7 @@
 #include "../DataStruct/quadtree.h"
 #include <unordered_map>
 #include <map>
+#include <future>
 
 class Renderer
 {
@@ -23,6 +24,7 @@ private:
 
     std::vector<Model*> m_listModel;
     std::vector<std::vector<Entity*>> m_listEntity;
+    std::vector<std::future<void>> m_Futures;
     
     void LoadEntity(Terrain* terrain);
     void SetUniform(const glm::mat4& projection);

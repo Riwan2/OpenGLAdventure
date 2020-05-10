@@ -1,4 +1,4 @@
-#ifndef SHADERLOADER_H
+    #ifndef SHADERLOADER_H
 #define SHADERLOADER_H
 
 #include <GL/glew.h>

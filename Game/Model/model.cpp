@@ -15,7 +15,7 @@ Model::Model(const Model& copy)
     m_culling = copy.GetCulling();
 }
 
-Model::Model(const std::string& fileName, txtl::Texture2d* texture, const bool& instanced, const bool& culling)
+Model::Model(const std::string& fileName, const txtl::Texture2d& texture, const bool& instanced, const bool& culling)
 {
     //Raw Model :
     m_instanced = instanced;
@@ -30,7 +30,7 @@ Model::Model(const std::string& fileName, txtl::Texture2d* texture, const bool& 
     m_culling = culling;
     
     //Texture :
-    m_texture = new txtl::Texture2d(*texture);
+    m_texture = new txtl::Texture2d(texture);
 }
 
 Model::~Model()
