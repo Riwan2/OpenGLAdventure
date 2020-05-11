@@ -40,7 +40,7 @@ namespace spl
 		object.model = glm::translate(object.model, position);
 		object.model = glm::rotate(object.model, (float)glm::radians(rotX), glm::vec3(1, 0, 0));
     	object.model = glm::rotate(object.model, (float)glm::radians(rotY), glm::vec3(0, 1, 0));
-    	object.model = glm::rotate(object.model, (float)glm::radians(rotZ), glm::vec3(0, 0, 1));
+    	object.model = glm::rotate(object.model, (float)glm::radians(rotZ), glm::vec3(0, 0, 1));	
  		object.model = glm::scale(object.model, scale);
 	}
 

@@ -12,11 +12,17 @@ namespace vaoLoader
 		objl::Vertex* vertices;
 		GLuint* indices;
 		GLuint vaoId, modelId;
+		glm::vec3 min, max;
 		int drawCall, numVertices, numIndices;
 		bool instanced;
 		VaoObject() {}
 		VaoObject(GLuint vId, int nbCall, GLuint mId = 0, bool inst = false) : vaoId(vId), drawCall(nbCall), modelId(mId), instanced(inst)
 		{
+		}
+
+		void ClearVerticesIndices() {
+			delete vertices;
+			delete indices;
 		}
 	};
 
@@ -61,6 +67,8 @@ namespace vaoLoader
 	    GLuint* indices;
 	    GLuint VAO, VBO, EBO;
 	    int verticesSize, indicesSize, drawCall;
+	    glm::vec3 min = glm::vec3(0, 0, 0);
+	    glm::vec3 max = glm::vec3(0, 0, 0);
 	    
 		objl::Loader Loader;
 	    std::string myFileName = "../Asset/Model/" + fileName + ".obj";
@@ -76,7 +84,14 @@ namespace vaoLoader
 	        for (int i = 0; i < verticesSize; i++) {
 	            vertices[i] = Loader.LoadedMeshes[0].Vertices[i];
 	            vertices[i].TextureCoordinate.Y = 1 - vertices[i].TextureCoordinate.Y;
+	            if (vertices[i].Position.X < min.x) min.x = vertices[i].Position.X;
+	            else if (vertices[i].Position.X > max.x) max.x = vertices[i].Position.X;
+	            if (vertices[i].Position.Y < min.y) min.y = vertices[i].Position.Y;
+	            else if (vertices[i].Position.Y > max.y) max.y = vertices[i].Position.Y;
+	            if (vertices[i].Position.Z < min.z) min.z = vertices[i].Position.Z;
+	            else if (vertices[i].Position.Z > max.z) max.z = vertices[i].Position.Z;
 	        }
+
 	        for (int i = 0; i < indicesSize; i += 3) {
 	        	indices[i] = Loader.LoadedMeshes[0].Indices[i];
 	        	indices[i+1] = Loader.LoadedMeshes[0].Indices[i+1];
@@ -116,6 +131,8 @@ namespace vaoLoader
 	    vaoObject.indices = indices;
 	    vaoObject.numVertices = verticesSize;
 	    vaoObject.numIndices = indicesSize;
+	    vaoObject.min = min;
+	    vaoObject.max = max;
 	    return vaoObject;
 	}
 	//LOAD BASIC TRIANGLE

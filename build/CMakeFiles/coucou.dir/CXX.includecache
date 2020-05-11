@@ -51,11 +51,29 @@ time.h
 -
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collision.h
-glm/glm.hpp
--
+collisionobject.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionobject.h
 glm/gtx/norm.hpp
 -
 glm/gtc/matrix_transform.hpp
+-
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionobject.cpp
+collisionobject.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionobject.h
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionobject.h
+collisionshape.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionshape.h
+../Loader/texture.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
+../Loader/shaderloader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderloader.h
+../Basic/camera.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
+
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionshape.h
+glm/glm.hpp
 -
 iostream
 -
@@ -144,8 +162,12 @@ fstream
 math.h
 -
 
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderloader.h
 GL/glew.h
+-
+glm/glm.hpp
+-
+glm/gtc/type_ptr.hpp
 -
 iostream
 -
@@ -273,8 +295,8 @@ glm/gtc/matrix_transform.hpp
 -
 glm/gtc/type_ptr.hpp
 -
-../Loader/shaderLoader.h
-/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderLoader.h
+../Loader/shaderloader.h
+/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderloader.h
 
 /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/simpleobject.h
 GL/glew.h

@@ -25,7 +25,9 @@ stl::StaticObject* cube3;
 
 collision::CollisionEntity* entity1;
 
-std::vector<collision::CollisionShape*> listBoundary;
+std::vector<collision::CollisionObject*> listBoundary;
+collision::Box* playerBox;
+collision::Box* box;
 
 void Scene::Initialize()
 {
@@ -91,13 +93,14 @@ void Scene::Initialize()
     m_mousePicker = new MousePicker();
 
     shld::ShaderObj* basicShader = new shld::ShaderObj(shld::Load("Basic/basicShader"));
+    shld::ShaderObj* debugShader = new shld::ShaderObj(shld::Load("Debug/debugShader"));
     //vaoLoader::VaoObject object = vaoLoader::LoadBasicTriangle(glm::vec3(-10, 0, 0), glm::vec3(0, 2, 10), glm::vec3(10, 0, 0));
-    vaoLoader::VaoObject object = vaoLoader::LoadBasicObj("house");
-    cube1 = new stl::StaticObject(object, txtl::Load2dJPGTexture("cube"), basicShader->programId);
-    cube2 = new stl::StaticObject(vaoLoader::LoadBasicObj("character"), txtl::Load2dJPGTexture("cube"), basicShader->programId);
-    //cube3 = new stl::StaticObject(object, txtl::Load2dJPGTexture("cube"), basicShader->programId);
+    vaoLoader::VaoObject cubeModel = vaoLoader::LoadBasicObj("cube");
+    vaoLoader::VaoObject player = vaoLoader::LoadBasicObj("sphere");
+    cube1 = new stl::StaticObject(cubeModel, txtl::Load2dJPGTexture("cube"), basicShader->programId);
+    cube2 = new stl::StaticObject(player, txtl::Load2dJPGTexture("cube"), basicShader->programId);
+    cube3 = new stl::StaticObject(cubeModel, txtl::Load2dJPGTexture("cube"), basicShader->programId);
     // stl::SetModel(*cube1, glm::vec3(0.0), glm::vec3(5.0, 0.5, 5.0));
-    stl::SetModel(*cube1, glm::vec3(0.0), glm::vec3(1.0), 0, -90, 0);
 
     // std::cout << "LeftSide : " << cube1->box.IntersectLeft(cube2->box) << std::endl;
     // std::cout << "RightSide : " << cube1->box.IntersectRight(cube2->box) << std::endl;
@@ -115,15 +118,34 @@ void Scene::Initialize()
     //std::cout << "triangle : " << boundary.a.x << " ; " << boundary.b.x << " ; " << boundary.b.x << std::endl;
 
     //collision::Triangle boundary = collision::Triangle(glm::vec3(-10, 0, 0), glm::vec3(0, 5, 10), glm::vec3(10, 0, 0));
-    listBoundary.push_back(new collision::CollisionShape(collision::CollisionShape(object.vertices, object.numVertices, object.indices, object.numIndices)));
-    listBoundary[0]->Translate(cube1->simpleObject.model);
+    //listBoundary.push_back(new collision::CollisionShape(collision::CollisionShape(object.vertices, object.numVertices, object.indices, object.numIndices)));
+    //listBoundary[0]->Translate(cube1->simpleObject.model);
+    vaoLoader::VaoObject* houseModel = new vaoLoader::VaoObject(vaoLoader::LoadBasicObj("house"));
+    std::cout << "min : " << houseModel->min.x << " ; " << houseModel->min.y << " ; " << houseModel->min.z << std::endl;
+    std::cout << "max : " << houseModel->max.x << " ; " << houseModel->max.y << " ; " << houseModel->max.z << std::endl;
+    //vaoLoader::VaoObject* houseModel = new vaoLoader::VaoObject(vaoLoader::LoadBasicTriangle(glm::vec3(-10, 0, 0), glm::vec3(0, 0, 10), glm::vec3(10, 0, 0)));
+    txtl::Texture2d* houseTexture = new txtl::Texture2d(txtl::Load2dJPGTexture("cube")); 
+    shld::ShaderObj* houseShader = new shld::ShaderObj(shld::Load("Basic/basicShader"));
+    collision::CollisionObject* collisionObject = new collision::CollisionObject(houseModel, houseModel, houseTexture, houseShader);
+    collisionObject->InitDebugMode(&cubeModel, debugShader);
+    listBoundary.push_back(collisionObject);
+    //listBoundary[0]->SetRotation(glm::vec3(10, 0, 0));
+
+    box = new collision::Box(collision::Box(houseModel->min, houseModel->max));
+    stl::SetModel(*cube1, box->GetPosition(), box->GetScale());
+
+    playerBox = new collision::Box(collision::Box(player.min, player.max));
+    std::cout << *playerBox << std::endl;
 
     //listBoundary.push_back(new collision::CollisionShape(collision::CollisionShape(object.vertices, object.numVertices, object.indices, object.numIndices)));
     //listBoundary[1]->Translate(cube3->simpleObject.model);
 
     stl::SetModel(*cube2, glm::vec3(0.5, 4.0, 0.5), glm::vec3(0.5, 0.8, 0.5));
-    entity1 = new collision::CollisionEntity(collision::CollisionEntity(glm::vec3(0.5, 20.0, 0.5), glm::vec3(0.8, 1.4, 0.8)));
+    entity1 = new collision::CollisionEntity(collision::CollisionEntity(glm::vec3(0.5, 10.0, 0.5), glm::vec3(0.5, 1.0, 0.5))); //0.8, 1.4, 0.8
 }
+
+ 
+
 
 void Scene::Update(const float& deltaTime)
 {
@@ -154,14 +176,25 @@ void Scene::Update(const float& deltaTime)
     }
 
     entity1->CollideAndSlide(velocity, glm::vec3(0.0, -0.1, 0.0), listBoundary);
-    glm::vec3 position = entity1->position / entity1->collisionObject.ellipsoidRadius;
-    std::cout << "position : " << position.x << " ; " << position.y << " ; " << position.z << std::endl;
-    stl::SetModel(*cube2, glm::vec3(position.x, position.y - entity1->collisionObject.ellipsoidRadius.y, position.z), glm::vec3(0.25, 0.25, 0.25));
+    glm::vec3 position = entity1->position / entity1->collisionPackage.ellipsoidRadius;
+    //std::cout << "position : " << position.x << " ; " << position.y << " ; " << position.z << std::endl;
+
+    //listBoundary[0]->Move(glm::vec3(0.0, 0.0, 0.03));
+    //entity1->position.z += 0.03 / 2;
+    //entity1->position.y += 0.01;
+    //position += glm::vec3(listBoundary[0]->GetModel() * glm::vec4(position, 1.0));
+
+    stl::SetModel(*cube2, glm::vec3(position.x, position.y /*- entity1->collisionPackage.ellipsoidRadius.y*/, position.z), glm::vec3(0.5, 1.0, 0.5)); //0.25, 0.25, 0.25
+
+    playerBox->SetBox(position, glm::vec3(0.5, 1.0, 0.5));
+    //std::cout << *playerBox << std::endl;
+    stl::SetModel(*cube3, playerBox->GetPosition(), playerBox->GetScale());
+
 
     // float speed = 0.1;
-    stl::Render(*cube1, *m_camera);
+    //stl::Render(*cube1, *m_camera);
     stl::Render(*cube2, *m_camera);
-    //stl::Render(*cube3, *m_camera);
+    stl::Render(*cube3, *m_camera);
     // if (!cube2->box.IntersectDown(cube1->box, speed))
     //     cube2->simpleObject.position.y -= speed;
 
@@ -195,6 +228,9 @@ void Scene::Update(const float& deltaTime)
     // glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     // m_water->Render(m_camera);
     // glDisable(GL_BLEND);
+    for (int i = 0; i < listBoundary.size(); i++) {
+        listBoundary[i]->Render(m_camera);
+    }
 
     m_skybox->Render(*m_camera, m_player->GetPosition());
 
