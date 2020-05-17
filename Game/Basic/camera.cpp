@@ -53,12 +53,12 @@ void Camera::CalculateView(const float& rotationY, const float& terrainHeight)
 
     glm::vec3 direction;
 
-    if (m_position.y < terrainHeight + 1) {
-        m_position.y = terrainHeight + 1;
-        blocked = true;
-    } else {
-        blocked = false;
-    }
+    // if (m_position.y < terrainHeight + 1) {
+    //     m_position.y = terrainHeight + 1;
+    //     blocked = true;
+    // } else {
+    //     blocked = false;
+    // }
 
     direction.x = cos(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));
     direction.y = sin(glm::radians(m_pitch));
@@ -76,6 +76,9 @@ void Camera::Rotate(const float& angleAround, const float& pitch)
         if (!blocked || pitch < -0.1) m_pitch += pitch;
     }
     m_angleAround += angleAround;
+
+    if (m_angleAround < 0) m_angleAround += 360;
+    else if (m_angleAround > 360) m_angleAround -= 360;
 }
 
 void Camera::Zoom(const float& amount)

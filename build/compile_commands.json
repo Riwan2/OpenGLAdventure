@@ -16,8 +16,18 @@
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2   -std=c++11 -pthread -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collidableobject.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collidableobject.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
   "command": "/usr/bin/c++   -I/usr/local/include/SDL2   -std=c++11 -pthread -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Collision/collisionobject.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionobject.cpp",
   "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionobject.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2   -std=c++11 -pthread -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/ellipsoidbody.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/ellipsoidbody.cpp"
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
@@ -28,11 +38,6 @@
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
   "command": "/usr/bin/c++   -I/usr/local/include/SDL2   -std=c++11 -pthread -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp",
   "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.cpp"
-},
-{
-  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
-  "command": "/usr/bin/c++   -I/usr/local/include/SDL2   -std=c++11 -pthread -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Entity/player.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.cpp",
-  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.cpp"
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
@@ -73,6 +78,11 @@
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
   "command": "/usr/bin/c++   -I/usr/local/include/SDL2   -std=c++11 -pthread -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Model/shader.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.cpp",
   "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.cpp"
+},
+{
+  "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",
+  "command": "/usr/bin/c++   -I/usr/local/include/SDL2   -std=c++11 -pthread -g   -std=gnu++14 -o CMakeFiles/coucou.dir/Game/Object/player.cpp.o -c /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Object/player.cpp",
+  "file": "/home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Object/player.cpp"
 },
 {
   "directory": "/home/riwan/1-OpenGL/OpenGlStart/coucou/build",

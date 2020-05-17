@@ -12,6 +12,25 @@ CMakeFiles/coucou.dir/Game/Basic/input.cpp.o
 CMakeFiles/coucou.dir/Game/Basic/util.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.cpp
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collidableobject.cpp
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collidableobject.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collision.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionobject.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionshape.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/ellipsoidbody.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderloader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/Collision/collisionobject.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionobject.cpp
@@ -22,6 +41,24 @@ CMakeFiles/coucou.dir/Game/Collision/collisionobject.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderloader.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collision.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionobject.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionshape.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/ellipsoidbody.cpp
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/ellipsoidbody.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderloader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/DataStruct/quadtree.cpp
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/DataStruct/quadtree.h
@@ -39,23 +76,6 @@ CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderloader.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.cpp
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderloader.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/model.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/Interaction/mousepicker.cpp.o
@@ -129,6 +149,28 @@ CMakeFiles/coucou.dir/Game/Model/shader.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderloader.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.cpp
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collidableobject.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collision.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionobject.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionshape.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/ellipsoidbody.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/shaderloader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/stb_image.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/texture.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/map.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Map/terrain.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Object/player.cpp
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Object/player.h
 CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/basicStruct.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/camera.h
@@ -151,12 +193,13 @@ CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/input.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collidableobject.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collision.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionobject.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionshape.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/ellipsoidbody.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/DataStruct/quadtree.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Interaction/mousepicker.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
@@ -171,6 +214,7 @@ CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/simpleobject.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/staticobject.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Object/player.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.cpp
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.h
@@ -181,12 +225,13 @@ CMakeFiles/coucou.dir/Game/source/main.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/light.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/parameters.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Basic/util.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collidableobject.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collision.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionobject.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/collisionshape.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Collision/ellipsoidbody.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/DataStruct/quadtree.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/entity.h
- /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Entity/player.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Interaction/mousepicker.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/modelloader.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Loader/objloader.h
@@ -201,6 +246,7 @@ CMakeFiles/coucou.dir/Game/source/main.cpp.o
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/shader.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/simpleobject.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Model/staticobject.h
+ /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Object/player.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Renderer/renderer.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/Scene/scene.h
  /home/riwan/1-OpenGL/OpenGlStart/coucou/Game/source/main.cpp

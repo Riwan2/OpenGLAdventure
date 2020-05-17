@@ -2,9 +2,18 @@
 
 uniform sampler2D myTexture;
 out vec4 color;
+
 in vec2 texCoord;
+in vec3 normal;
+
+const vec3 lightDir = vec3(-0.1, 0.9, -0.1);
 
 void main() 
 {
-    color = texture(myTexture, texCoord);
+	vec3 norm = normalize(normal);
+	vec3 dir = normalize(lightDir);
+	float diff = max(dot(norm, dir), 0.0);
+	vec3 diffuse = vec3(diff);
+
+    color = texture(myTexture, texCoord) * vec4(diffuse, 1.0);
 }

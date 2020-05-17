@@ -272,6 +272,33 @@ Game/Basic/util.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Basic/util.cpp.s
 .PHONY : Game/Basic/util.cpp.s
 
+Game/Collision/collidableobject.o: Game/Collision/collidableobject.cpp.o
+
+.PHONY : Game/Collision/collidableobject.o
+
+# target to build an object file
+Game/Collision/collidableobject.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o
+.PHONY : Game/Collision/collidableobject.cpp.o
+
+Game/Collision/collidableobject.i: Game/Collision/collidableobject.cpp.i
+
+.PHONY : Game/Collision/collidableobject.i
+
+# target to preprocess a source file
+Game/Collision/collidableobject.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.i
+.PHONY : Game/Collision/collidableobject.cpp.i
+
+Game/Collision/collidableobject.s: Game/Collision/collidableobject.cpp.s
+
+.PHONY : Game/Collision/collidableobject.s
+
+# target to generate assembly for a file
+Game/Collision/collidableobject.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.s
+.PHONY : Game/Collision/collidableobject.cpp.s
+
 Game/Collision/collisionobject.o: Game/Collision/collisionobject.cpp.o
 
 .PHONY : Game/Collision/collisionobject.o
@@ -298,6 +325,33 @@ Game/Collision/collisionobject.s: Game/Collision/collisionobject.cpp.s
 Game/Collision/collisionobject.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Collision/collisionobject.cpp.s
 .PHONY : Game/Collision/collisionobject.cpp.s
+
+Game/Collision/ellipsoidbody.o: Game/Collision/ellipsoidbody.cpp.o
+
+.PHONY : Game/Collision/ellipsoidbody.o
+
+# target to build an object file
+Game/Collision/ellipsoidbody.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o
+.PHONY : Game/Collision/ellipsoidbody.cpp.o
+
+Game/Collision/ellipsoidbody.i: Game/Collision/ellipsoidbody.cpp.i
+
+.PHONY : Game/Collision/ellipsoidbody.i
+
+# target to preprocess a source file
+Game/Collision/ellipsoidbody.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.i
+.PHONY : Game/Collision/ellipsoidbody.cpp.i
+
+Game/Collision/ellipsoidbody.s: Game/Collision/ellipsoidbody.cpp.s
+
+.PHONY : Game/Collision/ellipsoidbody.s
+
+# target to generate assembly for a file
+Game/Collision/ellipsoidbody.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.s
+.PHONY : Game/Collision/ellipsoidbody.cpp.s
 
 Game/DataStruct/quadtree.o: Game/DataStruct/quadtree.cpp.o
 
@@ -352,33 +406,6 @@ Game/Entity/entity.s: Game/Entity/entity.cpp.s
 Game/Entity/entity.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Entity/entity.cpp.s
 .PHONY : Game/Entity/entity.cpp.s
-
-Game/Entity/player.o: Game/Entity/player.cpp.o
-
-.PHONY : Game/Entity/player.o
-
-# target to build an object file
-Game/Entity/player.cpp.o:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Entity/player.cpp.o
-.PHONY : Game/Entity/player.cpp.o
-
-Game/Entity/player.i: Game/Entity/player.cpp.i
-
-.PHONY : Game/Entity/player.i
-
-# target to preprocess a source file
-Game/Entity/player.cpp.i:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Entity/player.cpp.i
-.PHONY : Game/Entity/player.cpp.i
-
-Game/Entity/player.s: Game/Entity/player.cpp.s
-
-.PHONY : Game/Entity/player.s
-
-# target to generate assembly for a file
-Game/Entity/player.cpp.s:
-	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Entity/player.cpp.s
-.PHONY : Game/Entity/player.cpp.s
 
 Game/Interaction/mousepicker.o: Game/Interaction/mousepicker.cpp.o
 
@@ -596,6 +623,33 @@ Game/Model/shader.cpp.s:
 	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Model/shader.cpp.s
 .PHONY : Game/Model/shader.cpp.s
 
+Game/Object/player.o: Game/Object/player.cpp.o
+
+.PHONY : Game/Object/player.o
+
+# target to build an object file
+Game/Object/player.cpp.o:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Object/player.cpp.o
+.PHONY : Game/Object/player.cpp.o
+
+Game/Object/player.i: Game/Object/player.cpp.i
+
+.PHONY : Game/Object/player.i
+
+# target to preprocess a source file
+Game/Object/player.cpp.i:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Object/player.cpp.i
+.PHONY : Game/Object/player.cpp.i
+
+Game/Object/player.s: Game/Object/player.cpp.s
+
+.PHONY : Game/Object/player.s
+
+# target to generate assembly for a file
+Game/Object/player.cpp.s:
+	$(MAKE) -f CMakeFiles/coucou.dir/build.make CMakeFiles/coucou.dir/Game/Object/player.cpp.s
+.PHONY : Game/Object/player.cpp.s
+
 Game/Renderer/renderer.o: Game/Renderer/renderer.cpp.o
 
 .PHONY : Game/Renderer/renderer.o
@@ -701,18 +755,21 @@ help:
 	@echo "... Game/Basic/util.o"
 	@echo "... Game/Basic/util.i"
 	@echo "... Game/Basic/util.s"
+	@echo "... Game/Collision/collidableobject.o"
+	@echo "... Game/Collision/collidableobject.i"
+	@echo "... Game/Collision/collidableobject.s"
 	@echo "... Game/Collision/collisionobject.o"
 	@echo "... Game/Collision/collisionobject.i"
 	@echo "... Game/Collision/collisionobject.s"
+	@echo "... Game/Collision/ellipsoidbody.o"
+	@echo "... Game/Collision/ellipsoidbody.i"
+	@echo "... Game/Collision/ellipsoidbody.s"
 	@echo "... Game/DataStruct/quadtree.o"
 	@echo "... Game/DataStruct/quadtree.i"
 	@echo "... Game/DataStruct/quadtree.s"
 	@echo "... Game/Entity/entity.o"
 	@echo "... Game/Entity/entity.i"
 	@echo "... Game/Entity/entity.s"
-	@echo "... Game/Entity/player.o"
-	@echo "... Game/Entity/player.i"
-	@echo "... Game/Entity/player.s"
 	@echo "... Game/Interaction/mousepicker.o"
 	@echo "... Game/Interaction/mousepicker.i"
 	@echo "... Game/Interaction/mousepicker.s"
@@ -737,6 +794,9 @@ help:
 	@echo "... Game/Model/shader.o"
 	@echo "... Game/Model/shader.i"
 	@echo "... Game/Model/shader.s"
+	@echo "... Game/Object/player.o"
+	@echo "... Game/Object/player.i"
+	@echo "... Game/Object/player.s"
 	@echo "... Game/Renderer/renderer.o"
 	@echo "... Game/Renderer/renderer.i"
 	@echo "... Game/Renderer/renderer.s"

@@ -8,26 +8,19 @@ Scene::Scene()
 Scene::~Scene()
 {
 	delete m_camera;
-	delete m_renderer;
+	//delete m_renderer;
 	delete m_player;
     delete m_skybox;
     delete m_mousePicker;
     delete m_quadTree;
 	m_listPointLight.clear();
     m_listPointLight.shrink_to_fit();
-	m_listTerrain.clear();
-    m_listTerrain.shrink_to_fit();
+	//m_listTerrain.clear();
+    //m_listTerrain.shrink_to_fit();
 }
 
-stl::StaticObject* cube1;
-stl::StaticObject* cube2;
-stl::StaticObject* cube3;
-
-collision::CollisionEntity* entity1;
-
+collision::CollidableObject* myCollidableObject;
 std::vector<collision::CollisionObject*> listBoundary;
-collision::Box* playerBox;
-collision::Box* box;
 
 void Scene::Initialize()
 {
@@ -50,10 +43,6 @@ void Scene::Initialize()
     txtl::Texture2d* path = new txtl::Texture2d(txtl::Load2dJPGTexture("path"));
     txtl::Texture2d* blendMap = new txtl::Texture2d(txtl::Load2dJPGTexture("blendmap"));
     m_listTerrain.push_back(new Terrain(-0.5, -0.5, 600, *terrainShader, grass, path, blendMap));
-    delete blendMap;
-    delete path;
-    delete grass;
-    delete terrainShader;
 
     //Water
     shld::ShaderObj* waterShader = new shld::ShaderObj(shld::Load("waterShader"));
@@ -67,7 +56,7 @@ void Scene::Initialize()
     //Entity
     m_renderer = new Renderer();
     //Test :
-    m_renderer->Load(m_camera->GetProjection(), m_listTerrain[0]);
+    //m_renderer->Load(m_camera->GetProjection(), m_listTerrain[0]);
 
     //QuadTree
     m_quadTree = new data::QuadTree(data::Rectangle(m_listTerrain[0]->GetPosX(), m_listTerrain[0]->GetPosZ(), m_listTerrain[0]->GetSize()));
@@ -82,144 +71,65 @@ void Scene::Initialize()
         m_listPointLight[i]->position = glm::vec3(i * 50, m_listTerrain[0]->GetMapHeight(i * 50, 10) + 10, 10);
     }
 
+    //Collision : 
+    shld::ShaderObj* basicShader = new shld::ShaderObj(shld::Load("Basic/basicShader"));
+    shld::ShaderObj* debugShader = new shld::ShaderObj(shld::Load("Debug/debugShader"));
+    vaoLoader::VaoObject cubeModel = vaoLoader::LoadBasicObj("cube");
+    vaoLoader::VaoObject player = vaoLoader::LoadBasicObj("character");
+    txtl::Texture2d cubeTexture = txtl::Load2dJPGTexture("cube");
+
+    myCollidableObject = new collision::CollidableObject(&player, &cubeTexture, basicShader);
+    //myCollidableObject->InitDebugMode(&cubeModel, debugShader);
+    myCollidableObject->SetGravity(glm::vec3(0.0, -0.1, 0.0));
+    myCollidableObject->SetOffsetY(0.1);
+
     //Player
     shld::ShaderObj* playerShader = new shld::ShaderObj(shld::Load("Player/playerShader"));
-    Model* playerModel = new Model("character", txtl::Texture2d(txtl::Load2dJPGTexture("green")));
-    m_player = new Player(playerModel, *playerShader, 0, 0, 0);
-    m_player->SetScale(0.25, 0.25, 0.25);
-    delete playerShader;
+    m_player = new Player(&player, &cubeTexture, playerShader);
+    //m_player->InitDebugMode(&cubeModel, debugShader);
+
+    vaoLoader::VaoObject* platform = new vaoLoader::VaoObject(vaoLoader::LoadBasicObj("platform"));
+    vaoLoader::VaoObject* platformShape = new vaoLoader::VaoObject(vaoLoader::LoadBasicObj("platformShape"));
+    txtl::Texture2d* houseTexture = new txtl::Texture2d(txtl::Load2dJPGTexture("decor/platform")); 
+    
+    //cCollision bounding object : 
+    collision::CollisionObject* collisionObject = new collision::CollisionObject(platform, platformShape, houseTexture, basicShader);
+    //collisionObject->InitDebugMode(&cubeModel, debugShader);
+    collisionObject->SetPosition(glm::vec3(0.0, -5.0f, 0.0));
+    //collisionObject->SetScale(glm::vec3(2.0));
+    //collisionObject->SetBoundingBoxOffset(glm::vec3(1.5, 2.5, 1.5));
+    listBoundary.push_back(collisionObject);
+
+    //List PLatfform:
+    collisionObject = new collision::CollisionObject(platform, platformShape, houseTexture, basicShader);
+    collisionObject->SetPosition(glm::vec3(7.0, -2.0, 45.0));
+    collisionObject->SetScale(glm::vec3(0.5f, 1.0f, 0.5f));
+    //collisionObject->InitDebugMode(&cubeModel, debugShader);
+    listBoundary.push_back(collisionObject);
 
     //MousePicker
     m_mousePicker = new MousePicker();
-
-    shld::ShaderObj* basicShader = new shld::ShaderObj(shld::Load("Basic/basicShader"));
-    shld::ShaderObj* debugShader = new shld::ShaderObj(shld::Load("Debug/debugShader"));
-    //vaoLoader::VaoObject object = vaoLoader::LoadBasicTriangle(glm::vec3(-10, 0, 0), glm::vec3(0, 2, 10), glm::vec3(10, 0, 0));
-    vaoLoader::VaoObject cubeModel = vaoLoader::LoadBasicObj("cube");
-    vaoLoader::VaoObject player = vaoLoader::LoadBasicObj("sphere");
-    cube1 = new stl::StaticObject(cubeModel, txtl::Load2dJPGTexture("cube"), basicShader->programId);
-    cube2 = new stl::StaticObject(player, txtl::Load2dJPGTexture("cube"), basicShader->programId);
-    cube3 = new stl::StaticObject(cubeModel, txtl::Load2dJPGTexture("cube"), basicShader->programId);
-    // stl::SetModel(*cube1, glm::vec3(0.0), glm::vec3(5.0, 0.5, 5.0));
-
-    // std::cout << "LeftSide : " << cube1->box.IntersectLeft(cube2->box) << std::endl;
-    // std::cout << "RightSide : " << cube1->box.IntersectRight(cube2->box) << std::endl;
-    // std::cout << "TopSide : " << cube1->box.IntersectTop(cube2->box) << std::endl;
-    // std::cout << "BotSide : " << cube1->box.IntersectBot(cube2->box) << std::endl;
-    // std::cout << "UpSide : " << cube1->box.IntersectUp(cube2->box) << std::endl;
-    // std::cout << "DownSide : " << cube1->box.IntersectDown(cube2->box) << std::endl;
-    //spl::SetModel(*cube, glm::vec3(10.0, -8.0, 0.0), glm::vec3(5.0, 0.5, 5.0));
-
-    //stl::SetModel(*cube1, glm::vec3(10.0, 0.0, 0.0), glm::vec3(1.0), 0.0, 90.0, 0.0);
-    //stl::SetModel(*cube1, glm::vec3(10.0, 0.0, 0.0), glm::vec3(10.0, 0.5, 10.0), 0);
-    //stl::SetModel(*cube3, glm::vec3(10.0, 0.0, 0.0), glm::vec3(5.0, 1.0, 2.0));
-    
-    //boundary.Translate(cube1->simpleObject.model);
-    //std::cout << "triangle : " << boundary.a.x << " ; " << boundary.b.x << " ; " << boundary.b.x << std::endl;
-
-    //collision::Triangle boundary = collision::Triangle(glm::vec3(-10, 0, 0), glm::vec3(0, 5, 10), glm::vec3(10, 0, 0));
-    //listBoundary.push_back(new collision::CollisionShape(collision::CollisionShape(object.vertices, object.numVertices, object.indices, object.numIndices)));
-    //listBoundary[0]->Translate(cube1->simpleObject.model);
-    vaoLoader::VaoObject* houseModel = new vaoLoader::VaoObject(vaoLoader::LoadBasicObj("house"));
-    std::cout << "min : " << houseModel->min.x << " ; " << houseModel->min.y << " ; " << houseModel->min.z << std::endl;
-    std::cout << "max : " << houseModel->max.x << " ; " << houseModel->max.y << " ; " << houseModel->max.z << std::endl;
-    //vaoLoader::VaoObject* houseModel = new vaoLoader::VaoObject(vaoLoader::LoadBasicTriangle(glm::vec3(-10, 0, 0), glm::vec3(0, 0, 10), glm::vec3(10, 0, 0)));
-    txtl::Texture2d* houseTexture = new txtl::Texture2d(txtl::Load2dJPGTexture("cube")); 
-    shld::ShaderObj* houseShader = new shld::ShaderObj(shld::Load("Basic/basicShader"));
-    collision::CollisionObject* collisionObject = new collision::CollisionObject(houseModel, houseModel, houseTexture, houseShader);
-    collisionObject->InitDebugMode(&cubeModel, debugShader);
-    listBoundary.push_back(collisionObject);
-    //listBoundary[0]->SetRotation(glm::vec3(10, 0, 0));
-
-    box = new collision::Box(collision::Box(houseModel->min, houseModel->max));
-    stl::SetModel(*cube1, box->GetPosition(), box->GetScale());
-
-    playerBox = new collision::Box(collision::Box(player.min, player.max));
-    std::cout << *playerBox << std::endl;
-
-    //listBoundary.push_back(new collision::CollisionShape(collision::CollisionShape(object.vertices, object.numVertices, object.indices, object.numIndices)));
-    //listBoundary[1]->Translate(cube3->simpleObject.model);
-
-    stl::SetModel(*cube2, glm::vec3(0.5, 4.0, 0.5), glm::vec3(0.5, 0.8, 0.5));
-    entity1 = new collision::CollisionEntity(collision::CollisionEntity(glm::vec3(0.5, 10.0, 0.5), glm::vec3(0.5, 1.0, 0.5))); //0.8, 1.4, 0.8
 }
-
- 
-
 
 void Scene::Update(const float& deltaTime)
 {
     m_mousePicker->Update(*m_camera, m_listTerrain[0]);
-	m_player->Update(deltaTime, m_camera, m_listPointLight, m_listTerrain[0]);
     //QuadTree processing
     m_quadTree->clear();
     m_inRange.clear();
     m_inRange.shrink_to_fit();
     //Entity rendering plus update
-    m_renderer->Render(deltaTime, *m_camera, m_listTerrain, m_listPointLight, *m_quadTree);
+    //m_renderer->Render(deltaTime, *m_camera, m_listTerrain, m_listPointLight, *m_quadTree);
 
     //Static object
-    glm::vec3 velocity = glm::vec3(0.0, 0.0, 0.0);
-    if (Input::KeyDown(Input::eAction::jump)) {
-        velocity.y += 0.5;
-    }
-    if (Input::KeyDown(Input::eAction::moveRight)) {
-        velocity.x = 0.1f;
-    } else if (Input::KeyDown(Input::eAction::moveLeft)) {
-        velocity.x = -0.1f;
-    }
+    m_player->Update(deltaTime, listBoundary, m_listTerrain[0]);
+    m_player->Render(m_camera, m_listPointLight);
+    m_player->SetRotation(glm::vec3(0, 90 - m_camera->GetAngleAround() + m_player->rotation.y, 0));
 
-    if (Input::KeyDown(Input::eAction::moveDown)) {
-        velocity.z = 0.1f;
-    } else if (Input::KeyDown(Input::eAction::moveUp)) {
-        velocity.z = -0.1f;
-    }
-
-    entity1->CollideAndSlide(velocity, glm::vec3(0.0, -0.1, 0.0), listBoundary);
-    glm::vec3 position = entity1->position / entity1->collisionPackage.ellipsoidRadius;
-    //std::cout << "position : " << position.x << " ; " << position.y << " ; " << position.z << std::endl;
-
-    //listBoundary[0]->Move(glm::vec3(0.0, 0.0, 0.03));
-    //entity1->position.z += 0.03 / 2;
-    //entity1->position.y += 0.01;
-    //position += glm::vec3(listBoundary[0]->GetModel() * glm::vec4(position, 1.0));
-
-    stl::SetModel(*cube2, glm::vec3(position.x, position.y /*- entity1->collisionPackage.ellipsoidRadius.y*/, position.z), glm::vec3(0.5, 1.0, 0.5)); //0.25, 0.25, 0.25
-
-    playerBox->SetBox(position, glm::vec3(0.5, 1.0, 0.5));
-    //std::cout << *playerBox << std::endl;
-    stl::SetModel(*cube3, playerBox->GetPosition(), playerBox->GetScale());
-
-
-    // float speed = 0.1;
-    //stl::Render(*cube1, *m_camera);
-    stl::Render(*cube2, *m_camera);
-    stl::Render(*cube3, *m_camera);
-    // if (!cube2->box.IntersectDown(cube1->box, speed))
-    //     cube2->simpleObject.position.y -= speed;
-
-    // if (Input::KeyDown(Input::eAction::moveRight)) {
-    //     cube2->simpleObject.position.x -= speed;
-    // }
-    // if (Input::KeyDown(Input::eAction::moveLeft)) {
-    //     cube2->simpleObject.position.x += speed;
-    // }
-    // if (Input::KeyDown(Input::eAction::moveUp)) {
-    //     cube2->simpleObject.position.z += speed;
-    // }if (Input::KeyDown(Input::eAction::moveDown)) {
-    //     cube2->simpleObject.position.z -= speed;
-    // }
-
-    // stl::SetModel(*cube2, cube2->simpleObject.position);
-
-    // stl::Render(*cube1, *m_camera);
-    // stl::Render(*cube2, *m_camera);
-    //Mouse picker
-    //m_quadTree->querry(data::Rectangle(m_mousePicker->GetTerrainPoint().x - 10, m_mousePicker->GetTerrainPoint().z - 10, 20),
-    //  m_inRange);
-    // for (int i = 0; i < m_inRange.size(); i++) {
-    //     m_inRange[i].data->Move(0, 0.5, 0);
-    // }
+    //listBoundary[0]->Rotate(glm::vec3(0.0, 0.2, 0.0));
+    // myCollidableObject->Render(m_camera);
+    // myCollidableObject->SetVelocity(velocity);
+    // myCollidableObject->Update(listBoundary, m_listTerrain[0]);
 
     //glDisable(GL_CULL_FACE);
 
@@ -235,6 +145,6 @@ void Scene::Update(const float& deltaTime)
     m_skybox->Render(*m_camera, m_player->GetPosition());
 
     float height = m_listTerrain[0]->GetMapHeight(m_camera->GetPosition().x, m_camera->GetPosition().z);
-    m_camera->Update(glm::vec3(m_player->GetPosition().x, m_player->GetTerrainHeight(), m_player->GetPosition().z),
-        m_player->GetRotation().y, height);
+    m_camera->Update(glm::vec3(m_player->GetPosition().x, 2, m_player->GetPosition().z),
+        m_player->rotation.y, height);
 }

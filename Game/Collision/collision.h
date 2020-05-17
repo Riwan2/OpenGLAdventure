@@ -1,9 +1,11 @@
 #ifndef COLLISION_H
 #define COLLISION_H
 
-#include "collisionobject.h"
+#define GLM_ENABLE_EXPERIMENTAL
+
 #include <glm/gtx/norm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include "../Map/terrain.h"
 
 namespace collision 
 {
@@ -54,6 +56,8 @@ namespace collision
 
 	//Ellipsoid Collision Object : 
 	struct CollisionPackage {
+		glm::vec3 baseRadius;
+		glm::vec3 scale;
 		glm::vec3 ellipsoidRadius;
 		// R3
 		glm::vec3 R3Velocity;
@@ -67,7 +71,9 @@ namespace collision
 		double nearestDistance;
 		glm::vec3 intersectPoint;
 
-		CollisionPackage(const glm::vec3& eRad) : ellipsoidRadius(eRad)
+		CollisionPackage() : baseRadius(glm::vec3(1.0)), scale(glm::vec3(1.0)), ellipsoidRadius(glm::vec3(1.0))
+		{}
+		CollisionPackage(const glm::vec3& eRad) : baseRadius(eRad), scale(glm::vec3(1.0)), ellipsoidRadius(glm::vec3(1.0))
 		{}
 	};
 
@@ -270,104 +276,6 @@ namespace collision
 				}
 			}
 		}
-	}
-
-	class CollisionEntity {
-	public:
-		CollisionPackage collisionPackage;
-		//Box boundingBox;
-		glm::vec3 position;
-		float collisionRecursionDepth;
-
-		CollisionEntity(const CollisionEntity& obj) : collisionPackage(obj.collisionPackage), position(obj.position), collisionRecursionDepth(0)
-		{}
-		CollisionEntity(const glm::vec3& pos, const glm::vec3 eRad) : position(pos), collisionPackage(eRad), collisionRecursionDepth(0)
-		{}
-		void CollideAndSlide(const glm::vec3& velocity, const glm::vec3& gravity, const std::vector<CollisionObject*> boundaryList);
-		glm::vec3 CollideWithWorld(const glm::vec3& position, const glm::vec3& velocity, const std::vector<CollisionObject*> boundaryList);
-	};
-
-	inline void CollisionEntity::CollideAndSlide(const glm::vec3& velocity, const glm::vec3& gravity, const std::vector<CollisionObject*> boundaryList) 
-	{
-		collisionPackage.R3Position = position;
-		collisionPackage.R3Velocity = velocity;
-
-		glm::vec3 squaredRadius = collisionPackage.ellipsoidRadius * collisionPackage.ellipsoidRadius;
-		glm::vec3 eSpacePosition = collisionPackage.R3Position / squaredRadius;
-		glm::vec3 eSpaceVelocity = collisionPackage.R3Velocity / collisionPackage.ellipsoidRadius;
-
-		collisionRecursionDepth = 0;
-
-		glm::vec3 finalPosition = CollideWithWorld(eSpacePosition, eSpaceVelocity, boundaryList);
-
-		collisionPackage.R3Position = finalPosition * squaredRadius;
-		collisionPackage.R3Velocity = gravity;
-		eSpaceVelocity = gravity / collisionPackage.ellipsoidRadius;
-		collisionRecursionDepth = 0;
-
-		finalPosition = CollideWithWorld(finalPosition, eSpaceVelocity, boundaryList);
-
-		finalPosition = finalPosition * squaredRadius;
-		position = finalPosition;
-	}
-
-	const float unitPerMeter = 100.0f;
-
-	inline glm::vec3 CollisionEntity::CollideWithWorld(const glm::vec3& position, const glm::vec3& velocity, const std::vector<CollisionObject*> boundaryList)
-	{
-		float unitScale = unitPerMeter / 100.0f;
-		float veryCloseDistance = 0.05f * unitScale;
-
-		if (collisionRecursionDepth > 5)
-			return position;
-
-		collisionPackage.velocity = velocity;
-		if (velocity != glm::vec3(0.0)) collisionPackage.normalizedVelocity = glm::normalize(velocity);
-		collisionPackage.basePoint = position;
-		collisionPackage.foundCollision = false;
-
-		//Check collision
-		for (int a = 0; a < boundaryList.size(); a++) {
-			for (int i = 0; i < boundaryList[a]->GetCollisionShape().numTriangles; i++) {
-				Triangle t = boundaryList[a]->GetCollisionShape().triangles[i];
-				t.Translate(boundaryList[a]->GetModel());
-				t.a /= collisionPackage.ellipsoidRadius;
-				t.b /= collisionPackage.ellipsoidRadius;
-				t.c /= collisionPackage.ellipsoidRadius;
-				CheckTriangleCollision(&collisionPackage, t.a, t.b, t.c);
-			}
-		}
-
-		if (!collisionPackage.foundCollision)
-			return position + velocity;
-
-		glm::vec3 destinationPoint = position + velocity;
-		glm::vec3 newBasePoint = position;
-
-		if (collisionPackage.nearestDistance >= veryCloseDistance) {
-			glm::vec3 V;
-			V = collisionPackage.normalizedVelocity;
-			V = V * (float)(collisionPackage.nearestDistance - veryCloseDistance);
-			newBasePoint = collisionPackage.basePoint + V;
-
-			if (V != glm::vec3(0.0)) V = glm::normalize(V);
-			collisionPackage.intersectPoint -= veryCloseDistance * V;
-		}
-
-		glm::vec3 slidePlaneOrigin = collisionPackage.intersectPoint;
-		glm::vec3 slidePlaneNormal = newBasePoint - collisionPackage.intersectPoint;
-		if (slidePlaneNormal != glm::vec3(0.0)) slidePlaneNormal = glm::normalize(slidePlaneNormal);
-		Plane slidingPlane(slidePlaneOrigin, slidePlaneNormal);
-
-		glm::vec3 newDestinationPoint = destinationPoint - (float)slidingPlane.SignedDistanceTo(destinationPoint) * slidePlaneNormal;
-		glm::vec3 newVelocityVector = newDestinationPoint - collisionPackage.intersectPoint;
-
-		if (glm::length(newVelocityVector) < veryCloseDistance) {
-			return newBasePoint;
-		}
-
-		collisionRecursionDepth++;
-		return CollideWithWorld(newBasePoint, newVelocityVector, boundaryList);
 	}
 }
 

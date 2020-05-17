@@ -12,6 +12,25 @@ CMakeFiles/coucou.dir/Game/Basic/input.cpp.o: ../Game/Basic/input.h
 CMakeFiles/coucou.dir/Game/Basic/util.cpp.o: ../Game/Basic/util.cpp
 CMakeFiles/coucou.dir/Game/Basic/util.cpp.o: ../Game/Basic/util.h
 
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Basic/basicStruct.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Basic/camera.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Basic/light.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Basic/util.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Collision/collidableobject.cpp
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Collision/collidableobject.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Collision/collision.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Collision/collisionobject.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Collision/collisionshape.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Collision/ellipsoidbody.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Loader/modelloader.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Loader/objloader.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Loader/shaderloader.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Loader/stb_image.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Loader/texture.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Map/map.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Map/terrain.h
+CMakeFiles/coucou.dir/Game/Collision/collidableobject.cpp.o: ../Game/Model/shader.h
+
 CMakeFiles/coucou.dir/Game/Collision/collisionobject.cpp.o: ../Game/Basic/camera.h
 CMakeFiles/coucou.dir/Game/Collision/collisionobject.cpp.o: ../Game/Collision/collisionobject.cpp
 CMakeFiles/coucou.dir/Game/Collision/collisionobject.cpp.o: ../Game/Collision/collisionobject.h
@@ -21,6 +40,24 @@ CMakeFiles/coucou.dir/Game/Collision/collisionobject.cpp.o: ../Game/Loader/objlo
 CMakeFiles/coucou.dir/Game/Collision/collisionobject.cpp.o: ../Game/Loader/shaderloader.h
 CMakeFiles/coucou.dir/Game/Collision/collisionobject.cpp.o: ../Game/Loader/stb_image.h
 CMakeFiles/coucou.dir/Game/Collision/collisionobject.cpp.o: ../Game/Loader/texture.h
+
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Basic/basicStruct.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Basic/camera.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Basic/light.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Basic/util.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Collision/collision.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Collision/collisionobject.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Collision/collisionshape.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Collision/ellipsoidbody.cpp
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Collision/ellipsoidbody.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Loader/modelloader.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Loader/objloader.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Loader/shaderloader.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Loader/stb_image.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Loader/texture.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Map/map.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Map/terrain.h
+CMakeFiles/coucou.dir/Game/Collision/ellipsoidbody.cpp.o: ../Game/Model/shader.h
 
 CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o: ../Game/DataStruct/quadtree.cpp
 CMakeFiles/coucou.dir/Game/DataStruct/quadtree.cpp.o: ../Game/DataStruct/quadtree.h
@@ -40,23 +77,6 @@ CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Loader/stb_image.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Loader/texture.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Model/model.h
 CMakeFiles/coucou.dir/Game/Entity/entity.cpp.o: ../Game/Model/shader.h
-
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Basic/basicStruct.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Basic/camera.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Basic/input.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Basic/light.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Basic/parameters.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Basic/util.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Entity/entity.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Entity/player.cpp
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Entity/player.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Loader/shaderloader.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Loader/stb_image.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Loader/texture.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Map/map.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Map/terrain.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Model/model.h
-CMakeFiles/coucou.dir/Game/Entity/player.cpp.o: ../Game/Model/shader.h
 
 CMakeFiles/coucou.dir/Game/Interaction/mousepicker.cpp.o: ../Game/Basic/basicStruct.h
 CMakeFiles/coucou.dir/Game/Interaction/mousepicker.cpp.o: ../Game/Basic/camera.h
@@ -129,6 +149,28 @@ CMakeFiles/coucou.dir/Game/Model/shader.cpp.o: ../Game/Loader/shaderloader.h
 CMakeFiles/coucou.dir/Game/Model/shader.cpp.o: ../Game/Model/shader.cpp
 CMakeFiles/coucou.dir/Game/Model/shader.cpp.o: ../Game/Model/shader.h
 
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Basic/basicStruct.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Basic/camera.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Basic/input.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Basic/light.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Basic/parameters.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Basic/util.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Collision/collidableobject.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Collision/collision.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Collision/collisionobject.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Collision/collisionshape.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Collision/ellipsoidbody.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Loader/modelloader.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Loader/objloader.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Loader/shaderloader.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Loader/stb_image.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Loader/texture.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Map/map.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Map/terrain.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Model/shader.h
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Object/player.cpp
+CMakeFiles/coucou.dir/Game/Object/player.cpp.o: ../Game/Object/player.h
+
 CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Basic/basicStruct.h
 CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Basic/camera.h
 CMakeFiles/coucou.dir/Game/Renderer/renderer.cpp.o: ../Game/Basic/light.h
@@ -150,12 +192,13 @@ CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/camera.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/input.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/light.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Basic/util.h
+CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Collision/collidableobject.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Collision/collision.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Collision/collisionobject.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Collision/collisionshape.h
+CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Collision/ellipsoidbody.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/DataStruct/quadtree.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Entity/entity.h
-CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Entity/player.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Interaction/mousepicker.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Loader/modelloader.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Loader/objloader.h
@@ -170,6 +213,7 @@ CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Model/model.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Model/simpleobject.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Model/staticobject.h
+CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Object/player.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Renderer/renderer.h
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Scene/scene.cpp
 CMakeFiles/coucou.dir/Game/Scene/scene.cpp.o: ../Game/Scene/scene.h
@@ -180,12 +224,13 @@ CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/input.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/light.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/parameters.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Basic/util.h
+CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Collision/collidableobject.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Collision/collision.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Collision/collisionobject.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Collision/collisionshape.h
+CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Collision/ellipsoidbody.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/DataStruct/quadtree.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Entity/entity.h
-CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Entity/player.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Interaction/mousepicker.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Loader/modelloader.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Loader/objloader.h
@@ -200,6 +245,7 @@ CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Model/model.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Model/shader.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Model/simpleobject.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Model/staticobject.h
+CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Object/player.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Renderer/renderer.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/Scene/scene.h
 CMakeFiles/coucou.dir/Game/source/main.cpp.o: ../Game/source/main.cpp

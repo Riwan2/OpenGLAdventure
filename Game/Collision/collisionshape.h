@@ -1,8 +1,6 @@
 #ifndef COLLISION_SHAPE_H
 #define COLLISION_SHAPE_H
 
-#define GLM_ENABLE_EXPERIMENTAL
-
 #include <glm/glm.hpp>
 #include <iostream>
 #include "../Loader/modelloader.h"
@@ -29,8 +27,10 @@ namespace collision
 		{}
 		Box(const glm::vec3& min, const glm::vec3& max) : m_min(min), m_max(max)
 		{
-			m_scale = (m_max - m_min) / 2.0f;
-			m_position = m_min + m_scale;
+			m_scale = glm::vec3(1.0);
+			m_size = (m_max - m_min) / 2.0f;
+			offsetY = m_min.y;
+			m_position = m_min + m_size;
 		}
 		bool Intersect(const Box& box) {
 			return ((box.m_min.x <= m_max.x && box.m_max.x >= m_min.x) 
@@ -42,18 +42,26 @@ namespace collision
 				 && (point.y >= m_min.y && point.y <= m_max.y)
 				 && (point.z >= m_min.z && point.z <= m_max.z));
 		}
+		float offsetY;	
 	private:
-		glm::vec3 m_min, m_max, m_position, m_scale;	
+		glm::vec3 m_min, m_max, m_position, m_scale, m_size;
 	public:
+		void SetScale(const glm::vec3& scale) { m_scale = scale; };
 		const glm::vec3& GetPosition() const { return m_position; }
 		const glm::vec3& GetScale() const { return m_scale; }
+		const glm::vec3& GetSize() const { return m_size; }
 		const glm::vec3& GetMin() const { return m_min; }
 		const glm::vec3& GetMax() const { return m_max; }
 		void SetBox(const glm::vec3& position, const glm::vec3& scale) { 
 			m_position = position;
 			m_scale = scale;
-			m_min = m_position - m_scale;
-			m_max = m_min + (m_scale * 2.0f);
+			m_min = m_position - (m_size * m_scale);
+			m_max = m_min + ((m_size * m_scale) * 2.0f);
+		}
+		void SetPosition(const glm::vec3 position) {
+			m_position = position;
+			m_min = m_position - (m_size * m_scale);
+			m_max = m_min + ((m_size * m_scale) * 2.0f);
 		}
 	};
 
@@ -72,6 +80,7 @@ namespace collision
 		{}
 		CollisionShape() 
 		{}
+		void PrintDebug();
 	};
 
 	inline CollisionShape::CollisionShape(objl::Vertex* vertices, const int& numVertices, GLuint* indices, const int& numIndices)
@@ -91,7 +100,10 @@ namespace collision
 			triangles[triangleIndex] = Triangle(glm::vec3(a.X, a.Y, a.Z), glm::vec3(b.X, b.Y, b.Z), glm::vec3(c.X, c.Y, c.Z));
 			triangleIndex++;
 		}
+	}
 
+	inline void CollisionShape::PrintDebug()
+	{
 		std::cout << " num of triangles : " << numTriangles << std::endl;
 		for (int i = 0; i < numTriangles; i++) {
 			Triangle t = triangles[i];

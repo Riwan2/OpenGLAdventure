@@ -2,13 +2,12 @@
 #define SCENE_H
 
 #include "../Renderer/renderer.h"
-#include "../Entity/player.h"
 #include "../Map/water.h"
 #include "../Map/skybox.h"
 #include "../Interaction/mousepicker.h"
 #include "../Model/staticobject.h"
 #include "../DataStruct/quadtree.h"
-#include "../Collision/collision.h"
+#include "../Object/player.h"
 
 class Scene
 {

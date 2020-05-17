@@ -35,6 +35,22 @@ namespace light
             }
         }
     }
+
+    inline void LoadLigthIntoShader(shld::ShaderObj* shader, std::vector<PointLight*> listPointLight)
+    {
+        for (int i = 0; i < light::MAX_LIGHT; i++) {
+            if (i < listPointLight.size()) {
+                PointLight* light = listPointLight[i];
+                shld::SetVec3(*shader, "lightColor[" + std::to_string(i) + "]", light->color);
+                shld::SetVec3(*shader, "lightPos[" + std::to_string(i) + "]", light->position);
+                shld::SetVec3(*shader, "lightAttenuation[" + std::to_string(i) + "]", glm::vec3(light->constant, light->linear, light->quadratic));
+            } else {
+                shld::SetVec3(*shader, "lightColor[" + std::to_string(i) + "]", glm::vec3(0));
+                shld::SetVec3(*shader, "lightPos[" + std::to_string(i) + "]", glm::vec3(0));
+                shld::SetVec3(*shader, "lightAttenuation[" + std::to_string(i) + "]", glm::vec3(0));
+            }
+        }
+    }
 }
 
 #endif // LIGHT_H
