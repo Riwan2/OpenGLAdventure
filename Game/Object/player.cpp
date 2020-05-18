@@ -2,7 +2,7 @@
 #include "../Basic/parameters.h"
 
 const float SPEED = 0.5;
-const float MAXSPEED = 0.5;
+const float MAXSPEED = 0.7;
 const float ACCELERATION = 0.04;
 const float FRICTION = 0.85f;
 const float ROTATIONSPEED = 3.0;
@@ -32,14 +32,14 @@ void Player::Update(const float& deltaTime, const std::vector<collision::Collisi
 	angularVelocity.z = cos(glm::radians(GetRotation().y)) * m_currentSpeed;
 
 	if (Input::KeyDown(Input::eAction::moveUp)) {
-		if (velocity.x > MAXSPEED) velocity.x = angularVelocity.x;
+		if (velocity.x > MAXSPEED) velocity.x = MAXSPEED;
 		else velocity.x += angularVelocity.x * ACCELERATION;
-		if (velocity.z > MAXSPEED)  velocity.z = angularVelocity.z;
+		if (velocity.z > MAXSPEED)  velocity.z = MAXSPEED;
 		else velocity.z += angularVelocity.z * ACCELERATION;
 	} else if (Input::KeyDown(Input::eAction::moveDown)) {
-		if (velocity.x < -MAXSPEED) velocity.x = -angularVelocity.x;
+		if (velocity.x < -MAXSPEED) velocity.x = -MAXSPEED;
 		else velocity.x += -angularVelocity.x * ACCELERATION;
-		if (velocity.z < -MAXSPEED) velocity.z = -angularVelocity.z;
+		if (velocity.z < -MAXSPEED) velocity.z = -MAXSPEED;
 		else velocity.z += -angularVelocity.z * ACCELERATION;
 	} else {
 		velocity.z *= FRICTION;

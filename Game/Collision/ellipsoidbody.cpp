@@ -87,8 +87,9 @@ namespace collision {
 
 		finalPosition = CollideWithWorld(finalPosition, eSpaceVelocity, boundaryList);
 
-		boundingBox.SetBox(finalPosition * collisionPackage.ellipsoidRadius, collisionPackage.ellipsoidRadius + 0.1f);
 		finalPosition = finalPosition * collisionPackage.ellipsoidRadius;
+		boundingBox.SetBox(finalPosition * collisionPackage.ellipsoidRadius, collisionPackage.ellipsoidRadius + 0.1f);
+
 
 		position = finalPosition * collisionPackage.ellipsoidRadius;
 	}
@@ -113,9 +114,10 @@ namespace collision {
 					for (int i = 0; i < boundaryList[a]->GetCollisionShape().numTriangles; i++) {
 						Triangle t = boundaryList[a]->GetCollisionShape().triangles[i];
 						t.Translate(boundaryList[a]->GetModel());
-						t.a /= collisionPackage.ellipsoidRadius;
-						t.b /= collisionPackage.ellipsoidRadius;
-						t.c /= collisionPackage.ellipsoidRadius;
+						glm::vec3 squaredRadius = collisionPackage.ellipsoidRadius * collisionPackage.ellipsoidRadius;
+						t.a /= squaredRadius;
+						t.b /= squaredRadius;
+						t.c /= squaredRadius;
 						CheckTriangleCollision(&collisionPackage, t.a, t.b, t.c);
 					}
 				}

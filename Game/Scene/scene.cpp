@@ -102,10 +102,32 @@ void Scene::Initialize()
 
     //List PLatfform:
     collisionObject = new collision::CollisionObject(platform, platformShape, houseTexture, basicShader);
-    collisionObject->SetPosition(glm::vec3(7.0, -2.0, 45.0));
+    collisionObject->SetPosition(glm::vec3(15.0, -2.0, 45.0));
     collisionObject->SetScale(glm::vec3(0.5f, 1.0f, 0.5f));
     //collisionObject->InitDebugMode(&cubeModel, debugShader);
     listBoundary.push_back(collisionObject);
+
+    //2
+    collisionObject = new collision::CollisionObject(platform, platformShape, houseTexture, basicShader);
+    collisionObject->SetPosition(glm::vec3(-10.0, -1.0, 120.0));
+    collisionObject->SetRotation(glm::vec3(0, 45, 0));
+    collisionObject->SetScale(glm::vec3(2.5f, 1.0f, 0.4f));
+    //collisionObject->InitDebugMode(&cubeModel, debugShader);
+    collisionObject->SetBoundingBoxOffset(glm::vec3(1.1, 1.0, 7.0));
+    listBoundary.push_back(collisionObject);
+
+    //3
+    collisionObject = new collision::CollisionObject(platform, platformShape, houseTexture, basicShader);
+    collisionObject->SetPosition(glm::vec3(-10.0, -1.0, 202.0));
+    collisionObject->SetScale(glm::vec3(0.5f, 1.0f, 0.5f));
+    listBoundary.push_back(collisionObject);
+
+    //4
+    collisionObject = new collision::CollisionObject(platform, platformShape, houseTexture, basicShader);
+    collisionObject->SetPosition(glm::vec3(20.0, -5.0, 225.0));
+    collisionObject->SetScale(glm::vec3(0.5f, 1.0f, 0.5f));
+    listBoundary.push_back(collisionObject);
+
 
     //MousePicker
     m_mousePicker = new MousePicker();
@@ -138,6 +160,31 @@ void Scene::Update(const float& deltaTime)
     // glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     // m_water->Render(m_camera);
     // glDisable(GL_BLEND);
+
+    //1
+    static int time1 = 0;
+    static float speed1 = -0.2f;
+    time1 += 1;
+    listBoundary[1]->SetVelocity(glm::vec3(speed1, 0.0, 0.0));
+    if (time1 > 150) {
+        time1 = 0;
+        speed1 = -speed1;
+    }
+
+    //2
+    listBoundary[2]->Rotate(glm::vec3(0.0, 0.3, 0.0));
+
+    //4
+    static int time2 = 0;
+    static float speed2 = 0.1f;
+    time2 += 1;
+    listBoundary[4]->SetVelocity(glm::vec3(0.0, speed2, 0.0));
+    if (time2 > 150) {
+        time2 = 0;
+        speed2 = -speed2;
+    }
+
+
     for (int i = 0; i < listBoundary.size(); i++) {
         listBoundary[i]->Render(m_camera);
     }

@@ -46,7 +46,7 @@ namespace collision
 		const glm::vec3 GetSize() const { return m_size * m_scale; }
 		const glm::vec3& GetVelocity() const { return m_velocity; }
 		const glm::vec3& GetGravity() const { return m_gravity; }
-		const glm::vec3 GetPosition() const { return m_ellipsoidBody.position / m_ellipsoidBody.collisionPackage.ellipsoidRadius; }
+		const glm::vec3 GetPosition() const { return m_ellipsoidBody.position; }
 		const glm::vec3& GetRotation() const { return m_rotation; }
 		const glm::quat& GetQuaternion() const { return m_quaternion; }
 		const glm::mat4& GetModel() const { return m_model; }

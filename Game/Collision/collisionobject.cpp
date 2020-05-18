@@ -33,6 +33,7 @@ namespace collision
 
 	void CollisionObject::Render(Camera* camera)
 	{
+		Update();
 		glEnable(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, m_texture.textureId);
 		glUseProgram(m_shader.programId);
@@ -81,9 +82,9 @@ namespace collision
 	{
 		m_model = glm::mat4(1.0);
 		m_model = glm::translate(m_model, m_position);
-		m_model = glm::scale(m_model, m_scale);
 		m_quaternion = glm::quat(glm::radians(m_rotation));
 		m_model *= glm::toMat4(m_quaternion);
+		m_model = glm::scale(m_model, m_scale);
 
 		glm::vec3 position = m_position;
 		if (m_rotation != glm::vec3(0.0)) m_boundingBox.SetScale(m_scale * m_boundingBoxOffset);	

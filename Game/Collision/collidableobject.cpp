@@ -85,8 +85,8 @@ namespace collision
 
 	void CollidableObject::SetModel()
 	{
-		glm::vec3 position = m_ellipsoidBody.position / m_ellipsoidBody.collisionPackage.ellipsoidRadius;
-		position.y -= m_ellipsoidBody.boundingBox.GetScale().y - offsetY;
+		glm::vec3 position = m_ellipsoidBody.position;
+		position.y -= m_ellipsoidBody.boundingBox.GetScale().y;
 		m_model = glm::mat4(1.0);
 		m_model = glm::translate(m_model, position);
 		m_model = glm::scale(m_model, m_size * m_scale);
